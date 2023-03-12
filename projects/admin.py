@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Notes
+from .models import Post, Note
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -13,8 +13,8 @@ class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ('content')
 
 
-@admin.register(Notes)
-class NotesAdmin(admin.ModelAdmin):
+@admin.register(Note)
+class NoteAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'content_notes', 'note', 'created_on_notes', 'approved')
     list_filter = ('approved', 'created_on_notes')

@@ -29,7 +29,7 @@ class Post(models.Model):
         return self.votes.count()
 
 
-class Notes(models.Model):
+class Note(models.Model):
 
     note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='notes')
     name = models.CharField(max_length=50)

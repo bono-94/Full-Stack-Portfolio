@@ -20,7 +20,7 @@ class Post(models.Model):
     votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
 
     class Meta:
-        ordering = ['created_on']
+        ordering = ['-created_on']
 
     def __str__(self):
         return self.title

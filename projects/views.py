@@ -47,7 +47,7 @@ class PostDetail(View):
             note_form.instance.email = request.user.email
             note_form.instance.name = request.user.username
             note = note_form.save(commit=False)
-            note.post = post
+            note.note = post
             note.save()
         else:
             note_form = NoteForm()
@@ -56,7 +56,7 @@ class PostDetail(View):
             request,
             "post_detail.html",
             {
-                "post":post,
+                "post": post,
                 "notes": notes,
                 "noted": False,
                 "voted": voted,

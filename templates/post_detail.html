@@ -64,7 +64,7 @@
             <div class="card-body">
                 <!-- We want a for loop inside the tags to iterate through each comment in comments -->
                 {% for note in notes %}
-                <div class="comments" style="padding: 10px;">
+                <div class="notes" style="padding: 10px;">
                     <p class="font-weight-bold">
                         <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                         {{ note.name }}
@@ -83,13 +83,18 @@
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 <!-- For later -->
-                {% if user.is_authenticated %}
+                {% if noted %}
+                <div class="alert alert-success" role="alert">
+                    Your note is now waiting for approval..
+                </div>
+                {% else %}
 
+                {% if user.is_authenticated %}
                 <h3>
                     Leave a note with opinion, offer, advice, or critique
                 </h3>
                 <p>
-                    {{ user.username }}
+                    By: {{ user.username }}
                 </p>
                 <form method="post" style="margin-top: 1.3 em;">
                     {{ note_form | crispy }}
@@ -98,6 +103,7 @@
                         Submit
                     </button>
                 </form>
+                {% endif %}
                 {% endif %}
             </div>
         </div>

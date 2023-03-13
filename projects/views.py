@@ -49,3 +49,17 @@ class PostDetail(View):
             note = note_form.save(commit=False)
             note.post = post
             note.save()
+        else:
+            note_form = NoteForm()
+
+        return render(
+            request,
+            "post_detail.html",
+            {
+                "post":post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )

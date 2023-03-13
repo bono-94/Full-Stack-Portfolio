@@ -19,7 +19,7 @@ class NotesAdmin(admin.ModelAdmin):
     list_display = ('name', 'content_note', 'note', 'created_on_note', 'approved')
     list_filter = ('approved', 'created_on_note')
     search_fields = ('name', 'email', 'content_note')
-    actions = ['approve_note']
+    actions = ['approved_note']
 
-    def approve_note(self, request, queryset):
+    def approved_note(self, request, queryset):
         queryset.update(approved=True)

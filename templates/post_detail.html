@@ -42,7 +42,7 @@
                         </strong>
                     </div>
                     <div class="col-1">
-                        {% with note.count as total_notes %}
+                        {% with notes.count as total_notes %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
                             <!-- Our total_comments variable goes before the closing strong tag -->
                             {{ total_notes }}
@@ -74,7 +74,7 @@
                         </span> wrote:
                     </p>
                     <!-- The body of the comment goes before the | -->
-                    {{  note.body | linebreaks }}
+                    {{  note.content_note | linebreaks }}
                 </div>
                 <!-- Our for loop ends here -->
                 {% endfor %}

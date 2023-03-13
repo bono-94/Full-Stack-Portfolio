@@ -17,7 +17,7 @@ class PostDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        note = post.note.filter(approved=True).order_by("created_on_note")
+        notes = post.note.filter(approved=True).order_by("created_on_note")
         voted = False
         if post.votes.filter(id=self.request.user.id).exists():
             liked = True
@@ -27,7 +27,8 @@ class PostDetail(View):
             "post_detail.html",
             {
                 "post": post,
-                "note": note,
+                "notes": notes,
+                "noted": False,
                 "voted": voted,
                 "note_form": NoteForm()
             },
@@ -57,8 +58,9 @@ class PostDetail(View):
             "post_detail.html",
             {
                 "post": post,
+                "note": note,
                 "notes": notes,
-                "noted": False,
+                "noted": True,
                 "voted": voted,
                 "note_form": NoteForm()
             },

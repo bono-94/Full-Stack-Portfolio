@@ -38,14 +38,14 @@
                     <div class="col-1">
                         <!-- The number of likes goes before the closing strong tag -->
                         <strong class="text-secondary"><i class="far fa-heart"></i> 
-                            {{ post.number_of_likes }}
+                            {{ post.number_of_votes }}
                         </strong>
                     </div>
                     <div class="col-1">
-                        {% with comments.count as total_comments %}
+                        {% with note.count as total_notes %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
                             <!-- Our total_comments variable goes before the closing strong tag -->
-                            {{ total_comments }}
+                            {{ total_notes }}
                         </strong>
                         {% endwith %}
                     </div>
@@ -60,21 +60,21 @@
     </div>
     <div class="row">
         <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
+            <h3>Notes:</h3>
             <div class="card-body">
                 <!-- We want a for loop inside the tags to iterate through each comment in comments -->
-                {% for comment in comments %}
+                {% for note in notes %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
                         <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ comment.name }}
+                        {{ note.name }}
                         <span class=" text-muted font-weight-normal">
                             <!-- The comment's created date goes here -->
-                            {{ comment.created_on }}
+                            {{ note.created_on }}
                         </span> wrote:
                     </p>
                     <!-- The body of the comment goes before the | -->
-                    {{  comment.body | linebreaks }}
+                    {{  note.body | linebreaks }}
                 </div>
                 <!-- Our for loop ends here -->
                 {% endfor %}

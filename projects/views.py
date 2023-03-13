@@ -16,6 +16,7 @@ class PostList(generic.ListView):
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
+
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         notes = post.note.filter(approved=True).order_by("created_on_note")
@@ -36,6 +37,7 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
+
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         notes = post.note.filter(approved=True).order_by("created_on_note")
@@ -67,14 +69,15 @@ class PostDetail(View):
             },
         )
 
+
 class PostVote(View):
 
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
 
-    if post.likes.filter(id=request.user.id).exists():
-        post.likes.remove(request.user)
-    else:
-        post.likes.add(request.user)
+        if post.votes.filter(id=request.user.id).exists():
+            post.votes.remove(request.user)
+        else:
+            post.votes.add(request.user)
 
-    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))

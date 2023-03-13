@@ -31,15 +31,15 @@ class Post(models.Model):
 
 class Note(models.Model):
 
-    note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='notes')
+    note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='note')
     name = models.CharField(max_length=50)
     email = models.EmailField()
-    content_notes = models.TextField()
-    created_on_notes = models.DateTimeField(auto_now_add=True)
+    content_note = models.TextField()
+    created_on_note = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['created_on_notes']
+        ordering = ['created_on_note']
 
     def __str__(self):
-        return f"Note {self.content_notes} by {self.name}"
+        return f"Note {self.content_note} by {self.name}"

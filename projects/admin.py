@@ -14,12 +14,12 @@ class PostAdmin(SummernoteModelAdmin):
 
 
 @admin.register(Note)
-class NoteAdmin(admin.ModelAdmin):
+class NotesAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'content_notes', 'note', 'created_on_notes', 'approved')
-    list_filter = ('approved', 'created_on_notes')
-    search_fields = ('name', 'email', 'content_notes')
-    actions = ['approve_comments']
+    list_display = ('name', 'content_note', 'note', 'created_on_note', 'approved')
+    list_filter = ('approved', 'created_on_note')
+    search_fields = ('name', 'email', 'content_note')
+    actions = ['approve_note']
 
-    def approve_comments(self, request, queryset):
+    def approve_note(self, request, queryset):
         queryset.update(approved=True)

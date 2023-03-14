@@ -38,7 +38,7 @@
                     <div class="col-1">
                         <strong>
                             {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'post_votes' post.slug %}" method="POST">
+                            <form class="d-inline" action="{% url 'vote' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if voted %}
                                     <button type="submit" name="post_note_id" value="{{post.slug}}" class="btn-like">
@@ -53,16 +53,14 @@
                             {% else %}
                                 <span class="text-secondary">
                                     <i class="far-fa heart"></i>
+                                    {{ post.number_of_votes }}
                                 </span>
                             {% endif %}
-                            <span class="text-secondary">
-                                {{ post.number_of_votes }}
-                            </span>
-                        </strong>
-                        <!-- The number of likes goes before the closing strong tag -->
-                        <strong class="text-secondary"><i class="far fa-heart"></i> 
-                            {{ post.number_of_votes }}
-                        </strong>
+                                <span class="text-secondary">
+                                    <i class="fas-fa heart"></i>
+                                    {{ post.number_of_votes }}
+                                </span>
+                            </strong>
                     </div>
                     <div class="col-1">
                         {% with notes.count as total_notes %}

@@ -81,3 +81,36 @@ class PostVote(View):
             post.votes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class ExampleReturns(View):
+
+    def example_one(request):
+        return HttpResponse("<h1>Title</h1><h2>subtitle</h2>")
+
+
+class PostCreate(View):
+
+    def create_posts(request):
+        return render(request, 'templates/post_create.html')
+
+
+class PostRead(View):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class PostUpdate(View):
+
+
+class PostDelete(View):
+
+
+class UserProfile(View):
+
+
+class UserProfileEdit(View):
+
+
+class 

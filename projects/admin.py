@@ -23,3 +23,33 @@ class NotesAdmin(admin.ModelAdmin):
 
     def approved_note(self, request, queryset):
         queryset.update(approved=True)
+
+
+@admin.register(Profile)
+class PostAdmin(SummernoteModelAdmin):
+
+    list_display = ('title', 'slug', 'status', 'created_on')
+    search_fields = ['title', 'content']
+    prepopulated_fields = {'slug': ('title',)}
+    list_filter = ('status', 'created_on')
+    summernote_fields = ('content')
+
+
+@admin.register(Feedback)
+class PostAdmin(SummernoteModelAdmin):
+
+    list_display = ('title', 'slug', 'status', 'created_on')
+    search_fields = ['title', 'content']
+    prepopulated_fields = {'slug': ('title',)}
+    list_filter = ('status', 'created_on')
+    summernote_fields = ('content')
+
+
+    @admin.register(Booking)
+class PostAdmin(SummernoteModelAdmin):
+
+    list_display = ('title', 'slug', 'status', 'created_on')
+    search_fields = ['title', 'content']
+    prepopulated_fields = {'slug': ('title',)}
+    list_filter = ('status', 'created_on')
+    summernote_fields = ('content')

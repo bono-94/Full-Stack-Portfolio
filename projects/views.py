@@ -137,13 +137,13 @@ class PostDelete(View):
         return render(request, 'templates/post_user_get.html')
 
 
-class FeedbackSend(view):
+class FeedbackSend(View):
 
     def get_user_posts(request):
         return render(request, 'templates/post_user_get.html')
 
 
-class FeedbackResponse(view):
+class FeedbackResponse(View):
 
     def get_user_posts(request):
         return render(request, 'templates/post_user_get.html')

@@ -89,13 +89,37 @@ class ExampleReturns(View):
         return HttpResponse("<h1>Title</h1><h2>subtitle</h2>")
 
 
+class UserProfileCreate(View):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class UserProfile(View):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class UserProfileEdit(View):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class UserPostsNone(View):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
+
 class PostCreate(View):
 
     def create_posts(request):
         return render(request, 'templates/post_create.html')
 
 
-class PostRead(View):
+class UserPosts(View):
 
     def get_user_posts(request):
         return render(request, 'templates/post_user_get.html')
@@ -103,14 +127,47 @@ class PostRead(View):
 
 class PostUpdate(View):
 
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
 
 class PostDelete(View):
 
-
-class UserProfile(View):
-
-
-class UserProfileEdit(View):
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
 
 
-class 
+class FeedbackSend(view):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class FeedbackResponse(view):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class UserBookingCreate(View):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class UserBookingView(View):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class UserBookingEdit(View):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class UserBookingDelete(View):
+
+    def get_user_posts(request):
+        return render(request, 'templates/post_user_get.html')

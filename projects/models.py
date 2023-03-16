@@ -43,3 +43,19 @@ class Note(models.Model):
 
     def __str__(self):
         return f"Note {self.content_note} by {self.name}"
+
+
+class Profile(models.Model):
+
+    private = models.BooleanField(null=False, blank=False, default=False)
+    username = models.CharField(max_length=21, null=False, blank=False)
+
+class Feedback(models.Model):
+
+    anonym = models.BooleanField(null=False, blank=False, default=False)
+    username = models.CharField(max_length=21, null=False, blank=False)
+
+
+class Booking(models.Model):
+
+    username = models.CharField(max_length=21, null=False, blank=False)

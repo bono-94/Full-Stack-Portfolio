@@ -34,7 +34,7 @@ class Note(models.Model):
 
     note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='note')
     name = models.CharField(max_length=50)
-    username = models.CharField(max_length=21, null=False, unique=True)
+    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_note")
     email = models.EmailField(blank=True)
     content_note = models.TextField()
     created_on_note = models.DateTimeField(auto_now_add=True)
@@ -49,9 +49,9 @@ class Note(models.Model):
 
 class Register(models.Model):
 
-    username = models.CharField(max_length=21, null=False, blank=False, unique=True)
-    password = models.PasswordField(max_length=50, null=False, blank=False)
-    password_two = models.PasswordField(max_length=50, null=False, blank=False)
+    username = models.CharField(max_length=21, blank=False, unique=True)
+    password = models.CharField(max_length=50, blank=False)
+    password_two = models.CharField(max_length=50, blank=False)
 
 
 class Profile(models.Model):
@@ -59,26 +59,26 @@ class Profile(models.Model):
     slug = models.SlugField(max_length=21, unique=True)
     profile_title = models.CharField(max_length=42, unique=True)
     user_image = CloudinaryField('image', default='placeholder')
-    private = models.BooleanField(null=False, blank=False, default=False)
-    username = models.CharField(max_length=21, null=False, blank=False, unique=True)
-    first_name = models.CharField(max_length=21, null=False, blank=False)
-    last_name = models.CharField(max_length=21, null=False, blank=False)
-    location = models.CharField(max_length=21, null=False, blank=False)
-    company = models.CharField(max_length=21, null=False, blank=False)
-    occupation = models.CharField(max_length=21, null=False, blank=False)
+    private = models.BooleanField(blank=False, default=False)
+    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_profile")
+    first_name = models.CharField(max_length=21, blank=False)
+    last_name = models.CharField(max_length=21, blank=False)
+    location = models.CharField(max_length=21, blank=False)
+    company = models.CharField(max_length=21, blank=False)
+    occupation = models.CharField(max_length=21, blank=False)
     email = models.EmailField(max_length=42, unique=True)
     bio = models.TextField(max_length=214)
 
 
 class Feedback(models.Model):
 
-    anonym = models.BooleanField(null=False, blank=False, default=False)
-    username = models.CharField(max_length=21, null=False, unique=True)
-    email = models.EmailField(max_length=42, null=False, unique=True)
+    anonym = models.BooleanField(blank=False, default=False)
+    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_feedback")
+    email = models.EmailField(max_length=42, unique=True)
     feedback = models.TextField(max_length=214, blank=False)
 
 
 class Booking(models.Model):
 
-    username = models.CharField(max_length=21, null=False, blank=False)
-    meeting_topic = models.CharField(max_length=42, null=False, blank=False)
+    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_booking")
+    meeting_topic = models.CharField(max_length=42, blank=False)

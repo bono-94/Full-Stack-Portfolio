@@ -19,9 +19,15 @@
             <table>
                 {% for booking in bookings_list %}
                     <tr>
+                    {% if booking.complete %}
+                        <td class="strike">{{ booking.username }}</td>
+                    {% else %}
                         <td>{{ booking.username }}</td>
+                    {% endif %}
                         <td>{{ booking.meeting_topic }}</td>
                     </tr>
+                {% empty %}
+                    <tr><td>You have no appointments yet.</td></tr>
                 {% endfor %}
             </table>
         </div>

@@ -91,6 +91,7 @@ class Booking(models.Model):
 
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_booking")
     meeting_topic = models.CharField(max_length=42, blank=False)
+    complete = models.BooleanField(null=False, blank=False, default=False)
 
     def __str__(self):
         return self.username

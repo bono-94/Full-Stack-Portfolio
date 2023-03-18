@@ -7,15 +7,16 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class Post(models.Model):
 
-    title = models.CharField(max_length=200, unique=True)
-    industry = models.CharField(max_length=50, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    title = models.CharField(max_length=210, unique=True)
+    industry = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=210, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="projects_posts")
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    content = models.TextField()
+    content = models.TextField(unique=True)
+    post_image = models.ImageField(upload_to=None, blank=True)
     featured_image = CloudinaryField('image', default='placeholder')
-    excerpt = models.TextField(blank=True)
+    excerpt = models.TextField(unique=True)
     status = models.IntegerField(choices=STATUS, default=0)
     votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
 
@@ -33,7 +34,8 @@ class Note(models.Model):
 
     note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='note')
     name = models.CharField(max_length=50)
-    email = models.EmailField()
+    username = models.CharField(max_length=21, null=False, unique=True)
+    email = models.EmailField(blank=True)
     content_note = models.TextField()
     created_on_note = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
@@ -47,32 +49,33 @@ class Note(models.Model):
 
 class Register(models.Model):
 
-    username = models.CharField(max_length=21, null=False, blank=False)
+    username = models.CharField(max_length=21, null=False, blank=False, unique=True)
     password = models.PasswordField(max_length=50, null=False, blank=False)
     password_two = models.PasswordField(max_length=50, null=False, blank=False)
 
 
 class Profile(models.Model):
 
-    profile_title = models.CharField(max_length=200, unique=True)
-    public_image = CloudinaryField('image', default='placeholder')
+    slug = models.SlugField(max_length=21, unique=True)
+    profile_title = models.CharField(max_length=42, unique=True)
+    user_image = CloudinaryField('image', default='placeholder')
     private = models.BooleanField(null=False, blank=False, default=False)
-    username = models.CharField(max_length=21, null=False, blank=False)
+    username = models.CharField(max_length=21, null=False, blank=False, unique=True)
     first_name = models.CharField(max_length=21, null=False, blank=False)
     last_name = models.CharField(max_length=21, null=False, blank=False)
     location = models.CharField(max_length=21, null=False, blank=False)
     company = models.CharField(max_length=21, null=False, blank=False)
     occupation = models.CharField(max_length=21, null=False, blank=False)
-    email = models.EmailField()
-    bio = models.TextField()
+    email = models.EmailField(max_length=42, unique=True)
+    bio = models.TextField(max_length=214)
 
 
 class Feedback(models.Model):
 
     anonym = models.BooleanField(null=False, blank=False, default=False)
-    username = models.CharField(max_length=21, null=False, blank=False)
-    email = models.EmailField()
-    feedback = models.TextField()
+    username = models.CharField(max_length=21, null=False, blank=False, unique=True)
+    email = models.EmailField(max_length=42, unique=True, blank=False)
+    feedback = models.TextField(max_length=214, blank=False)
 
 
 class Booking(models.Model):

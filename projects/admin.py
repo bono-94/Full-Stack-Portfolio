@@ -29,7 +29,7 @@ class NotesAdmin(admin.ModelAdmin):
 class RegisterAdmin(admin.ModelAdmin):
 
     list_display = ('username',)
-    search_fields = ('username',) 
+    search_fields = ('username',)
 
 
 @admin.register(Profile)

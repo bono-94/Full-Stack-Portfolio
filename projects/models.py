@@ -53,6 +53,9 @@ class Register(models.Model):
     password = models.CharField(max_length=50, blank=False)
     password_two = models.CharField(max_length=50, blank=False)
 
+    def __str__(self):
+        return self.username
+
 
 class Profile(models.Model):
 
@@ -69,6 +72,9 @@ class Profile(models.Model):
     email = models.EmailField(max_length=42, unique=True)
     bio = models.TextField(max_length=214)
 
+    def __str__(self):
+        return f"My Profile"
+
 
 class Feedback(models.Model):
 
@@ -77,8 +83,14 @@ class Feedback(models.Model):
     email = models.EmailField(max_length=42, unique=True)
     feedback = models.TextField(max_length=214, blank=False)
 
+    def __str__(self):
+        return self.username
+
 
 class Booking(models.Model):
 
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_booking")
     meeting_topic = models.CharField(max_length=42, blank=False)
+
+    def __str__(self):
+        return self.username

@@ -32,6 +32,16 @@ class ProfileAdmin(admin.ModelAdmin):
     search_fields = ('username') 
 
 
+@admin.register(Profile)
+class FeedbackAdmin(SummernoteModelAdmin):
+
+    list_display = ('username', 'company', 'occupation', 'email')
+    search_fields = ['profile_title', 'username', 'location', 'company', 'email']
+    prepopulated_fields = {'slug': ('username',)}
+    list_filter = ('location', 'last_name', 'company', 'email', 'occupation')
+    summernote_fields = ('bio')
+
+
 @admin.register(Feedback)
 class FeedbackAdmin(SummernoteModelAdmin):
 

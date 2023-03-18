@@ -81,3 +81,4 @@ class Feedback(models.Model):
 class Booking(models.Model):
 
     username = models.CharField(max_length=21, null=False, blank=False)
+    meeting_topic = models.CharField(max_length=42, null=False, blank=False)

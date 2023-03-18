@@ -1,6 +1,6 @@
 from . import views
 from django.urls import path
-from templates.views import get_posts_list
+from .views import UserProfile
 
 
 urlpatterns = [

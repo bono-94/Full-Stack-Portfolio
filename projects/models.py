@@ -45,10 +45,23 @@ class Note(models.Model):
         return f"Note {self.content_note} by {self.name}"
 
 
+class Register(models.Model):
+
+    username = models.CharField(max_length=21, null=False, blank=False)
+    password = models.PasswordField(max_length=50, null=False, blank=False)
+    password_two = models.PasswordField(max_length=50, null=False, blank=False)
+
+
 class Profile(models.Model):
 
+    profile_title = models.CharField(max_length=200, unique=True)
+    public_image = CloudinaryField('image', default='placeholder')
     private = models.BooleanField(null=False, blank=False, default=False)
     username = models.CharField(max_length=21, null=False, blank=False)
+    company = models.CharField(max_length=21, null=False, blank=False)
+    email = models.EmailField()
+    bio = models.TextField()
+
 
 class Feedback(models.Model):
 

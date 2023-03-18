@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Note
+from .models import Post, Note, Profile, Feedback, Booking
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -26,7 +26,7 @@ class NotesAdmin(admin.ModelAdmin):
 
 
 @admin.register(Profile)
-class PostAdmin(SummernoteModelAdmin):
+class ProfileAdmin(SummernoteModelAdmin):
 
     list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'content']
@@ -36,7 +36,7 @@ class PostAdmin(SummernoteModelAdmin):
 
 
 @admin.register(Feedback)
-class PostAdmin(SummernoteModelAdmin):
+class FeedbackAdmin(SummernoteModelAdmin):
 
     list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'content']
@@ -45,8 +45,8 @@ class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ('content')
 
 
-    @admin.register(Booking)
-class PostAdmin(SummernoteModelAdmin):
+@admin.register(Booking)
+class BookingAdmin(SummernoteModelAdmin):
 
     list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'content']

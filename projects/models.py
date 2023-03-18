@@ -73,8 +73,8 @@ class Profile(models.Model):
 class Feedback(models.Model):
 
     anonym = models.BooleanField(null=False, blank=False, default=False)
-    username = models.CharField(max_length=21, null=False, blank=False, unique=True)
-    email = models.EmailField(max_length=42, unique=True, blank=False)
+    username = models.CharField(max_length=21, null=False, unique=True)
+    email = models.EmailField(max_length=42, null=False, unique=True)
     feedback = models.TextField(max_length=214, blank=False)
 
 

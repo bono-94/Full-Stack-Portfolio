@@ -45,11 +45,10 @@ class FeedbackAdmin(SummernoteModelAdmin):
 @admin.register(Feedback)
 class FeedbackAdmin(SummernoteModelAdmin):
 
-    list_display = ('title', 'slug', 'status', 'created_on')
-    search_fields = ['title', 'content']
-    prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('status', 'created_on')
-    summernote_fields = ('content')
+    list_display = ('username', 'email', 'anonym')
+    search_fields = ['username', 'email']
+    list_filter = ('username', 'email', 'anonym')
+    summernote_fields = ('feedback')
 
 
 @admin.register(Booking)

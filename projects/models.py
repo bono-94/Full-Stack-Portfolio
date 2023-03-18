@@ -71,6 +71,8 @@ class Feedback(models.Model):
 
     anonym = models.BooleanField(null=False, blank=False, default=False)
     username = models.CharField(max_length=21, null=False, blank=False)
+    email = models.EmailField()
+    feedback = models.TextField()
 
 
 class Booking(models.Model):

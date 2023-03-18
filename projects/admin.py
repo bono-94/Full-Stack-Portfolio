@@ -25,14 +25,11 @@ class NotesAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
 
-@admin.register(Profile)
-class ProfileAdmin(SummernoteModelAdmin):
+@admin.register(Register)
+class ProfileAdmin(admin.ModelAdmin):
 
-    list_display = ('title', 'slug', 'status', 'created_on')
-    search_fields = ['title', 'content']
-    prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('status', 'created_on')
-    summernote_fields = ('content')
+    list_display = ('username')
+    search_fields = ('username') 
 
 
 @admin.register(Feedback)

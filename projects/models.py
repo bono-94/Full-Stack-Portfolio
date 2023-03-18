@@ -58,7 +58,11 @@ class Profile(models.Model):
     public_image = CloudinaryField('image', default='placeholder')
     private = models.BooleanField(null=False, blank=False, default=False)
     username = models.CharField(max_length=21, null=False, blank=False)
+    first_name = models.CharField(max_length=21, null=False, blank=False)
+    last_name = models.CharField(max_length=21, null=False, blank=False)
+    location = models.CharField(max_length=21, null=False, blank=False)
     company = models.CharField(max_length=21, null=False, blank=False)
+    occupation = models.CharField(max_length=21, null=False, blank=False)
     email = models.EmailField()
     bio = models.TextField()
 

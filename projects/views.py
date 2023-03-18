@@ -13,6 +13,17 @@ class PostList(generic.ListView):
     paginate_by = 4
 
 
+class UserPosts(View):
+
+    def get_user_posts(request):
+        user_posts = Post.objects.all()
+        context = {
+            'user_posts': user_posts
+        }
+
+        return render(request, 'templates/user_posts.html', context)
+
+
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -117,12 +128,6 @@ class PostCreate(View):
 
     def create_posts(request):
         return render(request, 'templates/post_create.html')
-
-
-class UserPosts(View):
-
-    def get_user_posts(request):
-        return render(request, 'templates/post_user_get.html')
 
 
 class PostUpdate(View):

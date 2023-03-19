@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Note, Register, Profile, Feedback, Booking
-from .forms import NoteForm
+from .forms import NoteForm, PostForm
 
 
 class PostList(generic.ListView):
@@ -142,7 +142,11 @@ def create_post(request):
         Post.objects.create(title=title, industry=industry)
 
         return redirect('get_user_posts')
-    return render(request, 'post_create.html')
+    form = PostForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'post_create.html', context)
 
 
 class PostUpdate(View):

@@ -7,20 +7,9 @@
                 Create a new Project:
             </h1>
         </div>
-        <form method="POST" action="post_create.html">
+        <form method="POST" action="{% url 'post_create' %}">
             {% csrf_token %}
-            <div>
-                <p>
-                    <label for="id_title">Title:</label>
-                    <input type="text" id="id_title" name="project_title"/>
-                </p>
-            </div>
-            <div>
-                <p>
-                    <label for="id_industry">Industry:</label>
-                    <input type="text" id="id_industry" name="project_industry"/>
-                </p>
-            </div>
+            {{ form.as_p }}
             <div>
                 <p>
                     <button type="submit">Create Project</button>

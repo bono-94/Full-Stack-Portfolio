@@ -9,10 +9,6 @@ def home_page(request):
     return render(request, 'index.html')
 
 
-def contact_page(request):
-    return render(request, 'contact.html')
-
-
 class PostList(generic.ListView):
 
     model = Post
@@ -143,6 +139,7 @@ def create_post(request):
     if request.method == 'POST':
         title = request.POST.get('project_title')
         industry = request.POST.get('project_industry')
+        author = request.POST.get('project_author')
         Post.objects.create(title=title, industry=industry)
 
         return redirect('get_user_posts')
@@ -163,6 +160,10 @@ class PostDelete(View):
 
     def get_user_posts(request):
         return render(request, 'templates/post_user_get.html')
+
+
+def contact_page(request):
+    return render(request, 'contact.html')
 
 
 class FeedbackSend(View):

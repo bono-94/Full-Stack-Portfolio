@@ -6,7 +6,7 @@ from .forms import NoteForm, PostForm
 
 
 def home_page(request):
-    return render(request, 'base.html')
+    return render(request, 'index.html')
 
 
 def contact_page(request):

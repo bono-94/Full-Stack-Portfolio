@@ -5,6 +5,10 @@ from .models import Post, Note, Register, Profile, Feedback, Booking
 from .forms import NoteForm, PostForm
 
 
+def contact_page(request):
+    return render(request, 'templates/contact.html')
+
+
 class PostList(generic.ListView):
 
     model = Post
@@ -13,15 +17,13 @@ class PostList(generic.ListView):
     paginate_by = 4
 
 
-class UserPosts(View):
+def get_user_posts(request):
+    user_posts = Post.objects.all()
+    context = {
+        'user_posts': user_posts
+    }
 
-    def get_user_posts(request):
-        user_posts = Post.objects.all()
-        context = {
-            'user_posts': user_posts
-        }
-
-        return render(request, 'templates/user_posts.html', context)
+    return render(request, 'templates/posts/user_posts.html', context)
 
 
 class PostDetail(View):
@@ -113,14 +115,12 @@ class UserProfileCreate(View):
         return render(request, 'templates/user_profile_create.html')
 
 
-class UserProfileView(View):
-
-    def get_user_profile(request):
-        information = Profile.objects.all()
-        context = {
-            'information': information
-        }
-        return render(request, 'templates/user_profile_view.html')
+def get_user_profile(request):
+    information = Profile.objects.all()
+    context = {
+        'information': information
+    }
+    return render(request, 'templates/user_profile_view.html')
 
 
 class UserProfileEdit(View):

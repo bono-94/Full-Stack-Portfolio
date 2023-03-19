@@ -40,6 +40,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'all_projects' %}">View Projects</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'post_create' %}">Create a Project</a>
                     </li>
@@ -49,10 +50,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'view_profile' %}">My Profile</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-                    </li>
-                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
@@ -64,9 +61,12 @@
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    </li>
                 </ul>
                 <span class="navbar-text text-muted">
-                    adventures of a software developer
+                    "Land where innovation happens"
                 </span>
             </div>
         </div>

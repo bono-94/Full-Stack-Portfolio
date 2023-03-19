@@ -135,16 +135,14 @@ class UserPostsNone(View):
         return render(request, 'templates/post_user_get.html')
 
 
-class PostCreate(View):
+def create_post(request):
+    if request.method == 'POST':
+        title = request.POST.get('project_title')
+        industry = request.POST.get('project_industry')
+        Post.objects.create(title=title, industry=industry)
 
-    def create_post(request):
-        if request.method == 'POST':
-            title = request.POST.get('project_title')
-            industry = request.POST.get('project_industry')
-            Post.objects.create(title=title, industry=industry)
-
-            return redirect('get')
-        return render(request, 'templates/post_create.html')
+        return redirect('get_user_posts')
+    return render(request, 'post_create.html')
 
 
 class PostUpdate(View):

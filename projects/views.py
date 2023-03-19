@@ -116,6 +116,10 @@ class UserProfileCreate(View):
 class UserProfileView(View):
 
     def get_user_profile(request):
+        information = Profile.objects.all()
+        context = {
+            'information': information
+        }
         return render(request, 'templates/user_profile_view.html')
 
 

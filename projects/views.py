@@ -21,15 +21,6 @@ class PostList(generic.ListView):
     paginate_by = 4
 
 
-def get_user_posts(request):
-    user_posts = Post.objects.all()
-    context = {
-        'user_posts': user_posts
-    }
-
-    return render(request, 'posts/user_posts.html', context)
-
-
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -100,12 +91,6 @@ class PostVote(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class ExampleReturns(View):
-
-    def example_one(request):
-        return HttpResponse("<h1>Title</h1><h2>subtitle</h2>")
-
-
 class UserProfileCreate(View):
 
     def create_user_profile(request):
@@ -129,7 +114,13 @@ def get_user_profile(request):
 
 class UserProfileEdit(View):
 
-    def get_user_posts(request):
+    def user_posts_edit(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class UserProfileDelete(View):
+
+    def user_posts_delete(request):
         return render(request, 'templates/post_user_get.html')
 
 
@@ -137,6 +128,15 @@ class UserPostsNone(View):
 
     def get_user_posts(request):
         return render(request, 'templates/post_user_get.html')
+
+
+def get_user_posts(request):
+    user_posts = Post.objects.all()
+    context = {
+        'user_posts': user_posts
+    }
+
+    return render(request, 'posts/user_posts.html', context)
 
 
 def create_post(request):

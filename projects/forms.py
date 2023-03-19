@@ -5,7 +5,7 @@ from django import forms
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'industry', 'updated_on', 'excerpt']
+        fields = ['title', 'industry', 'excerpt']
 
 
 class NoteForm(forms.ModelForm):

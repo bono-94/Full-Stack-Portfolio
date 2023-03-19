@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Note, Register, Profile, Feedback, Booking
@@ -102,14 +102,21 @@ class ExampleReturns(View):
 
 class UserProfileCreate(View):
 
-    def get_user_posts(request):
-        return render(request, 'templates/post_user_get.html')
+    def create_user_profile(request):
+
+        if request.method == 'POST':
+            first_name = request.POST.get('first_name')
+            private = 'private' in request.POST
+            Profile.objects.create(first_name=first_name, private=private)
+
+            return redirect('get_user_profile')
+        return render(request, 'templates/user_profile_create.html')
 
 
-class UserProfile(View):
+class UserProfileView(View):
 
-    def get_user_posts(request):
-        return render(request, 'templates/post_user_get.html')
+    def get_user_profile(request):
+        return render(request, 'templates/user_profile_view.html')
 
 
 class UserProfileEdit(View):

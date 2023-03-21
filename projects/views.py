@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Note, Register, Profile, Feedback, Booking
 from .forms import NoteForm, PostForm
+from django.views.generic.edit import CreateView
 
 
 def home_page(request):
@@ -135,20 +136,18 @@ def get_user_posts(request):
     return render(request, 'posts/user_posts.html', context)
 
 
-def create_post(request):
-    if request.method == 'POST':
-        model = Post
-        title = request.POST.get('project_title')
-        industry = request.POST.get('project_industry')
-        author = request.POST.get('project_author')
-        Post.objects.create(title=title, industry=industry)
-
-        return redirect('get_user_posts')
-    form = PostForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'posts/post_create.html', context)
+class PostCreate(CreateView):
+    model = Post
+    template_name = 'posts/post_create.html'
+    success_url = '/posts/post_create.html'
+    fields = [
+        'title',
+        'industry',
+        'content',
+        'post_image',
+        'excerpt',
+        {'author[1]'}
+    ]
 
 
 class PostUpdate(View):

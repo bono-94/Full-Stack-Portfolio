@@ -1,5 +1,6 @@
 from . import views
 from django.urls import path
+from .views import PostCreate
 
 
 urlpatterns = [
@@ -9,7 +10,7 @@ urlpatterns = [
     path('projects/', views.PostList.as_view(), name='all_projects'),
     path('projects/<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('vote/<slug:slug>', views.PostVote.as_view(), name='vote'),
-    path('create-project', views.create_post, name='post_create'),
+    path('create-project', PostCreate.as_view(), name='post_create'),
     path('my-projects', views.get_user_posts, name='user_posts'),
     path('contact', views.contact_page, name='contact'),
 ]

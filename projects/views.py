@@ -137,6 +137,7 @@ def get_user_posts(request):
 
 def create_post(request):
     if request.method == 'POST':
+        model = Post
         title = request.POST.get('project_title')
         industry = request.POST.get('project_industry')
         author = request.POST.get('project_author')

@@ -6,19 +6,19 @@ from django_summernote.admin import SummernoteModelAdmin
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
-    list_display = ('title', 'slug', 'status', 'created_on')
-    search_fields = ['title', 'content']
+    list_display = ('title', 'industry', 'author', 'created_on', 'status')
+    search_fields = ['title', 'content', 'industry', 'author', 'status']
     prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('status', 'created_on', 'author')
-    summernote_fields = ('content')
+    list_filter = ('status', 'created_on', 'industry', 'updated_on')
+    summernote_fields = ('content', 'decription')
 
 
 @admin.register(Note)
 class NotesAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'content_note', 'note', 'created_on_note', 'approved')
-    list_filter = ('approved', 'created_on_note')
-    search_fields = ('name', 'email', 'content_note')
+    list_display = ('name', 'note', 'created_on_note', 'approved')
+    list_filter = ('name', 'note', 'approved', 'created_on_note')
+    search_fields = ('name', 'email', 'username' 'content_note')
     actions = ['approved_note']
 
     def approved_note(self, request, queryset):
@@ -29,6 +29,7 @@ class NotesAdmin(admin.ModelAdmin):
 class RegisterAdmin(admin.ModelAdmin):
 
     list_display = ('username',)
+    list_filter = ('username',)
     search_fields = ('username',)
 
 
@@ -36,7 +37,7 @@ class RegisterAdmin(admin.ModelAdmin):
 class ProfileAdmin(SummernoteModelAdmin):
 
     list_display = ('username', 'company', 'occupation', 'email')
-    search_fields = ['profile_title', 'username', 'location', 'company', 'email']
+    search_fields = ['profile_title', 'username', 'location', 'company']
     list_filter = ('location', 'last_name', 'company', 'email', 'occupation')
     summernote_fields = ('bio',)
 

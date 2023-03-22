@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Note, Register, Profile, Feedback, Booking
+from .models import Post, Note, Register, Profile, Feedback
 from .forms import NoteForm, PostForm
 from django.views.generic.edit import CreateView
 
@@ -136,18 +136,20 @@ def get_user_posts(request):
     return render(request, 'posts/user_posts.html', context)
 
 
-class PostCreate(CreateView):
+class PostCreate(generic.CreateView):
     model = Post
     template_name = 'posts/post_create.html'
-    success_url = '/posts/post_create.html'
+    success_url = '/projects'
     fields = [
         'title',
         'industry',
         'content',
-        'post_image',
         'excerpt',
-        {'author[1]'}
     ]
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class PostUpdate(View):
@@ -173,30 +175,6 @@ class FeedbackSend(View):
 
 
 class FeedbackResponse(View):
-
-    def get_user_posts(request):
-        return render(request, 'templates/post_user_get.html')
-
-
-class UserBookingCreate(View):
-
-    def get_user_posts(request):
-        return render(request, 'templates/post_user_get.html')
-
-
-class UserBookingView(View):
-
-    def get_user_posts(request):
-        return render(request, 'templates/post_user_get.html')
-
-
-class UserBookingEdit(View):
-
-    def get_user_posts(request):
-        return render(request, 'templates/post_user_get.html')
-
-
-class UserBookingDelete(View):
 
     def get_user_posts(request):
         return render(request, 'templates/post_user_get.html')

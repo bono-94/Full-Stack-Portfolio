@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils.text import slugify
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -10,13 +11,12 @@ class Post(models.Model):
     title = models.CharField(max_length=210, unique=True)
     industry = models.CharField(max_length=50)
     slug = models.SlugField(max_length=210, unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="projects_posts")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    content = models.TextField(unique=True)
-    post_image = models.ImageField(upload_to=None, blank=True)
+    content = models.TextField(blank=True)
     featured_image = CloudinaryField('image', default='placeholder')
-    excerpt = models.TextField(unique=True)
+    excerpt = models.TextField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
     votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
 
@@ -28,6 +28,12 @@ class Post(models.Model):
 
     def number_of_votes(self):
         return self.votes.count()
+
+    def save(self, *args, **kwargs):
+
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
 
 class Note(models.Model):
@@ -82,16 +88,6 @@ class Feedback(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_feedback")
     email = models.EmailField(max_length=42, unique=True)
     feedback = models.TextField(max_length=214, blank=False)
-
-    def __str__(self):
-        return self.username
-
-
-class Booking(models.Model):
-
-    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_booking")
-    meeting_topic = models.CharField(max_length=42, blank=False)
-    complete = models.BooleanField(null=False, blank=False, default=False)
 
     def __str__(self):
         return self.username

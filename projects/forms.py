@@ -1,4 +1,4 @@
-from .models import Note, Post, Profile
+from .models import Note, Post, Profile, Feedback
 from django import forms
 
 
@@ -33,4 +33,14 @@ class ProfileForm(forms.ModelForm):
             'occupation',
             'email',
             'bio',
+            ]
+
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = [
+            'name',
+            'email',
+            'feedback',
             ]

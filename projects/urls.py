@@ -5,8 +5,8 @@ from .views import PostCreate
 
 urlpatterns = [
     path('', views.home_page, name='home'),
-    path('create-profile', views.UserProfileCreate.as_view(), name='create_profile'),
-    path('my-profile', views.get_user_profile, name='view_profile'),
+    path('create-profile', views.ProfileCreate.as_view(), name='create_profile'),
+    path('my-profile', views.ProfileView.as_view(), name='view_profile'),
     path('projects/', views.PostList.as_view(), name='all_projects'),
     path('projects/<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('vote/<slug:slug>', views.PostVote.as_view(), name='vote'),

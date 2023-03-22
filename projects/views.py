@@ -15,7 +15,7 @@ class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'posts/all_projects.html'
-    paginate_by = 4
+    paginate_by = 8
 
 
 class PostDetail(View):
@@ -108,25 +108,10 @@ class ProfileCreate(generic.CreateView):
         return super().form_valid(form)
 
 
-class UserProfileCreate(View):
+class ProfileView(View):
 
-    def create_user_profile(request):
-
-        if request.method == 'POST':
-            first_name = request.POST.get('first_name')
-            private = 'private' in request.POST
-            Profile.objects.create(first_name=first_name, private=private)
-
-            return redirect('get_user_profile')
-        return render(request, 'templates/user_profile_create.html')
-
-
-def get_user_profile(request):
-    information = Profile.objects.all()
-    context = {
-        'information': information
-    }
-    return render(request, 'profile/user_profile_view.html')
+    def user_posts_edit(request):
+        return render(request, 'templates/post_user_get.html')
 
 
 class UserProfileEdit(View):

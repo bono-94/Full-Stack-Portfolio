@@ -144,7 +144,7 @@ class PostCreate(generic.CreateView):
         'title',
         'industry',
         'content',
-        'excerpt',
+        'description',
     ]
 
     def form_valid(self, form):

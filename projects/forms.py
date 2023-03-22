@@ -9,7 +9,7 @@ class PostForm(forms.ModelForm):
             'title',
             'industry',
             'content',
-            'excerpt',
+            'description',
             ]
 
 

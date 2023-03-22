@@ -14,9 +14,9 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    content = models.TextField(blank=True)
+    content = models.TextField(blank=False)
     featured_image = CloudinaryField('image', default='placeholder')
-    excerpt = models.TextField(blank=True)
+    description = models.TextField(max_length=50, blank=False)
     status = models.IntegerField(choices=STATUS, default=0)
     votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
 
@@ -41,8 +41,8 @@ class Note(models.Model):
     note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='note')
     name = models.CharField(max_length=50)
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_note")
-    email = models.EmailField(blank=True)
-    content_note = models.TextField()
+    email = models.EmailField(max_length=100, blank=True)
+    content_note = models.TextField(max_length=500)
     created_on_note = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
@@ -65,10 +65,8 @@ class Register(models.Model):
 
 class Profile(models.Model):
 
-    slug = models.SlugField(max_length=21, unique=True)
     profile_title = models.CharField(max_length=42, unique=True)
-    user_image = CloudinaryField('image', default='placeholder')
-    private = models.BooleanField(blank=False, default=False)
+    user_image = CloudinaryField('user_image', default='placeholder')
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_profile")
     first_name = models.CharField(max_length=21, blank=False)
     last_name = models.CharField(max_length=21, blank=False)
@@ -79,15 +77,14 @@ class Profile(models.Model):
     bio = models.TextField(max_length=214)
 
     def __str__(self):
-        return f"My Profile"
+        return f"{self.username} profile"
 
 
 class Feedback(models.Model):
 
-    anonym = models.BooleanField(blank=False, default=False)
-    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_feedback")
+    name = models.CharField(max_length=50, default='', blank=False)
     email = models.EmailField(max_length=42, unique=True)
     feedback = models.TextField(max_length=214, blank=False)
 
     def __str__(self):
-        return self.username
+        return self.name

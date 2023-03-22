@@ -37,7 +37,6 @@ class ProfileAdmin(SummernoteModelAdmin):
 
     list_display = ('username', 'company', 'occupation', 'email')
     search_fields = ['profile_title', 'username', 'location', 'company', 'email']
-    prepopulated_fields = {'slug': ('username',)}
     list_filter = ('location', 'last_name', 'company', 'email', 'occupation')
     summernote_fields = ('bio',)
 
@@ -45,7 +44,7 @@ class ProfileAdmin(SummernoteModelAdmin):
 @admin.register(Feedback)
 class FeedbackAdmin(SummernoteModelAdmin):
 
-    list_display = ('username', 'email', 'anonym')
-    search_fields = ['username', 'email']
-    list_filter = ('username', 'email', 'anonym')
+    list_display = ('name', 'email', 'feedback')
+    search_fields = ['name', 'email']
+    list_filter = ('name', 'email', 'feedback')
     summernote_fields = ('feedback')

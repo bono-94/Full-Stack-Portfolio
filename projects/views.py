@@ -88,6 +88,26 @@ class PostVote(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
+class ProfileCreate(generic.CreateView):
+    model = Profile
+    template_name = 'profile/user_profile_create.html'
+    success_url = '/my-profile'
+    fields = [
+        'profile-title',
+        'first_name',
+        'last_name',
+        'location',
+        'company',
+        'occupation',
+        'email',
+        'bio',
+    ]
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
 class UserProfileCreate(View):
 
     def create_user_profile(request):

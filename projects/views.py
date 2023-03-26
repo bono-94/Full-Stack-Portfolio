@@ -3,7 +3,9 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Note, Register, Profile, Feedback
 from .forms import ProfileForm, NoteForm, PostForm, FeedbackForm
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
+from django.contrib.auth.models import User
 
 
 def home_page(request):
@@ -14,9 +16,9 @@ def home_page(request):
 
 
 class ProfileCreate(generic.CreateView):
+
     model = Profile
-    template_name = 'profile/user_profile_create.html'
-    success_url = '/my-profile'
+
     fields = [
         'profile-title',
         'first_name',
@@ -33,22 +35,46 @@ class ProfileCreate(generic.CreateView):
         return super().form_valid(form)
 
 
-class ProfileView(View):
+class ProfileView(generic.ListView):
 
-    def user_posts_edit(request):
-        return render(request, 'templates/post_user_get.html')
-
-
-class ProfileEdit(View):
-
-    def user_posts_edit(request):
-        return render(request, 'templates/post_user_get.html')
+    model = Profile
+    template_name = 'profile/user_profile_view.html'
+    success_url = '/my-profile'
+    queryset = Post.objects.values()
+    paginate_by = 4
 
 
-class ProfileDelete(View):
+class ProfileEdit(generic.UpdateView):
 
-    def user_posts_delete(request):
-        return render(request, 'templates/post_user_get.html')
+    model = Profile
+    template_name = 'profile/user_profile_edit.html'
+    success_url = '/my-profile'
+
+    fields = [
+        'profile-title',
+        'first_name',
+        'last_name',
+        'location',
+        'company',
+        'occupation',
+        'email',
+        'bio',
+    ]
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class ProfileDelete(generic.DeleteView):
+
+    model = Profile
+    template_name = 'profile/user_profile_delete.html'
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class PostList(generic.ListView):
@@ -104,7 +130,7 @@ class PostDetail(View):
 
         return render(
             request,
-            "post_detail.html",
+            "posts/post_detail.html",
             {
                 "post": post,
                 "note": note,
@@ -149,7 +175,7 @@ class UserPosts(View):
 class PostCreate(generic.CreateView):
     model = Post
     template_name = 'posts/post_create.html'
-    success_url = 'posts/user_posts.html'
+    success_url = '/my-projects'
     fields = [
         'title',
         'industry',

@@ -69,7 +69,7 @@ class PostDetail(View):
 
         return render(
             request,
-            "post_detail.html",
+            "posts/post_detail.html",
             {
                 "post": post,
                 "notes": notes,
@@ -146,7 +146,7 @@ class UserPosts(View):
 class PostCreate(generic.CreateView):
     model = Post
     template_name = 'posts/post_create.html'
-    success_url = '/projects'
+    success_url = 'posts/user_posts.html'
     fields = [
         'title',
         'industry',

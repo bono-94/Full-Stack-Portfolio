@@ -37,7 +37,7 @@ class Post(models.Model):
 
     title = models.CharField(max_length=210, unique=True)
     industry = models.CharField(max_length=50)
-    company = models.CharField(max_length=50)
+    company = models.CharField(max_length=50, default='Independent')
     slug = models.SlugField(max_length=210, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     created_on = models.DateTimeField(auto_now_add=True)

@@ -7,7 +7,10 @@ from django.views.generic.edit import CreateView
 
 
 def home_page(request):
-    return render(request, 'index.html')
+
+    if request.method == 'GET':
+
+        return render(request, 'index.html')
 
 
 class ProfileCreate(generic.CreateView):
@@ -172,7 +175,10 @@ class PostDelete(View):
 
 
 def contact_page(request):
-    return render(request, 'contact.html')
+
+    if request.method == 'GET':
+
+        return render(request, 'contact.html')
 
 
 class FeedbackSend(generic.CreateView):

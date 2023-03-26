@@ -10,6 +10,44 @@ def home_page(request):
     return render(request, 'index.html')
 
 
+class ProfileCreate(generic.CreateView):
+    model = Profile
+    template_name = 'profile/user_profile_create.html'
+    success_url = '/my-profile'
+    fields = [
+        'profile-title',
+        'first_name',
+        'last_name',
+        'location',
+        'company',
+        'occupation',
+        'email',
+        'bio',
+    ]
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class ProfileView(View):
+
+    def user_posts_edit(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class UserProfileEdit(View):
+
+    def user_posts_edit(request):
+        return render(request, 'templates/post_user_get.html')
+
+
+class UserProfileDelete(View):
+
+    def user_posts_delete(request):
+        return render(request, 'templates/post_user_get.html')
+
+
 class PostList(generic.ListView):
 
     model = Post
@@ -102,44 +140,6 @@ class PostDelete(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'posts/all_projects.html'
     paginate_by = 8
-
-
-class ProfileCreate(generic.CreateView):
-    model = Profile
-    template_name = 'profile/user_profile_create.html'
-    success_url = '/my-profile'
-    fields = [
-        'profile-title',
-        'first_name',
-        'last_name',
-        'location',
-        'company',
-        'occupation',
-        'email',
-        'bio',
-    ]
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-
-class ProfileView(View):
-
-    def user_posts_edit(request):
-        return render(request, 'templates/post_user_get.html')
-
-
-class UserProfileEdit(View):
-
-    def user_posts_edit(request):
-        return render(request, 'templates/post_user_get.html')
-
-
-class UserProfileDelete(View):
-
-    def user_posts_delete(request):
-        return render(request, 'templates/post_user_get.html')
 
 
 class UserPostsNone(View):

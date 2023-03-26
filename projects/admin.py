@@ -3,6 +3,23 @@ from .models import Post, Note, Register, Profile, Feedback
 from django_summernote.admin import SummernoteModelAdmin
 
 
+@admin.register(Register)
+class RegisterAdmin(admin.ModelAdmin):
+
+    list_display = ('username',)
+    list_filter = ('username',)
+    search_fields = ('username',)
+
+
+@admin.register(Profile)
+class ProfileAdmin(SummernoteModelAdmin):
+
+    list_display = ('username', 'company', 'occupation', 'email')
+    search_fields = ['profile_title', 'username', 'location', 'company']
+    list_filter = ('location', 'last_name', 'company', 'email', 'occupation')
+    summernote_fields = ('bio',)
+
+
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
@@ -23,24 +40,7 @@ class NotesAdmin(admin.ModelAdmin):
 
     def approved_note(self, request, queryset):
         queryset.update(approved=True)
-
-
-@admin.register(Register)
-class RegisterAdmin(admin.ModelAdmin):
-
-    list_display = ('username',)
-    list_filter = ('username',)
-    search_fields = ('username',)
-
-
-@admin.register(Profile)
-class ProfileAdmin(SummernoteModelAdmin):
-
-    list_display = ('username', 'company', 'occupation', 'email')
-    search_fields = ['profile_title', 'username', 'location', 'company']
-    list_filter = ('location', 'last_name', 'company', 'email', 'occupation')
-    summernote_fields = ('bio',)
-
+        
 
 @admin.register(Feedback)
 class FeedbackAdmin(SummernoteModelAdmin):

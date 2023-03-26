@@ -6,6 +6,33 @@ from django.utils.text import slugify
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
+class Register(models.Model):
+
+    username = models.CharField(max_length=21, blank=False, unique=True)
+    password = models.CharField(max_length=50, blank=False)
+    password_two = models.CharField(max_length=50, blank=False)
+
+    def __str__(self):
+        return self.username
+
+
+class Profile(models.Model):
+
+    profile_title = models.CharField(max_length=42, unique=True)
+    user_image = CloudinaryField('user_image', default='placeholder')
+    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_profile")
+    first_name = models.CharField(max_length=21, blank=False)
+    last_name = models.CharField(max_length=21, blank=False)
+    location = models.CharField(max_length=21, blank=False)
+    company = models.CharField(max_length=21, blank=False)
+    occupation = models.CharField(max_length=21, blank=False)
+    email = models.EmailField(max_length=42, unique=True)
+    bio = models.TextField(max_length=214)
+
+    def __str__(self):
+        return f"{self.username} profile"
+
+
 class Post(models.Model):
 
     title = models.CharField(max_length=210, unique=True)
@@ -52,33 +79,6 @@ class Note(models.Model):
 
     def __str__(self):
         return f"Note {self.content_note} by {self.name}"
-
-
-class Register(models.Model):
-
-    username = models.CharField(max_length=21, blank=False, unique=True)
-    password = models.CharField(max_length=50, blank=False)
-    password_two = models.CharField(max_length=50, blank=False)
-
-    def __str__(self):
-        return self.username
-
-
-class Profile(models.Model):
-
-    profile_title = models.CharField(max_length=42, unique=True)
-    user_image = CloudinaryField('user_image', default='placeholder')
-    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_profile")
-    first_name = models.CharField(max_length=21, blank=False)
-    last_name = models.CharField(max_length=21, blank=False)
-    location = models.CharField(max_length=21, blank=False)
-    company = models.CharField(max_length=21, blank=False)
-    occupation = models.CharField(max_length=21, blank=False)
-    email = models.EmailField(max_length=42, unique=True)
-    bio = models.TextField(max_length=214)
-
-    def __str__(self):
-        return f"{self.username} profile"
 
 
 class Feedback(models.Model):

@@ -40,7 +40,7 @@ class NotesAdmin(admin.ModelAdmin):
 
     def approved_note(self, request, queryset):
         queryset.update(approved=True)
-        
+
 
 @admin.register(Feedback)
 class FeedbackAdmin(SummernoteModelAdmin):

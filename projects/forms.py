@@ -23,6 +23,7 @@ class PostForm(forms.ModelForm):
         fields = [
             'title',
             'industry',
+            'company',
             'content',
             'description',
             ]

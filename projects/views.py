@@ -36,13 +36,13 @@ class ProfileView(View):
         return render(request, 'templates/post_user_get.html')
 
 
-class UserProfileEdit(View):
+class ProfileEdit(View):
 
     def user_posts_edit(request):
         return render(request, 'templates/post_user_get.html')
 
 
-class UserProfileDelete(View):
+class ProfileDelete(View):
 
     def user_posts_delete(request):
         return render(request, 'templates/post_user_get.html')
@@ -126,35 +126,21 @@ class PostVote(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class PostEdit(generic.ListView):
-
-    model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'posts/all_projects.html'
-    paginate_by = 8
-
-
-class PostDelete(generic.ListView):
-
-    model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'posts/all_projects.html'
-    paginate_by = 8
-
-
 class UserPostsNone(View):
 
     def get_user_posts(request):
         return render(request, 'templates/post_user_get.html')
 
 
-def get_user_posts(request):
-    user_posts = Post.objects.all()
-    context = {
-        'user_posts': user_posts
-    }
+class UserPosts(View):
 
-    return render(request, 'posts/user_posts.html', context)
+    def get_user_posts(request):
+        user_posts = Post.objects.all()
+        context = {
+            'user_posts': user_posts
+        }
+
+        return render(request, 'posts/user_posts.html', context)
 
 
 class PostCreate(generic.CreateView):
@@ -173,7 +159,7 @@ class PostCreate(generic.CreateView):
         return super().form_valid(form)
 
 
-class PostUpdate(View):
+class PostEdit(View):
 
     def get_user_posts(request):
         return render(request, 'templates/post_user_get.html')
@@ -190,12 +176,6 @@ def contact_page(request):
 
 
 class FeedbackSend(View):
-
-    def get_user_posts(request):
-        return render(request, 'templates/post_user_get.html')
-
-
-class FeedbackResponse(View):
 
     def get_user_posts(request):
         return render(request, 'templates/post_user_get.html')

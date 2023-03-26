@@ -10,14 +10,14 @@ class Post(models.Model):
 
     title = models.CharField(max_length=210, unique=True)
     industry = models.CharField(max_length=50)
-    company = models.CharField(max_length=50)
+    industry = models.CharField(max_length=50)
     slug = models.SlugField(max_length=210, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField(blank=False)
     featured_image = CloudinaryField('image', default='placeholder')
-    description = models.CharField(max_length=50, blank=False)
+    description = models.CharField(max_length=105, blank=False)
     status = models.IntegerField(choices=STATUS, default=0)
     votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
 

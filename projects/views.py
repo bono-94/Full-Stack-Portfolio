@@ -88,6 +88,22 @@ class PostVote(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
+class PostEdit(generic.ListView):
+
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'posts/all_projects.html'
+    paginate_by = 8
+
+
+class PostDelete(generic.ListView):
+
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'posts/all_projects.html'
+    paginate_by = 8
+
+
 class ProfileCreate(generic.CreateView):
     model = Profile
     template_name = 'profile/user_profile_create.html'

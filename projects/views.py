@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Note, Register, Profile, Feedback
-from .forms import NoteForm, PostForm
+from .forms import ProfileForm, NoteForm, PostForm, FeedbackForm
 from django.views.generic.edit import CreateView
 
 
@@ -175,7 +175,17 @@ def contact_page(request):
     return render(request, 'contact.html')
 
 
-class FeedbackSend(View):
+class FeedbackSend(generic.CreateView):
 
-    def get_user_posts(request):
-        return render(request, 'templates/post_user_get.html')
+    model = Feedback
+    template_name = 'feedback/feedback.html'
+    success_url = ''
+    fields = [
+        'name',
+        'email',
+        'feedback'
+    ]
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)

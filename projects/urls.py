@@ -18,5 +18,5 @@ urlpatterns = [
     path('edit-project', views.PostEdit.as_view(), name='post_edit'),
     path('delete-project', views.PostDelete.as_view(), name='post_delete'),
     path('contact', views.contact_page, name='contact'),
-    path('feedback', views.FeedbackSend.as_view(), name='feedback'),
+    path('feedback', views.FeedbackSend.as_view(), name='feedback')
 ]

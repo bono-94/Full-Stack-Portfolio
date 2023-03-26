@@ -24,8 +24,8 @@ class PostForm(forms.ModelForm):
             'title',
             'industry',
             'company',
-            'content',
             'description',
+            'content'
             ]
 
 

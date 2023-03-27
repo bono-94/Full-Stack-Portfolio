@@ -18,9 +18,11 @@ def home_page(request):
 class ProfileCreate(generic.CreateView):
 
     model = Profile
+    template_name = 'profile/user_profile_create.html'
+    success_url = '/my-profile'
 
     fields = [
-        'profile-title',
+        'profile_title',
         'first_name',
         'last_name',
         'location',
@@ -40,8 +42,6 @@ class ProfileView(generic.ListView):
     model = Profile
     template_name = 'profile/user_profile_view.html'
     success_url = '/my-profile'
-    queryset = Post.objects.values()
-    paginate_by = 4
 
 
 class ProfileEdit(generic.UpdateView):
@@ -51,7 +51,7 @@ class ProfileEdit(generic.UpdateView):
     success_url = '/my-profile'
 
     fields = [
-        'profile-title',
+        'profile_title',
         'first_name',
         'last_name',
         'location',

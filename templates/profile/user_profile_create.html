@@ -14,18 +14,10 @@
                 Create a new Profile:
             </h1>
         </div>
-        <form method="POST" action="create_profile">
+        <form method="POST" action="{% url 'post_create' %}">
             {% csrf_token %}
-            <div>
-                <p>
-                    <label for="id_first_name">First Name:</label>
-                    <input type="text" id="id_first_name" name="first_name"/>
-                </p>
-                <p>
-                    <label for="id_private">Private</label>
-                    <input type="checkbox" id="id_private" name="private"/>
-                </p>
-            </div>
+
+            {{ form.as_p }}
             <div>
                 <p>
                     <button type="submit">Create Profile</button>

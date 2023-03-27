@@ -4,11 +4,31 @@
 
 <h1>My profile</h1>
 
+
+<h2>
+    Username: {{ user.username }}
+</h2>
+<h2>
+    Last Name: {{ user.last_name }}
+</h2>
+<h2>
+    Email: {{ user.email }}
+</h2>
+
 <a href="{% url 'create_profile' %}">
     <button>
-        Create a profile
+        Create my profile
     </button>
 </a>
-    
+<a href="{% url 'edit_profile' %}">
+    <button>
+        Edit my profile
+    </button>
+</a>
+<a href="{% url 'delete_profile' %}">
+    <button>
+        Delete my profile
+    </button>
+</a>
 
 {% endblock content %}

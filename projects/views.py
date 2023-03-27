@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from .models import Post, Note, Register, Profile, Feedback
 from .forms import ProfileForm, NoteForm, PostForm, FeedbackForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
 
@@ -15,7 +16,7 @@ def home_page(request):
         return render(request, 'index.html')
 
 
-class ProfileCreate(generic.CreateView):
+class ProfileCreate(CreateView):
 
     model = Profile
     template_name = 'profile/user_profile_create.html'
@@ -33,18 +34,37 @@ class ProfileCreate(generic.CreateView):
     ]
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.username = self.request.user
         return super().form_valid(form)
 
 
-class ProfileView(generic.ListView):
+class ProfileView(DetailView):
 
-    model = Profile
-    template_name = 'profile/user_profile_view.html'
-    success_url = '/my-profile'
+    def get(self, request, *args, **kwargs):
+
+        queryset = Profile.objects.all()
+        profile = get_object_or_404(queryset)
+
+        return render(
+            request,
+            "profile/user_profile_view.html",
+            {
+                "profile": profile,
+                "profile_form": ProfileForm()
+            },
+        )
 
 
-class ProfileEdit(generic.UpdateView):
+def profile_detail_view(request):
+
+    context = {}
+
+    context["profile"] = Profile.objects.get(username=request.user)
+
+    return render(request, "profile/user_profile_view.html", context)
+
+
+class ProfileEdit(UpdateView):
 
     model = Profile
     template_name = 'profile/user_profile_edit.html'
@@ -62,22 +82,22 @@ class ProfileEdit(generic.UpdateView):
     ]
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.username = self.request.user
         return super().form_valid(form)
 
 
-class ProfileDelete(generic.DeleteView):
+class ProfileDelete(DeleteView):
 
     model = Profile
     template_name = 'profile/user_profile_delete.html'
     success_url = '/'
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.username = self.request.user
         return super().form_valid(form)
 
 
-class PostList(generic.ListView):
+class PostList(ListView):
 
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
@@ -94,7 +114,7 @@ class PostDetail(View):
         notes = post.note.filter(approved=True).order_by("created_on_note")
         voted = False
         if post.votes.filter(id=self.request.user.id).exists():
-            liked = True
+            voted = True
 
         return render(
             request,
@@ -122,6 +142,7 @@ class PostDetail(View):
         if note_form.is_valid():
             note_form.instance.email = request.user.email
             note_form.instance.name = request.user.username
+            note_form.instance.username = User.objects.get(id=request.user.id)
             note = note_form.save(commit=False)
             note.note = post
             note.save()
@@ -172,7 +193,7 @@ class UserPosts(View):
         return render(request, 'posts/user_posts.html', context)
 
 
-class PostCreate(generic.CreateView):
+class PostCreate(CreateView):
     model = Post
     template_name = 'posts/post_create.html'
     success_url = '/my-projects'
@@ -207,7 +228,7 @@ def contact_page(request):
         return render(request, 'contact.html')
 
 
-class FeedbackSend(generic.CreateView):
+class FeedbackSend(CreateView):
 
     model = Feedback
     template_name = 'feedback/feedback.html'

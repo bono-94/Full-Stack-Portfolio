@@ -20,7 +20,7 @@ class Profile(models.Model):
 
     profile_title = models.CharField(max_length=42, unique=True)
     user_image = CloudinaryField('user_image', default='placeholder')
-    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_profile")
+    username = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
     first_name = models.CharField(max_length=21, blank=False)
     last_name = models.CharField(max_length=21, blank=False)
     location = models.CharField(max_length=21, blank=False)
@@ -32,13 +32,19 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.username} profile"
 
+    def save(self, *args, **kwargs):
+
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
+
 
 class Post(models.Model):
 
+    slug = models.SlugField(max_length=210, unique=True)
     title = models.CharField(max_length=210, unique=True)
     industry = models.CharField(max_length=50)
     company = models.CharField(max_length=50, default='Independent')
-    slug = models.SlugField(max_length=210, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

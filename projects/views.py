@@ -20,7 +20,7 @@ class ProfileCreate(CreateView):
 
     model = Profile
     template_name = 'profile/user_profile_create.html'
-    success_url = '/my-profile'
+    success_url = '/my-profile/'
 
     fields = [
         'profile_title',

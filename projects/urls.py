@@ -6,7 +6,7 @@ from .views import *
 urlpatterns = [
     path('', views.home_page, name='home'),
     path('create-profile', views.ProfileCreate.as_view(), name='create_profile'),
-    path('my-profile', views.ProfileView.as_view(), name='view_profile'),
+    path('my-profile/', views.ProfileView.as_view(), name='view_profile'),
     path('edit/<int:pk>', views.ProfileEdit.as_view(), name='edit_profile'),
     path('delete/<int:pk>', views.ProfileDelete.as_view(), name='delete_profile'),
     path('projects/', views.PostList.as_view(), name='all_projects'),

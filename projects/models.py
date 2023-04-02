@@ -18,8 +18,7 @@ class Register(models.Model):
 
 class Profile(models.Model):
 
-    profile_title = models.CharField(max_length=42, unique=True)
-    user_image = CloudinaryField('user_image', default='placeholder')
+    profile_image = models.ImageField(upload_to='profile_images', blank=True)
     username = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
     first_name = models.CharField(max_length=21, blank=False)
     last_name = models.CharField(max_length=21, blank=False)

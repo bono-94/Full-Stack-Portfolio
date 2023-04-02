@@ -1,7 +1,9 @@
+
 from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Note, Register, Profile, Feedback
+from .models import Post, Note, Profile, Feedback
 from .forms import ProfileForm, NoteForm, PostForm, FeedbackForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
@@ -14,6 +16,51 @@ def home_page(request):
     if request.method == 'GET':
 
         return render(request, 'index.html')
+
+
+@login_required
+def profile(request):
+    user_profile = Profile.objects.get_or_create(user=request.username)
+    return render(request, 'profile/user_profile_create.html', {'user_profile': user_profile})
+
+
+@login_required
+def view_profile(request):
+
+    user = get_object_or_404(User, username=username)
+    user_profile = get_object_or_404(Profile, user=request.username)
+
+    return render(request, 'profile/user_profile_view.html', {'user_profile': user_profile})
+
+
+@login_required
+def edit_profile(request):
+
+    # user_profile = get_object_or_404(Profile, user=request.user)
+    try:
+        user_profile = Profile.objects.get(user=request.username)
+    except Profile.DoesNotExist:
+        user_profile = None
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=user_profile)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.username
+            profile.save()
+            return redirect('view_profile')
+    else:
+        form = ProfileForm(instance=user_profile)
+
+    return render(request, 'profile/user_profile_edit.html', {'form': form})
+
+
+@login_required
+def delete_profile(request):
+
+    user_profile = get_object_or_404(Profile, user=request.username)
+    user_profile.delete()
+    return redirect('home')
 
 
 class ProfileCreate(CreateView):

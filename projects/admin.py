@@ -1,23 +1,20 @@
 from django.contrib import admin
-from .models import Post, Note, Register, Profile, Feedback
+from .models import Post, Note, Profile, Feedback
 from django_summernote.admin import SummernoteModelAdmin
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
 
 
-@admin.register(Register)
-class RegisterAdmin(admin.ModelAdmin):
+class MyUserAdmin(UserAdmin):
 
-    list_display = ('username',)
-    list_filter = ('username',)
-    search_fields = ('username',)
+    list_display = ('username', 'email', 'first_name', 'last_name')
+    search_fields = ['username', 'email', 'first_name', 'last_name', 'location', 'occupation', 'company']
+    list_filter = ('username', 'email', 'first_name', 'last_name')
+    summernote_fields = ('bio')
 
 
-@admin.register(Profile)
-class ProfileAdmin(SummernoteModelAdmin):
-
-    list_display = ('username', 'company', 'occupation', 'email')
-    search_fields = ['username', 'location', 'company']
-    list_filter = ('location', 'last_name', 'company', 'email', 'occupation')
-    summernote_fields = ('bio',)
+admin.site.unregister(User)
+admin.site.register(User, MyUserAdmin)
 
 
 @admin.register(Post)

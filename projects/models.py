@@ -6,14 +6,14 @@ from django.utils.text import slugify
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
-class Register(models.Model):
+# class Register(models.Model):
 
-    username = models.CharField(max_length=21, blank=False, unique=True)
-    password = models.CharField(max_length=50, blank=False)
-    password_two = models.CharField(max_length=50, blank=False)
+#     username = models.CharField(max_length=21, blank=False, unique=True)
+#     password = models.CharField(max_length=50, blank=False)
+#     password_two = models.CharField(max_length=50, blank=False)
 
-    def __str__(self):
-        return self.username
+#     def __str__(self):
+#         return self.username
 
 
 class Profile(models.Model):

@@ -4,12 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Note, Profile, Feedback
-from .forms import ProfileForm, NoteForm, PostForm, FeedbackForm, CustomSignupForm
+from .forms import NoteForm, PostForm, FeedbackForm, CustomSignupForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
 from allauth.account.views import SignupView
+
 
 def home_page(request):
 
@@ -24,7 +25,7 @@ class CustomSignupView(SignupView):
 
 @login_required
 def profile(request):
-    user_profile = Profile.objects.get_or_create(user=request.username)
+    user_profile = Profile.objects.get_or_create(user=request.user)
     return render(request, 'profile/user_profile_create.html', {'user_profile': user_profile})
 
 
@@ -32,7 +33,7 @@ def profile(request):
 def view_profile(request):
 
     user = get_object_or_404(User, username=username)
-    user_profile = get_object_or_404(Profile, user=request.username)
+    user_profile = get_object_or_404(User, user=user)
 
     return render(request, 'profile/user_profile_view.html', {'user_profile': user_profile})
 
@@ -42,19 +43,19 @@ def edit_profile(request):
 
     # user_profile = get_object_or_404(Profile, user=request.user)
     try:
-        user_profile = Profile.objects.get(user=request.username)
-    except Profile.DoesNotExist:
+        user_profile = User.objects.get(user=request.user)
+    except User.DoesNotExist:
         user_profile = None
 
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=user_profile)
+        form = CustomSignupForm(request.POST, instance=user_profile)
         if form.is_valid():
             profile = form.save(commit=False)
-            profile.user = request.username
+            profile.user = request.user
             profile.save()
             return redirect('view_profile')
     else:
-        form = ProfileForm(instance=user_profile)
+        form = CustomSignupForm(instance=user_profile)
 
     return render(request, 'profile/user_profile_edit.html', {'form': form})
 
@@ -62,7 +63,7 @@ def edit_profile(request):
 @login_required
 def delete_profile(request):
 
-    user_profile = get_object_or_404(Profile, user=request.username)
+    user_profile = get_object_or_404(User, user=request.user)
     user_profile.delete()
     return redirect('home')
 
@@ -101,7 +102,7 @@ class ProfileView(DetailView):
             "profile/user_profile_view.html",
             {
                 "profile": profile,
-                "profile_form": ProfileForm()
+                "profile_form": CustomSignupForm()
             },
         )
 

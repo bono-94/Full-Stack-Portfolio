@@ -19,6 +19,7 @@ class Register(models.Model):
 class Profile(models.Model):
 
     profile_image = models.ImageField(upload_to='profile_images', blank=True)
+    slug = models.SlugField(max_length=210, unique=True)
     username = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
     first_name = models.CharField(max_length=21, blank=False)
     last_name = models.CharField(max_length=21, blank=False)
@@ -34,7 +35,7 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
 
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.username)
         return super().save(*args, **kwargs)
 
 

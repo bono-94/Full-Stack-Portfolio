@@ -15,7 +15,7 @@ class RegisterAdmin(admin.ModelAdmin):
 class ProfileAdmin(SummernoteModelAdmin):
 
     list_display = ('username', 'company', 'occupation', 'email')
-    search_fields = ['profile_title', 'username', 'location', 'company']
+    search_fields = ['username', 'location', 'company']
     list_filter = ('location', 'last_name', 'company', 'email', 'occupation')
     summernote_fields = ('bio',)
 
@@ -23,8 +23,8 @@ class ProfileAdmin(SummernoteModelAdmin):
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
-    list_display = ('title', 'industry', 'author', 'created_on', 'status')
-    search_fields = ['title', 'content', 'industry', 'author', 'status']
+    list_display = ('industry', 'author', 'created_on', 'status')
+    search_fields = ['content', 'industry', 'author', 'status']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on', 'industry', 'updated_on')
     summernote_fields = ('content', 'decription')

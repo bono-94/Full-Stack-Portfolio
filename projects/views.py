@@ -4,18 +4,22 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Note, Profile, Feedback
-from .forms import ProfileForm, NoteForm, PostForm, FeedbackForm
+from .forms import ProfileForm, NoteForm, PostForm, FeedbackForm, CustomSignupForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
-
+from allauth.account.views import SignupView
 
 def home_page(request):
 
     if request.method == 'GET':
 
         return render(request, 'index.html')
+
+
+class CustomSignupView(SignupView):
+    form_class = CustomSignupForm
 
 
 @login_required

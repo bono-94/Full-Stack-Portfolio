@@ -3,7 +3,19 @@ from django import forms
 from allauth.account.forms import SignupForm
 
 
-class ProfileForm(forms.ModelForm, SignupForm):
+class CustomSignupForm(SignupForm):
+    first_name = forms.CharField(max_length=30, label='First Name')
+    last_name = forms.CharField(max_length=30, label='Last Name')
+
+    def save(self, request):
+        user = super().save(request)
+        user.first_name = self.cleaned_data.get('first_name')
+        user.last_name = self.cleaned_data.get('last_name')
+        user.save()
+        return user
+
+
+class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
@@ -27,7 +39,7 @@ class ProfileForm(forms.ModelForm, SignupForm):
     email = forms.EmailField(max_length=42)
     bio = forms.CharField(max_length=214)
 
-    def save(self, user, request):
+    def signup(self, user, request):
 
         user = super(ProfileRegistration, self).save(request)
         user_profile = Profile()

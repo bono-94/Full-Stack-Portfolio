@@ -8,11 +8,11 @@ from django.contrib.auth.admin import UserAdmin
 @admin.register(Profile)
 class ProfileAdmin(SummernoteModelAdmin):
 
-    list_display = ('first_name', 'last_name', 'username')
-    search_fields = ['first_name', 'last_name', 'username']
+    list_display = ('first_name', 'last_name', 'username', 'email', 'location', 'company', 'occupation')
+    search_fields = ['first_name', 'last_name', 'username', 'email', 'location', 'company', 'occupation']
     prepopulated_fields = {'slug': ('username',)}
-    list_filter = ('first_name', 'last_name', 'username')
-    summernote_fields = ('first_name', 'last_name', 'username')
+    list_filter = ('first_name', 'last_name', 'username', 'email', 'location', 'company', 'occupation')
+    summernote_fields = ('bio')
 
 
 @admin.register(Post)

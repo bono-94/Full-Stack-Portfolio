@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
 
@@ -16,18 +18,24 @@ STATUS = ((0, "Draft"), (1, "Published"))
 #         return self.username
 
 
+# The advantage of having a separate Profile model, as you do, is that you can add additional fields to the 'User' without actually messing with the base User model (which can be a nightmare). So long as there's a OneToOne relationship between User and Profile (as there is) you can always get ANY information from either of them via the related name or field itself (user_profile and username)
+
+# I will say that because you've got certain views written already, you might meet errors along the way, so just be prepared to perhaps delete existing users that might be tripping your old logic up.
+
 class Profile(models.Model):
 
-    profile_image = models.ImageField(upload_to='profile_images', blank=True)
-    slug = models.SlugField(max_length=210, unique=True)
+    profile_image = models.ImageField(upload_to='profile_images', blank=True, null=True)
+    slug = models.SlugField(max_length=210, unique=True, null=True)
     username = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
-    first_name = models.CharField(max_length=21, blank=False)
-    last_name = models.CharField(max_length=21, blank=False)
-    location = models.CharField(max_length=21, blank=False)
-    company = models.CharField(max_length=21, blank=False)
-    occupation = models.CharField(max_length=21, blank=False)
-    email = models.EmailField(max_length=42, unique=True)
-    bio = models.TextField(max_length=214)
+    first_name = models.CharField(max_length=21, blank=True, null=True)
+    last_name = models.CharField(max_length=21, blank=True, null=True)
+    location = models.CharField(max_length=21, blank=True, null=True)
+    company = models.CharField(max_length=21, blank=True, null=True)
+    occupation = models.CharField(max_length=21, blank=True, null=True)
+    email = models.EmailField(max_length=42, unique=True, blank=True, null=True)
+    bio = models.TextField(max_length=214, blank=True, null=True)
+
+    # profile.username.username
 
     def __str__(self):
         return f"{self.username} profile"
@@ -39,12 +47,27 @@ class Profile(models.Model):
         return super().save(*args, **kwargs)
 
 
+@receiver(post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    print('Signal fired on creation of User')
+    print('Created? ', created)
+    if created:
+        Profile.objects.create(username=instance)
+        try:
+            print('Do we have a profile created? ', instance.user_profile)
+        except:
+            print('No profile related to User')
+    instance.user_profile.save()
+
+    print(create_or_update_user_profile)
+
+
 class Post(models.Model):
 
     slug = models.SlugField(max_length=210, unique=True)
     title = models.CharField(max_length=210, unique=True)
     industry = models.CharField(max_length=50)
-    company = models.CharField(max_length=50, default='Independent')
+    company = models.CharField(max_length=50)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

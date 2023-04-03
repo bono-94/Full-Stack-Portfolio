@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
-from allauth.account.views import SignupView
+# from allauth.account.views import SignupView
 
 
 def home_page(request):
@@ -19,21 +19,21 @@ def home_page(request):
         return render(request, 'index.html')
 
 
-class CustomSignupView(SignupView):
-    form_class = CustomSignupForm
+# # class CustomSignupView(SignupView):
+#     form_class = CustomSignupForm
 
 
 @login_required
 def profile(request):
-    user_profile = Profile.objects.get_or_create(user=request.user)
+    user_profile = Profile.objects.get_or_create(user=request.username)
     return render(request, 'profile/user_profile_create.html', {'user_profile': user_profile})
 
 
 @login_required
 def view_profile(request):
 
-    user = get_object_or_404(User, username=username)
-    user_profile = get_object_or_404(User, user=user)
+    user = get_object_or_404(User, user=request.username)
+    user_profile = get_object_or_404(User, user=request.user)
 
     return render(request, 'profile/user_profile_view.html', {'user_profile': user_profile})
 
@@ -237,7 +237,9 @@ class UserPostsNone(View):
 class UserPosts(View):
 
     def get_user_posts(request):
-        user_posts = Post.objects.all()
+
+        user = request.user
+        posts = Post.objects.filter(author=user)
         context = {
             'user_posts': user_posts
         }
@@ -251,9 +253,10 @@ class PostCreate(CreateView):
     success_url = '/my-projects'
     fields = [
         'title',
-        'industry',
-        'content',
         'description',
+        'industry',
+        'company',
+        'content',
     ]
 
     def form_valid(self, form):

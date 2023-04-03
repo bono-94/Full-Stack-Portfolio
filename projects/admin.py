@@ -17,6 +17,16 @@ admin.site.unregister(User)
 admin.site.register(User, MyUserAdmin)
 
 
+@admin.register(Profile)
+class ProfileAdmin(SummernoteModelAdmin):
+
+    list_display = ('first_name', 'last_name', 'username')
+    search_fields = ['first_name', 'last_name', 'username']
+    prepopulated_fields = {'slug': ('username',)}
+    list_filter = ('first_name', 'last_name', 'username')
+    summernote_fields = ('first_name', 'last_name', 'username')
+
+
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 

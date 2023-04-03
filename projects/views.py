@@ -19,16 +19,37 @@ def home_page(request):
 
 
 @login_required
-def profile(request):
+def user_profile(request):
+
+    profile = get_object_or_404(Profile, username=request.user)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('user_profile')
+    else:
+        form = ProfileForm(instance=profile)
+
+    context = {
+        'form': form,
+        'profile': profile
+    }
+
+    return render(request, 'profile/user_profile_view.html', context)
+
+
+@login_required
+def edit_profile(request):
+
     profile = request.user.user_profile
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('user_profile')
     else:
         form = ProfileForm(instance=profile)
-    return render(request, 'profile/user_profile_view.html', {'form': form})
+    return render(request, 'profile/user_profile_edit.html', {'form': form})
 
 
 @login_required
@@ -39,6 +60,7 @@ def delete_profile(request):
         return redirect('home')
     else:
         return render(request, 'profile/user_profile_delete.html')
+
 
 # @login_required
 # def profile(request):
@@ -163,6 +185,26 @@ def delete_profile(request):
 #     def form_valid(self, form):
 #         form.instance.username = self.request.user
 #         return super().form_valid(form)
+
+# class UserProfileCreate(View):
+
+#     def create_user_profile(request):
+
+#         if request.method == 'POST':
+#             first_name = request.POST.get('first_name')
+#             private = 'private' in request.POST
+#             Profile.objects.create(first_name=first_name, private=private)
+
+#             return redirect('get_user_profile')
+#         return render(request, 'templates/user_profile_create.html')
+
+
+# def get_user_profile(request):
+#     information = Profile.objects.all()
+#     context = {
+#         'information': information
+#     }
+#     return render(request, 'profile/user_profile_view.html')
 
 
 class PostList(ListView):

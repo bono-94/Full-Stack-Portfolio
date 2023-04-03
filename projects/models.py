@@ -8,16 +8,6 @@ from django.utils.text import slugify
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
-# class Register(models.Model):
-
-#     username = models.CharField(max_length=21, blank=False, unique=True)
-#     password = models.CharField(max_length=50, blank=False)
-#     password_two = models.CharField(max_length=50, blank=False)
-
-#     def __str__(self):
-#         return self.username
-
-
 # The advantage of having a separate Profile model, as you do, is that you can add additional fields
 # to the 'User' without actually messing with the base User model (which can be a nightmare).
 # So long as there's a OneToOne relationship between User and Profile (as there is) you can always get ANY
@@ -25,6 +15,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 # I will say that because you've got certain views written already, you might meet errors along the way,
 # so just be prepared to perhaps delete existing users that might be tripping your old logic up.
+
 
 class Profile(models.Model):
 
@@ -38,8 +29,6 @@ class Profile(models.Model):
     occupation = models.CharField(max_length=21, blank=True, null=True)
     email = models.EmailField(max_length=42, unique=True, blank=True, null=True)
     bio = models.TextField(max_length=214, blank=True, null=True)
-
-    # profile.username.username
 
     def __str__(self):
         return f"{self.username} profile"
@@ -58,10 +47,10 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(username=instance)
         try:
+            instance.user_profile.save()
             print('Do we have a profile created? ', instance.user_profile)
-        except:
+        except Exception as e:
             print('No profile related to User')
-    instance.user_profile.save()
 
     print(create_or_update_user_profile)
 

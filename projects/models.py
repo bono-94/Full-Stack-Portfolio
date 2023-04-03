@@ -18,9 +18,13 @@ STATUS = ((0, "Draft"), (1, "Published"))
 #         return self.username
 
 
-# The advantage of having a separate Profile model, as you do, is that you can add additional fields to the 'User' without actually messing with the base User model (which can be a nightmare). So long as there's a OneToOne relationship between User and Profile (as there is) you can always get ANY information from either of them via the related name or field itself (user_profile and username)
+# The advantage of having a separate Profile model, as you do, is that you can add additional fields
+# to the 'User' without actually messing with the base User model (which can be a nightmare).
+# So long as there's a OneToOne relationship between User and Profile (as there is) you can always get ANY
+#  information from either of them via the related name or field itself (user_profile and username)
 
-# I will say that because you've got certain views written already, you might meet errors along the way, so just be prepared to perhaps delete existing users that might be tripping your old logic up.
+# I will say that because you've got certain views written already, you might meet errors along the way,
+# so just be prepared to perhaps delete existing users that might be tripping your old logic up.
 
 class Profile(models.Model):
 

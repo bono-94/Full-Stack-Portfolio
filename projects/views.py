@@ -4,12 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Note, Profile, Feedback
-from .forms import NoteForm, PostForm, FeedbackForm, CustomSignupForm
+from .forms import NoteForm, PostForm, FeedbackForm, ProfileForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
-# from allauth.account.views import SignupView
 
 
 def home_page(request):
@@ -19,133 +18,142 @@ def home_page(request):
         return render(request, 'index.html')
 
 
-# # class CustomSignupView(SignupView):
-#     form_class = CustomSignupForm
-
-
 @login_required
 def profile(request):
-    user_profile = Profile.objects.get_or_create(user=request.username)
-    return render(request, 'profile/user_profile_create.html', {'user_profile': user_profile})
-
-
-@login_required
-def view_profile(request):
-
-    user_profile = get_object_or_404(User, username=request.user.username)
-
-    return render(request, 'profile/user_profile_view.html', {'user_profile': user_profile})
-
-
-@login_required
-def edit_profile(request):
-
-    # user_profile = get_object_or_404(Profile, user=request.user)
-    try:
-        user_profile = User.objects.get(user=request.user)
-    except User.DoesNotExist:
-        user_profile = None
-
+    profile = request.user.user_profile
     if request.method == 'POST':
-        form = CustomSignupForm(request.POST, instance=user_profile)
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
-            profile = form.save(commit=False)
-            profile.user = request.user
-            profile.save()
-            return redirect('view_profile')
+            form.save()
+            return redirect('profile')
     else:
-        form = CustomSignupForm(instance=user_profile)
-
-    return render(request, 'profile/user_profile_edit.html', {'form': form})
-
-
-@login_required
-def delete_profile(request):
-
-    user_profile = get_object_or_404(User, user=request.user)
-    user_profile.delete()
-    return redirect('home')
+        form = ProfileForm(instance=profile)
+    return render(request, 'profile/user_profile_view.html', {'form': form})
 
 
-class ProfileCreate(CreateView):
-
-    model = Profile
-    template_name = 'profile/user_profile_create.html'
-    success_url = '/my-profile/'
-
-    fields = [
-        'profile_title',
-        'first_name',
-        'last_name',
-        'location',
-        'company',
-        'occupation',
-        'email',
-        'bio',
-    ]
-
-    def form_valid(self, form):
-        form.instance.username = self.request.user
-        return super().form_valid(form)
+# @login_required
+# def profile(request):
+#     user_profile = Profile.objects.get_or_create(user=request.username)
+#     return render(request, 'profile/user_profile_create.html', {'user_profile': user_profile})
 
 
-class ProfileView(DetailView):
+# @login_required
+# def view_profile(request):
 
-    def get(self, request, *args, **kwargs):
+#     user_profile = get_object_or_404(User, username=request.user.username)
 
-        queryset = Profile.objects.all()
-        profile = get_object_or_404(queryset)
-
-        return render(
-            request,
-            "profile/user_profile_view.html",
-            {
-                "profile": profile,
-                "profile_form": CustomSignupForm()
-            },
-        )
+#     return render(request, 'profile/user_profile_view.html', {'user_profile': user_profile})
 
 
-def profile_detail_view(request):
+# @login_required
+# def edit_profile(request):
 
-    context = {}
+#     # user_profile = get_object_or_404(Profile, user=request.user)
+#     try:
+#         user_profile = User.objects.get(user=request.user)
+#     except User.DoesNotExist:
+#         user_profile = None
 
-    context["profile"] = Profile.objects.get(username=request.user)
+#     if request.method == 'POST':
+#         form = CustomSignupForm(request.POST, instance=user_profile)
+#         if form.is_valid():
+#             profile = form.save(commit=False)
+#             profile.user = request.user
+#             profile.save()
+#             return redirect('view_profile')
+#     else:
+#         form = CustomSignupForm(instance=user_profile)
 
-    return render(request, "profile/user_profile_view.html", context)
-
-
-class ProfileEdit(UpdateView):
-
-    model = Profile
-    template_name = 'profile/user_profile_edit.html'
-    success_url = '/my-profile'
-
-    fields = [
-        'profile_title',
-        'first_name',
-        'last_name',
-        'location',
-        'company',
-        'occupation',
-        'email',
-        'bio',
-    ]
-
-    def form_valid(self, form):
-        form.instance.username = self.request.user
-        return super().form_valid(form)
+#     return render(request, 'profile/user_profile_edit.html', {'form': form})
 
 
-class ProfileDelete(DeleteView):
+# @login_required
+# def delete_profile(request):
 
-    model = Profile
-    template_name = 'profile/user_profile_delete.html'
-    success_url = '/'
+#     user_profile = get_object_or_404(User, user=request.user)
+#     user_profile.delete()
+#     return redirect('home')
 
-    def form_valid(self, form):
-        form.instance.username = self.request.user
-        return super().form_valid(form)
+
+# class ProfileCreate(CreateView):
+
+#     model = Profile
+#     template_name = 'profile/user_profile_create.html'
+#     success_url = '/my-profile/'
+
+#     fields = [
+#         'profile_title',
+#         'first_name',
+#         'last_name',
+#         'location',
+#         'company',
+#         'occupation',
+#         'email',
+#         'bio',
+#     ]
+
+#     def form_valid(self, form):
+#         form.instance.username = self.request.user
+#         return super().form_valid(form)
+
+
+# class ProfileView(DetailView):
+
+#     def get(self, request, *args, **kwargs):
+
+#         queryset = Profile.objects.filter(user=request.username)
+#         profile = get_object_or_404(queryset)
+
+#         return render(
+#             request,
+#             "profile/user_profile_view.html",
+#             {
+#                 "profile": profile,
+#                 "profile_form": CustomSignupForm()
+#             },
+#         )
+
+
+# def profile_detail_view(request):
+
+#     context = {}
+
+#     context["profile"] = Profile.objects.get(username=request.user)
+
+#     return render(request, "profile/user_profile_view.html", context)
+
+
+# class ProfileEdit(UpdateView):
+
+#     model = Profile
+#     template_name = 'profile/user_profile_edit.html'
+#     success_url = '/my-profile'
+
+#     fields = [
+#         'profile_title',
+#         'first_name',
+#         'last_name',
+#         'location',
+#         'company',
+#         'occupation',
+#         'email',
+#         'bio',
+#     ]
+
+#     def form_valid(self, form):
+#         form.instance.username = self.request.user
+#         return super().form_valid(form)
+
+
+# class ProfileDelete(DeleteView):
+
+#     model = Profile
+#     template_name = 'profile/user_profile_delete.html'
+#     success_url = '/'
+
+#     def form_valid(self, form):
+#         form.instance.username = self.request.user
+#         return super().form_valid(form)
 
 
 class PostList(ListView):

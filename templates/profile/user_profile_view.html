@@ -17,12 +17,12 @@
 
 {{ user.user_profile }}
 
-<a href="{% url 'create_profile' %}">
+<a href="{% url 'account_signup' %}">
     <button>
-        Create my profile
+        Create new profile
     </button>
 </a>
-<a href="{% url 'edit_profile' profile.user_profile %}">
+<a href="{% url 'edit_profile' %}">
     <button>
         Edit my profile
     </button>

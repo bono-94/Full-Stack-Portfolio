@@ -28,7 +28,7 @@ class Profile(models.Model):
     company = models.CharField(max_length=21, blank=True, null=True)
     occupation = models.CharField(max_length=21, blank=True, null=True)
     email = models.EmailField(max_length=42, unique=True, blank=True, null=True)
-    bio = models.TextField(max_length=214, blank=True, null=True)
+    bio = models.TextField(max_length=428, blank=True, null=True)
 
     def __str__(self):
         return f"{self.username} profile"

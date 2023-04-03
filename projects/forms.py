@@ -50,7 +50,6 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = [
             'profile_image',
-            'username',
             'first_name',
             'last_name',
             'location',

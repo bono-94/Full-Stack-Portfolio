@@ -4,18 +4,62 @@
 {{profile}}
 <h1>My profile</h1>
 
+<a>
+    <img src="{{ profile.profile_image }}">
+</a>
+
 <h2>
     Username: {{ user.username }}
 </h2>
 <h2>
-    First Name: {{ profile.first_name }}
-</h2>
-<h2>
-    Last Name: {{ profile.last_name }}
-</h2>
-<h2>
     Email: {{ user.email }}
 </h2>
+<h2>
+    {% if profile.first_name %}
+    First Name: {{ profile.first_name }}
+    {% else %}
+    First Name: (blank)
+    {% endif %}
+</h2>
+<h2>
+    {% if profile.first_name %}
+    Last Name: {{ profile.last_name }}
+    {% else %}
+    Last Name: (blank)
+    {% endif %}
+</h2>
+<h2>
+    {% if profile.first_name %}
+    Location: {{ profile.location }}
+    {% else %}
+    Location: (blank)
+    {% endif %}
+    
+</h2>
+<h2>
+    {% if profile.first_name %}
+    Company: {{ profile.company }}
+    {% else %}
+    Company: (blank)
+    {% endif %}
+    
+</h2>
+<h2>
+    {% if profile.first_name %}
+    Occupation: {{ profile.occupation }}
+    {% else %}
+    Occupation: (blank)
+    {% endif %}
+    
+</h2>
+<h2>
+    {% if profile.first_name %}
+    Bio: {{ profile.bio }}
+    {% else %}
+    Bio: (blank)
+    {% endif %}
+</h2>
+
 
 {{ user.user_profile }}
 

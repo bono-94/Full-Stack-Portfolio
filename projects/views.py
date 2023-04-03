@@ -31,6 +31,15 @@ def profile(request):
     return render(request, 'profile/user_profile_view.html', {'form': form})
 
 
+@login_required
+def delete_profile(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        return redirect('home')
+    else:
+        return render(request, 'profile/user_profile_delete.html')
+
 # @login_required
 # def profile(request):
 #     user_profile = Profile.objects.get_or_create(user=request.username)

@@ -12,6 +12,7 @@ urlpatterns = [
     # path('profile/delete/', views.delete_profile, name='delete_profile'),
     # path('my-profile/', views.ProfileView.as_view(), name='view_profile'),
     path('profile/edit', profile, name='edit_profile'),
+    path('profile/delete/', views.delete_profile, name='delete_profile'),
     path('projects/', views.PostList.as_view(), name='all_projects'),
     path('projects/<slug:slug>', views.PostDetail.as_view(), name='post_detail'),
     path('vote/<slug:slug>', views.PostVote.as_view(), name='vote'),

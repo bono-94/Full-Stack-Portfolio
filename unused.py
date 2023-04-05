@@ -258,3 +258,28 @@ ________________________________________________________________________________
 
 #             return redirect('get_user_profile')
 #         return render(request, 'templates/user_profile_create.html')
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+
+                                    VIEWS - END
+
+_______________________________________________________________________________________|
+
+from allauth.account.forms import SignupForm
+from django.contrib.auth.models import User
+
+
+@receiver(post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    print('Signal fired on creation of User')
+    print('Created? ', created)
+    if created:
+        Profile.objects.create(username=instance)
+        try:
+            instance.user_profile.save()
+            print('Do we have a profile created? ', instance.user_profile)
+        except Exception as e:
+            print('No profile related to User')
+
+    print(create_or_update_user_profile)

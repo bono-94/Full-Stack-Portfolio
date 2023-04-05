@@ -1,7 +1,5 @@
-from .models import Profile, Post, Note, Feedback
 from django import forms
-from allauth.account.forms import SignupForm
-from django.contrib.auth.models import User
+from .models import Profile, Post, Note, Feedback
 
 
 class ProfileForm(forms.ModelForm):
@@ -23,10 +21,10 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = [
             'title',
-            'industry',
-            'company',
             'description',
-            'content'
+            'company',
+            'industry',
+            'content',
             ]
 
 

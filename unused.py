@@ -107,3 +107,154 @@ class CustomSignupForm(SignupForm):
 
 # admin.site.unregister(User)
 # admin.site.register(User, MyUserAdmin)
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+
+                                    VIEWS
+
+_______________________________________________________________________________________|
+
+# @login_required
+# def profile(request):
+#     user_profile = Profile.objects.get_or_create(user=request.username)
+#     return render(request, 'profile/user_profile_create.html', {'user_profile': user_profile})
+
+# @login_required
+# def view_profile(request):
+
+#     user_profile = get_object_or_404(User, username=request.user.username)
+
+#     return render(request, 'profile/user_profile_view.html', {'user_profile': user_profile})
+
+
+
+# @login_required
+# def edit_profile(request):
+
+#     # user_profile = get_object_or_404(Profile, user=request.user)
+#     try:
+#         user_profile = User.objects.get(user=request.user)
+#     except User.DoesNotExist:
+#         user_profile = None
+
+#     if request.method == 'POST':
+#         form = CustomSignupForm(request.POST, instance=user_profile)
+#         if form.is_valid():
+#             profile = form.save(commit=False)
+#             profile.user = request.user
+#             profile.save()
+#             return redirect('view_profile')
+#     else:
+#         form = CustomSignupForm(instance=user_profile)
+
+#     return render(request, 'profile/user_profile_edit.html', {'form': form})
+
+
+
+# @login_required
+# def delete_profile(request):
+
+#     user_profile = get_object_or_404(User, user=request.user)
+#     user_profile.delete()
+#     return redirect('home')
+
+
+
+# class ProfileCreate(CreateView):
+
+#     model = Profile
+#     template_name = 'profile/user_profile_create.html'
+#     success_url = '/my-profile/'
+
+#     fields = [
+#         'profile_title',
+#         'first_name',
+#         'last_name',
+#         'location',
+#         'company',
+#         'occupation',
+#         'email',
+#         'bio',
+#     ]
+
+#     def form_valid(self, form):
+#         form.instance.username = self.request.user
+#         return super().form_valid(form)
+
+
+# class ProfileView(DetailView):
+
+#     def get(self, request, *args, **kwargs):
+
+#         queryset = Profile.objects.filter(user=request.username)
+#         profile = get_object_or_404(queryset)
+
+#         return render(
+#             request,
+#             "profile/user_profile_view.html",
+#             {
+#                 "profile": profile,
+#                 "profile_form": CustomSignupForm()
+#             },
+#         )
+# def profile_detail_view(request):
+
+#     context = {}
+
+#     context["profile"] = Profile.objects.get(username=request.user)
+
+#     return render(request, "profile/user_profile_view.html", context)
+
+
+
+
+
+
+# class ProfileEdit(UpdateView):
+
+#     model = Profile
+#     template_name = 'profile/user_profile_edit.html'
+#     success_url = '/my-profile'
+
+#     fields = [
+#         'profile_title',
+#         'first_name',
+#         'last_name',
+#         'location',
+#         'company',
+#         'occupation',
+#         'email',
+#         'bio',
+#     ]
+
+#     def form_valid(self, form):
+#         form.instance.username = self.request.user
+#         return super().form_valid(form)
+
+
+
+
+# class ProfileDelete(DeleteView):
+
+#     model = Profile
+#     template_name = 'profile/user_profile_delete.html'
+#     success_url = '/'
+
+#     def form_valid(self, form):
+#         form.instance.username = self.request.user
+#         return super().form_valid(form)
+
+
+
+# class UserProfileCreate(View):
+
+#     def create_user_profile(request):
+
+#         if request.method == 'POST':
+#             first_name = request.POST.get('first_name')
+#             private = 'private' in request.POST
+#             Profile.objects.create(first_name=first_name, private=private)
+
+#             return redirect('get_user_profile')
+#         return render(request, 'templates/user_profile_create.html')

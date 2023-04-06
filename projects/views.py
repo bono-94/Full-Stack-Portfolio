@@ -9,6 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 def home_page(request):
@@ -174,6 +175,7 @@ class PostCreate(CreateView):
         'industry',
         'company',
         'content',
+        'project_image',
     ]
 
     def form_valid(self, form):

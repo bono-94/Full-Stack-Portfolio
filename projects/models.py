@@ -56,7 +56,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField(blank=False)
-    project_image = models.ImageField(upload_to='project_images/')
+    project_image = models.ImageField(upload_to='project_images/', blank=True, null=True)
     featured_image = CloudinaryField('image', default='placeholder')
     description = models.CharField(max_length=105, blank=False)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -93,6 +93,9 @@ class Note(models.Model):
 
     def __str__(self):
         return f"Note {self.content_note} by {self.name}"
+
+    def number_of_notes(self):
+        return self.votes.count()
 
 
 class Feedback(models.Model):

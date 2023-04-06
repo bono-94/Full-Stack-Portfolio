@@ -109,13 +109,13 @@ class CustomSignupForm(SignupForm):
 # admin.site.register(User, MyUserAdmin)
 
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
 
-                                    VIEWS
+#                                     VIEWS
 
-_______________________________________________________________________________________|
+# _______________________________________________________________________________________|
 
-# @login_required
+# # @login_required
 # def profile(request):
 #     user_profile = Profile.objects.get_or_create(user=request.username)
 #     return render(request, 'profile/user_profile_create.html', {'user_profile': user_profile})
@@ -126,7 +126,6 @@ ________________________________________________________________________________
 #     user_profile = get_object_or_404(User, username=request.user.username)
 
 #     return render(request, 'profile/user_profile_view.html', {'user_profile': user_profile})
-
 
 
 # @login_required
@@ -151,15 +150,12 @@ ________________________________________________________________________________
 #     return render(request, 'profile/user_profile_edit.html', {'form': form})
 
 
-
 # @login_required
 # def delete_profile(request):
 
 #     user_profile = get_object_or_404(User, user=request.user)
 #     user_profile.delete()
 #     return redirect('home')
-
-
 
 # class ProfileCreate(CreateView):
 
@@ -205,12 +201,6 @@ ________________________________________________________________________________
 #     context["profile"] = Profile.objects.get(username=request.user)
 
 #     return render(request, "profile/user_profile_view.html", context)
-
-
-
-
-
-
 # class ProfileEdit(UpdateView):
 
 #     model = Profile
@@ -233,8 +223,6 @@ ________________________________________________________________________________
 #         return super().form_valid(form)
 
 
-
-
 # class ProfileDelete(DeleteView):
 
 #     model = Profile
@@ -244,7 +232,6 @@ ________________________________________________________________________________
 #     def form_valid(self, form):
 #         form.instance.username = self.request.user
 #         return super().form_valid(form)
-
 
 
 # class UserProfileCreate(View):
@@ -257,29 +244,27 @@ ________________________________________________________________________________
 #             Profile.objects.create(first_name=first_name, private=private)
 
 #             return redirect('get_user_profile')
-#         return render(request, 'templates/user_profile_create.html')
+# #         return render(request, 'templates/user_profile_create.html')
 
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
 
-                                    VIEWS - END
+#                                     VIEWS - END
 
-_______________________________________________________________________________________|
+# _______________________________________________________________________________________|
 
-from allauth.account.forms import SignupForm
-from django.contrib.auth.models import User
+# from allauth.account.forms import SignupForm
+# # from django.contrib.auth.models import User
+# @receiver(post_save, sender=User)
+# def create_or_update_user_profile(sender, instance, created, **kwargs):
+#     print('Signal fired on creation of User')
+#     print('Created? ', created)
+#     if created:
+#         Profile.objects.create(username=instance)
+#         try:
+#             instance.user_profile.save()
+#             print('Do we have a profile created? ', instance.user_profile)
+#         except Exception as e:
+#             print('No profile related to User')
 
-
-@receiver(post_save, sender=User)
-def create_or_update_user_profile(sender, instance, created, **kwargs):
-    print('Signal fired on creation of User')
-    print('Created? ', created)
-    if created:
-        Profile.objects.create(username=instance)
-        try:
-            instance.user_profile.save()
-            print('Do we have a profile created? ', instance.user_profile)
-        except Exception as e:
-            print('No profile related to User')
-
-    print(create_or_update_user_profile)
+#     print(create_or_update_user_profile)

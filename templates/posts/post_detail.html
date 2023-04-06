@@ -40,30 +40,29 @@
                             <form class="d-inline" action="{% url 'vote' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if voted %}
-                                    <button type="submit" name="post_note_id" value="{{post.slug}}" class="btn-like">
+                                    <button type="submit" name="post_note_id" value="{{post.slug}}" class="btn-like text-secondary">
                                         <i class="fas fa-heart"></i>
+                                        {{ post.number_of_votes }}
                                     </button>
                                 {% else %}
-                                    <button type="submit" name="post_note_id" value="{{post.slug}}" class="btn-like">
+                                    <button type="submit" name="post_note_id" value="{{post.slug}}" class="btn-like text-secondary">
                                         <i class="far fa-heart"></i>
+                                        {{ post.number_of_votes }}
                                     </button>
                                 {% endif %}
                             </form>
                             {% else %}
                                 <span class="text-secondary">
-                                    <i class="far-fa heart"></i>
+                                    <i class="far fa-heart"></i>
                                     {{ post.number_of_votes }}
                                 </span>
                             {% endif %}
-                                <span class="text-secondary">
-                                    <i class="fas-fa heart"></i>
-                                    {{ post.number_of_votes }}
-                                </span>
-                            </strong>
+                        </strong>
                     </div>
                     <div class="col-1">
                         {% with notes.count as total_notes %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
+                        <strong class="text-secondary">
+                            <i class="far fa-comments"></i>
                             <!-- Our total_comments variable goes before the closing strong tag -->
                             {{ total_notes }}
                         </strong>

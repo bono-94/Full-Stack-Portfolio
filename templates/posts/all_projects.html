@@ -15,6 +15,7 @@
                             <div class="image-container">
                             {% if "placeholder" in post.featured_image.url %}
                             <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+
                             {% else %}
                             <img class="card-img-top" src="{{ post.featured_image.url }}">
                             {% endif %}
@@ -37,6 +38,12 @@
                                 {{ post.created_on }}
                                 <i class="far fa-heart"></i>
                                 {{ post.number_of_votes }}
+                                {% with notes.count as total_notes %}
+                                <strong class="text-secondary"><i class="far fa-comments"></i>
+                                    <!-- Our total_comments variable goes before the closing strong tag -->
+                                    {{ total_notes }}
+                                </strong>
+                                {% endwith %}
                             </p>
                         </div>
                     </div>

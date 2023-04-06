@@ -10,7 +10,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class Profile(models.Model):
 
-    profile_image = models.ImageField(upload_to='profile_images', blank=True, null=True)
+    profile_image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
     slug = models.SlugField(max_length=210, unique=True, null=True)
     username = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
     first_name = models.CharField(max_length=21, blank=True, null=True)
@@ -56,6 +56,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField(blank=False)
+    project_image = models.ImageField(upload_to='project_images/')
     featured_image = CloudinaryField('image', default='placeholder')
     description = models.CharField(max_length=105, blank=False)
     status = models.IntegerField(choices=STATUS, default=0)

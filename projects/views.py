@@ -46,6 +46,7 @@ def edit_profile(request):
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Blog post created successfully.')
             return redirect('user_profile')
     else:
         form = ProfileForm(instance=profile)

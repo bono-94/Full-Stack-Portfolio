@@ -14,11 +14,9 @@ urlpatterns = [
     path('projects/<slug:slug>', views.PostDetail.as_view(), name='post_detail'),
     path('vote/<slug:slug>', views.PostVote.as_view(), name='vote'),
     #
-    path('my-projects/none', views.UserPostsNone.as_view(), name='user_posts_none'),
-    path('my-projects', views.UserPosts.as_view(), name='user_posts'),
+    path('my-projects/none', views.no_posts_user, name='user_posts_none'),
     path('create-project', views.PostCreate.as_view(), name='post_create'),
-    path('edit-project', views.PostEdit.as_view(), name='post _edit'),
-    path('delete-project', views.PostDelete.as_view(), name='post_delete'),
+    path('my-projects', views.UserPosts.as_view(), name='user_posts'),
     #
     path('contact', views.contact_page, name='contact'),
     #

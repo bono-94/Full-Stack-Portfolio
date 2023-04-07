@@ -181,18 +181,18 @@ class UserPosts(ListView):
         return queryset.order_by('-created_on')
 
 
-def contact_page(request):
+def about_page(request):
 
     if request.method == 'GET':
 
-        return render(request, 'contact.html')
+        return render(request, 'about.html')
 
 
 class SupportRequest(CreateView):
 
     model = Request
     template_name = 'request/request.html'
-    success_url = 'contact'
+    success_url = 'about'
     fields = [
         'name',
         'email',

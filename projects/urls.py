@@ -18,7 +18,7 @@ urlpatterns = [
     path('create-project', views.PostCreate.as_view(), name='post_create'),
     path('my-projects', views.UserPosts.as_view(), name='user_posts'),
     #
-    path('contact', views.contact_page, name='contact'),
+    path('about', views.about_page, name='about'),
     #
     path('request', views.SupportRequest.as_view(), name='request'),
 

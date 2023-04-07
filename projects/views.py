@@ -192,13 +192,12 @@ class SupportRequest(CreateView):
 
     model = Request
     template_name = 'request/request.html'
-    success_url = '/contact'
+    success_url = 'contact'
     fields = [
         'name',
         'email',
         'request',
-        'created_on_request',
-    ]
+        ]
 
     def form_valid(self, form):
         form.instance.author = self.request.user

@@ -416,3 +416,18 @@ class CustomSignupForm(SignupForm):
     #     if pk:
     #         context['notes'] = Note.objects.filter(note=pk)
     #     return context
+
+
+
+
+        # path('my-project/detail', views.user_projects, name='user_project'),
+    # path('my-projects/<slug:slug>', views.UserPostDetail().as_view(), name='user_post_detail'),
+    # path('vote/<slug:slug>', views.UserPostVote.as_view(), name='vote'),
+    # path('my-project/edit', views.edit_project, name='edit_project'),
+    # path('my-project/delete/', views.delete_project, name='delete_project'),
+    #
+    # path('create/', post_create, name='post_create'),
+    # path('update/<slug:slug>/', post_update, name='project_update'),
+    # path('delete/<slug:slug>/', post_delete, name='post_delete'),
+    # path('', post_list, name='post_list'),
+    # path('<slug:slug>/', post_detail, name='post_detail'),

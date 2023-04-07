@@ -98,7 +98,7 @@ class Note(models.Model):
 class Request(models.Model):
 
     name = models.CharField(max_length=50, default='', blank=False)
-    email = models.EmailField(max_length=42, unique=True, blank=False)
+    email = models.EmailField(max_length=42, blank=False)
     request = models.TextField(max_length=428, blank=False)
     created_on_request = models.DateTimeField(auto_now_add=True)
 

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Contact</h1>    
+    <div>
+        <div>
+            <h1>
+                Send us a request:
+            </h1>
+            <p>
+                help?
+                dont know where to start?
+                problems with account?
+                send us a reqest with your contact iformation or send us an email at:_______
+            </p>
+        </div>
+        <form method="POST" action="{% url 'request' %}">
+            {% csrf_token %}
+        
+            {{ form.as_p }}
+            <div>
+                <p>
+                    <button type="submit" value="Save">Send</button>
+                </p>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -92,7 +92,7 @@ class Note(models.Model):
         return f"Note {self.content_note} by {self.name}"
 
     def number_of_notes(self):
-        return self.votes.count()
+        return self.content_note.count()
 
 
 class Feedback(models.Model):

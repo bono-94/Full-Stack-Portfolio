@@ -65,15 +65,19 @@ def delete_profile(request):
         return render(request, 'profile/user_profile_delete.html')
 
 
-# queryset = Profile.objects.filter(user=request.username)
-
-
 class PostList(ListView):
 
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'posts/all_projects.html'
     paginate_by = 8
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(PostList, self).get_context_data(**kwargs)
+    #     pk = self.kwargs.get('pk')
+    #     if pk:
+    #         context['notes'] = Note.objects.filter(note=pk)
+    #     return context
 
 
 class PostDetail(View):
@@ -327,4 +331,3 @@ class FeedbackSend(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-        

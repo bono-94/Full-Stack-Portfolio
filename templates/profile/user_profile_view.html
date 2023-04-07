@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
+
+
+
 {{profile}}
 <h1>My profile</h1>
 
-<a>
-    <img src="{{ profile.profile_image.url }}">
-</a>
+
+{% if profile.profile_image %}
+    <a>
+        <img src="{{ profile.profile_image.url }}" alt="Profile Image">
+    </a>
+{% else %}
+    <a>
+        <img src="{% static 'images/21104.png' %}" alt="Profile Placeholder">
+    </a>
+{% endif %}
 
 <h2>
     Username: {{ user.username }}

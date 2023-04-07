@@ -44,7 +44,7 @@ class NotesAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'note', 'created_on_note', 'approved')
     list_filter = ('name', 'note', 'approved', 'created_on_note')
-    search_fields = ('name', 'email', 'username' 'content_note')
+    search_fields = ('name', 'email', 'username', 'content_note')
     actions = ['approved_note']
 
     def approved_note(self, request, queryset):

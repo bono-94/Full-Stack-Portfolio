@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -46,15 +45,14 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 class Post(models.Model):
 
     slug = models.SlugField(max_length=210, unique=True)
-    title = models.CharField(max_length=210, unique=True)
-    industry = models.CharField(max_length=50)
-    company = models.CharField(max_length=50)
+    title = models.CharField(max_length=210, blank=False, unique=True)
+    industry = models.CharField(max_length=50, blank=False)
+    company = models.CharField(max_length=50, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField(blank=False)
     project_image = models.ImageField(upload_to='project_images/', blank=True, null=True)
-    featured_image = CloudinaryField('image', default='placeholder')
     description = models.CharField(max_length=105, blank=False)
     status = models.IntegerField(choices=STATUS, default=0)
     votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
@@ -86,7 +84,7 @@ class Note(models.Model):
     approved = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['created_on_note']
+        ordering = ['-created_on_note']
 
     def __str__(self):
         return f"Note {self.content_note} by {self.name}"

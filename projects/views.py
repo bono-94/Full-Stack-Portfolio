@@ -1,16 +1,13 @@
-
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Note, Profile, Request
 from .forms import NoteForm, PostForm, RequestForm, ProfileForm
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def home_page(request):
@@ -79,7 +76,7 @@ class PostDetail(View):
 
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        notes = post.note.filter(approved=True).order_by("created_on_note")
+        notes = post.note.filter(approved=True).order_by("-created_on_note")
         voted = False
         if post.votes.filter(id=self.request.user.id).exists():
             voted = True
@@ -142,14 +139,6 @@ class PostVote(View):
             post.votes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-
-
-@login_required
-def no_posts_user(request):
-
-    if request.method == 'GET':
-
-        return render(request, 'posts/no_posts.html')
 
 
 class PostCreate(CreateView):

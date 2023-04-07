@@ -177,7 +177,7 @@ class UserPosts(ListView):
 
     model = Post
     template_name = 'posts/user_posts.html'
-    paginate_by = 8
+    paginate_by = 12
 
     def get_queryset(self):
         # Retrieve the current user's posts
@@ -185,121 +185,125 @@ class UserPosts(ListView):
         return queryset.order_by('-created_on')
 
 
-class UserPostDetail(View):
-
-    def user_get(self, request, slug, *args, **kwargs):
-
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
-        notes = post.note.filter(approved=True).order_by("created_on_note")
-        voted = False
-        if post.votes.filter(id=self.request.user.id).exists():
-            voted = True
-
-        return render(
-            request,
-            "posts/post_detail.html",
-            {
-                "post": post,
-                "notes": notes,
-                "noted": False,
-                "voted": voted,
-                "note_form": NoteForm()
-            },
-        )
-
-    def user_post(self, request, slug, *args, **kwargs):
-
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
-        notes = post.note.filter(approved=True).order_by("created_on_note")
-        voted = False
-        if post.votes.filter(id=self.request.user.id).exists():
-            voted = True
-
-        note_form = NoteForm(data=request.POST)
-
-        if note_form.is_valid():
-            note_form.instance.email = request.user.email
-            note_form.instance.name = request.user.username
-            note_form.instance.username = User.objects.get(id=request.user.id)
-            note = note_form.save(commit=False)
-            note.note = post
-            note.save()
-        else:
-            note_form = NoteForm()
-
-        return render(
-            request,
-            "posts/post_detail.html",
-            {
-                "post": post,
-                "note": note,
-                "notes": notes,
-                "noted": True,
-                "voted": voted,
-                "note_form": NoteForm()
-            },
-        )
+# @login_required
+# def project_update(request, slug):
+#     post = get_object_or_404(Post, slug=slug)
+#     if post.author != request.user:
+#         messages.error(request, 'You do not have permission to update this post.')
+#         return redirect('contact', slug=post.slug)
+#     if request.method == 'POST':
+#         form = PostForm(request.POST, instance=post)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Blog post updated successfully.')
+#             return redirect('contact', slug=post.slug)
+#     else:
+#         form = PostForm(instance=post)
+#     return render(request, 'posts/user_posts_edit.html', {'form': form})
 
 
-class PostVote(View):
+# @login_required
+# def project_delete(request, slug):
+#     post = get_object_or_404(Post, slug=slug)
+#     if post.author != request.user:
+#         messages.error(request, 'You do not have permission to delete this post.')
+#         return redirect('user_projects', slug=post.slug)
+#     post.delete()
+#     messages.success(request, 'Blog post deleted successfully.')
+#     return redirect('user_projects')
 
-    def post(self, request, slug):
-        post = get_object_or_404(Post, slug=slug)
+# @login_required
+# def post_list(request):
+#     posts = Post.objects.filter(status=1)
+#     return render(request, 'contact.html', {'posts': posts})
 
-        if post.votes.filter(id=request.user.id).exists():
-            post.votes.remove(request.user)
-        else:
-            post.votes.add(request.user)
-
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-
-
-
-@login_required
-def user_profile(request):
-
-    profile = get_object_or_404(Profile, username=request.user)
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
-            return redirect('user_profile')
-    else:
-        form = ProfileForm(instance=profile)
-
-    context = {
-        'form': form,
-        'profile': profile
-    }
-
-    return render(request, 'profile/user_profile_view.html', context)
+# @login_required
+# def post_detail(request, slug):
+#     post = get_object_or_404(Post, slug=slug)
+#     return render(request, 'contact.html', {'post': post})
 
 
-@login_required
-def edit_profile(request):
+# # class UserPostDetail(View):
 
-    profile = request.user.user_profile
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Blog post created successfully.')
-            return redirect('user_profile')
-    else:
-        form = ProfileForm(instance=profile)
-    return render(request, 'profile/user_profile_edit.html', {'form': form})
+# #     def get(self, request, slug, *args, **kwargs):
+
+# #         queryset = Post.objects.filter(status=[1, 0])
+
+# #         post = get_object_or_404(queryset, slug=slug)
+# #         notes = post.note.order_by("created_on_note")
+# #         voted = False
+# #         if post.votes.filter(id=self.request.user.id).exists():
+# #             voted = True
+
+# #         return render(
+# #             request,
+# #             "posts/user_post_detail.html",
+# #             {
+# #                 "post": post,
+# #                 "notes": notes,
+# #                 "noted": False,
+# #                 "voted": voted,
+# #                 "note_form": NoteForm()
+# #             },
+# #         )
 
 
-@login_required
-def delete_profile(request):
-    if request.method == 'POST':
-        user = request.user
-        user.delete()
-        return redirect('home')
-    else:
-        return render(request, 'profile/user_profile_delete.html')
+# # class UserPostVote(View):
+
+# #     def post(self, request, slug):
+# # #         post = get_object_or_404(Post, slug=slug)
+
+# # #         if post.votes.filter(id=request.user.id).exists():
+# # #             post.votes.remove(request.user)
+# # #         else:
+# #             post.votes.add(request.user)
+
+# #         return HttpResponseRedirect(reverse('user_post_detail', args=[slug]))
+
+
+# @login_required
+# def user_projects(request):
+
+#     project = get_object_or_404(Post, username=request.user)
+#     if request.method == 'POST':
+#         form = PostForm(request.POST, request.FILES, instance=profile)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('user_project')
+#     else:
+#         form = PostForm(instance=project)
+
+#     context = {
+#         'form': form,
+#         'project': project
+#     }
+
+#     return render(request, 'posts/user_post_detail.html', context)
+
+
+# @login_required
+# def edit_profile(request):
+
+#     profile = request.user.user_profile
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, request.FILES, instance=profile)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Blog post created successfully.')
+#             return redirect('user_profile')
+#     else:
+#         form = ProfileForm(instance=profile)
+#     return render(request, 'profile/user_profile_edit.html', {'form': form})
+
+
+# @login_required
+# def delete_profile(request):
+#     if request.method == 'POST':
+#         user = request.user
+#         user.delete()
+#         return redirect('home')
+#     else:
+#         return render(request, 'profile/user_profile_delete.html')
 
 
 def contact_page(request):
@@ -323,3 +327,4 @@ class FeedbackSend(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+        

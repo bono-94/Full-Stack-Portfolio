@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Note, Profile, Feedback
+from .models import Post, Note, Profile, Request
 from django_summernote.admin import SummernoteModelAdmin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
@@ -51,10 +51,10 @@ class NotesAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
 
-@admin.register(Feedback)
-class FeedbackAdmin(SummernoteModelAdmin):
+@admin.register(Request)
+class RequestAdmin(SummernoteModelAdmin):
 
-    list_display = ('name', 'email', 'feedback')
+    list_display = ('name', 'email')
     search_fields = ['name', 'email']
-    list_filter = ('name', 'email', 'feedback')
-    summernote_fields = ('feedback')
+    list_filter = ('name', 'email')
+    summernote_fields = ('request')

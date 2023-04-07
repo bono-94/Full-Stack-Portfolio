@@ -95,11 +95,12 @@ class Note(models.Model):
         return self.content_note.count()
 
 
-class Feedback(models.Model):
+class Request(models.Model):
 
     name = models.CharField(max_length=50, default='', blank=False)
-    email = models.EmailField(max_length=42, unique=True)
-    feedback = models.TextField(max_length=214, blank=False)
+    email = models.EmailField(max_length=42, unique=True, blank=False)
+    request = models.TextField(max_length=428, blank=False)
+    created_on_request = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name

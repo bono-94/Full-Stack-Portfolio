@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile, Post, Note, Feedback
+from .models import Profile, Post, Note, Request
 
 
 class ProfileForm(forms.ModelForm):
@@ -37,11 +37,11 @@ class NoteForm(forms.ModelForm):
             ]
 
 
-class FeedbackForm(forms.ModelForm):
+class RequestForm(forms.ModelForm):
     class Meta:
-        model = Feedback
+        model = Request
         fields = [
             'name',
             'email',
-            'feedback',
+            'request',
             ]

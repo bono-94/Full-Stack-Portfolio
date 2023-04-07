@@ -25,7 +25,7 @@ urlpatterns = [
     #
     path('contact', views.contact_page, name='contact'),
     #
-    path('feedback', views.FeedbackSend.as_view(), name='feedback'),
+    path('request', views.SupportRequest.as_view(), name='request'),
     # path('create/', post_create, name='post_create'),
     # path('update/<slug:slug>/', post_update, name='project_update'),
     # path('delete/<slug:slug>/', post_delete, name='post_delete'),

@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Note, Profile, Feedback
-from .forms import NoteForm, PostForm, FeedbackForm, ProfileForm
+from .models import Post, Note, Profile, Request
+from .forms import NoteForm, PostForm, RequestForm, ProfileForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -188,15 +188,16 @@ def contact_page(request):
         return render(request, 'contact.html')
 
 
-class FeedbackSend(CreateView):
+class SupportRequest(CreateView):
 
-    model = Feedback
-    template_name = 'feedback/feedback.html'
-    success_url = ''
+    model = Request
+    template_name = 'request/request.html'
+    success_url = '/contact'
     fields = [
         'name',
         'email',
-        'feedback'
+        'request',
+        'created_on_request',
     ]
 
     def form_valid(self, form):

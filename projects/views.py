@@ -184,7 +184,6 @@ class UserPosts(ListView):
     paginate_by = 12
 
     def get_queryset(self):
-        # Retrieve the current user's posts
         queryset = Post.objects.filter(author=self.request.user)
         return queryset.order_by('-created_on')
 

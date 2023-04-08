@@ -39,18 +39,12 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <div class="row">
-                <div class="col">
+                <div class="col-9 col-sm-9 col-md-3 order-1">
                     <a class="navbar-brand" href="{% url 'home' %}">
-                        <img src="{% static 'images/logo.png' %}" alt="Innovation Land Logo">
+                        <img src="{% static 'images/logo.png' %}" alt="Innovation Land Logo" height="77px">
                     </a>
                 </div>
-                <div class="col">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse col" id="navbarText">
+                <div class="collapse navbar-collapse col-md-7 order-2" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
@@ -89,6 +83,12 @@
                     <span class="navbar-text text-muted">
                         "Where innovation happens"
                     </span>
+                </div>
+                <div class="col-3 col-sm-3 col-md-2 order-3">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
             </div>
         </div>

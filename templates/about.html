@@ -1,11 +1,27 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-6">
-
+        <div class="col-12" id="nav-logo">
+            <img src="{% static 'images/3D-logo.png' %}" alt="Innovation Land Logo">
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3" id="nav-ljogo">
+            centered card
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 d-md-none d-lg-block col-lg-4" id="nav-ljogo">
+            YOOOOOOOOOOOOOOOOO I disappear on medium
         </div>
     </div>
 </div>

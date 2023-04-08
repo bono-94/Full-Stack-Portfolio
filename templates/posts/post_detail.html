@@ -37,12 +37,18 @@
                 <img src="{% static 'images/21104.png' %}" alt="Project Placeholder">
             </a>
             {% endif %}                           
-            <div class="image-flash">
-                <p class="author">
-                    Author: {{ post.author }}
-                </p>
-            </div>
         </div>
+        <p class="card-text">
+            Company: {{ post.company }}
+        </p>
+        <p class="card-text">
+            Industry:
+            {{ post.industry }}
+        </p>
+        <p class="card-text">
+            Info:
+            {{ post.description }}
+        </p>
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
                 <!-- The post content goes inside the card-text. -->
@@ -86,6 +92,10 @@
                         </strong>
                         {% endwith %}
                     </div>
+                    <p class="card-text">
+                        Last Updated:
+                        {{ post.updated_on }}
+                    </p>
                 </div>
             </div>
         </div>

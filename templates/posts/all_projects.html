@@ -34,24 +34,26 @@
                                 <h2 class="card-title">
                                     {{ post.title }}
                                 </h2>
-                                <p class="card-text">
-                                    {{ post.description }}
-                                </p>
                             </a>
+                            <p class="card-text">
+                                Company: {{ post.company }}
+                            </p>
+                            <p class="card-text">
+                                Industry:
+                                {{ post.industry }}
+                            </p>
+                            <p class="card-text">
+                                Info:
+                                {{ post.description }}
+                            </p>
                             <hr>
                             <p class="card-text text-muted h6">
                                 {{ post.created_on }}
-                                <!-- <i class="far fa-heart"></i>
-                                {{ post.number_of_votes }}
-                                <strong class="text-secondary">
-                                    <i class="far fa-comments"></i>
-                                    {{ total_notes }}
-                                </strong> -->
                             </p>
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
+                {% if forloop.counter|divisibleby:4 %}
             </div>
             <div class = "row">
                 {% endif %} 

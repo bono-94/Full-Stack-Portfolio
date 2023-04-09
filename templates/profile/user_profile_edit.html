@@ -9,11 +9,12 @@
 <p><strong>Email:</strong> {{ user.email }}</p>
 
 <h2>Profile Information</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <a href="#" onclick="javascript:history.back()">Back</a>
-    <button type="submit">Save</button>
-</form>
-
+<div id="example">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="#" onclick="javascript:history.back()">Back</a>
+        <button type="submit">Save</button>
+    </form>
+</div>
 {% endblock content %}

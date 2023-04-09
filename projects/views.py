@@ -10,6 +10,21 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 
+# def users_list(request):
+#     users = User.objects.all()
+#     context = {'users': users}
+#     return render(request, 'about.html', context)
+
+
+# def display_column(request):
+#     # Fetch all values from the desired column
+#     column_values = Profile.objects.values('username')
+
+#     # Pass the column_values to the template
+#     context = {'column_values': column_values}
+#     return render(request, 'about.html', context)
+
+
 def home_page(request):
 
     if request.method == 'GET':

@@ -144,16 +144,16 @@ body {
 
 /* NAVIGATION BAR */
 
+#navbar {
+  background-color: #ffffff;
+}
+
 #nav-logo {
 
     width: 100%;
     height: 100%;
 }
 
-.nav-quote-margin {
-
-  margin-top: 90px;
-}
 
 #logo-quote {
 
@@ -163,6 +163,15 @@ body {
 .nav-margin {
 
   margin-top: 300px;
+}
+
+#navbar-collapse {
+  font-size: large;
+}
+
+#row {
+
+  width: 110%;
 }
 
 /* ABOUT HEAD IMAGE */

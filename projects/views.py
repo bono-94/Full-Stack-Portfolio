@@ -24,6 +24,22 @@ from django.contrib import messages
 #     context = {'column_values': column_values}
 #     return render(request, 'about.html', context)
 
+# def profile_list(request):
+#     profiles = Profile.objects.all()
+#     usernames = Profile.objects.values_list('username', flat=True).distinct()
+#     total_profiles = len(usernames)
+#     context = {
+#         'total_profiles': total_profiles
+#     }
+#     return render(request, 'index.html', context)
+
+def profile_list(request):
+    total_profiles = Profile.objects.count()
+    context = {
+        'total_profiles': total_profiles
+    }
+    return render(request, 'index.html', context)
+
 
 def home_page(request):
 

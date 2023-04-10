@@ -150,6 +150,21 @@ body {
     height: 100%;
 }
 
+.nav-quote-margin {
+
+  margin-top: 90px;
+}
+
+#logo-quote {
+
+  color: white;
+}
+
+.nav-margin {
+
+  margin-top: 300px;
+}
+
 /* ABOUT HEAD IMAGE */
 
 .about-image {
@@ -177,7 +192,6 @@ body {
 
     color: orangered;
 }
-
 
 
 

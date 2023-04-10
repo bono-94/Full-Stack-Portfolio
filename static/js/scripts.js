@@ -57,3 +57,13 @@ myModal.addEventListener('shown.bs.modal', function () {
 function untoggleNavbar() {
   $('#navbarCollapse').removeClass('navbar-collapse');
 }
+
+function toggleNavbar() {
+  let navbarCollapse = document.getElementById("navbar-collapse");
+  let isExpanded = navbarCollapse.classList.contains("show");
+  if (isExpanded) {
+      navbarCollapse.classList.remove("show");
+  } else {
+      navbarCollapse.classList.add("show");
+  }
+}

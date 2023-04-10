@@ -54,9 +54,7 @@ myModal.addEventListener('shown.bs.modal', function () {
   myInput.focus()
 })
 
-function untoggleNavbar() {
-  $('#navbarCollapse').removeClass('navbar-collapse');
-}
+
 
 function toggleNavbar() {
   let navbarCollapse = document.getElementById("navbar-collapse");
@@ -67,3 +65,9 @@ function toggleNavbar() {
       navbarCollapse.classList.add("show");
   }
 }
+
+
+// DROPDOWN NAVIGATION
+
+
+

@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load account socialaccount %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block head_title %}{% trans "Login" %}{% endblock %}
 
 {% block content %}
 
@@ -11,13 +11,13 @@
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
       <h3>
-        {% trans "Sign In" %}
+        {% trans "Login" %}
       </h3>
-      <p>
+      <p class="mt-5">
         {% blocktrans %} Welcome back to the Innovation Land.
-        In order to participate in commenting, voting, or uploading content, please log-in.
-        If you have not created account yet, then please
-        <a class="link" href="{{ signup_url }}">Sign Up</a>. {% endblocktrans %}
+        In order to participate in commenting, voting, creating or discovering projects, and to have access full experience of this website, please login below.
+        <br>If you have not created account yet, then please
+        <a class="link text-primary" href="{{ signup_url }}">Register</a>. {% endblocktrans %}
       </p>
     </div>
   </div>
@@ -30,7 +30,7 @@
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
         <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-        <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+        <button class="primaryAction" type="submit">{% trans "Login" %}</button>
       </form>
     </div>
   </div>

@@ -60,51 +60,51 @@
                 <div class="collapse navbar-collapse text-center col-md-6" id="navbar-collapse">
                     <ul class="navbar-nav mb-md-5 ms-md-auto mt-2 mt-md-0 d-flex col-12 col-md-auto">
                         <li class="nav-item">
-                            <a class="nav-link bg-warning border border-primary border-1 rounded-1 rounded-md-1 nav-button-shadow" aria-current="page" href="{% url 'home' %}">Home</a>
+                            <a class="nav-link bg-gradient bg-warning border border-primary border-1 rounded-1 rounded-md-1 nav-button-shadow" aria-current="page" href="{% url 'home' %}"><strong>Home</strong></a>
                         </li>
-                        <li class="nav-item bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
-                            <a class="nav-link" aria-current="page" href="{% url 'about' %}">About</a>
+                        <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+                            <a class="nav-link" aria-current="page" href="{% url 'about' %}"><strong>About</strong></a>
                         </li>
                         {% if user.is_authenticated %}
-                        <li class="nav-item bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
-                          <a class="nav-link" href="{% url 'request' %}">Request</a>
+                        <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+                          <a class="nav-link" href="{% url 'request' %}"><strong>Request</strong></a>
                         </li>
                         <li class="nav-item dropdown bg-warning">
-                          <a class="nav-link dropdown-toggle border border-primary border-1 rounded-1 nav-button-shadow" href="#" id="navbar-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Projects
+                          <a class="nav-link bg-gradient dropdown-toggle border border-primary border-1 rounded-1 nav-button-shadow" href="#" id="navbar-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong>Projects</strong>
                           </a>
-                          <ul class="dropdown-menu text-center" aria-labelledby="navbarDropdown" id="navbar-dropdown-subs">
-                              <li><a class="dropdown-item text-dark" href="{% url 'all_projects' %}">Public Projects</a></li>
+                          <ul class="dropdown-menu text-center bg-gradient bg-secondary shadow-lg border-1 border-dark" aria-labelledby="navbarDropdown" id="navbar-dropdown-subs">
+                              <li><a class="dropdown-item bg-gradient bg-warning text-dark" href="{% url 'all_projects' %}">Public Projects</a></li>
                               <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item text-dark" href="{% url 'user_posts' %}">My Projects</a></li>
+                              <li><a class="dropdown-item bg-gradient bg-warning text-dark" href="{% url 'user_posts' %}">My Projects</a></li>
                               <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item text-dark" href="{% url 'post_create' %}">Create Project</a></li>
+                              <li><a class="dropdown-item bg-gradient bg-warning text-dark" href="{% url 'post_create' %}">Create Project</a></li>
                           </ul>
                         </li>
-                        <li class="nav-item bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
-                            <a class="nav-link" href="{% url 'user_profile' %}">My Profile</a>
+                        <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+                            <a class="nav-link" href="{% url 'user_profile' %}"><strong>My Profile</strong></a>
                         </li>
-                        <li class="nav-item bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+                            <a class="nav-link" href="{% url 'account_logout' %}"><strong>Logout</strong></a>
                         </li>
                         {% else %}
-                        <li class="nav-item bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
-                          <a class="nav-link" href="{% url 'all_projects' %}">Public Projects</a>
+                        <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+                          <a class="nav-link" href="{% url 'all_projects' %}"><strong>Public Projects</strong></a>
                         </li>
-                        <li class="nav-item bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
-                            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                        <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+                            <a class="nav-link" href="{% url 'account_signup' %}"><strong>Register</strong></a>
                         </li>
-                        <li class="nav-item bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
-                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+                            <a class="nav-link" href="{% url 'account_login' %}"><strong>Login</strong></a>
                         </li>
                         {% endif %}
                     </ul>
                 </div>
                 <div class="container-fluid bg-dark nav-quote-margin">
                   <div class="d-flex flex-row-reverse">
-                    <span class="navbar-text p-1" id="logo-quote">
+                    <span class="navbar-text p-1 me-1" id="logo-quote">
                       <em>
-                        "Where innovation happens"
+                        "We are the change!"
                       </em>
                     </span>
                   </div>
@@ -112,6 +112,35 @@
             </div>
         </div> 
     </nav>
+    <div class="collapse bg-dark fixed-bottom" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="#" class="text-white">Like on Facebook</a></li>
+              <li><a href="#" class="text-white">Email me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm fixed-bottom">
+          <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <strong>Album</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
     <div class="nav-margin">
       Margin
     </div>
@@ -134,15 +163,25 @@
         {% endblock content %}
     </main>
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 dark-bg" id="example-seven"> <!-- fixed-bottom-->
-        <p class="m-0 text-center text-white">Made by: Life Team</p>
-        <p class="m-0 text-center text-white">Follow us on:
-            <a href="https://www.facebook.com/"><i class="fab fa-facebook-square ms-3"></i></a>
-            <a href="https://twitter.com/"><i class="fab fa-twitter-square ms-3"></i></a>
-            <a href="https://www.instagram.com/"><i class="fab fa-instagram-square ms-3"></i></a>
-            <a href="https://www.youtube.com/"><i class="fab fa-youtube-square ms-3"></i></a>
+    <footer class="footer mt-auto py-3 dark-bg bg-gradient" id="example-seven"> <!-- fixed-bottom-->
+        <p class="m-0 text-center text-dark"><strong>Made by: INNOVATION LAND - Team</strong></p>
+        <p class="m-0 text-start text-dark "><strong>Visit us on:</strong></p>
+          <a href="https://www.facebook.com/"><i class="fab fa-facebook-square ms-3"></i><p>Facebook</p></a>
+          <a href="https://twitter.com/"><i class="fab fa-twitter-square ms-3"></i><p>Twitter</p></a>
+          <a href="https://www.instagram.com/"><i class="fab fa-instagram-square ms-3"></i><p>Instagram</p></a>
+          <a href="https://www.youtube.com/"><i class="fab fa-youtube-square ms-3"></i><p>YouTube</p></a>
+          <div class="container">
+            <p class="float-end mb-1">
+              <a href="#">Back to top</a>
+            </p>
+            <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+            <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+          </div>
+          <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        <p>
+          <a href="#">Back to top</a>
         </p>
-    </footer>
+        </footer>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

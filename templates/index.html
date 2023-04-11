@@ -4,7 +4,39 @@
 
 {% block content %}
 
+<P>
+  TEST: {{ df_one }} {{ value }}
+</P>
+<P>
+  USERS: {{ total_users }}
+</P>
+<P>
+  USERNAMES: {{ usernames }}
+</P>
+<P>
+  DF: {{ df }}
+</P>
+
+<p>Total Users: {{ total_users }}</p>
+<p>Total Posts: {{ total_posts }}</p>
+
+TODAY: {{ first_day }}
+
+<p>Number of registered users: {{ num_users }}</p>
+
+
+<ul>
+  {% for user in users %}
+    <li>{{ user.username }}</li>
+  {% endfor %}
+</ul>
+
 <h1>Total User Profiles: {{ total_profiles }}</h1>
+
+
+{% for username in unique_users %}
+<p>UZER: {{ username }}</p>
+{% endfor %}
 
 <h1>Innovation Land is HERE!</h1>
 
@@ -32,7 +64,13 @@
 </p>
 
 <h2>
-    How it works
+    How it works:
+    <p> 
+      if succesfull we will contaact you
+      
+      later:
+      you can update your public version of annual financial sheet and it gets automatically rendered
+    </p>
 </h2>
 <p>
     Structure of all pages

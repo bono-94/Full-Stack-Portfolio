@@ -6,6 +6,22 @@ from django.utils.text import slugify
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+# class Profile(models.Model):
+# profile_image = models.ImageField(
+#     upload_to='profile_images/',
+#     blank=True, null=True
+#     )
+# slug = models.SlugField(
+#     max_length=210,
+#     nique=True,
+#     null=True
+#     )
+# username = models.OneToOneField(
+#     User,
+#     on_delete=models.CASCADE,
+#     related_name="user_profile"
+#     )
+
 
 class Profile(models.Model):
 

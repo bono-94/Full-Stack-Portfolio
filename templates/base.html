@@ -72,24 +72,24 @@
             <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
               <a class="nav-link" href="{% url 'request' %}"><strong>Request</strong></a>
             </li>
-            <li class="nav-item dropdown bg-warning">
+            <li class="nav-item dropdown bg-gradient bg-warning">
               <a class="nav-link bg-gradient dropdown-toggle border border-primary border-1 rounded-1 nav-button-shadow"
                 href="#" id="navbar-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <strong>Projects</strong>
               </a>
-              <ul class="dropdown-menu text-center bg-gradient bg-secondary shadow-lg border-1 border-dark"
+              <ul class="dropdown-menu text-center bg-gradient bg-secondary p-1 shadow-lg border-1 border-dark"
                 aria-labelledby="navbarDropdown" id="navbar-dropdown-subs">
-                <li><a class="dropdown-item bg-gradient bg-warning text-dark" href="{% url 'all_projects' %}">Public
+                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 rounded-1 nav-button-shadow" href="{% url 'all_projects' %}">Public
+                    Projects</a></li>
+                <li>
+                  <hr class="dropdown-divider p-0">
+                </li>
+                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 rounded-1 nav-button-shadow" href="{% url 'user_posts' %}">My
                     Projects</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item bg-gradient bg-warning text-dark" href="{% url 'user_posts' %}">My
-                    Projects</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item bg-gradient bg-warning text-dark" href="{% url 'post_create' %}">Create
+                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 rounded-1 nav-button-shadow" href="{% url 'post_create' %}">Create
                     Project</a></li>
               </ul>
             </li>

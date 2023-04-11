@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="container-fluid p-0">
     <div class="row">
         <div class="col-12 img-fluid" id="nav-logo">
             <img src="{% static 'images/3D-logo.png' %}" class="img-fluid" id="nav-logo" alt="Innovation Land Logo">
@@ -33,7 +33,16 @@
 
 
 
+TODAY: {{ first_day }}
 
+<p>Number of registered users: {{ num_users }}</p>
+
+
+<ul>
+  {% for user in users %}
+    <li>{{ user.username }}</li>
+  {% endfor %}
+</ul>
 <div class="table-responsive">
     <table class="table table-primary table-hover caption-top">
         <caption>List of users</caption>

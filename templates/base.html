@@ -62,51 +62,51 @@
         <div class="collapse navbar-collapse text-center col-md-6" id="navbar-collapse">
           <ul class="navbar-nav mb-md-5 ms-md-auto mt-2 mt-md-0 d-flex col-12 col-md-auto">
             <li class="nav-item">
-              <a class="nav-link bg-gradient bg-warning border border-primary border-1 rounded-1 rounded-md-1 nav-button-shadow"
+              <a class="nav-link bg-gradient bg-warning border border-primary border-1 rounded-md-1 shadow-sm"
                 aria-current="page" href="{% url 'home' %}"><strong>Home</strong></a>
             </li>
-            <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+            <li class="nav-item bg-gradient bg-warning border border-primary border-1  ">
               <a class="nav-link" aria-current="page" href="{% url 'about' %}"><strong>About</strong></a>
             </li>
             {% if user.is_authenticated %}
-            <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+            <li class="nav-item bg-gradient bg-warning border border-primary border-1  ">
               <a class="nav-link" href="{% url 'request' %}"><strong>Request</strong></a>
             </li>
             <li class="nav-item dropdown bg-gradient bg-warning">
-              <a class="nav-link bg-gradient dropdown-toggle border border-primary border-1 rounded-1 nav-button-shadow"
+              <a class="nav-link bg-gradient dropdown-toggle border border-primary border-1  "
                 href="#" id="navbar-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <strong>Projects</strong>
               </a>
-              <ul class="dropdown-menu text-center bg-gradient bg-secondary p-1 shadow-lg border-1 border-dark"
+              <ul class="dropdown-menu text-center bg-gradient bg-warning  border-1 border-primary"
                 aria-labelledby="navbarDropdown" id="navbar-dropdown-subs">
-                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 rounded-1 nav-button-shadow" href="{% url 'all_projects' %}">Public
+                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 nav-button-shadow" href="{% url 'all_projects' %}">Public
                     Projects</a></li>
                 <li>
-                  <hr class="dropdown-divider p-0">
+                  <hr class="dropdown-divider bg-primary">
                 </li>
-                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 rounded-1 nav-button-shadow" href="{% url 'user_posts' %}">My
+                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 nav-button-shadow" href="{% url 'user_posts' %}">My
                     Projects</a></li>
                 <li>
-                  <hr class="dropdown-divider">
+                  <hr class="dropdown-divider bg-primary">
                 </li>
-                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 rounded-1 nav-button-shadow" href="{% url 'post_create' %}">Create
+                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 nav-button-shadow" href="{% url 'post_create' %}">Create
                     Project</a></li>
               </ul>
             </li>
-            <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+            <li class="nav-item bg-gradient bg-warning border border-primary border-1 nav-button-shadow">
               <a class="nav-link" href="{% url 'user_profile' %}"><strong>My Profile</strong></a>
             </li>
-            <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+            <li class="nav-item bg-gradient bg-warning border border-primary border-1 nav-button-shadow">
               <a class="nav-link" href="{% url 'account_logout' %}"><strong>Logout</strong></a>
             </li>
             {% else %}
-            <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+            <li class="nav-item bg-gradient bg-warning border border-primary border-1 nav-button-shadow">
               <a class="nav-link" href="{% url 'all_projects' %}"><strong>Public Projects</strong></a>
             </li>
-            <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+            <li class="nav-item bg-gradient bg-warning border border-primary border-1 nav-button-shadow">
               <a class="nav-link" href="{% url 'account_signup' %}"><strong>Register</strong></a>
             </li>
-            <li class="nav-item bg-gradient bg-warning border border-primary border-1 rounded-1 nav-button-shadow">
+            <li class="nav-item bg-gradient bg-warning border border-primary border-1 nav-button-shadow">
               <a class="nav-link" href="{% url 'account_login' %}"><strong>Login</strong></a>
             </li>
             {% endif %}

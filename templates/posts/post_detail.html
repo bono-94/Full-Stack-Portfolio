@@ -157,5 +157,30 @@
         </div>
     </div>
 </div>
+    <hr>
 
+    <hr>
+    
+    <hr>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{ post.title }}</h1>
+          <p>{{ post.content }}</p>
+          <p>Author: <a href="{% url 'public_profile' post.author.username %}">{{ post.author.username }}</a></p>
+          <!-- Add any other post information you want to display here -->
+          <a href="{% url 'public_profile' author=post.author.username %}" class="btn btn-primary">View Author Profile</a>
+        </div>
+      </div>
+    </div>
+    
+    <a href="{% url 'public_profile' post.author.username %}">
+      Tejst
+    </a>
+    
+    <hr>
+    
+    <hr>
+    
+    <hr>
 {% endblock content %}

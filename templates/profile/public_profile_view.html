@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img
+          src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'images/default_profile_image.jpg' %}{% endif %}"
+          alt="Profile Picture" class="card-img-top rounded-circle">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.username }}</h5>
+          <h5 class="card-title">{{ author.username }}</h5>
+          <p class="card-text">{{ user.profile.bio }}</p>
+          <p class="card-text"><small class="text-muted">Joined: {{ user.date_joined|date:"F d, Y" }}</small></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h1>{{ user.username }}'s Profile</h1>
+      <ul class="list-group mt-4">
+        <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+        <li class="list-group-item"><strong>Email:</strong> {{ author.email }}</li>
+        <li class="list-group-item"><strong>First Name:</strong> {{ user.first_name }}</li>
+        <li class="list-group-item"><strong>First Name:</strong> {{ author.first_name }}</li>
+        <li class="list-group-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
+        <li class="list-group-item"><strong>Location:</strong> {{ user.profile.location }}</li>
+        <!-- Add any other profile information you want to display here -->
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+{{profile}}
+<h1>My profile</h1>
+
+<div class="image-container">
+  {% if profile.profile_image %}
+  <a>
+    <img src="{{ profile.profile_image.url }}" class="img-thumbnail" alt="Profile Image">
+  </a>
+  {% else %}
+  <a>
+    <img src="{% static 'images/21104.png' %}" alt="Profile Placeholder">
+  </a>
+  {% endif %}
+</div>
+
+<h2>
+  Username: {{ user.username }}
+</h2>
+<h2>
+  Email: {{ user.email }}
+</h2>
+<h2>
+  {% if profile.first_name %}
+  First Name: {{ profile.first_name }}
+  {% else %}
+  First Name: (blank)
+  {% endif %}
+</h2>
+<h2>
+  {% if profile.last_name %}
+  Last Name: {{ profile.last_name }}
+  {% else %}
+  Last Name: (blank)
+  {% endif %}
+</h2>
+<h2>
+  {% if profile.location %}
+  Location: {{ profile.location }}
+  {% else %}
+  Location: (blank)
+  {% endif %}
+
+</h2>
+<h2>
+  {% if profile.company %}
+  Company: {{ profile.company }}
+  {% else %}
+  Company: (blank)
+  {% endif %}
+
+</h2>
+<h2>
+  {% if profile.occupation %}
+  Occupation: {{ profile.occupation }}
+  {% else %}
+  Occupation: (blank)
+  {% endif %}
+
+</h2>
+<h2>
+  {% if profile.bio %}
+  Bio: {{ profile.bio }}
+  {% else %}
+  Bio: (blank)
+  {% endif %}
+</h2>
+
+
+{{ user.user_profile }}
+
+
+
+{% endblock content %}

@@ -16,4 +16,6 @@ urlpatterns = [
     path('my-projects', views.UserPosts.as_view(), name='user_posts'),
     path('about', views.about_page, name='about'),
     path('request', views.SupportRequest.as_view(), name='request'),
+    path('profile/<str:author>/', views.view_public_profiles, name='public_profile'),
+
 ]

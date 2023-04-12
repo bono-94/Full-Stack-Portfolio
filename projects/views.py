@@ -165,6 +165,12 @@ def home_page(request):
         return render(request, 'index.html')
 
 
+def view_public_profiles(request, author):
+
+    author = get_object_or_404(Post, author=request.author)
+    return render(request, 'public_profile_view.html', {'author': author})
+
+
 @login_required
 def user_profile(request):
 

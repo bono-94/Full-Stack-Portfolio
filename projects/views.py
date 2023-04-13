@@ -165,10 +165,10 @@ def home_page(request):
         return render(request, 'index.html')
 
 
-def view_public_profiles(request, author):
+def view_public_profiles(request, user_profile):
 
-    author = get_object_or_404(Post, author=request.author)
-    return render(request, 'public_profile_view.html', {'author': author})
+    profile_id = get_object_or_404(Profile, id=user_profile)
+    return render(request, 'profile/public_profile_view.html', {'profile_id': profile_id})
 
 
 @login_required

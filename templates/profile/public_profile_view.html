@@ -12,9 +12,9 @@
           src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'images/default_profile_image.jpg' %}{% endif %}"
           alt="Profile Picture" class="card-img-top rounded-circle">
         <div class="card-body">
-          <h5 class="card-title">{{ user.username }}</h5>
-          <h5 class="card-title">{{ author.username }}</h5>
-          <p class="card-text">{{ user.profile.bio }}</p>
+          <h5 class="card-title">{{ profile_id.username }}</h5>
+          <h5 class="card-title">{{ profile_id.username }}</h5>
+          <p class="card-text">{{ profile_id.bio }}</p>
           <p class="card-text"><small class="text-muted">Joined: {{ user.date_joined|date:"F d, Y" }}</small></p>
         </div>
       </div>
@@ -22,11 +22,11 @@
     <div class="col-md-8">
       <h1>{{ user.username }}'s Profile</h1>
       <ul class="list-group mt-4">
-        <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+        <li class="list-group-item"><strong>Email:</strong> {{ profile_id.email }}</li>
         <li class="list-group-item"><strong>Email:</strong> {{ author.email }}</li>
-        <li class="list-group-item"><strong>First Name:</strong> {{ user.first_name }}</li>
+        <li class="list-group-item"><strong>First Name:</strong> {{ profile_id.first_name }}</li>
         <li class="list-group-item"><strong>First Name:</strong> {{ author.first_name }}</li>
-        <li class="list-group-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
+        <li class="list-group-item"><strong>Last Name:</strong> {{ profile_id.last_name }}</li>
         <li class="list-group-item"><strong>Location:</strong> {{ user.profile.location }}</li>
         <!-- Add any other profile information you want to display here -->
       </ul>
@@ -51,10 +51,10 @@
 </div>
 
 <h2>
-  Username: {{ user.username }}
+  Username: {{ profile_id.username }}
 </h2>
 <h2>
-  Email: {{ user.email }}
+  Email: {{ profile_id.email }}
 </h2>
 <h2>
   {% if profile.first_name %}
@@ -71,31 +71,31 @@
   {% endif %}
 </h2>
 <h2>
-  {% if profile.location %}
-  Location: {{ profile.location }}
+  {% if profile_id.location %}
+  Location: {{ profile_id.location }}
   {% else %}
   Location: (blank)
   {% endif %}
 
 </h2>
 <h2>
-  {% if profile.company %}
-  Company: {{ profile.company }}
+  {% if profile_id.company %}
+  Company: {{ profile_id.company }}
   {% else %}
   Company: (blank)
   {% endif %}
 
 </h2>
 <h2>
-  {% if profile.occupation %}
-  Occupation: {{ profile.occupation }}
+  {% if profile_id.occupation %}
+  Occupation: {{ profile_id.occupation }}
   {% else %}
   Occupation: (blank)
   {% endif %}
 
 </h2>
 <h2>
-  {% if profile.bio %}
+  {% if profile_id.bio %}
   Bio: {{ profile.bio }}
   {% else %}
   Bio: (blank)

@@ -51,54 +51,54 @@
       <img
         src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'images/21104.png' %}{% endif %}"
         alt="Profile Picture" class="card-img-top rounded-circle">
-        <p class="card-text"><strong>WISDOM: </strong>{{ profile.profile_quote }}</p>
+        <p class="card-text mt-4"><strong>WISDOM: </strong>{% if profile.profile_quote %}{{ profile.profile_quote }}{% else %}(blank){% endif %}</p>
     </div>
     <div class="col-md-8">
       <div class="card"></div>
-        <div class="card-body rounded border border-1 border-dark bg-light mt-5 mt-md-0 ps-2 mb-3 mb-sm-5">
+        <div class="card-body rounded border border-1 border-dark bg-light mt-5 mt-md-0 ps-3 mb-3 mb-sm-5">
           <h4 class="card-title mb-4 mt-2 text-center">{{ user.username }}</h4>
           <p class="card-text"><strong>STATUS: </strong>{% if user.is_authenticated %}Online{% else %}{{ profile.status }}{% endif %}</p>
           <hr>
-          <p class="card-text"><strong>ACTIVE DAYS: </strong>{{ profile.active_days }}</p>
+          <p class="card-text"><strong>ACTIVE DAYS: </strong>{% if profile.active_days %}{{ profile.active_days }}{% else %}(blank){% endif %}</p>
           <hr>
-          <p class="card-text"><strong>ACTIVE HOURS: </strong>{{ profile.active_hours }}</p>
+          <p class="card-text"><strong>ACTIVE HOURS: </strong>{% if profile.active_hours %}{{ profile.active_hours }}{% else %}(blank){% endif %}</p>
           <hr>
-          <p class="card-text"><strong>VERIFIED: </strong>{{ profile.verified }}</p>
+          <p class="card-text"><strong>VERIFIED: </strong>{% if profile.verified == TRUE %}<i class="fa-solid fa-circle-check"></i> Verified{% else %}Not verified {% endif %}</p>
           <hr>
-          <p class="card-text"><strong>MEMBERSHIP: </strong>{{ profile.member }}</p>
+          <p class="card-text"><strong>MEMBERSHIP: </strong>{% if profile.member == TRUE %}<i class="fa-solid fa-house-user"></i>{% else %}Not a member{% endif %}</p>
           <hr>
-          <p class="card-text"><strong>LIFECOIN BALANCE: </strong>{{ profile.lifecoin_balance }}</p>
+          <p class="card-text"><strong>LIFECOIN BALANCE: </strong>{% if profile.lifecoin_balance %}{{ profile.lifecoin_balance }}{% else %}(blank){% endif %}</p>
           <hr>
           <p class="card-text"><strong>LINKS:</strong></p>
           <div class="container mb-3">
             <div class="row me-3 me-sm-0 ms-sm-2 ms-lg-3 ms-xl-4 ms-xxl-5">
               <div class="col-2">
-                <a href="{{ profile.website_link }}" class="text-dark">
+                <a href="{% if profile.website_link %}{{ profile.website_link }}{% else %}{% endif %}" class="text-dark">
                   <i class="fa-solid fa-globe bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="col-2">
-                <a href="{{ profile.facebook_link }}" class="text-dark">
+                <a href="{% if profile.facebook_link %}{{ profile.facebook_link }}{% else %}{% endif %}" class="text-dark">
                   <i class="fa-brands fa-facebook bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="col-2">
-                <a href="{{ profile.twitter_link }}" class="text-dark">
+                <a href="{% if profile.twitter_link %}{{ profile.twitter_link }}{% else %}{% endif %}" class="text-dark">
                   <i class="fa-brands fa-twitter bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="col-2">
-                <a href="{{ profile.instagram_link }}" class="text-dark">
+                <a href="{% if profile.instagram_link %}{{ profile.instagram_link }}{% else %}{% endif %}" class="text-dark">
                   <i class="fa-brands fa-instagram bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="col-2">
-                <a href="{{ profile.linkedin_link }}" class="text-dark">
+                <a href="{% if profile.linkedin_link %}{{ profile.linkedin_link }}{% else %}{% endif %}" class="text-dark">
                   <i class="fa-brands fa-linkedin bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="col-2">
-                <a href="{{ profile.youtube_link }}" class="text-dark">
+                <a href="{% if profile.youtube_link %}{{ profile.youtube_link }}{% else %}{% endif %}" class="text-dark">
                   <i class="fa-brands fa-youtube bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
@@ -120,18 +120,18 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mt-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>USERNAME:</strong> {{ user.username }}</li>
-        <li class="list-group-item bg-light"><strong>USER EMAIL:</strong> {{ user.email }}</li>
-        <li class="list-group-item bg-light"><strong>PUBLIC EMAIL:</strong> {{ profile.public_email }}</li>
-        <li class="list-group-item bg-light"><strong>FIRST NAME:</strong> {{ profile.first_name }}</li>
-        <li class="list-group-item bg-light"><strong>LAST NAME:</strong> {{ profile.last_name }}</li>
-        <li class="list-group-item bg-light"><strong>LOCATION:</strong> {{ profile.location }}</li>
-        <li class="list-group-item bg-light"><strong>LANGUAGES:</strong> {{ profile.languages }}</li>
-        <li class="list-group-item bg-light"><strong>GENDER:</strong> {{ profile.gender }}</li>
-        <li class="list-group-item bg-light"><strong>BIRTHDATE:</strong> {{ profile.date_of_birth }}</li>
-        <li class="list-group-item bg-light"><strong>AGE:</strong> {{ profile.age }} years old</li>
-        <li class="list-group-item bg-light"><strong>HEIGHT:</strong> {{ profile.height_cm }} cm</li>
-        <li class="list-group-item bg-light"><strong>WEIGHT:</strong> {{ profile.weight_kg }} kg</li>
+        <li class="list-group-item bg-light"><strong>USERNAME:</strong> {% if user.username %}{{ user.username }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>USER EMAIL:</strong> {% if user.email %}{{ user.email }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>PUBLIC EMAIL:</strong> {{ profile.public_email }}{% if profile.lifecoin_balance %}{{ profile.lifecoin_balance }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>FIRST NAME:</strong> {% if profile.first_name %}{{ profile.first_name }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>LAST NAME:</strong> {% if profile.last_name %}{{ profile.last_name }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>LOCATION:</strong> {% if profile.location %}{{ profile.location }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>LANGUAGES:</strong> {% if profile.languages %}{{ profile.languages }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>GENDER:</strong> {% if profile.gender %}{{ profile.gender }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>BIRTHDATE:</strong> {% if profile.date_of_birth %}{{ profile.date_of_birth }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>AGE:</strong> {% if profile.age %}{{ profile.age }} years old{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>HEIGHT:</strong> {% if profile.height_cm %}{{ profile.height_cm }} cm{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>WEIGHT:</strong> {% if profile.weight_kg %}{{ profile.weight_kg }} kg{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -145,13 +145,12 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>INDUSTRY:</strong> {{ profile.industry }}</li>
-        <li class="list-group-item bg-light"><strong>COMPANY:</strong> {{ profile.company }}</li>
-        <li class="list-group-item bg-light"><strong>DEPARTMENT:</strong> {{ profile.department }}</li>
-        <li class="list-group-item bg-light"><strong>OCCUPATION:</strong> {{ profile.occupation }}</li>
-        <li class="list-group-item bg-light"><strong>START DATE:</strong> {{ profile.start_date }}</li>
-        <li class="list-group-item bg-light"><strong>SERVICE DURATION:</strong> Total days: {{ profile.employed_days }} || Total months: {{ profile.employed_months }} || Total years: {{ profile.employed_years }}</li>
-        <li class="list-group-item bg-light"><strong>HOURS PER WEEK:</strong> {{ profile.hours_per_week }}</li>
+        <li class="list-group-item bg-light"><strong>INDUSTRY:</strong> {% if profile.industry %}{{ profile.industry }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>COMPANY:</strong> {% if profile.company %}{{ profile.company }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>DEPARTMENT:</strong> {% if profile.department %}{{ profile.department }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>OCCUPATION:</strong> {% if profile.occupation %}{{ profile.occupation }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>START DATE:</strong> {% if profile.start_date %}{{ profile.start_date }} - [Days: {{ profile.employed_days }} || Months: {{ profile.employed_months }} || Years: {{ profile.employed_years }}]{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>HOURS PER WEEK:</strong> {% if profile.hours_per_week %}{{ profile.hours_per_week }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -165,12 +164,12 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>CV:</strong> {{ profile.cv }}</li>
-        <li class="list-group-item bg-light"><strong>EDUCATION:</strong> {{ profile.education }}</li>
-        <li class="list-group-item bg-light text-break"><strong>WORK HISTORY:</strong> {{ profile.work_history }}</li>
-        <li class="list-group-item bg-light"><strong>PROJECTS PORTFOLIO:</strong> {{ profile.projects_portfolio }}</li>
-        <li class="list-group-item bg-light"><strong>REFERENCES:</strong> {{ profile.references }}</li>
-        <li class="list-group-item bg-light"><strong>RECOMMENDATIONS:</strong> {{ profile.recommendations }}</li>
+        <li class="list-group-item bg-light"><strong>CV:</strong> {% if profile.cv %}{{ profile.cv }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>EDUCATION:</strong> {% if profile.education %}{{ profile.education }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>WORK HISTORY:</strong> {% if profile.work_history %}{{ profile.work_history }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>PROJECTS PORTFOLIO:</strong> {% if profile.projects_portfolio %}{{ profile.projects_portfolio }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>REFERENCES:</strong> {% if profile.references %}{{ profile.references }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>RECOMMENDATIONS:</strong> {% if profile.recommendations %}{{ profile.recommendations }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -184,12 +183,12 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>COMPLETED PROJECTS:</strong> {{ profile.projects_completed }}</li>
-        <li class="list-group-item bg-light"><strong>COMPLETED GOALS:</strong> {{ profile.goals_completed }}</li>
-        <li class="list-group-item bg-light"><strong>COMPLETED MISSIONS:</strong> {{ profile.missions_completed }}</li>
-        <li class="list-group-item bg-light"><strong>COMPLETED MILESTONES:</strong> {{ profile.milestones_completed }}</li>
-        <li class="list-group-item bg-light"><strong>COMPLETED TASKS:</strong> {{ profile.tasks_completed }}</li>
-        <li class="list-group-item bg-light"><strong>CONTRIBUTION:</strong> {{ profile.contribution }}</li>
+        <li class="list-group-item bg-light"><strong>COMPLETED PROJECTS:</strong> {% if profile.projects_completed %}{{ profile.projects_completed }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>COMPLETED GOALS:</strong> {% if profile.goals_completed %}{{ profile.goals_completed }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>COMPLETED MISSIONS:</strong> {% if profile.missions_completed %}{{ profile.missions_completed }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>COMPLETED MILESTONES:</strong> {% if profile.milestones_completed %}{{ profile.milestones_completed }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>COMPLETED TASKS:</strong> {% if profile.tasks_completed %}{{ profile.tasks_completed }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>CONTRIBUTION:</strong> {% if profile.contribution %}{{ profile.contribution }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -203,10 +202,10 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>KNOWLEDGE:</strong> {{ profile.knowledge }}</li>
-        <li class="list-group-item bg-light"><strong>SKILLS:</strong> {{ profile.skills }}</li>
-        <li class="list-group-item bg-light"><strong>STRENGTHS:</strong> {{ profile.strengths }}</li>
-        <li class="list-group-item bg-light"><strong>WEAKNESSES:</strong> {{ profile.weaknesses }}</li>
+        <li class="list-group-item bg-light"><strong>KNOWLEDGE:</strong> {% if profile.knowledge %}{{ profile.knowledge }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>SKILLS:</strong> {% if profile.skills %}{{ profile.skills }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>STRENGTHS:</strong> {% if profile.strengths %}{{ profile.strengths }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>WEAKNESSES:</strong> {% if profile.weaknesses %}{{ profile.weaknesses }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -221,38 +220,38 @@
     <div class="col-10 offset-1">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">INNOVATION</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuenow="{{ profile.focus_innovation }}" aria-valuemin="0" aria-valuemax="100" style="{{profile.focus_innovation_style }}"><strong>{{ profile.focus_innovation }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{profile.focus_innovation_style }}"><strong class="p-1">{% if profile.focus_innovation %}{{ profile.focus_innovation }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">FINANCIALS</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{ profile.focus_financials }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_financials_style }}"><strong>{{ profile.focus_financials }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_financials_style }}"><strong class="p-1">{% if profile.focus_financials %}{{ profile.focus_financials }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">PLANNING</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuenow="{{ profile.focus_planning }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_planning_style }}"><strong>{{ profile.focus_planning }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_planning_style }}"><strong class="p-1">{% if profile.focus_planning %}{{ profile.focus_planning }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">MONITORING</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{ profile.focus_monitoring }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_monitoring_style }}"><strong>{{ profile.focus_monitoring }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_monitoring_style }}"><strong class="p-1">{% if profile.focus_monitoring %}{{ profile.focus_monitoring }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">QUALITY</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuenow="{{ profile.focus_quality }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_quality_style }}"><strong>{{ profile.focus_quality }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_quality_style }}"><strong class="p-1">{% if profile.focus_quality %}{{ profile.focus_quality }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">QUANTITY</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{ profile.focus_quantity }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_quantity_style }}"><strong>{{ profile.focus_quantity }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_quantity_style }}"><strong class="p-1">{% if profile.focus_quantity %}{{ profile.focus_quantity }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">COLLABORATION</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuenow="{{ profile.focus_collaboration }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_collaboration_style }}"><strong>{{ profile.focus_collaboration }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_collaboration_style }}"><strong class="p-1">{% if profile.focus_collaboration %}{{ profile.focus_collaboration }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">LEADERSHIP</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{ profile.focus_leadership }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_leadership_style }}"><strong>{{ profile.focus_leadership }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_leadership_style }}"><strong class="p-1">{% if profile.focus_leadership %}{{ profile.focus_leadership }} %{% else %}0 %{% endif %}</strong></div>
       </div>
     </div>
   </div>
@@ -267,35 +266,35 @@
     <div class="col-10 offset-1">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">OPERATIONS & MANAGEMENT</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark text-white" role="progressbar" aria-valuenow="{{ profile.special_ops }}" aria-valuemin="0" aria-valuemax="100" style="{{profile.special_ops_style }}"><strong>{{ profile.special_ops }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark text-white" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{profile.special_ops_style }}"><strong class="p-1">{% if profile.special_ops %}{{ profile.special_ops }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">FINANCE & ACCOUNTING</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{ profile.special_finance }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_finance_style }}"><strong>{{ profile.special_finance }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_finance_style }}"><strong class="p-1">{% if profile.special_finance %}{{ profile.special_finance }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">MARKETING & SALES</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning text-dark" role="progressbar" aria-valuenow="{{ profile.special_marketing }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_marketing_style }}"><strong>{{ profile.special_marketing }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_marketing_style }}"><strong class="p-1">{% if profile.special_marketing %}{{ profile.special_marketing }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">SUPPLY CHAIN</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{ profile.special_supply_chain }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_supply_chain_style }}"><strong>{{ profile.special_supply_chain }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_supply_chain_style }}"><strong class="p-1">{% if profile.special_supply_chain %}{{ profile.special_supply_chain }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">HR</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuenow="{{ profile.special_hr }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_hr_style }}"><strong>{{ profile.special_hr }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_hr_style }}"><strong class="p-1">{% if profile.special_hr %}{{ profile.special_hr }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">TECHNOLOGY & DATA</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="{{ profile.special_tech }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_tech_style }}"><strong>{{ profile.special_tech }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_tech_style }}"><strong class="p-1">{% if profile.special_tech %}{{ profile.special_tech }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">SUSTAINABILITY & CSR</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated text-dark" id="sustainability_user" role="progressbar" aria-valuenow="{{ profile.special_sustainability }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_sustainability_style }}"><strong>{{ profile.special_sustainability }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated text-dark" id="sustainability_user" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_sustainability_style }}"><strong class="p-1">{% if profile.special_sustainability %}{{ profile.special_sustainability }} %{% else %}0 %{% endif %}</strong></div>
       </div>
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">RESEARCH & DEVELOPMENT</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="{{ profile.special_research }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_research_style }}"><strong>{{ profile.special_research }} %</strong></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_research_style }}"><strong class="p-1">{% if profile.special_research %}{{ profile.special_research }} %{% else %}0 %{% endif %}</strong></div>
       </div>
     </div>
   </div>
@@ -309,12 +308,12 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>RESULTS:</strong> {{ profile.results }}</li>
-        <li class="list-group-item bg-light"><strong>CERTIFICATES:</strong> {{ profile.certificates }}</li>
-        <li class="list-group-item bg-light"><strong>HONORS:</strong> {{ profile.honors }}</li>
-        <li class="list-group-item bg-light"><strong>ARTICLES:</strong> {{ profile.articles }}</li>        
-        <li class="list-group-item bg-light"><strong>RECOGNITION:</strong> {{ profile.recognition }}</li>
-        <li class="list-group-item bg-light"><strong>BIGGER FISH HIGH-SCORE:</strong> {{ profile.bigger_fish_results }}</li>
+        <li class="list-group-item bg-light"><strong>RESULTS:</strong> {% if profile.results %}{{ profile.results }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>CERTIFICATES:</strong> {% if profile.certificates %}{{ profile.certificates }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>HONORS:</strong> {% if profile.honors %}{{ profile.honors }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>ARTICLES:</strong> {% if profile.articles %}{{ profile.articles }}{% else %}(blank){% endif %}</li>        
+        <li class="list-group-item bg-light"><strong>RECOGNITION:</strong> {% if profile.recognition %}{{ profile.recognition }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>BIGGER FISH HIGH-SCORE:</strong> {% if profile.bigger_fish_results %}{{ profile.bigger_fish_results }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -328,9 +327,9 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>AWARDS:</strong> {{ profile.awards }}</li>
-        <li class="list-group-item bg-light"><strong>BUSINESS REWARDS:</strong> {{ profile.business_rewards }}</li>
-        <li class="list-group-item bg-light"><strong>INNOVATION LAND REWARDS:</strong> {{ profile.innovation_land_rewards }}</li>
+        <li class="list-group-item bg-light"><strong>AWARDS:</strong> {% if profile.awards %}{{ profile.awards }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>BUSINESS REWARDS:</strong> {% if profile.business_rewards %}{{ profile.business_rewards }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>INNOVATION LAND REWARDS:</strong> {% if profile.innovation_land_rewards %}{{ profile.innovation_land_rewards }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -344,17 +343,17 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-5 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>SUMMARY:</strong> {{ profile.summary }}</li>
-        <li class="list-group-item bg-light"><strong>STORY:</strong> {{ profile.story }}</li>
-        <li class="list-group-item bg-light"><strong>JOURNEY:</strong> {{ profile.journey }}</li>
-        <li class="list-group-item bg-light"><strong>FUTURE:</strong> {{ profile.future }}</li>
-        <li class="list-group-item bg-light"><strong>LEGACY:</strong> {{ profile.legacy }}</li>
-        <li class="list-group-item bg-light"><strong>CHANGE:</strong> {{ profile.change }}</li>
-        <li class="list-group-item bg-light"><strong>IDEAL LIFE:</strong> {{ profile.ideal_life }}</li>
-        <li class="list-group-item bg-light"><strong>GOALS:</strong> {{ profile.goals }}</li>
-        <li class="list-group-item bg-light"><strong>MOTIVATIONS:</strong> {{ profile.motivation_wall }}</li>
-        <li class="list-group-item bg-light"><strong>INTEREST AND HOBBIES:</strong> {{ profile.interests_hobbies_wall }}</li>
-        <li class="list-group-item bg-light"><strong>DAILY ROUTINE:</strong> {{ profile.daily_routine }}</li>
+        <li class="list-group-item bg-light"><strong>SUMMARY:</strong> {% if profile.summary %}{{ profile.summary }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>STORY:</strong> {% if profile.story %}{{ profile.story }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>JOURNEY:</strong> {% if profile.journey %}{{ profile.journey }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>FUTURE:</strong> {% if profile.future %}{{ profile.future }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>LEGACY:</strong> {% if profile.legacy %}{{ profile.legacy }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>CHANGE:</strong> {% if profile.change %}{{ profile.change }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>IDEAL LIFE:</strong> {% if profile.ideal_life %}{{ profile.ideal_life }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>GOALS:</strong> {% if profile.goals %}{{ profile.goals }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>MOTIVATIONS:</strong> {% if profile.motivation_wall %}{{ profile.motivation_wall }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>INTEREST AND HOBBIES:</strong> {% if profile.interests_hobbies_wall %}{{ profile.interests_hobbies_wall }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong>DAILY ROUTINE:</strong> {% if profile.daily_routine %}{{ profile.daily_routine }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>

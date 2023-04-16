@@ -5,7 +5,16 @@
 {% block content %}
 
 
+TODAY: {{ first_day }}
 
+<p>Number of registered users: {{ num_users }}</p>
+
+
+<ul>
+  {% for user in users %}
+    <li>{{ user.username }}</li>
+  {% endfor %}
+</ul>
 
 <h1>Total User Profiles: {{ total_profiles }}</h1>
 

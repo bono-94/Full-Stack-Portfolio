@@ -6,6 +6,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = [
+            'profile_color',
             'profile_image',
             'first_name',
             'last_name',
@@ -13,7 +14,10 @@ class ProfileForm(forms.ModelForm):
             'company',
             'occupation',
             'bio',
-            ]
+        ]
+        widgets = {
+            'profile_color': forms.TextInput(attrs={'type': 'color'}), # specify the input type as 'color'
+        }
 
 
 class PostForm(forms.ModelForm):
@@ -26,7 +30,7 @@ class PostForm(forms.ModelForm):
             'industry',
             'company',
             'content',
-            ]
+        ]
 
 
 class NoteForm(forms.ModelForm):
@@ -34,7 +38,7 @@ class NoteForm(forms.ModelForm):
         model = Note
         fields = [
             'content_note',
-            ]
+        ]
 
 
 class RequestForm(forms.ModelForm):
@@ -44,4 +48,4 @@ class RequestForm(forms.ModelForm):
             'name',
             'email',
             'request',
-            ]
+        ]

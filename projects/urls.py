@@ -17,5 +17,4 @@ urlpatterns = [
     path('about', views.about_page, name='about'),
     path('request', views.SupportRequest.as_view(), name='request'),
     path('profile/<user_profile>', views.view_public_profiles, name='public_profile'),
-
 ]

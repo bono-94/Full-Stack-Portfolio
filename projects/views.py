@@ -165,6 +165,7 @@ def home_page(request):
         return render(request, 'index.html')
 
 
+@login_required
 def view_public_profiles(request, user_profile):
 
     profile_id = get_object_or_404(Profile, id=user_profile)

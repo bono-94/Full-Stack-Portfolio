@@ -27,6 +27,7 @@ class Profile(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     active_hours = models.CharField(max_length=42, blank=True, null=True)
     active_days = models.CharField(max_length=84, blank=True, null=True)
+    profile_color = models.CharField(max_length=7, default='#ffd041', blank=True, null=True)
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,

@@ -5,35 +5,41 @@
 {% block content %}
 
 <div class="container-fluid p-0 m-0">
-  <div class="row">
-    <div class="col-3 ms-5">
-      <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
-    </div>
-    <div class="col-3">
+  <div class="d-flex flex-row-reverse">
+    <div class="col-1">
       <a href="{% url 'edit_profile' %}">
-        <button>
-          Edit my profile
+        <button class="bg-dark">
+          <p class="text-warning">
+            <i class="fa-solid fa-user-pen me-1" style="color: #ffcf3e;"></i>
+            Edit
+          </p>
         </button>
       </a>
     </div>
-    <div class="col-3">
+    <div class="col-1">
       <a href="{% url 'account_logout' %}">
-        <button>
-          Create new profile
+        <button class="bg-dark">
+          <p class="text-warning">
+            <i class="fa-solid fa-user-plus me-1" style="color: #ffd041;"></i>
+            New
+          </p>
         </button>
       </a>
     </div>
-    <div class="col-3 ms-auto">
+    <div class="col1">
       <a href="{% url 'delete_profile' %}">
-        <button>
-          Delete my profile
+        <button class="bg-dark">
+          <p class="text-warning">
+            <i class="fa-solid fa-user-xmark me-1" style="color: #ffc61a;"></i>
+            Delete
+          </p>
         </button>
       </a>
     </div>
   </div>
 </div>
 
-<div class="container mt-4">
+<div class="container mt-4" style="background-color: {{ profile.profile_color }};">
   <div class="row">
     <div class="col-md-4">
       <div class="card">

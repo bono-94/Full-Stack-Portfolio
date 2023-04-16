@@ -10,8 +10,10 @@ from datetime import date, datetime
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
+# PROFILE MODEL
 class Profile(models.Model):
 
+    # CHOICES
     STATUS_CHOICES = (
         ('online', 'Online'),
         ('offline', 'Offline'),
@@ -23,13 +25,21 @@ class Profile(models.Model):
         ('O', 'Other'),
     )
 
+    # PROFILE CARD
     slug = models.SlugField(max_length=210, unique=True, null=True)
-    profile_image = models.ImageField(upload_to='profile_images/', blank=True, null=True, max_length=84)
-    created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    updated_on = models.DateTimeField(auto_now=True, blank=True, null=True)
-    profile_color = models.CharField(max_length=7, default='#ffd041', blank=True, null=True)
-    active_days = models.CharField(max_length=63, blank=True, null=True)
-    active_hours = models.CharField(max_length=42, blank=True, null=True)
+    privacy = models.BooleanField(default=False)
+    profile_image = models.ImageField(
+        upload_to='profile_images/',
+        blank=True,
+        null=True,
+        max_length=84
+    )
+    profile_color = models.CharField(
+        max_length=7,
+        default='#ffd041',
+        blank=True,
+        null=True
+        )
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,
@@ -37,12 +47,12 @@ class Profile(models.Model):
         blank=True,
         null=True
     )
-
+    profile_quote = models.CharField(max_length=84, blank=True, null=True)
+    active_days = models.CharField(max_length=63, blank=True, null=True)
+    active_hours = models.CharField(max_length=42, blank=True, null=True)
     verified = models.BooleanField(default=False)
     member = models.BooleanField(default=False)
-    privacy = models.BooleanField(default=False)
     lifecoin_balance = models.IntegerField(null=True, blank=True)
-
     website_link = models.URLField(
         max_length=210,
         unique=True,
@@ -50,7 +60,6 @@ class Profile(models.Model):
         null=True,
         verbose_name='Website URL'
     )
-
     facebook_link = models.URLField(
         max_length=210,
         unique=True,
@@ -58,7 +67,6 @@ class Profile(models.Model):
         null=True,
         verbose_name='Facebook URL'
     )
-
     twitter_link = models.URLField(
         max_length=210,
         unique=True,
@@ -66,7 +74,6 @@ class Profile(models.Model):
         null=True,
         verbose_name='Twitter URL'
     )
-
     instagram_link = models.URLField(
         max_length=210,
         unique=True,
@@ -74,7 +81,6 @@ class Profile(models.Model):
         null=True,
         verbose_name='Instagram URL'
     )
-
     linkedin_link = models.URLField(
         max_length=210,
         unique=True,
@@ -82,7 +88,6 @@ class Profile(models.Model):
         null=True,
         verbose_name='LinkedIn URL'
     )
-
     youtube_link = models.URLField(
         max_length=210,
         unique=True,
@@ -90,17 +95,22 @@ class Profile(models.Model):
         null=True,
         verbose_name='YouTube URL'
     )
+    created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_on = models.DateTimeField(auto_now=True, blank=True, null=True)
 
+    # GENERAL INFORMATION
     username = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
     public_email = models.EmailField(max_length=42, unique=True, blank=True, null=True)
     first_name = models.CharField(max_length=21, blank=True, null=True)
     last_name = models.CharField(max_length=21, blank=True, null=True)
     location = models.CharField(max_length=21, blank=True, null=True)
+    languages = models.TextField(max_length=84, blank=False, null=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
     height_cm = models.IntegerField(validators=[MaxValueValidator(300)], null=True, blank=True)
     weight_kg = models.IntegerField(validators=[MaxValueValidator(500)], null=True, blank=True)
 
+    # CURRENT EMPLOYMENT
     industry = models.CharField(max_length=21, blank=False, null=True)
     company = models.CharField(max_length=42, blank=True, null=True)
     department = models.CharField(max_length=21, blank=False, null=True)
@@ -108,6 +118,7 @@ class Profile(models.Model):
     start_date = models.DateField(default=timezone.now, blank=True, null=True)
     hours_per_week = models.PositiveIntegerField(null=True, blank=True)
 
+    # PREVIOUS EMPLOYMENT
     cv = models.FileField(upload_to='cv/', blank=True, null=True, max_length=84)
     education = models.CharField(max_length=210, blank=False, null=True)
     work_history = models.TextField(max_length=2100, blank=False, null=True)
@@ -121,6 +132,7 @@ class Profile(models.Model):
     references = models.TextField(max_length=210, blank=False, null=True)
     recommendations = models.TextField(max_length=210, blank=False, null=True)
 
+    # ACHIEVEMENTS
     projects_completed = models.TextField(max_length=210, blank=False, null=True)
     goals_completed = models.TextField(max_length=210, blank=False, null=True)
     missions_completed = models.TextField(max_length=210, blank=False, null=True)
@@ -128,12 +140,13 @@ class Profile(models.Model):
     tasks_completed = models.TextField(max_length=210, blank=False, null=True)
     contribution = models.TextField(max_length=210, blank=False, null=True)
 
+    # ATTRIBUTES
     knowledge = models.TextField(max_length=210, blank=False, null=True)
-    languages = models.TextField(max_length=84, blank=False, null=True)
     skills = models.TextField(max_length=210, blank=False, null=True)
     strengths = models.TextField(max_length=210, blank=False, null=True)
     weaknesses = models.TextField(max_length=210, blank=False, null=True)
 
+    # BUSINESS FOCUS
     focus_innovation = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
     focus_financials = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
     focus_planning = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
@@ -143,6 +156,7 @@ class Profile(models.Model):
     focus_collaboration = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
     focus_leadership = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
 
+    # BUSINESS SPECIALTY
     special_ops = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
     special_finance = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
     special_marketing = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
@@ -152,30 +166,33 @@ class Profile(models.Model):
     special_sustainability = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
     special_research = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
 
+    # ACCOMPLISHMENTS
+    results = models.TextField(max_length=210, blank=False, null=True)
     certificates = models.TextField(max_length=210, blank=False, null=True)
     honors = models.TextField(max_length=210, blank=False, null=True)
     articles = models.TextField(max_length=210, blank=False, null=True)
-    results = models.TextField(max_length=210, blank=False, null=True)
-    awards = models.TextField(max_length=210, blank=False, null=True)
     recognition = models.TextField(max_length=210, blank=False, null=True)
     bigger_fish_results = models.FileField(upload_to='bigger_fish_results/', blank=True, null=True, max_length=84)
 
+    # REWARDS
+    awards = models.TextField(max_length=210, blank=False, null=True)
     business_rewards = models.TextField(max_length=210, blank=False, null=True)
     innovation_land_rewards = models.TextField(max_length=210, blank=False, null=True)
 
+    # PERSONAL WALL
     summary = models.TextField(max_length=84, blank=False, null=True)
-    bio = models.TextField(max_length=2100, blank=False, null=True)
-    goals = models.TextField(max_length=210, blank=False, null=True)
-    story = models.TextField(max_length=210, blank=False, null=True)
+    story = models.TextField(max_length=2100, blank=False, null=True)
     journey = models.TextField(max_length=210, blank=False, null=True)
     future = models.TextField(max_length=210, blank=False, null=True)
     legacy = models.TextField(max_length=210, blank=False, null=True)
     change = models.TextField(max_length=210, blank=False, null=True)
     ideal_life = models.TextField(max_length=2100, blank=False, null=True)
+    goals = models.TextField(max_length=210, blank=False, null=True)    
     motivation_wall = models.TextField(max_length=2100, blank=False, null=True)
     interests_hobbies_wall = models.TextField(max_length=2100, blank=False, null=True)
     daily_routine = models.FileField(upload_to='daily_routine/', blank=True, null=True, max_length=84)
 
+    # NAMING & SAVING
     def __str__(self):
         return f"{self.username} profile"
 

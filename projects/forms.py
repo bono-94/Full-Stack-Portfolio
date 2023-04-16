@@ -13,7 +13,6 @@ class ProfileForm(forms.ModelForm):
             'location',
             'company',
             'occupation',
-            'bio',
             'public_email',
             'website_link',
             'date_of_birth',

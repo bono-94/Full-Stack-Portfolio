@@ -51,6 +51,7 @@
       <img
         src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'images/21104.png' %}{% endif %}"
         alt="Profile Picture" class="card-img-top rounded-circle">
+        <p class="card-text"><strong>WISDOM: </strong>{{ profile.profile_quote }}</p>
     </div>
     <div class="col-md-8">
       <div class="card"></div>
@@ -125,6 +126,7 @@
         <li class="list-group-item bg-light"><strong>FIRST NAME:</strong> {{ profile.first_name }}</li>
         <li class="list-group-item bg-light"><strong>LAST NAME:</strong> {{ profile.last_name }}</li>
         <li class="list-group-item bg-light"><strong>LOCATION:</strong> {{ profile.location }}</li>
+        <li class="list-group-item bg-light"><strong>LANGUAGES:</strong> {{ profile.languages }}</li>
         <li class="list-group-item bg-light"><strong>GENDER:</strong> {{ profile.gender }}</li>
         <li class="list-group-item bg-light"><strong>BIRTHDATE:</strong> {{ profile.date_of_birth }}</li>
         <li class="list-group-item bg-light"><strong>AGE:</strong> {{ profile.age }} years old</li>
@@ -202,7 +204,6 @@
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
         <li class="list-group-item bg-light"><strong>KNOWLEDGE:</strong> {{ profile.knowledge }}</li>
-        <li class="list-group-item bg-light"><strong>LANGUAGES:</strong> {{ profile.languages }}</li>
         <li class="list-group-item bg-light"><strong>SKILLS:</strong> {{ profile.skills }}</li>
         <li class="list-group-item bg-light"><strong>STRENGTHS:</strong> {{ profile.strengths }}</li>
         <li class="list-group-item bg-light"><strong>WEAKNESSES:</strong> {{ profile.weaknesses }}</li>
@@ -308,11 +309,10 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
+        <li class="list-group-item bg-light"><strong>RESULTS:</strong> {{ profile.results }}</li>
         <li class="list-group-item bg-light"><strong>CERTIFICATES:</strong> {{ profile.certificates }}</li>
         <li class="list-group-item bg-light"><strong>HONORS:</strong> {{ profile.honors }}</li>
-        <li class="list-group-item bg-light"><strong>ARTICLES:</strong> {{ profile.articles }}</li>
-        <li class="list-group-item bg-light"><strong>RESULTS:</strong> {{ profile.results }}</li>
-        <li class="list-group-item bg-light"><strong>AWARDS:</strong> {{ profile.awards }}</li>
+        <li class="list-group-item bg-light"><strong>ARTICLES:</strong> {{ profile.articles }}</li>        
         <li class="list-group-item bg-light"><strong>RECOGNITION:</strong> {{ profile.recognition }}</li>
         <li class="list-group-item bg-light"><strong>BIGGER FISH HIGH-SCORE:</strong> {{ profile.bigger_fish_results }}</li>
       </ul>
@@ -328,6 +328,7 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
+        <li class="list-group-item bg-light"><strong>AWARDS:</strong> {{ profile.awards }}</li>
         <li class="list-group-item bg-light"><strong>BUSINESS REWARDS:</strong> {{ profile.business_rewards }}</li>
         <li class="list-group-item bg-light"><strong>INNOVATION LAND REWARDS:</strong> {{ profile.innovation_land_rewards }}</li>
       </ul>
@@ -344,14 +345,13 @@
     <div class="col-12 col-sm-10 offset-sm-1 mb-5 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
         <li class="list-group-item bg-light"><strong>SUMMARY:</strong> {{ profile.summary }}</li>
-        <li class="list-group-item bg-light"><strong>BIO:</strong> {{ profile.bio }}</li>
-        <li class="list-group-item bg-light"><strong>GOALS:</strong> {{ profile.goals }}</li>
         <li class="list-group-item bg-light"><strong>STORY:</strong> {{ profile.story }}</li>
         <li class="list-group-item bg-light"><strong>JOURNEY:</strong> {{ profile.journey }}</li>
         <li class="list-group-item bg-light"><strong>FUTURE:</strong> {{ profile.future }}</li>
         <li class="list-group-item bg-light"><strong>LEGACY:</strong> {{ profile.legacy }}</li>
         <li class="list-group-item bg-light"><strong>CHANGE:</strong> {{ profile.change }}</li>
         <li class="list-group-item bg-light"><strong>IDEAL LIFE:</strong> {{ profile.ideal_life }}</li>
+        <li class="list-group-item bg-light"><strong>GOALS:</strong> {{ profile.goals }}</li>
         <li class="list-group-item bg-light"><strong>MOTIVATIONS:</strong> {{ profile.motivation_wall }}</li>
         <li class="list-group-item bg-light"><strong>INTEREST AND HOBBIES:</strong> {{ profile.interests_hobbies_wall }}</li>
         <li class="list-group-item bg-light"><strong>DAILY ROUTINE:</strong> {{ profile.daily_routine }}</li>

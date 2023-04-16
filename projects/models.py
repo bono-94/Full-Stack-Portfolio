@@ -6,6 +6,7 @@ from django.utils.text import slugify
 from django.utils import timezone
 from django.core.validators import MaxValueValidator
 from datetime import date, datetime
+from django.core.validators import FileExtensionValidator
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -20,9 +21,9 @@ class Profile(models.Model):
     )
 
     GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('O', 'Other'),
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other'),
     )
 
     # PROFILE CARD
@@ -105,7 +106,7 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=21, blank=True, null=True)
     location = models.CharField(max_length=21, blank=True, null=True)
     languages = models.TextField(max_length=84, blank=False, null=True)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
+    gender = models.CharField(max_length=6, choices=GENDER_CHOICES, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
     height_cm = models.IntegerField(validators=[MaxValueValidator(300)], null=True, blank=True)
     weight_kg = models.IntegerField(validators=[MaxValueValidator(500)], null=True, blank=True)
@@ -119,7 +120,7 @@ class Profile(models.Model):
     hours_per_week = models.PositiveIntegerField(null=True, blank=True)
 
     # PREVIOUS EMPLOYMENT
-    cv = models.FileField(upload_to='cv/', blank=True, null=True, max_length=84)
+    cv = models.FileField(upload_to='cv/', blank=True, null=True, max_length=84, validators=[FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip'])])
     education = models.CharField(max_length=210, blank=False, null=True)
     work_history = models.TextField(max_length=2100, blank=False, null=True)
     projects_portfolio = models.URLField(

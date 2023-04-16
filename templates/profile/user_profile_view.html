@@ -4,32 +4,41 @@
 
 {% block content %}
 
-<div class="container-fluid p-0 m-0">
-  <div class="d-flex flex-row-reverse">
-    <div class="col-1">
+<!-- INCLUDE PRIVACY BASED ON EDIT FORM -->
+
+
+<!-- PROFILE CARD -->
+<div class="container pt-4 rounded border border-2 border-dark" style="background-color: {{ profile.profile_color }};">
+  <div class="row">
+    <div class="col-6 col-md-4 text-center">
+      <h2 class="rounded border border-2 border-dark mb-4 bg-light p-1">My Profile</h2>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-4">
       <a href="{% url 'edit_profile' %}">
         <button class="bg-dark">
-          <p class="text-warning">
+          <p class="text-light p-0">
             <i class="fa-solid fa-user-pen me-1" style="color: #ffcf3e;"></i>
             Edit
           </p>
         </button>
       </a>
     </div>
-    <div class="col-1">
+    <div class="col-4">
       <a href="{% url 'account_logout' %}">
         <button class="bg-dark">
-          <p class="text-warning">
+          <p class="text-light">
             <i class="fa-solid fa-user-plus me-1" style="color: #ffd041;"></i>
             New
           </p>
         </button>
       </a>
     </div>
-    <div class="col1">
+    <div class="col-4">
       <a href="{% url 'delete_profile' %}">
         <button class="bg-dark">
-          <p class="text-warning">
+          <p class="text-light">
             <i class="fa-solid fa-user-xmark me-1" style="color: #ffc61a;"></i>
             Delete
           </p>
@@ -37,30 +46,315 @@
       </a>
     </div>
   </div>
-</div>
-
-<div class="container mt-4" style="background-color: {{ profile.profile_color }};">
   <div class="row">
     <div class="col-md-4">
-      <div class="card">
-        <img
-          src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'images/21104.png' %}{% endif %}"
-          alt="Profile Picture" class="card-img-top rounded-circle">
-        <div class="card-body">
-          <h5 class="card-title">{{ user.username }}</h5>
-          <p class="card-text">{{ user.profile.bio }}</p>
-          <p class="card-text"><small class="text-muted">Joined: {{ user.date_joined|date:"F d, Y" }}</small></p>
+      <img
+        src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'images/21104.png' %}{% endif %}"
+        alt="Profile Picture" class="card-img-top rounded-circle">
+    </div>
+    <div class="col-md-8">
+      <div class="card"></div>
+        <div class="card-body rounded border border-1 border-dark bg-light mt-5 mt-md-0 ps-2 mb-3 mb-sm-5">
+          <h4 class="card-title mb-4 mt-2 text-center">{{ user.username }}</h4>
+          <p class="card-text"><strong>STATUS: </strong>{% if user.is_authenticated %}Online{% else %}{{ profile.status }}{% endif %}</p>
+          <hr>
+          <p class="card-text"><strong>ACTIVE DAYS: </strong>{{ profile.active_days }}</p>
+          <hr>
+          <p class="card-text"><strong>ACTIVE HOURS: </strong>{{ profile.active_hours }}</p>
+          <hr>
+          <p class="card-text"><strong>VERIFIED: </strong>{{ profile.verified }}</p>
+          <hr>
+          <p class="card-text"><strong>MEMBERSHIP: </strong>{{ profile.member }}</p>
+          <hr>
+          <p class="card-text"><strong>LIFECOIN BALANCE: </strong>{{ profile.lifecoin_balance }}</p>
+          <hr>
+          <p class="card-text"><strong>LINKS:</strong></p>
+          <div class="container mb-3">
+            <div class="row me-3 me-sm-0 ms-sm-2 ms-lg-3 ms-xl-4 ms-xxl-5">
+              <div class="col-2">
+                <a href="{{ profile.website_link }}" class="text-dark">
+                  <i class="fa-solid fa-globe bg-dark text-warning rounded p-2"></i>
+                </a>
+              </div>
+              <div class="col-2">
+                <a href="{{ profile.facebook_link }}" class="text-dark">
+                  <i class="fa-brands fa-facebook bg-dark text-warning rounded p-2"></i>
+                </a>
+              </div>
+              <div class="col-2">
+                <a href="{{ profile.twitter_link }}" class="text-dark">
+                  <i class="fa-brands fa-twitter bg-dark text-warning rounded p-2"></i>
+                </a>
+              </div>
+              <div class="col-2">
+                <a href="{{ profile.instagram_link }}" class="text-dark">
+                  <i class="fa-brands fa-instagram bg-dark text-warning rounded p-2"></i>
+                </a>
+              </div>
+              <div class="col-2">
+                <a href="{{ profile.linkedin_link }}" class="text-dark">
+                  <i class="fa-brands fa-linkedin bg-dark text-warning rounded p-2"></i>
+                </a>
+              </div>
+              <div class="col-2">
+                <a href="{{ profile.youtube_link }}" class="text-dark">
+                  <i class="fa-brands fa-youtube bg-dark text-warning rounded p-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <p class="card-text m-0"><small class="text-muted">Joined: {{ profile.created_on|date:"F d, Y" }} || {{ profile.user_duration_created }} days ago</small></p>
+          <p class="card-text m-0 pb-2"><small class="text-muted">Updated: {{ profile.updated_on|date:"F d, Y" }} || {{ profile.user_duration_updated }} days ago</small></p>
         </div>
       </div>
     </div>
-    <div class="col-md-8">
-      <h1>{{ user.username }}'s Profile</h1>
-      <ul class="list-group mt-4">
-        <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
-        <li class="list-group-item"><strong>First Name:</strong> {{ user.first_name }}</li>
-        <li class="list-group-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
-        <li class="list-group-item"><strong>Location:</strong> {{ user.profile.location }}</li>
-        <!-- Add any other profile information you want to display here -->
+  <hr>
+  <!-- GENERAL INFORMATION -->
+  <div class="row">
+    <div class="col-10 col-md-8 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1">General Information</h4>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-12 col-sm-10 offset-sm-1 mt-1 mb-4 pb-3">
+      <ul class="list-group mt-4 border border-1 border-dark">
+        <li class="list-group-item bg-light"><strong>USERNAME:</strong> {{ user.username }}</li>
+        <li class="list-group-item bg-light"><strong>USER EMAIL:</strong> {{ user.email }}</li>
+        <li class="list-group-item bg-light"><strong>PUBLIC EMAIL:</strong> {{ profile.public_email }}</li>
+        <li class="list-group-item bg-light"><strong>FIRST NAME:</strong> {{ profile.first_name }}</li>
+        <li class="list-group-item bg-light"><strong>LAST NAME:</strong> {{ profile.last_name }}</li>
+        <li class="list-group-item bg-light"><strong>LOCATION:</strong> {{ profile.location }}</li>
+        <li class="list-group-item bg-light"><strong>GENDER:</strong> {{ profile.gender }}</li>
+        <li class="list-group-item bg-light"><strong>BIRTHDATE:</strong> {{ profile.date_of_birth }}</li>
+        <li class="list-group-item bg-light"><strong>AGE:</strong> {{ profile.age }} years old</li>
+        <li class="list-group-item bg-light"><strong>HEIGHT:</strong> {{ profile.height_cm }} cm</li>
+        <li class="list-group-item bg-light"><strong>WEIGHT:</strong> {{ profile.weight_kg }} kg</li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <!-- CURRENT EMPLOYMENT -->
+  <div class="row">
+    <div class="col-10 col-md-8 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1">Current Employment</h4>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
+      <ul class="list-group mt-4 border border-1 border-dark">
+        <li class="list-group-item bg-light"><strong>INDUSTRY:</strong> {{ profile.industry }}</li>
+        <li class="list-group-item bg-light"><strong>COMPANY:</strong> {{ profile.company }}</li>
+        <li class="list-group-item bg-light"><strong>DEPARTMENT:</strong> {{ profile.department }}</li>
+        <li class="list-group-item bg-light"><strong>OCCUPATION:</strong> {{ profile.occupation }}</li>
+        <li class="list-group-item bg-light"><strong>START DATE:</strong> {{ profile.start_date }}</li>
+        <li class="list-group-item bg-light"><strong>SERVICE DURATION:</strong> Total days: {{ profile.employed_days }} || Total months: {{ profile.employed_months }} || Total years: {{ profile.employed_years }}</li>
+        <li class="list-group-item bg-light"><strong>HOURS PER WEEK:</strong> {{ profile.hours_per_week }}</li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <!-- PREVIOUS EMPLOYMENT -->
+  <div class="row">
+    <div class="col-10 col-md-8 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1">Previous Employment</h4>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
+      <ul class="list-group mt-4 border border-1 border-dark">
+        <li class="list-group-item bg-light"><strong>CV:</strong> {{ profile.cv }}</li>
+        <li class="list-group-item bg-light"><strong>EDUCATION:</strong> {{ profile.education }}</li>
+        <li class="list-group-item bg-light text-break"><strong>WORK HISTORY:</strong> {{ profile.work_history }}</li>
+        <li class="list-group-item bg-light"><strong>PROJECTS PORTFOLIO:</strong> {{ profile.projects_portfolio }}</li>
+        <li class="list-group-item bg-light"><strong>REFERENCES:</strong> {{ profile.references }}</li>
+        <li class="list-group-item bg-light"><strong>RECOMMENDATIONS:</strong> {{ profile.recommendations }}</li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <!-- ACHIEVEMENTS -->
+  <div class="row">
+    <div class="col-10 col-md-8 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1">Achievements</h4>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
+      <ul class="list-group mt-4 border border-1 border-dark">
+        <li class="list-group-item bg-light"><strong>COMPLETED PROJECTS:</strong> {{ profile.projects_completed }}</li>
+        <li class="list-group-item bg-light"><strong>COMPLETED GOALS:</strong> {{ profile.goals_completed }}</li>
+        <li class="list-group-item bg-light"><strong>COMPLETED MISSIONS:</strong> {{ profile.missions_completed }}</li>
+        <li class="list-group-item bg-light"><strong>COMPLETED MILESTONES:</strong> {{ profile.milestones_completed }}</li>
+        <li class="list-group-item bg-light"><strong>COMPLETED TASKS:</strong> {{ profile.tasks_completed }}</li>
+        <li class="list-group-item bg-light"><strong>CONTRIBUTION:</strong> {{ profile.contribution }}</li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <!-- ATTRIBUTES -->
+  <div class="row">
+    <div class="col-10 col-md-8 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1">Attributes</h4>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
+      <ul class="list-group mt-4 border border-1 border-dark">
+        <li class="list-group-item bg-light"><strong>KNOWLEDGE:</strong> {{ profile.knowledge }}</li>
+        <li class="list-group-item bg-light"><strong>LANGUAGES:</strong> {{ profile.languages }}</li>
+        <li class="list-group-item bg-light"><strong>SKILLS:</strong> {{ profile.skills }}</li>
+        <li class="list-group-item bg-light"><strong>STRENGTHS:</strong> {{ profile.strengths }}</li>
+        <li class="list-group-item bg-light"><strong>WEAKNESSES:</strong> {{ profile.weaknesses }}</li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <!-- BUSINESS FOCUS -->
+  <div class="row">
+    <div class="col-10 col-md-8 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1">Business Focus</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">INNOVATION</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuenow="{{ profile.focus_innovation }}" aria-valuemin="0" aria-valuemax="100" style="{{profile.focus_innovation_style }}"><strong>{{ profile.focus_innovation }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">FINANCIALS</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{ profile.focus_financials }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_financials_style }}"><strong>{{ profile.focus_financials }} %</strong></div>
+      </div>
+      <hr class="mb-4">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">PLANNING</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuenow="{{ profile.focus_planning }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_planning_style }}"><strong>{{ profile.focus_planning }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">MONITORING</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{ profile.focus_monitoring }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_monitoring_style }}"><strong>{{ profile.focus_monitoring }} %</strong></div>
+      </div>
+      <hr class="mb-4">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">QUALITY</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuenow="{{ profile.focus_quality }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_quality_style }}"><strong>{{ profile.focus_quality }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">QUANTITY</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{ profile.focus_quantity }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_quantity_style }}"><strong>{{ profile.focus_quantity }} %</strong></div>
+      </div>
+      <hr class="mb-4">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">COLLABORATION</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuenow="{{ profile.focus_collaboration }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_collaboration_style }}"><strong>{{ profile.focus_collaboration }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">LEADERSHIP</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{ profile.focus_leadership }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_leadership_style }}"><strong>{{ profile.focus_leadership }} %</strong></div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- BUSINESS SPECIALTY -->
+  <div class="row">
+    <div class="col-10 col-md-8 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1">Business Specialty</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">OPERATIONS & MANAGEMENT</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark text-white" role="progressbar" aria-valuenow="{{ profile.special_ops }}" aria-valuemin="0" aria-valuemax="100" style="{{profile.special_ops_style }}"><strong>{{ profile.special_ops }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">FINANCE & ACCOUNTING</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{ profile.special_finance }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_finance_style }}"><strong>{{ profile.special_finance }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">MARKETING & SALES</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning text-dark" role="progressbar" aria-valuenow="{{ profile.special_marketing }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_marketing_style }}"><strong>{{ profile.special_marketing }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">SUPPLY CHAIN</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="{{ profile.special_supply_chain }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_supply_chain_style }}"><strong>{{ profile.special_supply_chain }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">HR</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuenow="{{ profile.special_hr }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_hr_style }}"><strong>{{ profile.special_hr }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">TECHNOLOGY & DATA</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuenow="{{ profile.special_tech }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_tech_style }}"><strong>{{ profile.special_tech }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">SUSTAINABILITY & CSR</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated text-dark" id="sustainability_user" role="progressbar" aria-valuenow="{{ profile.special_sustainability }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_sustainability_style }}"><strong>{{ profile.special_sustainability }} %</strong></div>
+      </div>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">RESEARCH & DEVELOPMENT</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="{{ profile.special_research }}" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_research_style }}"><strong>{{ profile.special_research }} %</strong></div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- ACCOMPLISHMENTS -->
+  <div class="row">
+    <div class="col-10 col-md-8 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1">Accomplishments</h4>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
+      <ul class="list-group mt-4 border border-1 border-dark">
+        <li class="list-group-item bg-light"><strong>CERTIFICATES:</strong> {{ profile.certificates }}</li>
+        <li class="list-group-item bg-light"><strong>HONORS:</strong> {{ profile.honors }}</li>
+        <li class="list-group-item bg-light"><strong>ARTICLES:</strong> {{ profile.articles }}</li>
+        <li class="list-group-item bg-light"><strong>RESULTS:</strong> {{ profile.results }}</li>
+        <li class="list-group-item bg-light"><strong>AWARDS:</strong> {{ profile.awards }}</li>
+        <li class="list-group-item bg-light"><strong>RECOGNITION:</strong> {{ profile.recognition }}</li>
+        <li class="list-group-item bg-light"><strong>BIGGER FISH HIGH-SCORE:</strong> {{ profile.bigger_fish_results }}</li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <!-- REWARDS -->
+  <div class="row">
+    <div class="col-10 col-md-8 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1">Rewards</h4>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
+      <ul class="list-group mt-4 border border-1 border-dark">
+        <li class="list-group-item bg-light"><strong>BUSINESS REWARDS:</strong> {{ profile.business_rewards }}</li>
+        <li class="list-group-item bg-light"><strong>INNOVATION LAND REWARDS:</strong> {{ profile.innovation_land_rewards }}</li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <!-- PERSONAL WALL -->
+  <div class="row">
+    <div class="col-10 col-md-8 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1">Personal Wall</h4>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-12 col-sm-10 offset-sm-1 mb-5 pb-3">
+      <ul class="list-group mt-4 border border-1 border-dark">
+        <li class="list-group-item bg-light"><strong>SUMMARY:</strong> {{ profile.summary }}</li>
+        <li class="list-group-item bg-light"><strong>BIO:</strong> {{ profile.bio }}</li>
+        <li class="list-group-item bg-light"><strong>GOALS:</strong> {{ profile.goals }}</li>
+        <li class="list-group-item bg-light"><strong>STORY:</strong> {{ profile.story }}</li>
+        <li class="list-group-item bg-light"><strong>JOURNEY:</strong> {{ profile.journey }}</li>
+        <li class="list-group-item bg-light"><strong>FUTURE:</strong> {{ profile.future }}</li>
+        <li class="list-group-item bg-light"><strong>LEGACY:</strong> {{ profile.legacy }}</li>
+        <li class="list-group-item bg-light"><strong>CHANGE:</strong> {{ profile.change }}</li>
+        <li class="list-group-item bg-light"><strong>IDEAL LIFE:</strong> {{ profile.ideal_life }}</li>
+        <li class="list-group-item bg-light"><strong>MOTIVATIONS:</strong> {{ profile.motivation_wall }}</li>
+        <li class="list-group-item bg-light"><strong>INTEREST AND HOBBIES:</strong> {{ profile.interests_hobbies_wall }}</li>
+        <li class="list-group-item bg-light"><strong>DAILY ROUTINE:</strong> {{ profile.daily_routine }}</li>
       </ul>
     </div>
   </div>

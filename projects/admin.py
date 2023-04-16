@@ -22,10 +22,10 @@ admin.site.register(User, CustomUserAdmin)
 @admin.register(Profile)
 class ProfileAdmin(SummernoteModelAdmin):
 
-    list_display = ('first_name', 'last_name', 'username', 'email', 'location', 'company', 'occupation')
-    search_fields = ['first_name', 'last_name', 'username', 'email', 'location', 'company', 'occupation']
+    list_display = ('first_name', 'last_name', 'username', 'public_email', 'location', 'company', 'occupation')
+    search_fields = ['first_name', 'last_name', 'username', 'public_email', 'location', 'company', 'occupation']
     prepopulated_fields = {'slug': ('username',)}
-    list_filter = ('first_name', 'last_name', 'username', 'email', 'location', 'company', 'occupation')
+    list_filter = ('first_name', 'last_name', 'username', 'public_email', 'location', 'company', 'occupation')
     summernote_fields = ('bio')
 
 

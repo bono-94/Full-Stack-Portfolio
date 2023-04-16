@@ -14,6 +14,20 @@ class ProfileForm(forms.ModelForm):
             'company',
             'occupation',
             'bio',
+            'public_email',
+            'website_link',
+            'date_of_birth',
+            'work_history',
+            'start_date',
+            'projects_completed',
+            'focus_innovation',
+            'focus_financials',
+            'focus_planning',
+            'focus_monitoring',
+            'focus_quality',
+            'focus_quantity',
+            'focus_collaboration',
+            'focus_leadership',
         ]
         widgets = {
             'profile_color': forms.TextInput(attrs={'type': 'color'}), # specify the input type as 'color'

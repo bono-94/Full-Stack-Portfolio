@@ -186,7 +186,7 @@ def user_profile(request):
 
     context = {
         'form': form,
-        'profile': profile
+        'profile': profile,
     }
 
     return render(request, 'profile/user_profile_view.html', context)

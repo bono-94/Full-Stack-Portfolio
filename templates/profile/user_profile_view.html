@@ -51,7 +51,7 @@
       <img
         src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'images/21104.png' %}{% endif %}"
         alt="Profile Picture" class="card-img-top rounded-circle">
-        <p class="card-text mt-4"><strong>WISDOM: </strong>{% if profile.profile_quote %}{{ profile.profile_quote }}{% else %}(blank){% endif %}</p>
+        <p class="card-text mt-4 text-break"><strong>WISDOM: </strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
     </div>
     <div class="col-md-8">
       <div class="card"></div>
@@ -59,9 +59,9 @@
           <h4 class="card-title mb-4 mt-2 text-center">{{ user.username }}</h4>
           <p class="card-text"><strong>STATUS: </strong>{% if user.is_authenticated %}Online{% else %}{{ profile.status }}{% endif %}</p>
           <hr>
-          <p class="card-text"><strong>ACTIVE DAYS: </strong>{% if profile.active_days %}{{ profile.active_days }}{% else %}(blank){% endif %}</p>
+          <p class="card-text text-break"><strong>ACTIVE DAYS: </strong>{% if profile.active_days %}{{ profile.active_days }}{% else %}(blank){% endif %}</p>
           <hr>
-          <p class="card-text"><strong>ACTIVE HOURS: </strong>{% if profile.active_hours %}{{ profile.active_hours }}{% else %}(blank){% endif %}</p>
+          <p class="card-text text-break"><strong>ACTIVE HOURS: </strong>{% if profile.active_hours %}{{ profile.active_hours }}{% else %}(blank){% endif %}</p>
           <hr>
           <p class="card-text"><strong>VERIFIED: </strong>{% if profile.verified == TRUE %}<i class="fa-solid fa-circle-check"></i> Verified{% else %}Not verified {% endif %}</p>
           <hr>
@@ -126,7 +126,7 @@
         <li class="list-group-item bg-light"><strong>FIRST NAME:</strong> {% if profile.first_name %}{{ profile.first_name }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong>LAST NAME:</strong> {% if profile.last_name %}{{ profile.last_name }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong>LOCATION:</strong> {% if profile.location %}{{ profile.location }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>LANGUAGES:</strong> {% if profile.languages %}{{ profile.languages }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>LANGUAGES:</strong> {% if profile.languages %}{{ profile.languages }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong>GENDER:</strong> {% if profile.gender %}{{ profile.gender }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong>BIRTHDATE:</strong> {% if profile.date_of_birth %}{{ profile.date_of_birth }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong>AGE:</strong> {% if profile.age %}{{ profile.age }} years old{% else %}(blank){% endif %}</li>
@@ -146,10 +146,10 @@
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
         <li class="list-group-item bg-light"><strong>INDUSTRY:</strong> {% if profile.industry %}{{ profile.industry }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>COMPANY:</strong> {% if profile.company %}{{ profile.company }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>COMPANY:</strong> {% if profile.company %}{{ profile.company }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong>DEPARTMENT:</strong> {% if profile.department %}{{ profile.department }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>OCCUPATION:</strong> {% if profile.occupation %}{{ profile.occupation }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>START DATE:</strong> {% if profile.start_date %}{{ profile.start_date }} - [Days: {{ profile.employed_days }} || Months: {{ profile.employed_months }} || Years: {{ profile.employed_years }}]{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>OCCUPATION:</strong> {% if profile.occupation %}{{ profile.occupation }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>START DATE:</strong> {% if profile.start_date %}{{ profile.start_date }} - [Days: {{ profile.employed_days }} || Months: {{ profile.employed_months }} || Years: {{ profile.employed_years }}]{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong>HOURS PER WEEK:</strong> {% if profile.hours_per_week %}{{ profile.hours_per_week }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
@@ -165,11 +165,11 @@
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
         <li class="list-group-item bg-light"><strong>CV:</strong> {% if profile.cv %}{{ profile.cv }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>EDUCATION:</strong> {% if profile.education %}{{ profile.education }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>EDUCATION:</strong> {% if profile.education %}{{ profile.education }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong>WORK HISTORY:</strong> {% if profile.work_history %}{{ profile.work_history }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong>PROJECTS PORTFOLIO:</strong> {% if profile.projects_portfolio %}{{ profile.projects_portfolio }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>REFERENCES:</strong> {% if profile.references %}{{ profile.references }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>RECOMMENDATIONS:</strong> {% if profile.recommendations %}{{ profile.recommendations }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>REFERENCES:</strong> {% if profile.references %}{{ profile.references }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>RECOMMENDATIONS:</strong> {% if profile.recommendations %}{{ profile.recommendations }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -183,12 +183,12 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>COMPLETED PROJECTS:</strong> {% if profile.projects_completed %}{{ profile.projects_completed }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>COMPLETED GOALS:</strong> {% if profile.goals_completed %}{{ profile.goals_completed }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>COMPLETED MISSIONS:</strong> {% if profile.missions_completed %}{{ profile.missions_completed }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>COMPLETED MILESTONES:</strong> {% if profile.milestones_completed %}{{ profile.milestones_completed }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>COMPLETED TASKS:</strong> {% if profile.tasks_completed %}{{ profile.tasks_completed }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>CONTRIBUTION:</strong> {% if profile.contribution %}{{ profile.contribution }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>COMPLETED PROJECTS:</strong> {% if profile.projects_completed %}{{ profile.projects_completed }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>COMPLETED GOALS:</strong> {% if profile.goals_completed %}{{ profile.goals_completed }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>COMPLETED MISSIONS:</strong> {% if profile.missions_completed %}{{ profile.missions_completed }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>COMPLETED MILESTONES:</strong> {% if profile.milestones_completed %}{{ profile.milestones_completed }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>COMPLETED TASKS:</strong> {% if profile.tasks_completed %}{{ profile.tasks_completed }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>CONTRIBUTION:</strong> {% if profile.contribution %}{{ profile.contribution }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -202,10 +202,10 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>KNOWLEDGE:</strong> {% if profile.knowledge %}{{ profile.knowledge }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>SKILLS:</strong> {% if profile.skills %}{{ profile.skills }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>STRENGTHS:</strong> {% if profile.strengths %}{{ profile.strengths }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>WEAKNESSES:</strong> {% if profile.weaknesses %}{{ profile.weaknesses }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>KNOWLEDGE:</strong> {% if profile.knowledge %}{{ profile.knowledge }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>SKILLS:</strong> {% if profile.skills %}{{ profile.skills }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>STRENGTHS:</strong> {% if profile.strengths %}{{ profile.strengths }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>WEAKNESSES:</strong> {% if profile.weaknesses %}{{ profile.weaknesses }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -264,7 +264,7 @@
   </div>
   <div class="row">
     <div class="col-10 offset-1">
-      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">OPERATIONS & MANAGEMENT</h6>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">OPERATIONS</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark text-white" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{profile.special_ops_style }}"><strong class="p-1">{% if profile.special_ops %}{{ profile.special_ops }} %{% else %}0 %{% endif %}</strong></div>
       </div>
@@ -292,7 +292,7 @@
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated text-dark" id="sustainability_user" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_sustainability_style }}"><strong class="p-1">{% if profile.special_sustainability %}{{ profile.special_sustainability }} %{% else %}0 %{% endif %}</strong></div>
       </div>
-      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">RESEARCH & DEVELOPMENT</h6>
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">RESEARCH</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_research_style }}"><strong class="p-1">{% if profile.special_research %}{{ profile.special_research }} %{% else %}0 %{% endif %}</strong></div>
       </div>
@@ -308,11 +308,11 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>RESULTS:</strong> {% if profile.results %}{{ profile.results }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>CERTIFICATES:</strong> {% if profile.certificates %}{{ profile.certificates }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>HONORS:</strong> {% if profile.honors %}{{ profile.honors }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>ARTICLES:</strong> {% if profile.articles %}{{ profile.articles }}{% else %}(blank){% endif %}</li>        
-        <li class="list-group-item bg-light"><strong>RECOGNITION:</strong> {% if profile.recognition %}{{ profile.recognition }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>RESULTS:</strong> {% if profile.results %}{{ profile.results }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>CERTIFICATES:</strong> {% if profile.certificates %}{{ profile.certificates }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>HONORS:</strong> {% if profile.honors %}{{ profile.honors }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>ARTICLES:</strong> {% if profile.articles %}{{ profile.articles }}{% else %}(blank){% endif %}</li>        
+        <li class="list-group-item bg-light text-break"><strong>RECOGNITION:</strong> {% if profile.recognition %}{{ profile.recognition }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong>BIGGER FISH HIGH-SCORE:</strong> {% if profile.bigger_fish_results %}{{ profile.bigger_fish_results }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
@@ -327,9 +327,9 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>AWARDS:</strong> {% if profile.awards %}{{ profile.awards }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>BUSINESS REWARDS:</strong> {% if profile.business_rewards %}{{ profile.business_rewards }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>INNOVATION LAND REWARDS:</strong> {% if profile.innovation_land_rewards %}{{ profile.innovation_land_rewards }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>AWARDS:</strong> {% if profile.awards %}{{ profile.awards }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>BUSINESS REWARDS:</strong> {% if profile.business_rewards %}{{ profile.business_rewards }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>INNOVATION LAND REWARDS:</strong> {% if profile.innovation_land_rewards %}{{ profile.innovation_land_rewards }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>
@@ -343,17 +343,17 @@
   <div class="row">
     <div class="col-12 col-sm-10 offset-sm-1 mb-5 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark">
-        <li class="list-group-item bg-light"><strong>SUMMARY:</strong> {% if profile.summary %}{{ profile.summary }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>STORY:</strong> {% if profile.story %}{{ profile.story }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>JOURNEY:</strong> {% if profile.journey %}{{ profile.journey }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>FUTURE:</strong> {% if profile.future %}{{ profile.future }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>LEGACY:</strong> {% if profile.legacy %}{{ profile.legacy }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>CHANGE:</strong> {% if profile.change %}{{ profile.change }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>IDEAL LIFE:</strong> {% if profile.ideal_life %}{{ profile.ideal_life }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>GOALS:</strong> {% if profile.goals %}{{ profile.goals }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>MOTIVATIONS:</strong> {% if profile.motivation_wall %}{{ profile.motivation_wall }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>INTEREST AND HOBBIES:</strong> {% if profile.interests_hobbies_wall %}{{ profile.interests_hobbies_wall }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong>DAILY ROUTINE:</strong> {% if profile.daily_routine %}{{ profile.daily_routine }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>SUMMARY:</strong> {% if profile.summary %}{{ profile.summary }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>STORY:</strong> {% if profile.story %}{{ profile.story }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>JOURNEY:</strong> {% if profile.journey %}{{ profile.journey }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>FUTURE:</strong> {% if profile.future %}{{ profile.future }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>LEGACY:</strong> {% if profile.legacy %}{{ profile.legacy }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>CHANGE:</strong> {% if profile.change %}{{ profile.change }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>IDEAL LIFE:</strong> {% if profile.ideal_life %}{{ profile.ideal_life }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>GOALS:</strong> {% if profile.goals %}{{ profile.goals }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>MOTIVATIONS:</strong> {% if profile.motivation_wall %}{{ profile.motivation_wall }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>INTEREST AND HOBBIES:</strong> {% if profile.interests_hobbies_wall %}{{ profile.interests_hobbies_wall }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong>DAILY ROUTINE:</strong> {% if profile.daily_routine %}{{ profile.daily_routine }}{% else %}(blank){% endif %}</li>
       </ul>
     </div>
   </div>

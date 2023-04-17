@@ -19,6 +19,8 @@ class ProfileForm(forms.ModelForm):
             'instagram_link',
             'linkedin_link',
             'youtube_link',
+            # USER VIDEO
+            'user_video',
             # GENERAL INFORMATION
             'public_email',
             'first_name',
@@ -74,7 +76,7 @@ class ProfileForm(forms.ModelForm):
             'special_sustainability',
             'special_research',
             # ACCOMPLISHMENTS
-            'results',       
+            'results', 
             'certificates',
             'honors',
             'articles',

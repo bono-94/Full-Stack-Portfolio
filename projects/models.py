@@ -7,6 +7,9 @@ from django.utils import timezone
 from django.core.validators import MaxValueValidator
 from datetime import date, datetime
 from django.core.validators import FileExtensionValidator
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
+from cloudinary_storage.storage import VideoMediaCloudinaryStorage
+from cloudinary_storage.validators import validate_video
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -99,6 +102,15 @@ class Profile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_on = models.DateTimeField(auto_now=True, blank=True, null=True)
 
+    # USER VIDEO
+    user_video = models.FileField(
+        upload_to='user-videos/',
+        blank=True,
+        null=True,
+        storage=VideoMediaCloudinaryStorage(),
+        validators=[validate_video]
+    )
+
     # GENERAL INFORMATION
     username = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
     public_email = models.EmailField(max_length=42, unique=True, blank=True, null=True)
@@ -120,7 +132,13 @@ class Profile(models.Model):
     hours_per_week = models.PositiveIntegerField(null=True, blank=True)
 
     # PREVIOUS EMPLOYMENT
-    cv = models.FileField(upload_to='cv/', blank=True, null=True, max_length=84, validators=[FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip'])])
+    cv = models.FileField(
+        upload_to='cv/',
+        blank=True,
+        null=True,
+        validators=[FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip'])],
+        storage=RawMediaCloudinaryStorage(),
+        )
     education = models.CharField(max_length=210, blank=False, null=True)
     work_history = models.TextField(max_length=2100, blank=False, null=True)
     projects_portfolio = models.URLField(
@@ -173,7 +191,7 @@ class Profile(models.Model):
     honors = models.TextField(max_length=210, blank=False, null=True)
     articles = models.TextField(max_length=210, blank=False, null=True)
     recognition = models.TextField(max_length=210, blank=False, null=True)
-    bigger_fish_results = models.FileField(upload_to='bigger_fish_results/', blank=True, null=True, max_length=84)
+    bigger_fish_results = models.ImageField(upload_to='bigger_fish_results/', blank=True, null=True, max_length=84)
 
     # REWARDS
     awards = models.TextField(max_length=210, blank=False, null=True)
@@ -188,10 +206,25 @@ class Profile(models.Model):
     legacy = models.TextField(max_length=210, blank=False, null=True)
     change = models.TextField(max_length=210, blank=False, null=True)
     ideal_life = models.TextField(max_length=2100, blank=False, null=True)
-    goals = models.TextField(max_length=210, blank=False, null=True)    
+    goals = models.TextField(max_length=210, blank=False, null=True)
     motivation_wall = models.TextField(max_length=2100, blank=False, null=True)
     interests_hobbies_wall = models.TextField(max_length=2100, blank=False, null=True)
-    daily_routine = models.FileField(upload_to='daily_routine/', blank=True, null=True, max_length=84)
+    daily_routine = models.FileField(
+        upload_to='daily_routine/',
+        blank=True,
+        null=True,
+        max_length=84,
+        storage=RawMediaCloudinaryStorage(),
+        validators=[FileExtensionValidator(
+            allowed_extensions=[
+                'xlsx',
+                'xls',
+                'xlsm',
+                'xlsb',
+                'csv',
+                'parquet'
+            ])],
+    )
 
     # NAMING & SAVING
     def __str__(self):
@@ -307,6 +340,7 @@ class Profile(models.Model):
     @property
     def special_research_style(self):
         return f"width: {self.special_research}%"
+
 
 # AUTOMATIC PROFILE CREATOR FROM USER MODEL
 @receiver(post_save, sender=User)

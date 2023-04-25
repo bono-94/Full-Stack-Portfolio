@@ -8,6 +8,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = [
             # PROFILE CARD
+            'profile_card_privacy',
             'privacy',
             'profile_color',
             'profile_image',
@@ -21,8 +22,10 @@ class ProfileForm(forms.ModelForm):
             'linkedin_link',
             'youtube_link',
             # USER VIDEO
+            'user_video_privacy',
             'user_video',
             # GENERAL INFORMATION
+            'general_info_privacy',
             'public_email',
             'first_name',
             'last_name',
@@ -33,6 +36,7 @@ class ProfileForm(forms.ModelForm):
             'height_cm',
             'weight_kg',
             # CURRENT EMPLOYMENT
+            'current_employment_privacy',
             'industry',
             'company',
             'department',
@@ -40,6 +44,7 @@ class ProfileForm(forms.ModelForm):
             'start_date',
             'hours_per_week',
             # PREVIOUS EMPLOYMENT
+            'history_employment_privacy',
             'cv',
             'education',
             'work_history',
@@ -47,6 +52,7 @@ class ProfileForm(forms.ModelForm):
             'references',
             'recommendations',
             # ACHIEVEMENTS
+            'achievements_privacy',
             'projects_completed',
             'goals_completed',
             'missions_completed',
@@ -54,11 +60,13 @@ class ProfileForm(forms.ModelForm):
             'tasks_completed',
             'contribution',
             # ATTRIBUTES
+            'attributes_privacy',
             'knowledge',
             'skills',
             'strengths',
             'weaknesses',
             # BUSINESS FOCUS
+            'focus_privacy',
             'focus_innovation',
             'focus_financials',
             'focus_planning',
@@ -68,6 +76,7 @@ class ProfileForm(forms.ModelForm):
             'focus_collaboration',
             'focus_leadership',
             # BUSINESS SPECIALTY
+            'specialty_privacy',
             'special_ops',
             'special_finance',
             'special_marketing',
@@ -77,6 +86,7 @@ class ProfileForm(forms.ModelForm):
             'special_sustainability',
             'special_research',
             # ACCOMPLISHMENTS
+            'accomplishments_privacy',
             'results',
             'certificates',
             'honors',
@@ -84,10 +94,12 @@ class ProfileForm(forms.ModelForm):
             'recognition',
             'bigger_fish_results',
             # REWARDS
+            'rewards_privacy',
             'awards',
             'business_rewards',
             'innovation_land_rewards',
             # PERSONAL WALL
+            'user_wall_privacy',
             'summary',
             'story',
             'journey',

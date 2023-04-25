@@ -19,22 +19,20 @@ TODAY: {{ first_day }}
 
 <h1>Total User Profiles: {{ total_profiles }}</h1>
 
+
 <h2>List of industries:</h2>
+
+
 <ul>
-  {% for user in users %}
-    <li>{{ user.username }}</li>
+  {% for industry in industry_values %}
+    <li>{{ industry }}</li>
   {% endfor %}
 </ul>
 
-frame:
+<h2>Total {{ total_industries }} industries</h2>
+
 
 <p>a</p>
-<ul>
-  <li>{{ df }}</li>
-  {% for user in unique_users %}
-    <li>{{ user }}</li>
-  {% endfor %}
-</ul>
 
 <h1>Innovation Land is HERE!</h1>
 

@@ -269,24 +269,6 @@ class CustomSignupForm(SignupForm):
 
 #     print(create_or_update_user_profile)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # @login_required
 # def project_update(request, slug):
 #     post = get_object_or_404(Post, slug=slug)
@@ -501,3 +483,19 @@ class CustomSignupForm(SignupForm):
 #     # Pass the data to the template context
 #     context = {'unique_users': unique_users, 'df': df}
 #     return render(request, 'index.html', context)
+
+# 2 problems in 1 problem:
+# Not able to display database values such as totals of users or total of posts on the index page, 
+# cannot even display a list of only usernames from all values in Profile model or User all auth model. 
+# No matter what we tried, we just couldnt get it to work. I have also tried different new ways which you can find on top of the file views.py
+
+# Seeing dataframe of postgresql and maybe even retrieve values as pandas dataframe?
+# 12:16 pm
+# so second part of the question, or another question or as solution to problem above:
+# how can I render and is it even possible to render entire dataframe from postgresql linked to this project? 
+# For example if there could be another admin page that reports entire dataframe of entire database. 
+# If not, is is possible at least import this dataframe as pandas in my python code so I can filter only unique values with python code and then render them to my templates?
+
+# So this is all the information in detail and I would like to know if both scenarios are actually possible to render total amount of unique users and potentially
+#  all their names inside of a table on hmtl templates and if it is indeed possible to import or capture dataframe from postgreSQL because I know how to manipulate
+#  dataframe data

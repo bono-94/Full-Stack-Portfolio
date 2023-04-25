@@ -104,6 +104,33 @@ class ProfileForm(forms.ModelForm):
             'profile_color': forms.TextInput(attrs={'type': 'color'}),
         }
 
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     focus_fields = [
+    #         'focus_innovation',
+    #         'focus_financials',
+    #         'focus_planning',
+    #         'focus_monitoring',
+    #         'focus_quality',
+    #         'focus_quantity',
+    #         'focus_collaboration',
+    #         'focus_leadership',
+    #     ]
+    #     specialty_fields = [
+    #         'special_ops',
+    #         'special_finance',
+    #         'special_marketing',
+    #         'special_supply_chain',
+    #         'special_hr',
+    #         'special_tech',
+    #         'special_sustainability',
+    #         'special_research',
+    #     ]
+    #     for field in specialty_fields:
+    #         value = cleaned_data.get(field, 0)
+    #         if value < 0 or value > 100:
+    #             self.add_error(field, 'Value must be between 0 and 100.')
+
 
 class PostForm(forms.ModelForm):
     class Meta:

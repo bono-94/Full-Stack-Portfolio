@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 from django.utils import timezone
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import date, datetime
 from django.core.validators import FileExtensionValidator
 from cloudinary_storage.storage import RawMediaCloudinaryStorage
@@ -120,8 +120,8 @@ class Profile(models.Model):
     languages = models.TextField(max_length=84, blank=True, null=True)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
-    height_cm = models.IntegerField(validators=[MaxValueValidator(300)], null=True, blank=True)
-    weight_kg = models.IntegerField(validators=[MaxValueValidator(500)], null=True, blank=True)
+    height_cm = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(300)], null=True, blank=True)
+    weight_kg = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)], null=True, blank=True)
 
     # CURRENT EMPLOYMENT
     industry = models.CharField(max_length=21, blank=True, null=True)
@@ -166,24 +166,24 @@ class Profile(models.Model):
     weaknesses = models.TextField(max_length=210, blank=True, null=True)
 
     # BUSINESS FOCUS
-    focus_innovation = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    focus_financials = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    focus_planning = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    focus_monitoring = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    focus_quality = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    focus_quantity = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    focus_collaboration = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    focus_leadership = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
+    focus_innovation = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_financials = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_planning = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_monitoring = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_quality = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_quantity = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_collaboration = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_leadership = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
 
     # BUSINESS SPECIALTY
-    special_ops = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    special_finance = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    special_marketing = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    special_supply_chain = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    special_hr = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    special_tech = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    special_sustainability = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
-    special_research = models.IntegerField(validators=[MaxValueValidator(100)], null=True, blank=True)
+    special_ops = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_finance = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_marketing = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_supply_chain = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_hr = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_tech = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_sustainability = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_research = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
 
     # ACCOMPLISHMENTS
     results = models.TextField(max_length=210, blank=True, null=True)

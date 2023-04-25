@@ -76,7 +76,7 @@ class ProfileForm(forms.ModelForm):
             'special_sustainability',
             'special_research',
             # ACCOMPLISHMENTS
-            'results', 
+            'results',
             'certificates',
             'honors',
             'articles',

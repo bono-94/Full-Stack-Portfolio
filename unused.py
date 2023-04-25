@@ -431,3 +431,73 @@ class CustomSignupForm(SignupForm):
     # path('delete/<slug:slug>/', post_delete, name='post_delete'),
     # path('', post_list, name='post_list'),
     # path('<slug:slug>/', post_detail, name='post_detail'),
+
+
+    # Views.py explanation of context
+    # The key will be what you are going to call the variable in your template
+    # The value then points to the Python variable that you plan to send to the template
+
+
+    # def compute_value():
+    # # Compute the value here
+    # value = 42
+    # return value
+# def index(request):
+#     # Call the compute_value function to get the computed value
+#     value = compute_value()
+#     # Render the value in the HTML template
+#     return render(request, 'index.html', {'value': value})
+
+# def usernames(request):
+#     usernames = User.objects.values_list('username', flat=True)
+#     # Pass the usernames value to the context dictionary and render the usernames page
+#     context = {'usernames': usernames}
+#     return render(request, 'index.html', context)
+
+
+# def dataframe(request):
+#     # Retrieve data from the database
+#     data = Profile().objects.all().values()
+
+#     # Convert the data to a pandas dataframe
+#     df = pd.DataFrame.from_records(data)
+
+#     # Pass the dataframe to the context dictionary and render the dataframe page
+#     context = {'df': df.to_html()}
+#     print(f"df:{df}")
+#     return render(request, 'index.html', context)
+
+
+# def retrieve_dataframe(request):
+#     # Connect to PostgreSQL database
+#     conn = psycopg2.connect(
+#         dbname='plsyeoge',
+#         user='plsyeoge',
+#         password='BGx_Dg8TMl4mJPgCVqifThPT-bv7a7Si',
+#         host='mouse.db.elephantsql.com',
+#         port='5432'
+#     )
+
+#     # Create a cursor to interact with the database
+#     cursor = conn.cursor()
+
+#     # Execute a SQL query to retrieve data
+#     cursor.execute('SELECT * FROM projects_profile')
+
+#     # Fetch all rows of data
+#     rows = cursor.fetchall()
+
+#     # Close the cursor and connection
+#     cursor.close()
+#     conn.close()
+
+#     # Convert the data to a Pandas DataFrame
+#     df = pd.DataFrame(rows)
+
+#     # You can now manipulate the DataFrame as needed
+#     # For example, you can filter unique values
+#     unique_users = df['username'].unique()
+
+#     # Pass the data to the template context
+#     context = {'unique_users': unique_users, 'df': df}
+#     return render(request, 'index.html', context)

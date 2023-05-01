@@ -10,6 +10,7 @@ from django.core.validators import FileExtensionValidator
 from cloudinary_storage.storage import RawMediaCloudinaryStorage
 from cloudinary_storage.storage import VideoMediaCloudinaryStorage
 from cloudinary_storage.validators import validate_video
+from django.core.exceptions import ValidationError
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -29,6 +30,11 @@ class Profile(models.Model):
         ('Other', 'Other'),
     )
 
+    # MAXIMUM FILE NAME LENGTH
+    def validate_file_name_length(value):
+        if len(value.name) > 84:
+            raise ValidationError("Filename must be under 84 characters.")
+
     # PROFILE CARD
     profile_card_privacy = models.BooleanField(default=False)
     slug = models.SlugField(max_length=210, unique=True, null=True)
@@ -39,8 +45,8 @@ class Profile(models.Model):
         null=True,
         storage=VideoMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['mp3', 'wav', 'ogg']),
-        ],
+            validate_file_name_length
+        ]
     )
     profile_image = models.ImageField(
         upload_to='profile_images/',
@@ -120,6 +126,7 @@ class Profile(models.Model):
         storage=VideoMediaCloudinaryStorage(),
         validators=[
             validate_video,
+            validate_file_name_length
         ],
     )
 
@@ -154,6 +161,7 @@ class Profile(models.Model):
         storage=RawMediaCloudinaryStorage(),
         validators=[
             FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            validate_file_name_length
         ],
     )
     education = models.CharField(max_length=210, blank=True, null=True)
@@ -165,6 +173,7 @@ class Profile(models.Model):
         storage=RawMediaCloudinaryStorage(),
         validators=[
             FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            validate_file_name_length
         ],
     )
     references = models.TextField(max_length=210, blank=True, null=True)
@@ -221,6 +230,7 @@ class Profile(models.Model):
         null=True,
         validators=[
             FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+            validate_file_name_length
         ],
     )
 
@@ -257,6 +267,7 @@ class Profile(models.Model):
                 'csv',
                 'parquet'
             ]),
+            validate_file_name_length
         ],
     )
 

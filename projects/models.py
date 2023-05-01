@@ -6,7 +6,7 @@ from django.utils.text import slugify
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import date, datetime
-from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator, MaxFileSizeValidator, MinFileSizeValidator
 from cloudinary_storage.storage import RawMediaCloudinaryStorage
 from cloudinary_storage.storage import VideoMediaCloudinaryStorage
 from cloudinary_storage.validators import validate_video
@@ -110,7 +110,11 @@ class Profile(models.Model):
         blank=True,
         null=True,
         storage=VideoMediaCloudinaryStorage(),
-        validators=[validate_video]
+        validators=[
+            validate_video,
+            FileExtensionValidator(allowed_extensions=['mp4', 'avi', 'mov']),
+            MaxFileSizeValidator(100 * 1024 * 1024)
+        ],
     )
 
     # GENERAL INFORMATION
@@ -202,7 +206,15 @@ class Profile(models.Model):
     honors = models.TextField(max_length=210, blank=True, null=True)
     articles = models.TextField(max_length=210, blank=True, null=True)
     recognition = models.TextField(max_length=210, blank=True, null=True)
-    bigger_fish_results = models.ImageField(upload_to='bigger_fish_results/', blank=True, null=True, max_length=84)
+    bigger_fish_results = models.ImageField(
+        upload_to='bigger_fish_results/',
+        blank=True,
+        null=True,
+        validators=[
+            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+            MaxFileSizeValidator(10 * 1024 * 1024)
+        ],
+    )
 
     # REWARDS
     rewards_privacy = models.BooleanField(default=False)

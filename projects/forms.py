@@ -11,6 +11,7 @@ class ProfileForm(forms.ModelForm):
             'profile_card_privacy',
             'privacy',
             'profile_color',
+            'profile_audio',
             'profile_image',
             'profile_quote',
             'active_days',

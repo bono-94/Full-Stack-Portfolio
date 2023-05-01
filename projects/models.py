@@ -33,11 +33,19 @@ class Profile(models.Model):
     profile_card_privacy = models.BooleanField(default=False)
     slug = models.SlugField(max_length=210, unique=True, null=True)
     privacy = models.BooleanField(default=False)
+    profile_audio = models.FileField(
+        upload_to='profile_audio',
+        blank=True,
+        null=True,
+        validators=[
+            FileExtensionValidator(allowed_extensions=['mp3', 'wav', 'ogg']),
+            MaxFileSizeValidator(100 * 1024 * 1024)
+        ],
+    )
     profile_image = models.ImageField(
         upload_to='profile_images/',
         blank=True,
         null=True,
-        max_length=84
     )
     profile_color = models.CharField(
         max_length=7,
@@ -145,18 +153,23 @@ class Profile(models.Model):
         upload_to='cv/',
         blank=True,
         null=True,
-        validators=[FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip'])],
         storage=RawMediaCloudinaryStorage(),
-        )
+        validators=[
+            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            MaxFileSizeValidator(10 * 1024 * 1024)
+        ],
+    )
     education = models.CharField(max_length=210, blank=True, null=True)
     work_history = models.TextField(max_length=2100, blank=True, null=True)
     projects_portfolio = models.FileField(
-        max_length=210,
         upload_to='portfolios/',
         blank=True,
         null=True,
-        validators=[FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip'])],
         storage=RawMediaCloudinaryStorage(),
+        validators=[
+            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            MaxFileSizeValidator(10 * 1024 * 1024)
+        ],
     )
     references = models.TextField(max_length=210, blank=True, null=True)
     recommendations = models.TextField(max_length=210, blank=True, null=True)
@@ -240,15 +253,17 @@ class Profile(models.Model):
         null=True,
         max_length=84,
         storage=RawMediaCloudinaryStorage(),
-        validators=[FileExtensionValidator(
-            allowed_extensions=[
+        validators=[
+            FileExtensionValidator(allowed_extensions=[
                 'xlsx',
                 'xls',
                 'xlsm',
                 'xlsb',
                 'csv',
                 'parquet'
-            ])],
+            ]),
+            MaxFileSizeValidator(10 * 1024 * 1024)
+        ],
     )
 
     # NAMING & SAVING

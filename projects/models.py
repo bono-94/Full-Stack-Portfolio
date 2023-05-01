@@ -6,7 +6,7 @@ from django.utils.text import slugify
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import date, datetime
-from django.core.validators import FileExtensionValidator, MaxFileSizeValidator, MinFileSizeValidator
+from django.core.validators import FileExtensionValidator
 from cloudinary_storage.storage import RawMediaCloudinaryStorage
 from cloudinary_storage.storage import VideoMediaCloudinaryStorage
 from cloudinary_storage.validators import validate_video
@@ -39,7 +39,6 @@ class Profile(models.Model):
         null=True,
         validators=[
             FileExtensionValidator(allowed_extensions=['mp3', 'wav', 'ogg']),
-            MaxFileSizeValidator(100 * 1024 * 1024)
         ],
     )
     profile_image = models.ImageField(
@@ -121,7 +120,6 @@ class Profile(models.Model):
         validators=[
             validate_video,
             FileExtensionValidator(allowed_extensions=['mp4', 'avi', 'mov']),
-            MaxFileSizeValidator(100 * 1024 * 1024)
         ],
     )
 
@@ -156,7 +154,6 @@ class Profile(models.Model):
         storage=RawMediaCloudinaryStorage(),
         validators=[
             FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
-            MaxFileSizeValidator(10 * 1024 * 1024)
         ],
     )
     education = models.CharField(max_length=210, blank=True, null=True)
@@ -168,7 +165,6 @@ class Profile(models.Model):
         storage=RawMediaCloudinaryStorage(),
         validators=[
             FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
-            MaxFileSizeValidator(10 * 1024 * 1024)
         ],
     )
     references = models.TextField(max_length=210, blank=True, null=True)
@@ -225,7 +221,6 @@ class Profile(models.Model):
         null=True,
         validators=[
             FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
-            MaxFileSizeValidator(10 * 1024 * 1024)
         ],
     )
 
@@ -262,7 +257,6 @@ class Profile(models.Model):
                 'csv',
                 'parquet'
             ]),
-            MaxFileSizeValidator(10 * 1024 * 1024)
         ],
     )
 

@@ -34,9 +34,10 @@ class Profile(models.Model):
     slug = models.SlugField(max_length=210, unique=True, null=True)
     privacy = models.BooleanField(default=False)
     profile_audio = models.FileField(
-        upload_to='profile_audio',
+        upload_to='profile_audio/',
         blank=True,
         null=True,
+        storage=VideoMediaCloudinaryStorage(),
         validators=[
             FileExtensionValidator(allowed_extensions=['mp3', 'wav', 'ogg']),
         ],
@@ -119,7 +120,6 @@ class Profile(models.Model):
         storage=VideoMediaCloudinaryStorage(),
         validators=[
             validate_video,
-            FileExtensionValidator(allowed_extensions=['mp4', 'avi', 'mov']),
         ],
     )
 

@@ -146,12 +146,13 @@ class Profile(models.Model):
         )
     education = models.CharField(max_length=210, blank=True, null=True)
     work_history = models.TextField(max_length=2100, blank=True, null=True)
-    projects_portfolio = models.URLField(
+    projects_portfolio = models.FileField(
         max_length=210,
-        unique=True,
+        upload_to='portfolios/',
         blank=True,
         null=True,
-        verbose_name='Portfolio URL'
+        validators=[FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip'])],
+        storage=RawMediaCloudinaryStorage(),
     )
     references = models.TextField(max_length=210, blank=True, null=True)
     recommendations = models.TextField(max_length=210, blank=True, null=True)

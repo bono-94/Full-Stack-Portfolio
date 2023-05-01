@@ -455,9 +455,9 @@ class CustomSignupForm(SignupForm):
 #     conn = psycopg2.connect(
 #         dbname='plsyeoge',
 #         user='plsyeoge',
-#         password='BGx_Dg8TMl4mJPgCVqifThPT-bv7a7Si',
-#         host='mouse.db.elephantsql.com',
-#         port='5432'
+#         password='X,
+#         host='Y',
+#         port='Z'
 #     )
 
 #     # Create a cursor to interact with the database

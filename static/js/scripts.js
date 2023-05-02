@@ -69,5 +69,33 @@ function toggleNavbar() {
 
 // DROPDOWN NAVIGATION
 
+// Define the functions outside the addEventListener block
+function playAudio() {
+  const audioElement = document.getElementById('user-profile-audio');
+  audioElement.play();
+  const playButton = document.getElementById('play-user-profile');
+  const stopButton = document.getElementById('stop-user-profile');
+  playButton.style.display = 'none';
+  stopButton.style.display = 'inline';
+  audioElement.style.display = 'none';
+}
 
+function stopAudio() {
+  const audioElement = document.getElementById('user-profile-audio');
+  audioElement.pause();
+  audioElement.currentTime = 0;
+  const stopButton = document.getElementById('stop-user-profile');
+  const playButton = document.getElementById('play-user-profile');
+  audioElement.style.display = 'none';
+  stopButton.style.display = 'none';
+  playButton.style.display = 'inline';
+}
 
+window.addEventListener('load', function () {
+  const audioElement = document.getElementById('user-profile-audio');
+  const playButton = document.getElementById('play-user-profile');
+  const stopButton = document.getElementById('stop-user-profile');
+
+  playButton.addEventListener('click', playAudio);
+  stopButton.addEventListener('click', stopAudio);
+});

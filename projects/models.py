@@ -35,6 +35,19 @@ class Profile(models.Model):
         if len(value.name) > 84:
             raise ValidationError("Filename must be under 84 characters.")
 
+    # MAXIMUM FILE SIZE
+    def max_file_size_ten(value):
+        limit = 10 * 1024 * 1024
+
+        if value.size > limit:
+            raise ValidationError("Please upload a file under 10 MB.")
+
+    def max_file_size_hundred(value):
+        limit = 100 * 1024 * 1024
+
+        if value.size > limit:
+            raise ValidationError("Please upload a file under 100 MB.")
+
     # PROFILE CARD
     profile_card_privacy = models.BooleanField(default=False)
     slug = models.SlugField(max_length=210, unique=True, null=True)
@@ -45,13 +58,18 @@ class Profile(models.Model):
         null=True,
         storage=VideoMediaCloudinaryStorage(),
         validators=[
-            validate_file_name_length
+            validate_file_name_length,
+            max_file_size_hundred
         ]
     )
     profile_image = models.ImageField(
         upload_to='profile_images/',
         blank=True,
         null=True,
+        validators=[
+            validate_file_name_length,
+            max_file_size_ten
+        ]
     )
     profile_color = models.CharField(
         max_length=7,
@@ -126,7 +144,8 @@ class Profile(models.Model):
         storage=VideoMediaCloudinaryStorage(),
         validators=[
             validate_video,
-            validate_file_name_length
+            validate_file_name_length,
+            max_file_size_hundred
         ],
     )
 
@@ -161,7 +180,8 @@ class Profile(models.Model):
         storage=RawMediaCloudinaryStorage(),
         validators=[
             FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
-            validate_file_name_length
+            validate_file_name_length,
+            max_file_size_ten
         ],
     )
     education = models.CharField(max_length=210, blank=True, null=True)
@@ -173,7 +193,8 @@ class Profile(models.Model):
         storage=RawMediaCloudinaryStorage(),
         validators=[
             FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
-            validate_file_name_length
+            validate_file_name_length,
+            max_file_size_ten
         ],
     )
     references = models.TextField(max_length=210, blank=True, null=True)
@@ -230,7 +251,8 @@ class Profile(models.Model):
         null=True,
         validators=[
             FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
-            validate_file_name_length
+            validate_file_name_length,
+            max_file_size_ten
         ],
     )
 
@@ -256,7 +278,6 @@ class Profile(models.Model):
         upload_to='daily_routine/',
         blank=True,
         null=True,
-        max_length=84,
         storage=RawMediaCloudinaryStorage(),
         validators=[
             FileExtensionValidator(allowed_extensions=[
@@ -267,7 +288,8 @@ class Profile(models.Model):
                 'csv',
                 'parquet'
             ]),
-            validate_file_name_length
+            validate_file_name_length,
+            max_file_size_hundred
         ],
     )
 

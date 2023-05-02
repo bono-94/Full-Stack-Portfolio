@@ -16,30 +16,30 @@
     </div>
   </div>
   <div class="row mb-5 mt-4 ">
-    <div class="col-6 offset-3 col-md-4 offset-md-0">
+    <div class="col-8 offset-2 col-md-4 offset-md-0">
       <a href="{% url 'account_logout' %}">
-        <button class="bg-dark w-100  shadow-lg">
-          <p class="text-light text-center m-0">
+        <button class="bg-dark w-100 mb-2 shadow-lg">
+          <p class="text-light text-center m-0 p-1">
             <i class="fa-solid fa-user-plus me-2" style="color: #ffd041;"></i>
             New
           </p>
         </button>
       </a>
     </div>
-    <div class="col-6 offset-3 col-md-4 offset-md-0">
+    <div class="col-8 offset-2 col-md-4 offset-md-0">
       <a href="{% url 'edit_profile' %}">
-        <button class="bg-dark w-100 shadow-lg">
-          <p class="text-light text-center m-0">
+        <button class="bg-dark w-100 mb-2 shadow-lg">
+          <p class="text-light text-center m-0 p-1">
             <i class="fa-solid fa-user-pen me-2" style="color: #ffcf3e;"></i>
             Edit
           </p>
         </button>
       </a>
     </div>
-    <div class="col-6 offset-3 col-md-4 offset-md-0">
+    <div class="col-8 offset-2 col-md-4 offset-md-0">
       <a href="{% url 'delete_profile' %}">
-        <button class="bg-dark w-100  shadow-lg">
-          <p class="text-light text-center m-0">
+        <button class="bg-dark w-100 mb-2 shadow-lg">
+          <p class="text-light text-center m-0 p-1">
             <i class="fa-solid fa-user-xmark me-2" style="color: #ffc61a;"></i>
             Delete
           </p>
@@ -51,9 +51,9 @@
     <div class="col-md-4">
       <img
         src="{% if user.profile_image %}{{ user.profile.image.url }}{% else %}{% static 'images/21104.png' %}{% endif %}"
-        alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-1 me-2">
-        <p class="card-text mt-4 text-break ms-2 mt-2"><strong>WISDOM: </strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
-        <button class="bg-dark shadow-lg w-42 rounded-pill" id="play-user-profile" onclick="playAudio()">
+        alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2">
+        <p class="card-text mt-4 text-break ms-4 mt-2"><strong>WISDOM: </strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
+        <button class="bg-dark shadow-lg w-42 rounded-pill ms-4 mt-2" id="play-user-profile" onclick="playAudio()">
           <p class="text-light text-center m-0 p-1">
             <i class="fa-solid fa-circle-play me-2" style="color: #ffcf3e;"></i>
             <span class="text-warning">
@@ -61,7 +61,7 @@
             </span>
           </p>
         </button>
-        <button class="bg-dark shadow-lg w-42 rounded-pill" id="stop-user-profile" onclick="stopAudio()" style="display:none">
+        <button class="bg-dark shadow-lg w-42 rounded-pill ms-4 mt-2" id="stop-user-profile" onclick="stopAudio()" style="display:none">
           <p class="text-light text-center m-0 p-1">
             <i class="fa-solid fa-circle-stop me-2" style="color: #ffcf3e;"></i>
             <span class="text-warning">
@@ -71,6 +71,7 @@
         </button>
         <audio src="{{ profile.profile_audio.url }}" id="user-profile-audio" loop></audio>
     </div>
+    <hr class="border border-2 border-dark d-md-none mt-5">
     <div class="col-10 col-md-7 offset-1">
       <div class="card"></div>
         <div class="card-body rounded border border-1 border-dark bg-light mt-5 mt-md-0 ps-3 mb-3 mb-sm-5 shadow-lg">
@@ -129,6 +130,46 @@
       </div>
     </div>
   <hr class="border border-2 border-dark">
+  <div class="container-fluid bg-secondary sticky-top rounded shadow-lg border border-dark border-3" id="sticky-profile">
+    <div class="row p-1 text-light d-inline">
+        <a>
+          Card
+        </a>
+        <a>
+          Video
+        </a>
+        <a>
+          Personal
+        </a>
+        <a>
+          Employment
+        </a>
+        <a>
+          History
+        </a>
+        <a>
+          Achievements
+        </a>
+        <a>
+          Attributes
+        </a>
+        <a>
+          Focus
+        </a>
+        <a>
+          Specialty
+        </a>
+        <a>
+          Accomplishments
+        </a>
+        <a>
+          Rewards
+        </a>
+        <a>
+          Wall
+        </a>
+    </div>
+  </div>
   <!-- USER VIDEO -->
   {% if profile.user_video %}
   <div class="row justify-content-center">

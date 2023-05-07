@@ -182,7 +182,7 @@ body {
 
 .nav-margin-pc {
 
-  margin-top: 188px;
+  margin-top: 200px;
 }
 
 #navbar-collapse {
@@ -252,6 +252,17 @@ body {
 #sticky-profile {
 
   top: 124px;
+}
+
+
+:target{
+  padding-top: 177px;
+  margin-top: -177px;
+}
+
+
+#sticky-profile strong {
+  font-size: smaller;
 }
 
 

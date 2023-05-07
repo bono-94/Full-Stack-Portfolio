@@ -75,7 +75,18 @@ function toggleNavbar() {
   }
 }
 
-
+// DROPDOWN NAVIGATION
+function toggleNavbarProfile() {
+  let navbarCollapse = document.getElementById("navbar-collapse-profile");
+  const navMarginMob = document.getElementById('nav-margin-mobile');
+  const navMarginTab = document.getElementById('nav-margin-tablet');
+  let isExpanded = navbarCollapse.classList.contains("show");
+  if (isExpanded) {
+      navbarCollapse.classList.remove("show");
+  } else {
+      navbarCollapse.classList.add("show");
+  }
+}
 
 
 // Define the functions outside the addEventListener block
@@ -101,7 +112,6 @@ function stopAudio() {
 }
 
 window.addEventListener('load', function () {
-  const audioElement = document.getElementById('user-profile-audio');
   const playButton = document.getElementById('play-user-profile');
   const stopButton = document.getElementById('stop-user-profile');
 
@@ -110,8 +120,3 @@ window.addEventListener('load', function () {
 });
 
 // Nav-margin
-
-// Get a reference to the dropdown menu and nav-margin elements
-
-
-// Add an event listener to the dropdown menu for the 'click' event

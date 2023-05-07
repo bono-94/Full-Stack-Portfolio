@@ -47,13 +47,13 @@
   <nav class="navbar navbar-expand-md fixed-top p-0" id="navbar">
     <div class="container-fluid p-0 m-0">
       <div class="row p-0" id="row">
-        <div class="col-auto me-auto mb-2 ms-3 mt-3 me-0">
+        <div class="col-auto me-auto mb-2 ms-3 mt-3">
           <a href="{% url 'home' %}">
-            <img src="{% static 'images/logo.png' %}" alt="Innovation Land Logo" height="60px">
+            <img src="{% static 'images/logo.png' %}" alt="Innovation Land Logo" id="nav-logo-img" height="60px">
           </a>
         </div>
         <div class="col-auto me-0 justify-content-end border-0">
-          <button class="navbar-toggler btn btn-warning mb-2 dark mt-3 me-2 border-warning border-2" type="button"
+          <button class="navbar-toggler btn btn-warning mb-2 dark mt-3 me-2 border-warning border-2" id="navbar-dropdown" type="button"
             data-bs-toggle="navbar-collapse" data-bs-target="#navbar-collapse" aria-controls="navbarCollapse"
             aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNavbar()">
             <span class="navbar-toggler-icon"></span>
@@ -160,9 +160,9 @@
       </button>
     </div>
   </div>
-  <div class="nav-margin">
-    Margin
-  </div>
+  <div id="nav-margin-mobile" class="nav-margin-mobile-short d-sm-none"></div>
+  <div id="nav-margin-tablet" class="nav-margin-tablet-short d-none d-sm-block d-md-none"></div>
+  <div id="nav-margin-pc" class="nav-margin-pc d-none d-md-block"></div>
   <div>
 
 

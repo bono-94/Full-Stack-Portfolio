@@ -160,9 +160,29 @@ body {
   color: white;
 }
 
-.nav-margin {
+.nav-margin-mobile {
 
-  margin-top: 380px;
+  margin-top: 441px;
+}
+
+.nav-margin-mobile-short {
+
+  margin-top: 144px;
+}
+
+.nav-margin-tablet {
+
+  margin-top: 441px;
+}
+
+.nav-margin-tablet-short {
+
+  margin-top: 144px;
+}
+
+.nav-margin-pc {
+
+  margin-top: 188px;
 }
 
 #navbar-collapse {
@@ -473,4 +493,26 @@ max-width: 700px;
 #sustainability_user {
 
   background-color: rgb(16, 198, 3);
+}
+
+
+
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 331px) {
+  /* CSS rules for screens under 331px */
+  #nav-logo-img {
+    height: 50px;
+  }
+  /* ... */
+}
+
+@media (max-width: 296px) {
+  /* CSS rules for screens under 331px */
+  #nav-logo-img {
+    height: 40px;
+  }
+  /* ... */
 }

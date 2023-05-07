@@ -54,20 +54,29 @@ myModal.addEventListener('shown.bs.modal', function () {
   myInput.focus()
 })
 
-
-
+// DROPDOWN NAVIGATION
 function toggleNavbar() {
   let navbarCollapse = document.getElementById("navbar-collapse");
+  const navMarginMob = document.getElementById('nav-margin-mobile');
+  const navMarginTab = document.getElementById('nav-margin-tablet');
   let isExpanded = navbarCollapse.classList.contains("show");
   if (isExpanded) {
-      navbarCollapse.classList.remove("show");
+      navbarCollapse.classList.remove("show")
+      navMarginMob.classList.remove('nav-margin-mobile')
+      navMarginTab.classList.remove('nav-margin-tablet')
+      navMarginMob.classList.add('nav-margin-mobile-short')
+      navMarginTab.classList.add('nav-margin-tablet-short');
   } else {
-      navbarCollapse.classList.add("show");
+      navbarCollapse.classList.add("show")
+      navMarginMob.classList.remove('nav-margin-mobile-short')
+      navMarginTab.classList.remove('nav-margin-tablet-short')
+      navMarginMob.classList.add('nav-margin-mobile')
+      navMarginTab.classList.add('nav-margin-tablet');
   }
 }
 
 
-// DROPDOWN NAVIGATION
+
 
 // Define the functions outside the addEventListener block
 function playAudio() {
@@ -99,3 +108,10 @@ window.addEventListener('load', function () {
   playButton.addEventListener('click', playAudio);
   stopButton.addEventListener('click', stopAudio);
 });
+
+// Nav-margin
+
+// Get a reference to the dropdown menu and nav-margin elements
+
+
+// Add an event listener to the dropdown menu for the 'click' event

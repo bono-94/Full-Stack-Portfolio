@@ -119,7 +119,7 @@
             </span>
           </p>
         </button>
-        <audio src="{{ profile.profile_audio.url }}" id="user-profile-audio" loop></audio>
+        <audio src="{% if profile.profile_audio %}{{ profile.profile_audio.url }}{% else %}{% endif %}" id="user-profile-audio" loop></audio>
     </div>
     <hr class="border border-2 border-dark d-md-none mt-5">
     <div class="col-10 col-md-7 offset-1">
@@ -201,14 +201,14 @@
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light"><strong class="me-1">USERNAME:</strong> {% if user.username %}{{ user.username }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong class="me-1">USER EMAIL:</strong> {% if user.email %}{{ user.email }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong class="me-1">PUBLIC EMAIL:</strong> {{ profile.public_email }}{% if profile.lifecoin_balance %}{{ profile.lifecoin_balance }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong class="me-1">PUBLIC EMAIL:</strong> {{ profile.public_email }}{% if profile.public_email %}{{ profile.public_email }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong class="me-1">FIRST NAME:</strong> {% if profile.first_name %}{{ profile.first_name }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong class="me-1">LAST NAME:</strong> {% if profile.last_name %}{{ profile.last_name }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong class="me-1">LOCATION:</strong> {% if profile.location %}{{ profile.location }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">LANGUAGES:</strong> {% if profile.languages %}{{ profile.languages }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong class="me-1">GENDER:</strong> {% if profile.gender %}{{ profile.gender }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong class="me-1">BIRTHDATE:</strong> {% if profile.date_of_birth %}{{ profile.date_of_birth }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong class="me-1">AGE:</strong> {% if profile.age %}{{ profile.age }} years old{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong class="me-1">AGE:</strong> {% if profile.date_of_birth %}{{ profile.age }} years old{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong class="me-1">HEIGHT:</strong> {% if profile.height_cm %}{{ profile.height_cm }} cm{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong class="me-1">WEIGHT:</strong> {% if profile.weight_kg %}{{ profile.weight_kg }} kg{% else %}(blank){% endif %}</li>
       </ul>

@@ -73,7 +73,7 @@ class Profile(models.Model):
     )
     profile_color = models.CharField(
         max_length=7,
-        default='#ffd041',
+        default='#ffc107',
         blank=True,
         null=True
         )

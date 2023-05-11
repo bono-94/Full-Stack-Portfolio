@@ -182,7 +182,7 @@ body {
 
 .nav-margin-pc {
 
-  margin-top: 200px;
+  margin-top: 150px;
 }
 
 #navbar-collapse {
@@ -248,9 +248,9 @@ body {
 }
 
 
-:target{
-  padding-top: 177px;
-  margin-top: -177px;
+:target {
+  padding-top: 107px;
+  margin-top: -107px;
 }
 
 

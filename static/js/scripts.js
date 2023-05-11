@@ -78,13 +78,20 @@ function toggleNavbar() {
 // DROPDOWN NAVIGATION
 function toggleNavbarProfile() {
   let navbarCollapse = document.getElementById("navbar-collapse-profile");
+  let navbarButton = document.getElementById("navbar-dropdown-profile");
   const navMarginMob = document.getElementById('nav-margin-mobile');
   const navMarginTab = document.getElementById('nav-margin-tablet');
   let isExpanded = navbarCollapse.classList.contains("show");
   if (isExpanded) {
-      navbarCollapse.classList.remove("show");
+      navbarCollapse.classList.remove("show")
+      navbarCollapse.classList.remove("mt-1")
+      navbarCollapse.classList.remove("mb-1")
+      navbarButton.classList.remove("mt-2");
   } else {
-      navbarCollapse.classList.add("show");
+      navbarCollapse.classList.add("show")
+      navbarCollapse.classList.add("mt-1")
+      navbarCollapse.classList.add("mb-1")
+      navbarButton.classList.add("mt-2");
   }
 }
 
@@ -120,3 +127,14 @@ window.addEventListener('load', function () {
 });
 
 // Nav-margin
+
+// Closing profile navigation on clicking on <a> elements
+
+function closeNavbarProfile() {
+  var navbarCollapse = document.getElementById('navbar-collapse-profile');
+  var navbarToggle = document.getElementById('navbar-dropdown-profile');
+  if (navbarCollapse.classList.contains('show')) {
+    navbarCollapse.classList.remove('show');
+    navbarToggle.setAttribute('aria-expanded', 'false');
+  }
+}

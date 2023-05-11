@@ -8,57 +8,56 @@
 <!-- INCLUDE PRIVACY BASED ON EDIT FORM -->
 
 <div class="container-fluid bg-secondary shadow-lg border border-dark border-3 me-0 fixed-bottom" id="sticky-profile">
-  <div class="row-fluid pb-1 pt-1 text-warning d-flex flex-row justify-content-between" id="sticky-profile-row">
+  <div class="row-fluid text-warning d-flex flex-row justify-content-between" id="sticky-profile-row">
     <div class="p-0">
-      <button class="navbar-toggler btn btn-warning p-1 bg-dark text-warning border rounded border-info border-2 mt-1 ms-0 mb-1" id="navbar-dropdown-profile" type="button"
+      <button class="navbar-toggler btn btn-warning p-1 bg-dark text-warning border rounded border-info border-2 mt-1 ms-0 mb-1 shadow-lg" id="navbar-dropdown-profile" type="button"
         data-bs-toggle="navbar-collapse-profile" data-bs-target="#navbar-collapse-profile" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNavbarProfile()">
-          <span class="navbar-toggler-icon fa fa-bars pt-1"></span>
+          <span class="navbar-toggler-icon fa fa-bars pt-1 pb-1" style="font-size: 0.8rem;"></span>
       </button>
     </div>
     <div class="collapse navbar-collapse text-center col-md-10" id="navbar-collapse-profile">
-      <div class="d-flex flex-wrap me-auto">
-        <a href="#profile-general" id="profile-general-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mt-1 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+      <div class="d-flex flex-wrap me-5 justify-content-end">
+        <a href="#profile-general" id="profile-general-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mt-1 border border-1 border-info bg-dark shadow-lg col-10 offset-2 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-circle-info me-3"></i>General</strong>
         </a>
-        <a href="#profile-video" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-video" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-film me-3"></i>Video</strong>
         </a>
-        <a href="#profile-personal" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-personal" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-address-card me-3"></i></i>Personal</strong>
         </a>
-        <a href="#profile-employment" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-employment" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-briefcase me-3"></i>Employment</strong>
         </a>
-        <a href="#profile-history" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-history" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-book-atlas me-3"></i>History</strong>
         </a>
-        <a href="#profile-achievements" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-achievements" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-star me-3"></i>Achievements</strong>
         </a>
-        <a href="#profile-attributes" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-attributes" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-brain me-3"></i>Attributes</strong>
         </a>
-        <a href="#profile-focus" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-focus" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-scale-unbalanced-flip me-3"></i>Focus</strong>
         </a>
-        <a href="#profile-specializations" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-specializations" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-bullseye me-3"></i>Specializations</strong>
         </a>
-        <a href="#profile-accomplishments" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-accomplishments" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-certificate me-3"></i>Accomplishments</strong>
         </a>
-        <a href="#profile-rewards" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-rewards" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-trophy me-3"></i>Rewards</strong>
         </a>
-        <a href="#profile-wall" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mb-1 border border-1 border-info bg-dark shadow-lg col-10 offset-1">
+        <a href="#profile-wall" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mb-1 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-star-of-life me-3"></i>Life Wall</strong>
         </a>
       </div>
     </div>
   </div>
 </div>
-
 <!-- PROFILE CARD -->
 <div class="container pt-4 rounded border border-2 border-dark" style="background-color: {{ profile.profile_color }};">
   <div class="row pt-2">
@@ -104,7 +103,7 @@
         src="{% if user.profile_image %}{{ user.profile.image.url }}{% else %}{% static 'images/21104.png' %}{% endif %}"
         alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2">
         <p class="card-text mt-4 text-break ms-4 mt-2"><strong>WISDOM: </strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
-        <button class="bg-dark shadow-lg w-42 rounded-pill ms-4 mt-2" id="play-user-profile" onclick="playAudio()">
+        <button class="bg-dark shadow-lg w-42 rounded-pill ms-4 mt-2 shadow-lg" id="play-user-profile" onclick="playAudio()">
           <p class="text-light text-center m-0 p-1">
             <i class="fa-solid fa-circle-play me-2" style="color: #ffcf3e;"></i>
             <span class="text-warning">
@@ -184,8 +183,8 @@
   <!-- USER VIDEO -->
   {% if profile.user_video %}
   <div class="row justify-content-center" id="profile-video">
-    <div class="col-11 offset rounded border border-3 border-dark bg-secondary mt-4 mb-4 pt-2 shadow-lg">
-      <video id="user_video" class="bg-danger w-100" controls type="video/mp4" src="{{ profile.user_video.url }}"></video>
+    <div class="col-11 offset rounded border border-3 border-dark bg-secondary mt-4 mb-4 pt-2 shadow-lg h-75">
+      <video id="user_video" class="bg-info w-100 h-75 shadow-lg align-items-center" controls type="video/mp4" src="{{ profile.user_video.url }}"></video>
     </div>
   </div>
   <hr class="border border-2 border-dark">
@@ -297,7 +296,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-10 offset-1">
+    <div class="col-10 offset-1 shadow-lg pt-4 rounded border border-1 border-dark">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">INNOVATION</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{profile.focus_innovation_style }}"><strong class="p-1">{% if profile.focus_innovation %}{{ profile.focus_innovation }} %{% else %}0 %{% endif %}</strong></div>
@@ -343,35 +342,42 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-10 offset-1">
+    <div class="col-10 offset-1 shadow-lg pt-4 rounded border border-1 border-dark">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">OPERATIONS</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark text-white" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{profile.special_ops_style }}"><strong class="p-1">{% if profile.special_ops %}{{ profile.special_ops }} %{% else %}0 %{% endif %}</strong></div>
       </div>
+      <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">FINANCE & ACCOUNTING</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_finance_style }}"><strong class="p-1">{% if profile.special_finance %}{{ profile.special_finance }} %{% else %}0 %{% endif %}</strong></div>
       </div>
+      <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">MARKETING & SALES</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_marketing_style }}"><strong class="p-1">{% if profile.special_marketing %}{{ profile.special_marketing }} %{% else %}0 %{% endif %}</strong></div>
       </div>
+      <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">SUPPLY CHAIN</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_supply_chain_style }}"><strong class="p-1">{% if profile.special_supply_chain %}{{ profile.special_supply_chain }} %{% else %}0 %{% endif %}</strong></div>
       </div>
+      <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">HR</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_hr_style }}"><strong class="p-1">{% if profile.special_hr %}{{ profile.special_hr }} %{% else %}0 %{% endif %}</strong></div>
       </div>
+      <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">TECHNOLOGY & DATA</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_tech_style }}"><strong class="p-1">{% if profile.special_tech %}{{ profile.special_tech }} %{% else %}0 %{% endif %}</strong></div>
       </div>
+      <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">SUSTAINABILITY & CSR</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated text-dark" id="sustainability_user" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_sustainability_style }}"><strong class="p-1">{% if profile.special_sustainability %}{{ profile.special_sustainability }} %{% else %}0 %{% endif %}</strong></div>
       </div>
+      <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">RESEARCH</h6>
       <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_research_style }}"><strong class="p-1">{% if profile.special_research %}{{ profile.special_research }} %{% else %}0 %{% endif %}</strong></div>

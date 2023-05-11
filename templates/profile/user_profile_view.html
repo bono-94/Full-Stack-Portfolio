@@ -102,7 +102,7 @@
       <img
         src="{% if user.profile_image %}{{ user.profile.image.url }}{% else %}{% static 'images/21104.png' %}{% endif %}"
         alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2">
-        <p class="card-text mt-4 text-break ms-4 mt-2"><strong>WISDOM: </strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
+        <p class="card-text mt-4 text-break ms-4 mt-2 ps-2 border border-1 border-dark shadow-lg rounded"><strong>WISDOM: </strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
         <button class="bg-dark shadow-lg w-42 rounded-pill ms-4 mt-2 shadow-lg" id="play-user-profile" onclick="playAudio()">
           <p class="text-light text-center m-0 p-1">
             <i class="fa-solid fa-circle-play me-2" style="color: #ffcf3e;"></i>

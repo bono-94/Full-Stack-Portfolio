@@ -138,3 +138,8 @@ function closeNavbarProfile() {
     navbarToggle.setAttribute('aria-expanded', 'false');
   }
 }
+
+// As far as the scroll thing goes, what I think you'd want to do is capture the mouse position and from that work out the closest element
+//  (perhaps the row class?). If you've got that then within the same event listener you could find the associated item in the navigation 
+//  list and update its class accordingly. It should be possible but will require some tinkering to get that closest element on mouse or scroll
+//   position.

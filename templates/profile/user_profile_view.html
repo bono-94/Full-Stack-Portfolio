@@ -107,7 +107,7 @@
       <p class="card-text ms-4 me-4 me-md-0 mt-4 text-break ms-md-5 mt-2 p-2 border border-1 border-dark shadow-lg rounded bg-light"><strong>WISDOM: </strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
       {% if profile.profile_audio %}
       <div class ="d-flex d-md-block justify-content-center">
-        <button class="bg-dark shadow-lg w-42 rounded-pill ms-md-5 mt-2 shadow-lg" id="play-user-profile" onclick="playAudio()">
+        <button class="btn bg-dark shadow-lg w-42 rounded-pill ms-md-5 mt-2 shadow-lg" id="play-user-profile" onclick="playAudio()">
           <p class="text-light text-center m-0 p-1">
             <i class="fa-solid fa-circle-play me-2" style="color: #ffcf3e;"></i>
             <span class="text-light">
@@ -115,7 +115,7 @@
             </span>
           </p>
         </button>
-        <button class="bg-dark shadow-lg w-42 rounded-pill ms-md-5 mt-2" id="stop-user-profile" onclick="stopAudio()" style="display:none">
+        <button class="btn bg-dark shadow-lg w-42 rounded-pill ms-md-5 mt-2" id="stop-user-profile" onclick="stopAudio()" style="display:none">
           <p class="text-light text-center m-0 p-1">
             <i class="fa-solid fa-circle-stop me-2" style="color: #ffcf3e;"></i>
             <span class="text-light">

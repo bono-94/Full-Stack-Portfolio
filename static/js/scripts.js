@@ -163,3 +163,15 @@ videoElement.addEventListener('play', function() {
 videoElement.addEventListener('pause', function() {
   playAudio();
 });
+
+// CONTACT MODAL
+function modalActivate() {
+  $('#contact-modal').modal('toggle');
+  const audioElement = document.getElementById('modal-audio-fx');
+  audioElement.play();
+}
+
+function modalClose() {
+  $('#contact-modal').modal('hide');
+}
+

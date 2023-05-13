@@ -105,6 +105,7 @@
       <img src="{% static 'images/21104.png' %}" alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2">
       {% endif %}
       <p class="card-text ms-4 me-4 me-md-0 mt-4 text-break ms-md-5 mt-2 p-2 border border-1 border-dark shadow-lg rounded bg-light"><strong>WISDOM: </strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
+      {% if profile.profile_audio %}
       <div class ="d-flex d-md-block justify-content-center">
         <button class="bg-dark shadow-lg w-42 rounded-pill ms-md-5 mt-2 shadow-lg" id="play-user-profile" onclick="playAudio()">
           <p class="text-light text-center m-0 p-1">
@@ -123,6 +124,8 @@
           </p>
         </button>
       </div>
+      {% else %}
+      {% endif %}
       <audio src="{% if profile.profile_audio %}{{ profile.profile_audio.url }}{% else %}{% endif %}" id="user-profile-audio" loop></audio>
     </div>
     <hr class="border border-2 border-dark d-md-none mt-5">
@@ -177,11 +180,9 @@
               </div>
             </div>
           </div>
-          
-          
           <hr>
-          <p class="card-text m-0"><small class="text-muted"><span class="d-block d-sm-inline text-decoration-underline">JOINED:</span> {{ profile.created_on|date:"F d, Y" }} [{{ profile.user_duration_created }} days ago]</small></p>
-          <p class="card-text m-0 pt-2 pb-2"><small class="text-muted"><span class="d-block d-sm-inline text-decoration-underline">UPDATED:</span> {{ profile.updated_on|date:"F d, Y" }} [{{ profile.user_duration_updated }} days ago]</small></p>
+          <p class="card-text m-0"><small class="text-muted"><span class="d-block d-sm-inline text-decoration-underline">JOINED:</span> {% if profile.created_on %}{{ profile.created_on|date:"F d, Y" }} [{{ profile.user_duration_created }} days ago]{% else %}(blank){% endif %}</small></p>
+          <p class="card-text m-0 pt-2 pb-2"><small class="text-muted"><span class="d-block d-sm-inline text-decoration-underline">UPDATED:</span> {% if profile.updated_on %}{{ profile.updated_on|date:"F d, Y" }} [{{ profile.user_duration_updated }} days ago]{% else %}(blank){% endif %}</small></p>
         </div>
       </div>
     </div>
@@ -207,7 +208,7 @@
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light"><strong class="me-1">USERNAME:</strong> {% if user.username %}{{ user.username }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light"><strong class="me-1">USER EMAIL:</strong> {% if user.email %}{{ user.email }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light text-break"><strong class="me-1">PUBLIC EMAIL:</strong> {{ profile.public_email }}{% if profile.public_email %}{{ profile.public_email }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong class="me-1">PUBLIC EMAIL:</strong> {% if profile.public_email %}{{ profile.public_email }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">FIRST NAME:</strong> {% if profile.first_name %}{{ profile.first_name }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">LAST NAME:</strong> {% if profile.last_name %}{{ profile.last_name }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">LOCATION:</strong> {% if profile.location %}{{ profile.location }}{% else %}(blank){% endif %}</li>

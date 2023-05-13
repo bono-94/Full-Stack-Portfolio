@@ -7,9 +7,10 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = [
+            # PUBLIC VISIBILITY
+            'privacy',
             # PROFILE CARD
             'profile_card_privacy',
-            'privacy',
             'profile_color',
             'profile_audio',
             'profile_image',

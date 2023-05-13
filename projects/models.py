@@ -12,6 +12,7 @@ from cloudinary_storage.storage import VideoMediaCloudinaryStorage
 from cloudinary_storage.validators import validate_video
 from django.core.exceptions import ValidationError
 
+# PROJECTS VISIBILITY
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
@@ -49,9 +50,9 @@ class Profile(models.Model):
             raise ValidationError("Please upload a file under 100 MB.")
 
     # PROFILE CARD
-    profile_card_privacy = models.BooleanField(default=False)
     slug = models.SlugField(max_length=210, unique=True, null=True)
     privacy = models.BooleanField(default=False)
+    profile_card_privacy = models.BooleanField(default=False)
     profile_audio = models.FileField(
         upload_to='profile_audio/',
         blank=True,

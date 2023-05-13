@@ -245,10 +245,11 @@ class Profile(models.Model):
     honors = models.TextField(max_length=210, blank=True, null=True)
     articles = models.TextField(max_length=210, blank=True, null=True)
     recognition = models.TextField(max_length=210, blank=True, null=True)
-    bigger_fish_results = models.ImageField(
+    bigger_fish_results = models.FileField(
         upload_to='bigger_fish_results/',
         blank=True,
         null=True,
+        storage=RawMediaCloudinaryStorage(),
         validators=[
             FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
             validate_file_name_length,

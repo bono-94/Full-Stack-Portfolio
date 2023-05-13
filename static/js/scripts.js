@@ -77,8 +77,10 @@ function toggleNavbar() {
 
 // DROPDOWN NAVIGATION
 function toggleNavbarProfile() {
+  let navbarSticky = document.getElementById("sticky-profile");
   let navbarCollapse = document.getElementById("navbar-collapse-profile");
   let navbarButton = document.getElementById("navbar-dropdown-profile");
+  let navbarIcon = document.getElementById("profile-nav-icon");
   const navMarginMob = document.getElementById('nav-margin-mobile');
   const navMarginTab = document.getElementById('nav-margin-tablet');
   let isExpanded = navbarCollapse.classList.contains("show");
@@ -86,12 +88,20 @@ function toggleNavbarProfile() {
       navbarCollapse.classList.remove("show")
       navbarCollapse.classList.remove("mt-1")
       navbarCollapse.classList.remove("mb-1")
-      navbarButton.classList.remove("mt-2");
+      navbarButton.classList.remove("mt-2")
+      navbarSticky.classList.remove("bg-secondary")
+      navbarSticky.classList.add("bg-transparent")
+      navbarIcon.classList.remove("fa-ellipsis-vertical")
+      navbarIcon.classList.add("fa-ellipsis");
   } else {
       navbarCollapse.classList.add("show")
       navbarCollapse.classList.add("mt-1")
       navbarCollapse.classList.add("mb-1")
-      navbarButton.classList.add("mt-2");
+      navbarButton.classList.add("mt-2")
+      navbarSticky.classList.remove("bg-transparent")
+      navbarSticky.classList.add("bg-secondary")
+      navbarIcon.classList.remove("fa-ellipsis")
+      navbarIcon.classList.add("fa-ellipsis-vertical");
   }
 }
 
@@ -131,15 +141,25 @@ window.addEventListener('load', function () {
 // Closing profile navigation on clicking on <a> elements
 
 function closeNavbarProfile() {
+  let navbarSticky = document.getElementById("sticky-profile");
   var navbarCollapse = document.getElementById('navbar-collapse-profile');
   var navbarToggle = document.getElementById('navbar-dropdown-profile');
   if (navbarCollapse.classList.contains('show')) {
     navbarCollapse.classList.remove('show');
-    navbarToggle.setAttribute('aria-expanded', 'false');
+    navbarToggle.setAttribute('aria-expanded', 'false')
+    navbarSticky.classList.remove("bg-secondary");
   }
 }
 
-// As far as the scroll thing goes, what I think you'd want to do is capture the mouse position and from that work out the closest element
-//  (perhaps the row class?). If you've got that then within the same event listener you could find the associated item in the navigation 
-//  list and update its class accordingly. It should be possible but will require some tinkering to get that closest element on mouse or scroll
-//   position.
+const videoElement = document.getElementById('user-video');
+const audioElement = document.getElementById('user-profile-audio');
+const playButton = document.getElementById('play-user-profile');
+const stopButton = document.getElementById('stop-user-profile');
+
+videoElement.addEventListener('play', function() {
+  stopAudio();
+});
+
+videoElement.addEventListener('pause', function() {
+  playAudio();
+});

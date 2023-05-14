@@ -75,8 +75,10 @@ def edit_profile(request):
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Blog post created successfully.')
+            messages.success(request, 'Your profile is updated successfully.')
             return redirect('user_profile')
+        else:
+            messages.error(request, 'Please check all input fields for errors.')
     else:
         form = ProfileForm(instance=profile)
     return render(request, 'profile/user_profile_edit.html', {'form': form})

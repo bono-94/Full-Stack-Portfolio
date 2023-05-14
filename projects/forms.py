@@ -118,6 +118,7 @@ class ProfileForm(forms.ModelForm):
         widgets = {
             'profile_color': forms.TextInput(attrs={'type': 'color'}),
             'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
+            'start_date': forms.DateInput(attrs={'type': 'date'}),
         }
 
     def clean(self):

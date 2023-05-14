@@ -10,7 +10,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="contact-modal-label">Direct e-mail to {{ user.username }}</h5>
+        <h5 class="modal-title" id="contact-modal-label">Direct e-mail to {{ profile_id.username }}</h5>
       </div>
       <div class="modal-body">
         <form>
@@ -155,11 +155,11 @@
     <div class="col-10 col-md-7 offset-1">
       <div class="card"></div>
         <div class="card-body rounded border border-1 border-dark bg-light mt-5 mt-md-0 ps-3 pe-3 mb-3 mb-sm-5 shadow-lg">
-          <h4 class="card-title ps-0 mb-4 mt-2 text-center">{{ user.username }}</h4>
-          {% if profile_id.user.is_authenticated %}
-            <p class="card-text"><strong class="me-2">STATUS: </strong>Online <span class="text-success">●</span></p>
+          <h4 class="card-title ps-0 mb-4 mt-2 text-center">{{ profile_id.username }}</h4>
+          {% if profile_id.user == request.user %}
+            <p class="card-text"><strong class="me-2">STATUS: </strong>{{ profile_id.status }} <span class="text-success">●</span></p>
           {% else %}
-            <p class="card-text"><strong class="me-2">STATUS: </strong>{{ profile_id.status }}</p>
+            <p class="card-text"><strong class="me-2">STATUS: </strong>{{ profile_id.status }} <span class="text-danger">●</span></p>
           {% endif %}
           <hr>
           <p class="card-text text-break"><strong class="me-2">ACTIVE DAYS: </strong>{% if profile_id.active_days %}{{ profile_id.active_days }}{% else %}(blank){% endif %}</p>

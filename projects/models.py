@@ -21,8 +21,8 @@ class Profile(models.Model):
 
     # CHOICES
     STATUS_CHOICES = (
-        ('online', 'Online'),
-        ('offline', 'Offline'),
+        ('Online', 'Online'),
+        ('Offline', 'Offline'),
     )
 
     GENDER_CHOICES = (
@@ -81,7 +81,7 @@ class Profile(models.Model):
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,
-        default='offline',
+        default='Offline',
         blank=True,
         null=True
     )

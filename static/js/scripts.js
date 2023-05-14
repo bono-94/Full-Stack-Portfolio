@@ -185,3 +185,11 @@ function modalEditProfileActivate() {
 function modalEditProfileClose() {
   $('#edit-profile-save').modal('hide');
 }
+
+$(document).ready(function(){ 
+
+  $('[data-toggle="tooltip"]').tooltip();    
+
+  $('[data-toggle="popover"]').popover();  
+
+}); 

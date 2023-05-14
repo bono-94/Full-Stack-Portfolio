@@ -1,15 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h1>My profile for delete</h1>
-
-
-<h2>Are you sure you want to delete your profile?</h2>
-
-<form method="post">
-  {% csrf_token %}
-  <input type="submit" value="Delete">
-</form>
+<div class="bg-light shadow-lg w-75 mx-auto pb-5">
+  <div class="col-10 offset-1 mb-5 pt-5">
+    <h1 class="d-flex justify-content-center">Profile Deletion</h1>
+  </div>
+  <div class="col-10 offset-1 mt-5 pb-5">
+    <h3 class="d-flex justify-content-center">Are you sure you want to delete your profile?</h3>
+  </div>
+  <div class="col-10 offset-1 mt-5 mb-5">
+    <form method="post">
+      {% csrf_token %}
+      <div class=" col-8 offset-2 d-flex justify-content-between">
+        <button type="button" class="btn btn-dark shadow-lg text-warning" onclick="javascript:history.back()">Back</button>
+        <button type="submit" class="btn btn-dark shadow-lg text-warning">Delete</button>
+      </div>
+    </form>  
+  </div>
+</div>
 
 {% endblock content %}

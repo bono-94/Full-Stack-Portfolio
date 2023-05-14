@@ -117,6 +117,7 @@ class ProfileForm(forms.ModelForm):
         # PROFILE COLOR AS COLORPICKER
         widgets = {
             'profile_color': forms.TextInput(attrs={'type': 'color'}),
+            'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
         }
 
     def clean(self):

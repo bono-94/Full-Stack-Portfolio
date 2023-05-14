@@ -166,13 +166,22 @@ videoElement.addEventListener('pause', function() {
   playAudio();
 });
 
-// CONTACT MODAL
-function modalActivate() {
+// PUBLIC PROFILE CONTACT MODAL
+function modalPublicProfileActivate() {
   $('#contact-modal').modal('toggle');
   const audioElement = document.getElementById('modal-audio-fx');
   audioElement.play();
 }
 
-function modalClose() {
+function modalPublicProfileClose() {
   $('#contact-modal').modal('hide');
+}
+
+// EDIT PROFILE SAVE MODAL
+function modalEditProfileActivate() {
+  $('#edit-profile-save').modal('toggle');
+}
+
+function modalEditProfileClose() {
+  $('#edit-profile-save').modal('hide');
 }

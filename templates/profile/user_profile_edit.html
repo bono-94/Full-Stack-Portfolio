@@ -1,36 +1,47 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<!-- HEADING -->
 <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xxl-4 offset-xxl-4 rounded bg-warning bg-gradient mb-5 mt-2 border border-2 border-info">
   <h1 class="d-flex justify-content-center mt-3">Editing profile:</h1>
   <h2 class="d-flex justify-content-center mt-3 mb-3">{{ user.username }}</h2>
 </div>
+<!-- EDIT FORM -->
 <div class="container-fluid mt-4 mb-5" id="edit-form-div">
   <div class="row">
     <div class="col-12 col-md-10 offset-md-1 text-break" id="edit-form">
-      <form method="post" enctype="multipart/form-data" class="rounded p-3 pt-4 ps-md-4 pe-md-4 shadow-lg bg-light bg-gradient border border-1 border-info">
+      <form method="post" enctype="multipart/form-data" id="edit-form-form" class="rounded p-3 pt-4 ps-md-4 pe-md-4 shadow-lg bg-light bg-gradient border border-1 border-info">
         {% csrf_token %}
         {{ form.as_p }}
         <hr class="mb-5 bg-info">
         <div class="d-flex justify-content-between mt-5">
           <button class="btn btn-secondary" type="submit" onclick="javascript:history.back()">Back</button>
-          <button class="btn btn-secondary ml-auto" type="submit">Save</button>
+          <button class="btn btn-secondary ml-auto" type="button" data-toggle="modal" data-target="#edit-profile-save" onclick="modalEditProfileActivate()">Save</button>
         </div>
-        
-    </form>
+        <!-- SAVE BUTTON MODAL -->
+        <div class="modal fade" id="edit-profile-save" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+          <div class="modal-dialog mt-3 mt-md-5" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="edit-profile-label">Profile edited</h5>
+              </div>
+              <div class="modal-body">
+                <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+                <br>
+                <span class="block"></span>
+                <br>
+                <span class="block">Do you wish to save changes?</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalEditProfileClose()">Close</button>
+                <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-{% endblock content %}
 
-<p>
-  <label for="id_profile_audio">Profile audio:</label>
-  Currently: 
-  <a href="https://res.cloudinary.com/drpiqe19j/video/upload/v1/media/profile_audio/keys-of-moon-the-success_uuwow5">media/profile_audio/keys-of-moon-the-success_uuwow5</a>
-  <input type="checkbox" name="profile_audio-clear" id="profile_audio-clear_id">
-  <label for="profile_audio-clear_id">Clear</label>
-  <br>
-  Change:
-  <input type="file" name="profile_audio" id="id_profile_audio">
-</p>
+{% endblock content %}

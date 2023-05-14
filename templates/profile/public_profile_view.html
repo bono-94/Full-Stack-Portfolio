@@ -48,7 +48,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalClose()">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalPublicProfileClose()">Close</button>
         <button type="button" class="btn btn-primary">Send message</button>
       </div>
     </div>
@@ -117,7 +117,7 @@
     </div>
   </div>
   <div class="row mb-5 mt-4 ">
-    <button type="button" class="btn btn-dark w-75 mx-auto border border-1 border-info text-info" onclick="modalActivate()" data-toggle="modal" data-target="#contact-modal" data-destination="{% if profile_id.public_email %}{{ profile_id.public_email }}{% else %}(blank){% endif %}"><strong>PRIVATE CONTACT</strong></button>
+    <button type="button" class="btn btn-dark w-75 mx-auto border border-1 border-info text-info" onclick="modalPublicProfileActivate()" data-toggle="modal" data-target="#contact-modal" data-destination="{% if profile_id.public_email %}{{ profile_id.public_email }}{% else %}(blank){% endif %}"><strong>PRIVATE CONTACT</strong></button>
   </div>
   <div class="row">
     <div class="col-md-4">

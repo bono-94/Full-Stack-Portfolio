@@ -2,33 +2,35 @@
 
 {% block content %}
 
-<h1>My profile for editing</h1>
-
-<h1>Profile</h1>
-<p><strong>Username:</strong> {{ user.username }}</p>
-<p><strong>Email:</strong> {{ user.email }}</p>
-
-<h2>Profile Information</h2>
-<div id="example">
-    <form method="post" enctype="multipart/form-data">
+<div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xxl-4 offset-xxl-4 rounded bg-warning bg-gradient mb-5 mt-2 border border-2 border-info">
+  <h1 class="d-flex justify-content-center mt-3">Editing profile:</h1>
+  <h2 class="d-flex justify-content-center mt-3 mb-3">{{ user.username }}</h2>
+</div>
+<div class="container-fluid mt-4 mb-5" id="edit-form-div">
+  <div class="row">
+    <div class="col-12 col-md-10 offset-md-1 text-break" id="edit-form">
+      <form method="post" enctype="multipart/form-data" class="rounded p-3 pt-4 ps-md-4 pe-md-4 shadow-lg bg-light bg-gradient border border-1 border-info">
         {% csrf_token %}
         {{ form.as_p }}
-        <a href="#" onclick="javascript:history.back()">Back</a>
-        <button type="submit">Save</button>
+        <hr class="mb-5 bg-info">
+        <div class="d-flex justify-content-between mt-5">
+          <button class="btn btn-secondary" type="submit" onclick="javascript:history.back()">Back</button>
+          <button class="btn btn-secondary ml-auto" type="submit">Save</button>
+        </div>
+        
     </form>
-</div>
-
-<div class="position-relative m-4">
-  <div class="progress" style="height: 1px;">
-    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-      aria-valuemax="100"></div>
+    </div>
   </div>
-  <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill"
-    style="width: 2rem; height:2rem;">1</button>
-  <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-primary rounded-pill"
-    style="width: 2rem; height:2rem;">2</button>
-  <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill"
-    style="width: 2rem; height:2rem;">3</button>
 </div>
-<hr>
 {% endblock content %}
+
+<p>
+  <label for="id_profile_audio">Profile audio:</label>
+  Currently: 
+  <a href="https://res.cloudinary.com/drpiqe19j/video/upload/v1/media/profile_audio/keys-of-moon-the-success_uuwow5">media/profile_audio/keys-of-moon-the-success_uuwow5</a>
+  <input type="checkbox" name="profile_audio-clear" id="profile_audio-clear_id">
+  <label for="profile_audio-clear_id">Clear</label>
+  <br>
+  Change:
+  <input type="file" name="profile_audio" id="id_profile_audio">
+</p>

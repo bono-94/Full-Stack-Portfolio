@@ -90,6 +90,7 @@ function toggleNavbarProfile() {
       navbarCollapse.classList.remove("mb-1")
       navbarButton.classList.remove("mt-2")
       navbarSticky.classList.remove("bg-secondary")
+      navbarSticky.classList.remove("bg-gradient")
       navbarSticky.classList.add("bg-transparent")
       navbarIcon.classList.remove("fa-ellipsis-vertical")
       navbarIcon.classList.add("fa-ellipsis");
@@ -100,6 +101,7 @@ function toggleNavbarProfile() {
       navbarButton.classList.add("mt-2")
       navbarSticky.classList.remove("bg-transparent")
       navbarSticky.classList.add("bg-secondary")
+      navbarSticky.classList.add("bg-gradient")
       navbarIcon.classList.remove("fa-ellipsis")
       navbarIcon.classList.add("fa-ellipsis-vertical");
   }
@@ -174,4 +176,3 @@ function modalActivate() {
 function modalClose() {
   $('#contact-modal').modal('hide');
 }
-

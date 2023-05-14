@@ -222,18 +222,109 @@ body {
     height: 100px;
 }
 
-/* INDIVIDUAL FORMS */
+/* PROFILE EDIT FORM */
 
-#example > form {
-    background-color: cyan;
+#edit-form > form input{
+
+  width: 100%;
 }
 
-#example > form input[type="text"]{
+#edit-form > form textarea{
 
-    color: orangered;
+  width: 100%;
 }
 
+#edit-form > form label{
 
+  background-color: #343a40;
+  color: #ffc107;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding: 5px;
+  display: block;
+  width: fit-content;
+}
+
+#edit-form p + p {
+
+  border-top: 1px solid rgb(23, 162, 184);
+  padding-top: 1em;
+}
+
+#edit-form > form input[type="text"]{
+
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#edit-form > form input[type="email"]{
+
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#edit-form > form input[type="number"]{
+
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#edit-form > form input[type="url"]{
+
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#edit-form > form input[type="color"]{
+
+  width: 15%;
+  margin-top: 10px;
+  padding: 3px;
+}
+
+#edit-form > form input[type="checkbox"]{
+
+  width: fit-content;
+  margin-top: 10px;
+  margin-left: 2px;
+  transform: scale(1.2);
+}
+
+#edit-form > form textarea{
+
+  padding-left: 5px;
+  padding-right: 3px;
+}
+
+#edit-form > form p a {
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  width: fit-content;
+  background-color: #17bef63c;
+  color: #343a40;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#edit-form > form p label:nth-of-type(2) {
+  background-color: rgba(211, 211, 211, 0.66);
+  color: black;
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 1px 3px 1px 3px;
+  margin-left: 10px;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+#edit-form > form p input:nth-of-type(2) {
+  margin-top: 10px;
+  display: block;
+
+}
 
 /* FOOTER */
 .footer-margin {
@@ -520,3 +611,20 @@ max-width: 700px;
   }
   /* ... */
 }
+
+@media (min-width: 800px) {
+  /* CSS rules for screens under 331px */
+  #edit-form > form input[type="color"]{
+
+    width: 10%;
+  }
+}
+
+@media (min-width: 1000px) {
+  /* CSS rules for screens under 331px */
+  #edit-form > form input[type="color"]{
+
+    width: 5%;
+  }
+}
+

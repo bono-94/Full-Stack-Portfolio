@@ -335,14 +335,21 @@ body {
 
 }
 
+/* popovers */
+#profile-example {
 
+  transform: scale(1.2);
+}
+
+[data-bs-content] {
+  /* Your styles here */
+  color: red;
+  font-size: 16px;
+  /* Add more styles as needed */
+}
 
 /*  */
 
-#edit-form-div {
-
-  margin-bottom: -200px;
-}
 
 /* FOOTER */
 

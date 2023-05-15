@@ -4,15 +4,20 @@
 
 {% block content %}
 <!-- HEADING -->
-<div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xxl-4 offset-xxl-4 rounded bg-warning bg-gradient mb-5 mt-2 border border-2 border-info shadow-lg">
-  <h1 class="d-flex justify-content-center mt-4">Editing profile:</h1>
-  <h2 class="d-flex justify-content-center mt-4 mb-3">{{ user.username }}</h2>
-  <button class="col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 rounded-pill shadow-sm bg-secondary mb-4 mt-2 pt-1 pb-1" type="submit">
-    <a href="https://8000-bono94-fullstackportfol-kdnutfdtdp2.ws-eu97.gitpod.io/profile/57" class="text-white text-decoration-none shadow-lg"><i class="fa-solid fa-circle-question me-2"></i>Profile example</a>
-  </button>
+<div class="container-fluid mt-3">
+  <div class="row-fluid">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xxl-4 offset-xxl-4 rounded bg-dark bg-gradient mt-0 border border-2 border-info shadow-lg mb-5">
+      <a class="text-white text-decoration-none d-flex justify-content-end" role="button">
+        <i class="fa-solid fa-circle-question mt-2 me-1 me-2 rounded-circle shadow-lg text-warning" id="profile-example" tabindex="0" onclick="showPopover()" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" title="Profile Example" data-bs-html="true" data-bs-content="&lt;div class='bg-dark rounded text-warning p-2'&gt;If you need inspiration on how to complete any fields, you can: &lt;a href=&quot;https://example.com&quot; class=&quot; text-info text-decoration-none d-block&quot;&gt;&lt;strong&gt;CLICK HERE!&lt;/strong&gt;&lt;/a&gt;&lt;/div&gt;"></i>
+      </a>
+      </a>
+      <h1 class="d-flex justify-content-center mt-4 text-warning"><strong>Editing profile:</strong></h1>
+      <h2 class="d-flex justify-content-center mt-4 pt-1 pb-2 mb-4 mb-sm-5 text-warning">{{ user.username }}</h2>
+    </div>
+  </div>
 </div>
 <!-- EDIT FORM -->
-<div class="container-fluid mt-4 mb-3" id="edit-form-div">
+<div class="container-fluid mt-3 mt-md-5 mb-4" id="edit-form-div" onclick="closePopover()">
   <div class="row">
     <div class="col-12 col-md-10 offset-md-1 text-break" id="edit-form">
       <form method="post" enctype="multipart/form-data" id="edit-form-form" class="rounded p-3 pt-4 ps-md-4 pe-md-4 shadow-lg bg-light bg-gradient border border-1 border-info">

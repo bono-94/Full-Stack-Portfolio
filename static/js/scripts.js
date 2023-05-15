@@ -186,10 +186,34 @@ function modalEditProfileClose() {
   $('#edit-profile-save').modal('hide');
 }
 
-$(document).ready(function(){ 
+$(document).ready(function() {
+  // Enable tooltip functionality
+  $('[data-toggle="tooltip"]').tooltip();
 
-  $('[data-toggle="tooltip"]').tooltip();    
+  // Enable popover functionality
+  $('[data-bs-toggle="popover"]').popover({
+    trigger: 'focus'
+  });
+});
 
-  $('[data-toggle="popover"]').popover();  
+function showPopover() {
+  const profileExamplePopover = document.getElementById('profile-example');
 
-}); 
+  // Destroy previous popover instance
+  if (profileExamplePopover._popover) {
+    profileExamplePopover._popover.dispose();
+  }
+
+  // Create new popover instance
+  const popover = new bootstrap.Popover(profileExamplePopover);
+  popover.show();
+
+  // Store the popover instance on the element for later reference
+  profileExamplePopover._popover = popover;
+}
+
+function closePopover() {
+  const profileExamplePopover = document.getElementById('profile-example');
+  const popover = new bootstrap.Popover(profileExamplePopover);
+  popover.hide();
+}

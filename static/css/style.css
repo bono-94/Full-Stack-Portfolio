@@ -335,16 +335,21 @@ body {
 
 }
 
-/* FOOTER */
-.footer-margin {
 
-    margin-bottom: 500px;
+
+/*  */
+
+#edit-form-div {
+
+  margin-bottom: -200px;
 }
+
+/* FOOTER */
 
 .footer {
 
-    background-color: rgb(255, 145, 0);
-    color: black;
+    background-color: black;
+    color: rgb(255, 145, 0);
 }
 
 

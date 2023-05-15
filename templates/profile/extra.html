@@ -1,6 +1,10 @@
 
 <hr>
 
+{% load crispy_forms_tags %}
+{{ form.profile_image | as_crispy_field }}
+{{ form.first_name | as_crispy_field }}
+
 <hr>
 <hr>
 <br>

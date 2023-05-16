@@ -217,3 +217,20 @@ function closePopover() {
   const popover = new bootstrap.Popover(profileExamplePopover);
   popover.hide();
 }
+
+// Public profile collapses
+function publicPersonalCollapse() {
+  const profileExamplePopover = document.getElementById('profile-information-collapse');
+  const profileExamplePopoverIcon = document.getElementById('profile-personal-icon');
+  let isExpanded = profileExamplePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profileExamplePopover.classList.remove("collapse");
+    profileExamplePopoverIcon.classList.remove("fa-square-plus");
+    profileExamplePopoverIcon.classList.add("fa-square-minus");
+  } else {
+    profileExamplePopover.classList.add("collapse");
+    profileExamplePopoverIcon.classList.remove("fa-square-minus");
+    profileExamplePopoverIcon.classList.add("fa-square-plus");
+  }
+
+}

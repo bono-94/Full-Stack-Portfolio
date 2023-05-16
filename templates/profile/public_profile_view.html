@@ -232,11 +232,14 @@
   <!-- GENERAL INFORMATION -->
   {% if profile_id.general_info_privacy == False %}
   <div class="row" id="profile-personal">
-    <div class="col-11 col-sm-8 col-md-6 col-lg-5 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg">Personal Information</h4>
+    <div class="col-11 col-sm-8 col-md-6 col-lg-4 ms-2 mt-4 text-center">
+      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg" onclick="publicPersonalCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-3 me-md-4 text-dark profile-collapse" id="profile-personal-icon"></i>
+        <span class="me-4">Personal Information</span>
+      </h4>
     </div>
   </div> 
-  <div class="row">
+  <div class="row collapse" id="profile-information-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mt-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">PUBLIC EMAIL:</strong> {% if profile_id.public_email %}{{ profile_id.public_email }}{% else %}(blank){% endif %}</li>

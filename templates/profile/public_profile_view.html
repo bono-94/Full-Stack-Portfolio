@@ -58,7 +58,13 @@
 <audio src="/static/audio/modal-fx.mp3" id="modal-audio-fx"></audio>
 <!-- PROFILE NAVIGATION SUPPORT -->
 {% if profile_id.privacy == False %}
-<div class="container-fluid bg-transparent me-0 fixed-bottom" id="sticky-profile">
+<div class="fixed-button-expander pb-1">
+  <button class="btn btn-dark text-warning border rounded border-info border-2 me-1 shadow-lg p-1 ps-2 pe-2" onclick="expandAllProfileColapses()" type="button">
+    <i class="fa-solid fa-eye p-0" id="profile-expand-all-icon"></i>
+    <i class="fa-solid fa-eye-slash d-none" id="profile-collapse-all-icon"></i>
+  </button>
+</div>
+<div class="container bg-transparent fixed-bottom ms-0 ps-1" id="sticky-profile">
   <div class="row-fluid text-warning d-flex flex-row justify-content-between" id="sticky-profile-row">
     <div class="p-0 ms-0">
       <button class="navbar-toggler btn btn-warning p-1 bg-dark text-warning border rounded border-info border-2 mt-1 ms-0 mb-1 shadow-lg" id="navbar-dropdown-profile" type="button"
@@ -119,7 +125,7 @@
       <h3 class="rounded border border-2 border-dark mb- bg-light p-1 shadow-lg profile-titles ps-2 pe-2">Public Profile</h3>
     </div>
   </div>
-  <div class="row mb-5 mt-5 mt-sm-4">
+  <div class="row mb-5 mt-5 mt-md-2">
     <button type="button" class="btn btn-dark fit-content mx-auto ps-md-4 pe-md-4 mb-3 border border-1 border-info text-info" onclick="modalPublicProfileActivate()" data-toggle="modal" data-target="#contact-modal" data-destination="{% if profile_id.public_email %}{{ profile_id.public_email }}{% else %}(blank){% endif %}">
       <strong>
         <i class="fa-regular fa-paper-plane me-2"></i>

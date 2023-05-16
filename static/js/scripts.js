@@ -226,8 +226,67 @@ function closePopover() {
   const popover = new bootstrap.Popover(profileExamplePopover);
   popover.hide();
 }
-
+id=profile-expand-all-icon
+id=profile-collapse-all-icon
 // PUBLIC PROFILE COLLAPSES
+
+// FULL PAGE COLLAPSE
+function expandAllProfileColapses() {
+  personalCollapse();
+  occupationCollapse();
+  pastEmploymentCollapse();
+  achievementsCollapse();
+  attributesCollapse();
+  focusCollapse();
+  specializationsCollapse();
+  resultsCollapse();
+  rewardsCollapse();
+  personalWallCollapse();
+
+  // Check if all elements are collapsed
+  if (
+    isCollapsed('profile-information-collapse') &&
+    isCollapsed('profile-employment-collapse') &&
+    isCollapsed('profile-history-collapse') &&
+    isCollapsed('profile-achievements-collapse') &&
+    isCollapsed('profile-attributes-collapse') &&
+    isCollapsed('profile-focus-collapse') &&
+    isCollapsed('profile-specializations-collapse') &&
+    isCollapsed('profile-results-collapse') &&
+    isCollapsed('profile-rewards-collapse') &&
+    isCollapsed('profile-profile-wall-collapse')
+  ) {
+    // All elements are collapsed, add class 'd-none' to profile-expand-all-icon
+    let expandIcon = document.getElementById('profile-expand-all-icon');
+    let collapseIcon = document.getElementById('profile-collapse-all-icon');
+    expandIcon.classList.remove('d-none');
+    collapseIcon.classList.add('d-none');
+  } else if (
+    !isCollapsed('profile-information-collapse') ||
+    !isCollapsed('profile-employment-collapse') ||
+    !isCollapsed('profile-history-collapse') ||
+    !isCollapsed('profile-achievements-collapse') ||
+    !isCollapsed('profile-attributes-collapse') ||
+    !isCollapsed('profile-focus-collapse') ||
+    !isCollapsed('profile-specializations-collapse') ||
+    !isCollapsed('profile-results-collapse') ||
+    !isCollapsed('profile-rewards-collapse') ||
+    !isCollapsed('profile-profile-wall-collapse')
+  ) {
+    let expandIcon = document.getElementById('profile-expand-all-icon');
+    let collapseIcon = document.getElementById('profile-collapse-all-icon');
+    collapseIcon.classList.remove('d-none');
+    expandIcon.classList.add('d-none');
+  }
+}
+
+// Function to check if an element is collapsed
+function isCollapsed(elementId) {
+  let element = document.getElementById(elementId);
+  return element.classList.contains('collapse');
+}
+
+
 
 // PERSONAL INFO COLLAPSE
 function personalCollapse() {

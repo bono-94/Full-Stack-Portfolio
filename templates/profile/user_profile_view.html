@@ -5,6 +5,12 @@
 
 {% block content %}
 <!-- PROFILE NAVIGATION SUPPORT -->
+<div class="fixed-button-expander pb-1">
+  <button class="btn btn-dark text-warning border rounded border-info border-2 me-1 shadow-lg p-1 ps-2 pe-2" onclick="expandAllProfileColapses()" type="button">
+    <i class="fa-solid fa-eye p-0" id="profile-expand-all-icon"></i>
+    <i class="fa-solid fa-eye-slash d-none" id="profile-collapse-all-icon"></i>
+  </button>
+</div>
 <div class="container-fluid bg-transparent me-0 fixed-bottom" id="sticky-profile">
   <div class="row-fluid text-warning d-flex flex-row justify-content-between" id="sticky-profile-row">
     <div class="p-0 ms-0">

@@ -81,8 +81,6 @@ function toggleNavbarProfile() {
   let navbarCollapse = document.getElementById("navbar-collapse-profile");
   let navbarButton = document.getElementById("navbar-dropdown-profile");
   let navbarIcon = document.getElementById("profile-nav-icon");
-  const navMarginMob = document.getElementById('nav-margin-mobile');
-  const navMarginTab = document.getElementById('nav-margin-tablet');
   let isExpanded = navbarCollapse.classList.contains("show");
   if (isExpanded) {
       navbarCollapse.classList.remove("show")
@@ -92,6 +90,9 @@ function toggleNavbarProfile() {
       navbarSticky.classList.remove("bg-secondary")
       navbarSticky.classList.remove("bg-gradient")
       navbarSticky.classList.add("bg-transparent")
+      navbarSticky.classList.remove("border")
+      navbarSticky.classList.remove("border-2")
+      navbarSticky.classList.remove("border-dark")
       navbarIcon.classList.remove("fa-ellipsis-vertical")
       navbarIcon.classList.add("fa-ellipsis");
   } else {
@@ -102,6 +103,9 @@ function toggleNavbarProfile() {
       navbarSticky.classList.remove("bg-transparent")
       navbarSticky.classList.add("bg-secondary")
       navbarSticky.classList.add("bg-gradient")
+      navbarSticky.classList.add("border")
+      navbarSticky.classList.add("border-2")
+      navbarSticky.classList.add("border-dark")
       navbarIcon.classList.remove("fa-ellipsis")
       navbarIcon.classList.add("fa-ellipsis-vertical");
   }

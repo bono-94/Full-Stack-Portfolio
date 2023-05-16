@@ -154,18 +154,18 @@ class Profile(models.Model):
     general_info_privacy = models.BooleanField(default=False)
     username = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
     public_email = models.EmailField(max_length=42, unique=True, blank=True, null=True)
-    first_name = models.CharField(max_length=21, blank=True, null=True)
-    last_name = models.CharField(max_length=21, blank=True, null=True)
-    location = models.CharField(max_length=21, blank=True, null=True)
-    languages = models.TextField(max_length=84, blank=True, null=True)
+    first_name = models.CharField(max_length=42, blank=True, null=True)
+    last_name = models.CharField(max_length=42, blank=True, null=True)
+    location = models.CharField(max_length=42, blank=True, null=True)
+    languages = models.TextField(max_length=210, blank=True, null=True)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
     height_cm = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(300)], null=True, blank=True)
     weight_kg = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)], null=True, blank=True)
 
-    # CURRENT EMPLOYMENT
+    # OCCUPATION
     current_employment_privacy = models.BooleanField(default=False)
-    industry = models.CharField(max_length=21, blank=True, null=True)
+    industry = models.CharField(max_length=42, blank=True, null=True)
     company = models.CharField(max_length=42, blank=True, null=True)
     department = models.CharField(max_length=21, blank=True, null=True)
     occupation = models.CharField(max_length=42, blank=True, null=True)
@@ -185,7 +185,7 @@ class Profile(models.Model):
             max_file_size_ten
         ],
     )
-    education = models.CharField(max_length=210, blank=True, null=True)
+    education = models.CharField(max_length=840, blank=True, null=True)
     work_history = models.TextField(max_length=2100, blank=True, null=True)
     projects_portfolio = models.FileField(
         upload_to='portfolios/',
@@ -198,24 +198,24 @@ class Profile(models.Model):
             max_file_size_ten
         ],
     )
-    references = models.TextField(max_length=210, blank=True, null=True)
-    recommendations = models.TextField(max_length=210, blank=True, null=True)
+    references = models.TextField(max_length=420, blank=True, null=True)
+    recommendations = models.TextField(max_length=420, blank=True, null=True)
 
     # ACHIEVEMENTS
     achievements_privacy = models.BooleanField(default=False)
-    projects_completed = models.TextField(max_length=210, blank=True, null=True)
-    goals_completed = models.TextField(max_length=210, blank=True, null=True)
-    missions_completed = models.TextField(max_length=210, blank=True, null=True)
-    milestones_completed = models.TextField(max_length=210, blank=True, null=True)
-    tasks_completed = models.TextField(max_length=210, blank=True, null=True)
-    contribution = models.TextField(max_length=210, blank=True, null=True)
+    projects_completed = models.TextField(max_length=840, blank=True, null=True)
+    goals_completed = models.TextField(max_length=840, blank=True, null=True)
+    missions_completed = models.TextField(max_length=840, blank=True, null=True)
+    milestones_completed = models.TextField(max_length=840, blank=True, null=True)
+    tasks_completed = models.TextField(max_length=840, blank=True, null=True)
+    contribution = models.TextField(max_length=840, blank=True, null=True)
 
     # ATTRIBUTES
     attributes_privacy = models.BooleanField(default=False)
-    knowledge = models.TextField(max_length=210, blank=True, null=True)
-    skills = models.TextField(max_length=210, blank=True, null=True)
-    strengths = models.TextField(max_length=210, blank=True, null=True)
-    weaknesses = models.TextField(max_length=210, blank=True, null=True)
+    knowledge = models.TextField(max_length=840, blank=True, null=True)
+    skills = models.TextField(max_length=840, blank=True, null=True)
+    strengths = models.TextField(max_length=840, blank=True, null=True)
+    weaknesses = models.TextField(max_length=840, blank=True, null=True)
 
     # BUSINESS FOCUS
     focus_privacy = models.BooleanField(default=False)
@@ -241,11 +241,11 @@ class Profile(models.Model):
 
     # ACCOMPLISHMENTS
     accomplishments_privacy = models.BooleanField(default=False)
-    results = models.TextField(max_length=210, blank=True, null=True)
-    certificates = models.TextField(max_length=210, blank=True, null=True)
-    honors = models.TextField(max_length=210, blank=True, null=True)
-    articles = models.TextField(max_length=210, blank=True, null=True)
-    recognition = models.TextField(max_length=210, blank=True, null=True)
+    results = models.TextField(max_length=840, blank=True, null=True)
+    certificates = models.TextField(max_length=840, blank=True, null=True)
+    honors = models.TextField(max_length=840, blank=True, null=True)
+    articles = models.TextField(max_length=840, blank=True, null=True)
+    recognition = models.TextField(max_length=840, blank=True, null=True)
     bigger_fish_results = models.FileField(
         upload_to='bigger_fish_results/',
         blank=True,
@@ -260,20 +260,20 @@ class Profile(models.Model):
 
     # REWARDS
     rewards_privacy = models.BooleanField(default=False)
-    awards = models.TextField(max_length=210, blank=True, null=True)
-    business_rewards = models.TextField(max_length=210, blank=True, null=True)
-    innovation_land_rewards = models.TextField(max_length=210, blank=True, null=True)
+    awards = models.TextField(max_length=840, blank=True, null=True)
+    business_rewards = models.TextField(max_length=840, blank=True, null=True)
+    innovation_land_rewards = models.TextField(max_length=840, blank=True, null=True)
 
     # PERSONAL WALL
     user_wall_privacy = models.BooleanField(default=False)
-    summary = models.TextField(max_length=84, blank=True, null=True)
+    summary = models.TextField(max_length=210, blank=True, null=True)
     story = models.TextField(max_length=2100, blank=True, null=True)
-    journey = models.TextField(max_length=210, blank=True, null=True)
-    future = models.TextField(max_length=210, blank=True, null=True)
-    legacy = models.TextField(max_length=210, blank=True, null=True)
-    change = models.TextField(max_length=210, blank=True, null=True)
+    journey = models.TextField(max_length=2100, blank=True, null=True)
+    future = models.TextField(max_length=2100, blank=True, null=True)
+    legacy = models.TextField(max_length=2100, blank=True, null=True)
+    change = models.TextField(max_length=2100, blank=True, null=True)
     ideal_life = models.TextField(max_length=2100, blank=True, null=True)
-    goals = models.TextField(max_length=210, blank=True, null=True)
+    goals = models.TextField(max_length=2100, blank=True, null=True)
     motivation_wall = models.TextField(max_length=2100, blank=True, null=True)
     interests_hobbies_wall = models.TextField(max_length=2100, blank=True, null=True)
     daily_routine = models.FileField(

@@ -22,6 +22,7 @@
     <div class="col-12 col-md-10 offset-md-1 text-break" id="edit-form">
       <form method="post" enctype="multipart/form-data" id="edit-form-form" class="rounded p-3 pt-4 ps-md-4 pe-md-4 shadow-lg bg-light bg-gradient border border-1 border-info">
         {% csrf_token %}
+        {{ form.as_p }}
         {{ form.profile_image }}
         {{ form.first_name }}
         <hr class="mb-5 bg-info">

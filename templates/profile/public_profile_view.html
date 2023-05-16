@@ -176,7 +176,7 @@
           <hr>
           <p class="card-text text-break"><strong class="me-2">VERIFIED: </strong>{% if profile_id.verified == True %}<i class="fa-solid fa-circle-check ms-2 me-1 d-inline"></i>Verified{% else %}Not verified {% endif %}</p>
           <hr>
-          <p class="card-text text-break"><strong class="me-2">MEMBERSHIP: </strong>{% if profile_id.member == True %}<i class="fa-solid fa-house-user ms-2 me-2 d-inline"></i>Member{% else %}Not a member{% endif %}</p>
+          <p class="card-text text-break"><strong class="me-2">MEMBERSHIP: </strong>{% if profile_id.member == True %}<i class="fa-solid fa-house-user ms-2 me-2 d-inline"></i>Member{% else %}(blank){% endif %}</p>
           <hr>
           <p class="card-text text-break"><strong class="me-2">LIFECOIN BALANCE: </strong>{% if profile_id.lifecoin_balance %}<i class="fa-solid fa-sack-dollar ms-2 me-2 d-inline"></i>{{ profile_id.lifecoin_balance }}{% else %}(blank){% endif %}</p>
           <hr>
@@ -305,7 +305,7 @@
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light"><strong class="me-1">CV:</strong> {% if profile_id.cv %}<a href="{{ profile_id.cv.url }}" target="_blank" class="hvr-sweep-to-bottom"><i class="fa fa-download ms-1" aria-hidden="true"></i><span class="ms-2"></span></a>{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong class="me-1">PROJECTS PORTFOLIO:</strong> {% if profile_id.projects_portfolio %}<a href="{{ profile_id.projects_portfolio.url }}"><i class="fa-solid fa-book ms-1"></i><span class="ms-2"></span></a>{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong class="me-1">PROJECTS PORTFOLIO:</strong> {% if profile_id.projects_portfolio %}<a href="{{ profile_id.projects_portfolio.url }}" target="_blank"><i class="fa-solid fa-book ms-1"></i><span class="ms-2"></span></a>{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">EDUCATION:</strong> {% if profile_id.education %}{{ profile_id.education }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">WORK HISTORY:</strong> {% if profile_id.work_history %}{{ profile_id.work_history }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">REFERENCES:</strong> {% if profile_id.references %}{{ profile_id.references }}{% else %}(blank){% endif %}</li>
@@ -474,14 +474,14 @@
   <!-- RESULTS -->
   {% if profile_id.accomplishments_privacy == False %}
   <div class="row" id="profile-results">
-    <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+    <div class="col-10 offset-1 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
       <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="resultsCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-results-icon"></i>
         <span class="me-0 w-100 pe-1">Results</span>
       </h5>
     </div>
   </div> 
-  <div class="row collapse" id="profile-results-collapse">
+  <div class="row-fluid collapse" id="profile-results-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3"> 
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">RESULTS:</strong> {% if profile_id.results %}{{ profile_id.results }}{% else %}(blank){% endif %}</li>
@@ -506,7 +506,7 @@
       </h5>
     </div>
   </div> 
-  <div class="row collapse" id="profile-rewards-collapse">
+  <div class="row-fluid collapse" id="profile-rewards-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">AWARDS:</strong> {% if profile_id.awards %}{{ profile_id.awards }}{% else %}(blank){% endif %}</li>
@@ -528,7 +528,7 @@
       </h5>
     </div>
   </div> 
-  <div class="row collapse" id="profile-profile-wall-collapse">
+  <div class="row-fluid collapse" id="profile-profile-wall-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-5 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">SUMMARY:</strong> {% if profile_id.summary %}{{ profile_id.summary }}{% else %}(blank){% endif %}</li>

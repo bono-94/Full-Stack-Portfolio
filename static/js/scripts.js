@@ -154,6 +154,11 @@ function closeNavbarProfile() {
     navbarCollapse.classList.remove('show');
     navbarToggle.setAttribute('aria-expanded', 'false')
     navbarSticky.classList.remove("bg-secondary");
+    navbarSticky.classList.remove("bg-transparent")
+    navbarSticky.classList.remove("bg-gradient")
+    navbarSticky.classList.remove("border")
+    navbarSticky.classList.remove("border-2")
+    navbarSticky.classList.remove("border-dark")
   }
 }
 
@@ -224,18 +229,163 @@ function closePopover() {
 
 // PUBLIC PROFILE COLLAPSES
 
-function publicPersonalCollapse() {
-  const profileExamplePopover = document.getElementById('profile-information-collapse');
-  const profileExamplePopoverIcon = document.getElementById('profile-personal-icon');
-  let isExpanded = profileExamplePopover.classList.contains("collapse");
+// PERSONAL INFO COLLAPSE
+function personalCollapse() {
+  let profilePopover = document.getElementById('profile-information-collapse');
+  let profilePopoverIcon = document.getElementById('profile-personal-icon');
+  let isExpanded = profilePopover.classList.contains("collapse");
   if (isExpanded) {
-    profileExamplePopover.classList.remove("collapse");
-    profileExamplePopoverIcon.classList.remove("fa-square-plus");
-    profileExamplePopoverIcon.classList.add("fa-square-minus");
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
   } else {
-    profileExamplePopover.classList.add("collapse");
-    profileExamplePopoverIcon.classList.remove("fa-square-minus");
-    profileExamplePopoverIcon.classList.add("fa-square-plus");
+    profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
   }
-
 }
+
+// OCCUPATION COLLAPSE
+function occupationCollapse() {
+  let profilePopover = document.getElementById('profile-employment-collapse');
+  let profilePopoverIcon = document.getElementById('profile-occupation-icon');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
+  } else {
+    profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
+  }
+}
+
+// EMPLOYMENT HISTORY COLLAPSE
+function pastEmploymentCollapse() {
+  let profilePopover = document.getElementById('profile-history-collapse');
+  let profilePopoverIcon = document.getElementById('profile-history-icon');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
+  } else {
+    profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
+  }
+}
+
+// ACHIEVEMENTS COLLAPSE
+function achievementsCollapse() {
+  let profilePopover = document.getElementById('profile-achievements-collapse');
+  let profilePopoverIcon = document.getElementById('profile-achievements-icon');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
+  } else {
+    profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
+  }
+}
+
+// ATTRIBUTES COLLAPSE
+function attributesCollapse() {
+  let profilePopover = document.getElementById('profile-attributes-collapse');
+  let profilePopoverIcon = document.getElementById('profile-attributes-icon');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
+  } else {
+    profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
+  }
+}
+
+// BUSINESS FOCUS COLLAPSE
+function focusCollapse() {
+  let profilePopover = document.getElementById('profile-focus-collapse');
+  let profilePopoverIcon = document.getElementById('profile-focus-icon');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
+  } else {
+    profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
+  }
+}
+
+// SPECIALIZATIONS COLLAPSE
+function specializationsCollapse() {
+  let profilePopover = document.getElementById('profile-specializations-collapse');
+  let profilePopoverIcon = document.getElementById('profile-specializations-icon');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
+  } else {
+    profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
+  }
+}
+
+// RESULTS COLLAPSE
+function resultsCollapse() {
+  let profilePopover = document.getElementById('profile-results-collapse');
+  let profilePopoverIcon = document.getElementById('profile-results-icon');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
+  } else {
+    profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
+  }
+}
+
+// REWARDS COLLAPSE
+function rewardsCollapse() {
+  let profilePopover = document.getElementById('profile-rewards-collapse');
+  let profilePopoverIcon = document.getElementById('profile-rewards-icon');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
+  } else {
+    profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
+  }
+}
+
+// PERSONAL WALL COLLAPSE
+function personalWallCollapse() {
+  let profilePopover = document.getElementById('profile-profile-wall-collapse');
+  let profilePopoverIcon = document.getElementById('profile-wall-icon');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
+  } else {
+    profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
+  }
+}
+

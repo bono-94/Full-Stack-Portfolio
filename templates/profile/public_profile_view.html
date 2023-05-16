@@ -56,7 +56,8 @@
   </div>
 </div>
 <audio src="/static/audio/modal-fx.mp3" id="modal-audio-fx"></audio>
-<!-- INCLUDE PRIVACY BASED ON EDIT FORM -->
+
+<!-- PROFILE NAVIGATION SUPPORT -->
 {% if profile_id.privacy == False %}
 <div class="container-fluid bg-transparent me-0 fixed-bottom" id="sticky-profile">
   <div class="row-fluid text-warning d-flex flex-row justify-content-between" id="sticky-profile-row">
@@ -119,7 +120,7 @@
       <h3 class="rounded border border-2 border-dark mb- bg-light p-1 shadow-lg profile-titles ps-2 pe-2">Public Profile</h3>
     </div>
   </div>
-  <div class="row mb-5 mt-4 ">
+  <div class="row mb-5 mt-5 mt-sm-4">
     <button type="button" class="btn btn-dark fit-content mx-auto ps-md-4 pe-md-4 mb-3 border border-1 border-info text-info" onclick="modalPublicProfileActivate()" data-toggle="modal" data-target="#contact-modal" data-destination="{% if profile_id.public_email %}{{ profile_id.public_email }}{% else %}(blank){% endif %}">
       <strong>
         <i class="fa-regular fa-paper-plane me-2"></i>
@@ -224,7 +225,7 @@
 {% else %}
 {% endif %}
   <!-- USER VIDEO -->
-  {% if profile_id.user_video_privacy == False %}
+{% if profile_id.user_video_privacy == False %}
   {% if profile_id.user_video %}
   <div class="row justify-content-center" id="profile-video">
     <div class="col-11 offset rounded border border-3 border-dark bg-secondary mt-4 mb-4 pt-2 shadow-lg h-100">
@@ -240,7 +241,7 @@
   {% if profile_id.general_info_privacy == False %}
   <div class="row" id="profile-personal">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="publicPersonalCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="personalCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-personal-icon"></i>
         <span class="me-0 w-100 pe-1">Personal Info</span>
       </h5>
@@ -265,12 +266,12 @@
   <hr class="border border-2 border-dark">
   {% else %}
   {% endif %}
-  <!-- CURRENT EMPLOYMENT -->
+  <!-- OCCUPATION -->
   {% if profile_id.current_employment_privacy == False %}
-  <div class="row" id="profile-employment">
+  <div class="row" id="profile-occupation">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="publicEmploymentCollapse()" type="button">
-        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-employment-icon"></i>
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="occupationCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-occupation-icon"></i>
         <span class="me-0 w-100 pe-1">Occupation</span>
       </h5>
     </div>
@@ -281,7 +282,7 @@
         <li class="list-group-item bg-light text-break"><strong class="me-1">INDUSTRY:</strong> {% if profile_id.industry %}{{ profile_id.industry }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">COMPANY:</strong> {% if profile_id.company %}{{ profile_id.company }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">DEPARTMENT:</strong> {% if profile_id.department %}{{ profile_id.department }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light text-break"><strong class="me-1">OCCUPATION:</strong> {% if profile_id.occupation %}{{ profile_id.occupation }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong class="me-1">POSITION:</strong> {% if profile_id.occupation %}{{ profile_id.occupation }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">START DATE:</strong> {% if profile_id.start_date %}<small class="d-block d-md-inline pt-2 pt-md-0">{{ profile_id.start_date }}</small><small class="d-none d-md-inline"> - </small><small class="text-muted">[Days: {{ profile_id.employed_days }} || Months: {{ profile_id.employed_months }} || Years: {{ profile_id.employed_years }}]{% else %}(blank){% endif %}</small></li>
         <li class="list-group-item bg-light"><strong class="me-1">HOURS PER WEEK:</strong> {% if profile_id.hours_per_week %}{{ profile_id.hours_per_week }}{% else %}(blank){% endif %}</li>
       </ul>
@@ -294,7 +295,7 @@
   {% if profile_id.history_employment_privacy == False %}
   <div class="row" id="profile-history">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="publicPastEmploymentCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="pastEmploymentCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-history-icon"></i>
         <span class="me-0 w-100 pe-1">Employment History</span>
       </h5>
@@ -319,7 +320,7 @@
   {% if profile_id.achievements_privacy == False %}
   <div class="row" id="profile-achievements">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="publicAchievements()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="achievementsCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-achievements-icon"></i>
         <span class="me-0 w-100 pe-1">Achievements</span>
       </h5>
@@ -344,7 +345,7 @@
   {% if profile_id.attributes_privacy == False %}
   <div class="row" id="profile-attributes">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="publicAttributes()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="attributesCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-attributes-icon"></i>
         <span class="me-0 w-100 pe-1">Attributes</span>
       </h5>
@@ -367,7 +368,7 @@
   {% if profile_id.focus_privacy == False %}
   <div class="row" id="profile-focus">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="publicFocus()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="focusCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-focus-icon"></i>
         <span class="me-0 w-100 pe-1">Business Focus</span>
       </h5>
@@ -418,8 +419,8 @@
   {% if profile_id.specialty_privacy == False %}
   <div class="row" id="profile-specializations">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="publicSpecializations()" type="button">
-        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-specialty-icon"></i>
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="specializationsCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-specializations-icon"></i>
         <span class="me-0 w-100 pe-1">Specializations</span>
       </h5>
     </div>
@@ -474,8 +475,8 @@
   {% if profile_id.accomplishments_privacy == False %}
   <div class="row" id="profile-results">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="publicResults()" type="button">
-        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-accomplishments-icon"></i>
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="resultsCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-results-icon"></i>
         <span class="me-0 w-100 pe-1">Results</span>
       </h5>
     </div>
@@ -499,7 +500,7 @@
   {% if profile_id.rewards_privacy == False %}
   <div class="row" id="profile-rewards">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="publicRewards()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="rewardsCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-rewards-icon"></i>
         <span class="me-0 w-100 pe-1">Rewards</span>
       </h5>
@@ -521,7 +522,7 @@
   {% if profile_id.user_wall_privacy == False %}
   <div class="row" id="profile-wall">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="publicPersonalWall()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="personalWallCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-wall-icon"></i>
         <span class="me-0 w-100 pe-1">Personal Wall</span>
       </h5>

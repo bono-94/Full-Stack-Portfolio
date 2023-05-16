@@ -185,7 +185,7 @@ class Profile(models.Model):
             max_file_size_ten
         ],
     )
-    education = models.CharField(max_length=840, blank=True, null=True)
+    education = models.TextField(max_length=840, blank=True, null=True)
     work_history = models.TextField(max_length=2100, blank=True, null=True)
     projects_portfolio = models.FileField(
         upload_to='portfolios/',

@@ -222,7 +222,8 @@ function closePopover() {
   popover.hide();
 }
 
-// Public profile collapses
+// PUBLIC PROFILE COLLAPSES
+
 function publicPersonalCollapse() {
   const profileExamplePopover = document.getElementById('profile-information-collapse');
   const profileExamplePopoverIcon = document.getElementById('profile-personal-icon');

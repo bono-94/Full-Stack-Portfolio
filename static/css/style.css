@@ -373,11 +373,14 @@ body {
 
 
 
+/* PROFILE TITLES */
 
 
 
+.profile-titles {
 
-
+  width: fit-content;
+}
 
 
 
@@ -613,6 +616,11 @@ max-width: 700px;
 
 
 
+/* CUSTOM BOOTSTRAP VERSION */
+
+.fit-content {
+  width: fit-content;
+}
 
 
 /* MEDIA QUERIES */

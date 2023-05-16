@@ -61,11 +61,11 @@
 <!-- PROFILE CARD -->
 <div class="container pt-3 pb-3 ps-3 pe-3 mb-5 mt-3 mt-md-3 rounded border border-2 border-dark" style="background-color: {{ profile.profile_color }};">
   <div class="row pt-2">
-    <div class="col-11 col-sm-6 col-md-4 col-lg-3 ms-2 mt-3 text-center" id="profile-general">
+    <div class="col-11 col-sm-6 col-md-4 col-lg-3 ms-2 mt-3 mb-2 mb-md-3 text-center" id="profile-general">
       <h3 class="rounded border border-2 border-dark mb- bg-light p-1 shadow-lg profile-titles ps-2 pe-2">My Profile</h3>
     </div>
   </div>
-  <div class="row mb-5 mt-4 ">
+  <div class="row mb-4 pb-2 pb-md-2 pb-lg-3 mt-4 ">
     <div class="col-8 offset-2 col-md-4 offset-md-0">
       <a href="{% url 'account_logout' %}">
         <button class="bg-dark w-100 mb-2 shadow-lg">
@@ -321,7 +321,7 @@
     </div>
   </div>
   <div class="row-fluid p-0 mb-5 mt-3 collapse" id="profile-focus-collapse">
-    <div class="col-10 offset-1 shadow-lg pt-4 rounded border border-1 border-dark mb-3 ps-2 pe-2">
+    <div class="col-12 col-md-10 offset-md-1 shadow-lg pt-4 rounded border border-2 border-dark mb-3 ps-2 pe-2">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">INNOVATION</h6>
       <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{profile.focus_innovation_style }}"><strong class="p-1">{% if profile.focus_innovation > 10 %}{{ profile.focus_innovation }} %{% else %}{{ profile.focus_innovation }}%{% endif %}</strong></div>
@@ -370,7 +370,7 @@
     </div>
   </div>
   <div class="row-fluid p-0 mb-5 mt-3 collapse" id="profile-specializations-collapse">
-    <div class="col-10 offset-1 shadow-lg pt-4 rounded border border-1 border-dark mb-3 ps-2 pe-2">
+    <div class="col-12 col-md-10 offset-md-1 shadow-lg pt-4 rounded border border-2 border-dark mb-3 ps-2 pe-2">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">OPERATIONS</h6>
       <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark text-white" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{profile.special_ops_style }}"><strong class="p-sm-1">{% if profile.special_ops > 10 %}{{ profile.special_ops }} %{% else %}{{ profile.special_ops }}%{% endif %}</strong></div>

@@ -4,9 +4,7 @@
 
 
 {% block content %}
-
-<!-- INCLUDE PRIVACY BASED ON EDIT FORM -->
-
+<!-- PROFILE NAVIGATION SUPPORT -->
 <div class="container-fluid bg-transparent me-0 fixed-bottom" id="sticky-profile">
   <div class="row-fluid text-warning d-flex flex-row justify-content-between" id="sticky-profile-row">
     <div class="p-0 ms-0">
@@ -21,7 +19,7 @@
         <a href="#profile-general" id="profile-general-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mt-1 border border-1 border-info bg-dark shadow-lg col-10 offset-2 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-circle-info me-3"></i>General</strong>
         </a>
-        {% if profile_id.user_video %}
+        {% if profile.user_video %}
           <a href="#profile-video" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
             <strong><i class="fa-solid fa-film me-3"></i>Video</strong>
           </a>
@@ -61,10 +59,10 @@
   </div>
 </div>
 <!-- PROFILE CARD -->
-<div class="container pt-3 mb-5 rounded border border-2 border-dark" style="background-color: {{ profile.profile_color }};">
+<div class="container pt-3 pb-3 ps-3 pe-3 mb-5 mt-3 mt-md-3 rounded border border-2 border-dark" style="background-color: {{ profile.profile_color }};">
   <div class="row pt-2">
     <div class="col-11 col-sm-6 col-md-4 col-lg-3 ms-2 mt-3 text-center" id="profile-general">
-      <h2 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm">My Profile</h2>
+      <h3 class="rounded border border-2 border-dark mb- bg-light p-1 shadow-lg profile-titles ps-2 pe-2">My Profile</h3>
     </div>
   </div>
   <div class="row mb-5 mt-4 ">
@@ -134,7 +132,7 @@
     <div class="col-10 col-md-7 offset-1">
       <div class="card"></div>
         <div class="card-body rounded border border-1 border-dark bg-light mt-5 mt-md-0 ps-3 pe-3 mb-3 mb-sm-5 shadow-lg">
-          <h4 class="card-title ps-0 mb-4 mt-2 text-center">{{ user.username }}</h4>
+          <h4 class="card-title ps-0 mb-4 mt-3 mb-2 mb-md-0  text-center">{{ user.username }}</h4>
           <p class="card-text"><strong class="me-2">STATUS: </strong>{% if user.is_authenticated %}Online <span class="text-success">●</span>{% else %}{{ profile.status }}{% endif %}</p>
           <hr>
           <p class="card-text text-break"><strong class="me-2">ACTIVE DAYS: </strong>{% if profile.active_days %}{{ profile.active_days }}{% else %}(blank){% endif %}</p>
@@ -143,7 +141,7 @@
           <hr>
           <p class="card-text text-break"><strong class="me-2">VERIFIED: </strong>{% if profile.verified == True %}<i class="fa-solid fa-circle-check ms-2 me-1 d-inline"></i>Verified{% else %}Not verified {% endif %}</p>
           <hr>
-          <p class="card-text text-break"><strong class="me-2">MEMBERSHIP: </strong>{% if profile.member == True %}<i class="fa-solid fa-house-user ms-2 me-2 d-inline"></i>Member{% else %}Not a member{% endif %}</p>
+          <p class="card-text text-break"><strong class="me-2">MEMBERSHIP: </strong>{% if profile.member == True %}<i class="fa-solid fa-house-user ms-2 me-2 d-inline"></i>Member{% else %}(blank){% endif %}</p>
           <hr>
           <p class="card-text text-break"><strong class="me-2">LIFECOIN BALANCE: </strong>{% if profile.lifecoin_balance %}<i class="fa-solid fa-sack-dollar ms-2 me-2 d-inline"></i>{{ profile.lifecoin_balance }}{% else %}(blank){% endif %}</p>
           <hr>
@@ -199,13 +197,16 @@
   <hr class="border border-2 border-dark">
   {% else %}
   {% endif %}
-  <!-- GENERAL INFORMATION -->
+  <!-- PERSONAL INFORMATION -->
   <div class="row" id="profile-personal">
-    <div class="col-11 col-sm-8 col-md-6 col-lg-5 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg">Personal Information</h4>
+    <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="personalCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-personal-icon"></i>
+        <span class="me-0 w-100 pe-1">Personal Info</span>
+      </h5>
     </div>
   </div> 
-  <div class="row">
+  <div class="row collapse" id="profile-information-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mt-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light"><strong class="me-1">USERNAME:</strong> {% if user.username %}{{ user.username }}{% else %}(blank){% endif %}</li>
@@ -224,13 +225,16 @@
     </div>
   </div>
   <hr class="border border-2 border-dark">
-  <!-- CURRENT EMPLOYMENT -->
-  <div class="row" id="profile-employment">
-    <div class="col-11 col-sm-8 col-md-6 col-xl-4 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg">Current Employment</h4>
+  <!-- OCCUPATION -->
+  <div class="row" id="profile-occupation">
+    <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="occupationCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-occupation-icon"></i>
+        <span class="me-0 w-100 pe-1">Occupation</span>
+      </h5>
     </div>
   </div> 
-  <div class="row">
+  <div class="row collapse" id="profile-employment-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">INDUSTRY:</strong> {% if profile.industry %}{{ profile.industry }}{% else %}(blank){% endif %}</li>
@@ -243,13 +247,16 @@
     </div>
   </div>
   <hr class="border border-2 border-dark">
-  <!-- PREVIOUS EMPLOYMENT -->
+  <!-- EMPLOYMENT HISTORY -->
   <div class="row" id="profile-history">
-    <div class="col-11 col-sm-8 col-md-6 col-lg-5 col-xl-4 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg">Previous Employment</h4>
+    <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="pastEmploymentCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-history-icon"></i>
+        <span class="me-0 w-100 pe-1">Employment History</span>
+      </h5>
     </div>
   </div> 
-  <div class="row">
+  <div class="row collapse" id="profile-history-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light"><strong class="me-1">CV:</strong> {% if profile.cv %}<a href="{{ profile.cv.url }}" target="_blank" class="hvr-sweep-to-bottom"><i class="fa fa-download ms-1" aria-hidden="true"></i><span class="ms-2"></span></a>{% else %}(blank){% endif %}</li>
@@ -264,11 +271,14 @@
   <hr class="border border-2 border-dark">
   <!-- ACHIEVEMENTS -->
   <div class="row" id="profile-achievements">
-    <div class="col-11 col-sm-6 col-md-5 col-lg-4 col-xl-3 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg">Achievements</h4>
+    <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="achievementsCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-achievements-icon"></i>
+        <span class="me-0 w-100 pe-1">Achievements</span>
+      </h5>
     </div>
   </div> 
-  <div class="row">
+  <div class="row collapse" id="profile-achievements-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">COMPLETED PROJECTS:</strong> {% if profile.projects_completed %}{{ profile.projects_completed }}{% else %}(blank){% endif %}</li>
@@ -283,11 +293,14 @@
   <hr class="border border-2 border-dark">
   <!-- ATTRIBUTES -->
   <div class="row" id="profile-attributes">
-    <div class="col-11 col-sm-4 col-md-4 col-xl-3 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg">Attributes</h4>
+    <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="attributesCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-attributes-icon"></i>
+        <span class="me-0 w-100 pe-1">Attributes</span>
+      </h5>
     </div>
   </div> 
-  <div class="row">
+  <div class="row collapse" id="profile-attributes-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">KNOWLEDGE:</strong> {% if profile.knowledge %}{{ profile.knowledge }}{% else %}(blank){% endif %}</li>
@@ -300,107 +313,116 @@
   <hr class="border border-2 border-dark">
   <!-- BUSINESS FOCUS -->
   <div class="row" id="profile-focus">
-    <div class="col-11 col-sm-6 col-md-5 col-lg-4 col-xl-3 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-5 bg-light p-1 shadow-lg">Business Focus</h4>
+    <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="focusCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-focus-icon"></i>
+        <span class="me-0 w-100 pe-1">Business Focus</span>
+      </h5>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 col-sm-10 offset-sm-1 shadow-lg pt-4 rounded border border-1 border-dark mb-3">
-      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">INNOVATION</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+  <div class="row-fluid p-0 mb-5 mt-3 collapse" id="profile-focus-collapse">
+    <div class="col-10 offset-1 shadow-lg pt-4 rounded border border-1 border-dark mb-3 ps-2 pe-2">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">INNOVATION</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{profile.focus_innovation_style }}"><strong class="p-1">{% if profile.focus_innovation > 10 %}{{ profile.focus_innovation }} %{% else %}{{ profile.focus_innovation }}%{% endif %}</strong></div>
       </div>
-      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">FINANCIALS</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">FINANCIALS</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_financials_style }}"><strong class="p-1">{% if profile.focus_financials > 10 %}{{ profile.focus_financials }} %{% else %}{{ profile.focus_financials }}%{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
-      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">PLANNING</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">PLANNING</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_planning_style }}"><strong class="p-1">{% if profile.focus_planning > 10 %}{{ profile.focus_planning }} %{% else %}{{ profile.focus_planning }}%{% endif %}</strong></div>
       </div>
-      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">MONITORING</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">MONITORING</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_monitoring_style }}"><strong class="p-1">{% if profile.focus_monitoring > 10 %}{{ profile.focus_monitoring }} %{% else %}{{ profile.focus_monitoring }}%{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
-      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">QUALITY</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">QUALITY</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_quality_style }}"><strong class="p-1">{% if profile.focus_quality > 10 %}{{ profile.focus_quality }} %{% else %}{{ profile.focus_quality }}%{% endif %}</strong></div>
       </div>
-      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">QUANTITY</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">QUANTITY</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_quantity_style }}"><strong class="p-1">{% if profile.focus_quantity > 10 %}{{ profile.focus_quantity }} %{% else %}{{ profile.focus_quantity }}%{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
-      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">COLLABORATION</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">COLLABORATION</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_collaboration_style }}"><strong class="p-1">{% if profile.focus_collaboration > 10 %}{{ profile.focus_collaboration }} %{% else %}{{ profile.focus_collaboration }}%{% endif %}</strong></div>
       </div>
-      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">LEADERSHIP</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">LEADERSHIP</h6>
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.focus_leadership_style }}"><strong class="p-1">{% if profile.focus_leadership > 10 %}{{ profile.focus_leadership }} %{% else %}{{ profile.focus_leadership }}%{% endif %}</strong></div>
       </div>
     </div>
   </div>
-  <hr class="border border-2 border-dark">
+  <hr class="border border-2 border-dark mt-3">
   <!-- BUSINESS SPECIALTY -->
   <div class="row" id="profile-specializations">
-    <div class="col-11 col-sm-9 col-md-7 col-lg-5 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-5 bg-light p-1 shadow-lg">Business Specializations</h4>
+    <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="specializationsCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-specializations-icon"></i>
+        <span class="me-0 w-100 pe-1">Specializations</span>
+      </h5>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 col-sm-10 offset-sm-1 shadow-lg pt-4 rounded border border-1 border-dark mb-3">
+  <div class="row-fluid p-0 mb-5 mt-3 collapse" id="profile-specializations-collapse">
+    <div class="col-10 offset-1 shadow-lg pt-4 rounded border border-1 border-dark mb-3 ps-2 pe-2">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">OPERATIONS</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark text-white" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{profile.special_ops_style }}"><strong class="p-sm-1">{% if profile.special_ops > 10 %}{{ profile.special_ops }} %{% else %}{{ profile.special_ops }}%{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">FINANCIALS</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_finance_style }}"><strong class="p-sm-1">{% if profile.special_finance > 10 %}{{ profile.special_finance }} %{% else %}{{ profile.special_finance }}%{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">MARKETING & SALES</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_marketing_style }}"><strong class="p-sm-1">{% if profile.special_marketing > 10 %}{{ profile.special_marketing }} %{% else %}{{ profile.special_marketing }}%{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">SUPPLY CHAIN</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_supply_chain_style }}"><strong class="p-sm-1">{% if profile.special_supply_chain > 10 %}{{ profile.special_supply_chain }} %{% else %}{{ profile.special_supply_chain }}%{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">HR</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark text-break" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_hr_style }}"><strong class="p-sm-1 text-break">{% if profile.special_hr > 10 %}{{ profile.special_hr }} %{% else %}{{ profile.special_hr }}%{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">TECHNOLOGY & DATA</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_tech_style }}"><strong class="p-sm-1">{% if profile.special_tech > 10 %}{{ profile.special_tech }} %{% else %}{{ profile.special_tech }}%{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">SUSTAINABILITY & CSR</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated text-dark" id="sustainability_user" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_sustainability_style }}"><strong class="p-sm-1">{% if profile.special_sustainability > 10 %}{{ profile.special_sustainability }} %{% else %}{{ profile.special_sustainability }}%{% endif %}</strong></div>
       </div>
       <hr class="mb-4">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-1 d-inline">RESEARCH</h6>
-      <div class="progress border border-4 border-dark mb-3 mt-1" style="height: 24px">
+      <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ profile.special_research_style }}"><strong class="p-sm-1">{% if profile.special_research > 10 %}{{ profile.special_research }} %{% else %}{{ profile.special_research }}%{% endif %}</strong></div>
       </div>
     </div>
   </div>
-  <hr class="border border-2 border-dark">
+  <hr class="border border-2 border-dark mt-3">
   <!-- RESULTS -->
   <div class="row" id="profile-results">
-    <div class="col-11 col-sm-4 col-md-4 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg">Results</h4>
+    <div class="col-10 offset-1 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="resultsCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-results-icon"></i>
+        <span class="me-0 w-100 pe-1">Results</span>
+      </h5>
     </div>
   </div> 
-  <div class="row">
+  <div class="row-fluid collapse" id="profile-results-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3"> 
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">RESULTS:</strong> {% if profile.results %}{{ profile.results }}{% else %}(blank){% endif %}</li>
@@ -412,14 +434,17 @@
       </ul>
     </div>
   </div>
-  <hr class="border border-2 border-dark">
+  <hr class="border border-2 border-dark mt-3">
   <!-- REWARDS -->
   <div class="row" id="profile-rewards">
-    <div class="col-11 col-sm-4 col-md-3 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg">Rewards</h4>
+    <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="rewardsCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-rewards-icon"></i>
+        <span class="me-0 w-100 pe-1">Rewards</span>
+      </h5>
     </div>
   </div> 
-  <div class="row">
+  <div class="row-fluid collapse" id="profile-rewards-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">AWARDS:</strong> {% if profile.awards %}{{ profile.awards }}{% else %}(blank){% endif %}</li>
@@ -428,14 +453,17 @@
       </ul>
     </div>
   </div>
-  <hr class="border border-2 border-dark">
+  <hr class="border border-2 border-dark mt-3">
   <!-- PERSONAL WALL -->
   <div class="row" id="profile-wall">
-    <div class="col-11 col-sm-6 col-md-4 ms-2 mt-4 text-center">
-      <h4 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg">Personal Wall</h4>
+    <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="personalWallCollapse()" type="button">
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-wall-icon"></i>
+        <span class="me-0 w-100 pe-1">Personal Wall</span>
+      </h5>
     </div>
   </div> 
-  <div class="row">
+  <div class="row-fluid collapse" id="profile-profile-wall-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-5 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">SUMMARY:</strong> {% if profile.summary %}{{ profile.summary }}{% else %}(blank){% endif %}</li>

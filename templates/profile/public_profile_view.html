@@ -56,7 +56,6 @@
   </div>
 </div>
 <audio src="/static/audio/modal-fx.mp3" id="modal-audio-fx"></audio>
-
 <!-- PROFILE NAVIGATION SUPPORT -->
 {% if profile_id.privacy == False %}
 <div class="container-fluid bg-transparent me-0 fixed-bottom" id="sticky-profile">
@@ -163,7 +162,7 @@
     <div class="col-10 col-md-7 offset-1">
       <div class="card"></div>
         <div class="card-body rounded border border-1 border-dark bg-light mt-5 mt-md-0 ps-3 pe-3 mb-3 mb-sm-5 shadow-lg">
-          <h4 class="card-title ps-0 mb-4 mt-2 text-center">{{ profile_id.username }}</h4>
+          <h4 class="card-title ps-0 mb-4 mt-3 mb-2 mb-md-0 text-center">{{ profile_id.username }}</h4>
           {% if profile_id.user == request.user %}
             <p class="card-text"><strong class="me-2">STATUS: </strong>{{ profile_id.status }} <span class="text-success">●</span></p>
           {% else %}
@@ -372,7 +371,7 @@
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-focus-icon"></i>
         <span class="me-0 w-100 pe-1">Business Focus</span>
       </h5>
-  </div>
+    </div>
   <div class="row-fluid p-0 mb-5 mt-3 collapse" id="profile-focus-collapse">
     <div class="col-10 offset-1 shadow-lg pt-4 rounded border border-1 border-dark mb-3 ps-2 pe-2">
       <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">INNOVATION</h6>

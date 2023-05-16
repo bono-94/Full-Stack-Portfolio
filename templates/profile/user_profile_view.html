@@ -21,9 +21,11 @@
         <a href="#profile-general" id="profile-general-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mt-1 border border-1 border-info bg-dark shadow-lg col-10 offset-2 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-circle-info me-3"></i>General</strong>
         </a>
-        <a href="#profile-video" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
-          <strong><i class="fa-solid fa-film me-3"></i>Video</strong>
-        </a>
+        {% if profile_id.user_video %}
+          <a href="#profile-video" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
+            <strong><i class="fa-solid fa-film me-3"></i>Video</strong>
+          </a>
+        {% endif %}
         <a href="#profile-personal" id="profile-personal-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-address-card me-3"></i></i>Personal</strong>
         </a>

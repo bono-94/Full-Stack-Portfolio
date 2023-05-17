@@ -23,7 +23,7 @@
     </div>
     <div class="collapse navbar-collapse text-center col-md-10" id="navbar-collapse-profile">
       <div class="d-flex flex-wrap me-5 justify-content-end">
-        <a href="#profile-general" id="profile-general-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mt-1 border border-1 border-info bg-dark shadow-lg col-10 offset-2 w-75" onclick="closeNavbarProfile()">
+        <a href="#public-profile-hook" id="profile-general-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mt-1 border border-1 border-info bg-dark shadow-lg col-10 offset-2 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-circle-info me-3"></i>General</strong>
         </a>
         {% if profile.user_video %}
@@ -34,13 +34,13 @@
         <a href="#profile-personal" id="profile-personal-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-address-card me-3"></i></i>Personal</strong>
         </a>
-        <a href="#profile-employment" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
+        <a href="#profile-occupation" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-briefcase me-3"></i>Occupation</strong>
         </a>
-        <a href="#profile-history" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
+        <a href="#profile-career" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-book-atlas me-3"></i>Career</strong>
         </a>
-        <a href="#profile-results" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
+        <a href="#profile-achievements" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-star me-3"></i>Achievements</strong>
         </a>
         <a href="#profile-attributes" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
@@ -66,6 +66,7 @@
   </div>
 </div>
 <!-- PROFILE CARD -->
+<div id="public-profile-hook"></div>
 <div class="container pt-3 pb-3 ps-3 pe-3 mb-5 mt-3 mt-md-3 rounded border border-2 border-dark" style="background-color: {{ profile.profile_color }};">
   <div class="row pt-2">
     <div class="col-11 col-sm-6 col-md-4 col-lg-3 ms-2 mt-3 mb-2 mb-md-3 text-center" id="profile-general">
@@ -241,13 +242,13 @@
       </h5>
     </div>
   </div> 
-  <div class="row collapse" id="profile-employment-collapse">
+  <div class="row collapse" id="profile-occupation-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">INDUSTRY:</strong> {% if profile.industry %}{{ profile.industry }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">COMPANY:</strong> {% if profile.company %}{{ profile.company }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">DEPARTMENT:</strong> {% if profile.department %}{{ profile.department }}{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light text-break"><strong class="me-1">OCCUPATION:</strong> {% if profile.occupation %}{{ profile.occupation }}{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light text-break"><strong class="me-1">POSITION:</strong> {% if profile.occupation %}{{ profile.occupation }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">START DATE:</strong> {% if profile.start_date %}<small class="d-block d-md-inline pt-2 pt-md-0">{{ profile.start_date }}</small><small class="d-none d-md-inline"> - </small><small class="text-muted">[Days: {{ profile.employed_days }} || Months: {{ profile.employed_months }} || Years: {{ profile.employed_years }}]{% else %}(blank){% endif %}</small></li>
         <li class="list-group-item bg-light"><strong class="me-1">HOURS PER WEEK:</strong> {% if profile.hours_per_week %}{{ profile.hours_per_week }}{% else %}(blank){% endif %}</li>
       </ul>
@@ -255,15 +256,15 @@
   </div>
   <hr class="border border-2 border-dark">
   <!-- EMPLOYMENT HISTORY -->
-  <div class="row" id="profile-history">
+  <div class="row" id="profile-career">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
       <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="pastEmploymentCollapse()" type="button">
-        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-history-icon"></i>
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-career-icon"></i>
         <span class="me-0 w-100 pe-1">Career</span>
       </h5>
     </div>
   </div> 
-  <div class="row collapse" id="profile-history-collapse">
+  <div class="row collapse" id="profile-career-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light"><strong class="me-1">CV:</strong> {% if profile.cv %}<a href="{{ profile.cv.url }}" target="_blank" class="hvr-sweep-to-bottom"><i class="fa fa-download ms-1" aria-hidden="true"></i><span class="ms-2"></span></a>{% else %}(blank){% endif %}</li>

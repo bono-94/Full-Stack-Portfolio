@@ -75,7 +75,7 @@
     </div>
     <div class="collapse navbar-collapse text-center col-md-10" id="navbar-collapse-profile">
       <div class="d-flex flex-wrap me-5 justify-content-end">
-        <a href="#profile-general" id="profile-general-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mt-1 border border-1 border-info bg-dark shadow-lg col-10 offset-2 w-75" onclick="closeNavbarProfile()">
+        <a href="#public-profile-hook" id="profile-general-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mt-1 border border-1 border-info bg-dark shadow-lg col-10 offset-2 w-75" onclick="closeNavbarProfileTop()">
           <strong><i class="fa-solid fa-circle-info me-3"></i>General</strong>
         </a>
         {% if profile_id.user_video %}
@@ -86,14 +86,14 @@
         <a href="#profile-personal" id="profile-personal-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-address-card me-3"></i></i>Personal</strong>
         </a>
-        <a href="#profile-employment" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
-          <strong><i class="fa-solid fa-briefcase me-3"></i>Employment</strong>
+        <a href="#profile-occupation" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
+          <strong><i class="fa-solid fa-briefcase me-3"></i>Occupation</strong>
         </a>
-        <a href="#profile-history" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
-          <strong><i class="fa-solid fa-book-atlas me-3"></i>History</strong>
+        <a href="#profile-career" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
+          <strong><i class="fa-solid fa-book-atlas me-3"></i>Career</strong>
         </a>
-        <a href="#profile-results" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
-          <strong><i class="fa-solid fa-star me-3"></i>Results</strong>
+        <a href="#profile-achievements" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
+          <strong><i class="fa-solid fa-star me-3"></i>Achievements</strong>
         </a>
         <a href="#profile-attributes" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-brain me-3"></i>Attributes</strong>
@@ -119,6 +119,7 @@
 </div>
 <!-- PROFILE CARD -->
 {% if profile_id.profile_card_privacy == False %}
+<div id="public-profile-hook"></div>
 <div class="container pt-3 pb-3 ps-3 pe-3 mb-5 mt-3 mt-md-3 rounded border border-2 border-dark" style="background-color: {{ profile_id.profile_color }};">
   <div class="row pt-2">
     <div class="col-11 col-sm-6 col-md-4 col-lg-3 ms-2 mt-3 text-center" id="profile-general">
@@ -214,7 +215,6 @@
               </div>
             </div>
           </div>
-            
           <hr>
           <p class="card-text m-0"><small class="text-muted"><span class="d-block d-sm-inline text-decoration-underline">JOINED:</span> {% if profile_id.created_on %}{{ profile_id.created_on|date:"F d, Y" }} [{{ profile_id.user_duration_created }} days ago]{% else %}(blank){% endif %}</small></p>
           <p class="card-text m-0 pt-2 pb-2"><small class="text-muted"><span class="d-block d-sm-inline text-decoration-underline">UPDATED:</span> {% if profile_id.updated_on %}{{ profile_id.updated_on|date:"F d, Y" }} [{{ profile_id.user_duration_updated }} days ago]{% else %}(blank){% endif %}</small></p>
@@ -276,7 +276,7 @@
       </h5>
     </div>
   </div> 
-  <div class="row collapse" id="profile-employment-collapse">
+  <div class="row collapse" id="profile-occupation-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light text-break"><strong class="me-1">INDUSTRY:</strong> {% if profile_id.industry %}{{ profile_id.industry }}{% else %}(blank){% endif %}</li>
@@ -293,15 +293,15 @@
   {% endif %}
   <!-- EMPLOYMENT HISTORY -->
   {% if profile_id.history_employment_privacy == False %}
-  <div class="row" id="profile-history">
+  <div class="row" id="profile-career">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
       <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="pastEmploymentCollapse()" type="button">
-        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-history-icon"></i>
+        <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-career-icon"></i>
         <span class="me-0 w-100 pe-1">Career</span>
       </h5>
     </div>
   </div> 
-  <div class="row collapse" id="profile-history-collapse">
+  <div class="row collapse" id="profile-career-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
         <li class="list-group-item bg-light"><strong class="me-1">CV:</strong> {% if profile_id.cv %}<a href="{{ profile_id.cv.url }}" target="_blank" class="hvr-sweep-to-bottom"><i class="fa fa-download ms-1" aria-hidden="true"></i><span class="ms-2"></span></a>{% else %}(blank){% endif %}</li>

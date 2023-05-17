@@ -148,6 +148,25 @@ window.addEventListener('load', function () {
 
 // Closing profile navigation on clicking on <a> elements
 
+function closeNavbarProfileTop() {
+  let navbarSticky = document.getElementById("sticky-profile");
+  var navbarCollapse = document.getElementById('navbar-collapse-profile');
+  var navbarToggle = document.getElementById('navbar-dropdown-profile');
+  let targetElement = document.getElementById('public-profile-hook');
+  if (navbarCollapse.classList.contains('show')) {
+    navbarCollapse.classList.remove('show');
+    navbarToggle.setAttribute('aria-expanded', 'false')
+    navbarSticky.classList.remove("bg-secondary");
+    navbarSticky.classList.remove("bg-transparent")
+    navbarSticky.classList.remove("bg-gradient")
+    navbarSticky.classList.remove("border")
+    navbarSticky.classList.remove("border-2")
+    navbarSticky.classList.remove("border-dark")
+  }
+  targetElement.style.paddingTop = '';
+  targetElement.style.marginTop = '';
+}
+
 function closeNavbarProfile() {
   let navbarSticky = document.getElementById("sticky-profile");
   var navbarCollapse = document.getElementById('navbar-collapse-profile');
@@ -248,8 +267,8 @@ function expandAllProfileColapses() {
   // Check if all elements are collapsed
   if (
     isCollapsed('profile-information-collapse') &&
-    isCollapsed('profile-employment-collapse') &&
-    isCollapsed('profile-history-collapse') &&
+    isCollapsed('profile-occupation-collapse') &&
+    isCollapsed('profile-career-collapse') &&
     isCollapsed('profile-achievements-collapse') &&
     isCollapsed('profile-attributes-collapse') &&
     isCollapsed('profile-focus-collapse') &&
@@ -265,8 +284,8 @@ function expandAllProfileColapses() {
     collapseIcon.classList.add('d-none');
   } else if (
     !isCollapsed('profile-information-collapse') ||
-    !isCollapsed('profile-employment-collapse') ||
-    !isCollapsed('profile-history-collapse') ||
+    !isCollapsed('profile-occupation-collapse') ||
+    !isCollapsed('profile-career-collapse') ||
     !isCollapsed('profile-achievements-collapse') ||
     !isCollapsed('profile-attributes-collapse') ||
     !isCollapsed('profile-focus-collapse') ||
@@ -308,7 +327,7 @@ function personalCollapse() {
 
 // OCCUPATION COLLAPSE
 function occupationCollapse() {
-  let profilePopover = document.getElementById('profile-employment-collapse');
+  let profilePopover = document.getElementById('profile-occupation-collapse');
   let profilePopoverIcon = document.getElementById('profile-occupation-icon');
   let isExpanded = profilePopover.classList.contains("collapse");
   if (isExpanded) {
@@ -324,8 +343,8 @@ function occupationCollapse() {
 
 // EMPLOYMENT HISTORY COLLAPSE
 function pastEmploymentCollapse() {
-  let profilePopover = document.getElementById('profile-history-collapse');
-  let profilePopoverIcon = document.getElementById('profile-history-icon');
+  let profilePopover = document.getElementById('profile-career-collapse');
+  let profilePopoverIcon = document.getElementById('profile-career-icon');
   let isExpanded = profilePopover.classList.contains("collapse");
   if (isExpanded) {
     profilePopover.classList.remove("collapse");
@@ -450,3 +469,18 @@ function personalWallCollapse() {
   }
 }
 
+// REMOVING EXTRA SPACE UPON CLICKING TOP OF PROFILE
+let targetElement = document.getElementById('public-profile-hook');
+// Listen for hash changes in the URL
+window.addEventListener('hashchange', function() {
+  // Check if the target element is the current target
+  if (window.location.hash === '#' + targetElement.id) {
+    // Remove or modify the styles when the element is the target
+    targetElement.style.paddingTop = '';
+    targetElement.style.marginTop = '';
+  } else {
+    // Restore the default styles when the element is not the target
+    targetElement.style.paddingTop = '120px';
+    targetElement.style.marginTop = '120px';
+  }
+});

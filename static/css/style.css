@@ -631,17 +631,7 @@ max-width: 700px;
   z-index: 9999;
 }
 
-
 /* MEDIA QUERIES */
-
-@media (max-width: 331px) {
-  /* CSS rules for screens under 331px */
-  #nav-logo-img {
-    height: 50px;
-  }
-  /* ... */
-}
-
 @media (max-width: 296px) {
   /* CSS rules for screens under 331px */
   #nav-logo-img {
@@ -649,6 +639,74 @@ max-width: 700px;
   }
   /* ... */
 }
+
+@media (max-width: 331px) {
+  /* CSS rules for screens under 331px */
+  #nav-logo-img {
+    height: 50px;
+  }
+  #profile-links>div i {
+    transform: scale(0.8);
+    margin-left: 0.5px;
+    margin-right: 0.5px;
+  }
+  /* ... */
+}
+
+@media (max-width: 390px) and (min-width: 320px) {
+  #profile-links>div i {
+    transform: scale(0.8);
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+}
+
+@media (max-width: 420px) and (min-width: 390px) {
+  #profile-links>div i {
+    transform: scale(1.1);
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+}
+
+@media (max-width: 490px) and (min-width: 420px) {
+  /* CSS rules for screens under 331px */
+  #profile-links>div i {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  /* ... */
+}
+
+@media (max-width: 767px) and (min-width: 490px) {
+  /* CSS rules for screens under 331px */
+  #profile-links>div i {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  /* ... */
+}
+
+@media (max-width: 844px) and (min-width: 767px) {
+  /* CSS rules for screens under 331px */
+  #profile-links>div i {
+    transform: scale(1.2);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  /* ... */
+}
+
+@media (min-width: 768px) {
+  /* CSS rules for screens under 331px */
+  #profile-links>div i {
+    transform: scale(1.2);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  /* ... */
+}
+
 
 @media (min-width: 800px) {
   /* CSS rules for screens under 331px */

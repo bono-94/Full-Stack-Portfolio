@@ -181,39 +181,40 @@
           <hr>
           <p class="card-text"><strong>LINKS:</strong></p>
           <div class="container-fluid m-0 p-0">
-            <div class="row-fluid ms-1 me-1 d-flex align-items-center">
-              <div class="col-2 col-sm-2 ms-sm-3 ms-md-2 ms-lg-3 ms-xl-4 ms-xxl-5">
-                <a href="{% if profile_id.website_link %}{{ profile_id.website_link }}{% else %}#profile-general{% endif %}" class="text-dark">
+            <div class="row-fluid d-flex justify-content-center" id="profile-links">
+              <div class="me-sm-2 ms-sm-2 ms-md-3 me-md-3 me-lg-4 ms-lg-4 me-xxl-5 ms-xxl-1">
+                <a href="{% if profile.website_link %}{{ profile.website_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
                   <i class="fa-solid fa-globe bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
-              <div class="col-2 col-sm-2">
-                <a href="{% if profile_id.facebook_link %}{{ profile_id.facebook_link }}{% else %}#profile-general{% endif %}" class="text-dark">
+              <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
+                <a href="{% if profile.facebook_link %}{{ profile.facebook_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
                   <i class="fa-brands fa-facebook bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
-              <div class="col-2 col-sm-2">
-                <a href="{% if profile_id.twitter_link %}{{ profile_id.twitter_link }}{% else %}#profile-general{% endif %}" class="text-dark">
+              <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
+                <a href="{% if profile.twitter_link %}{{ profile.twitter_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
                   <i class="fa-brands fa-twitter bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
-              <div class="col-2 col-sm-2">
-                <a href="{% if profile_id.instagram_link %}{{ profile_id.instagram_link }}{% else %}#profile-general{% endif %}" class="text-dark">
+              <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
+                <a href="{% if profile.instagram_link %}{{ profile.instagram_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
                   <i class="fa-brands fa-instagram bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
-              <div class="col-2 col-sm-2">
-                <a href="{% if profile_id.linkedin_link %}{{ profile_id.linkedin_link }}{% else %}#profile-general{% endif %}" class="text-dark">
+              <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
+                <a href="{% if profile.linkedin_link %}{{ profile.linkedin_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
                   <i class="fa-brands fa-linkedin bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
-              <div class="col-2 col-sm-2  me-xxl-1">
-                <a href="{% if profile_id.youtube_link %}{{ profile_id.youtube_link }}{% else %}#profile-general{% endif %}" class="text-dark">
+              <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-1">
+                <a href="{% if profile.youtube_link %}{{ profile.youtube_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
                   <i class="fa-brands fa-youtube bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
             </div>
           </div>
+            
           <hr>
           <p class="card-text m-0"><small class="text-muted"><span class="d-block d-sm-inline text-decoration-underline">JOINED:</span> {% if profile_id.created_on %}{{ profile_id.created_on|date:"F d, Y" }} [{{ profile_id.user_duration_created }} days ago]{% else %}(blank){% endif %}</small></p>
           <p class="card-text m-0 pt-2 pb-2"><small class="text-muted"><span class="d-block d-sm-inline text-decoration-underline">UPDATED:</span> {% if profile_id.updated_on %}{{ profile_id.updated_on|date:"F d, Y" }} [{{ profile_id.user_duration_updated }} days ago]{% else %}(blank){% endif %}</small></p>

@@ -36,7 +36,7 @@
   <!-- <link rel="stylesheet" href="./assets/css/style.css" type="text/css"> -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-  <script src="{% static 'js/scripts.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/scripts.js' %}" type="text/javascript" defer></script>
 
 
 </head>
@@ -77,9 +77,9 @@
                 href="#" id="navbar-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <strong>Projects</strong>
               </a>
-              <ul class="dropdown-menu text-center bg-gradient bg-warning  border-1 border-primary mt-0"
+              <ul class="dropdown-menu text-center bg-gradient bg-info border-1 border-primary mt-0 mb-0 pt-0"
                 aria-labelledby="navbarDropdown" id="navbar-dropdown-subs">
-                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 nav-button-shadow" href="{% url 'all_projects' %}">Public
+                <li><a class="dropdown-item bg-gradient bg-warning text-dark border-primary border-1 nav-button-shadow pt-2 pb-2" href="{% url 'all_projects' %}">Public
                     Projects</a></li>
                 <li>
                   <hr class="dropdown-divider bg-primary">

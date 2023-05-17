@@ -1,5 +1,5 @@
 var exampleTwoElement = document.getElementById("example-three"); // Get the element by ID
-exampleTwoElement.style.backgroundColor = "pink"; // Change the background color to pink
+// exampleTwoElement.style.backgroundColor = "pink"; // Change the background color to pink
 
 function exampleOne () {
 
@@ -9,7 +9,7 @@ function exampleOne () {
 }
 
 var exampleTwoElement = document.getElementById("example-seven"); // Get the element by ID
-exampleTwoElement.style.backgroundColor = "pink"; // Change the background color to pink
+// exampleTwoElement.style.backgroundColor = "pink"; // Change the background color to pink
 
 // Dismissal triggers:
 
@@ -21,12 +21,12 @@ alertList.forEach(function (alert) {
 /* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */
 
 
-var myAlert = document.getElementById('myAlert')
-myAlert.addEventListener('closed.bs.alert', function () {
-  // do something, for instance, explicitly move focus to the most appropriate element,
-  // so it doesn't get lost/reset to the start of the page
-  // document.getElementById('...').focus()
-})
+// var myAlert = document.getElementById('myAlert')
+// myAlert.addEventListener('closed.bs.alert', function () {
+//   // do something, for instance, explicitly move focus to the most appropriate element,
+//   // so it doesn't get lost/reset to the start of the page
+//   // document.getElementById('...').focus()
+// })
 
 // close.bs.alert	Fires immediately when the close instance method is called.
 // closed.bs.alert	Fired when the alert has been closed and CSS transitions have completed.
@@ -39,20 +39,20 @@ var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
 })
 
 
-var dropdown = new bootstrap.Dropdown(element, {
-  popperConfig: function (defaultBsPopperConfig) {
-    // var newPopperConfig = {...}
-    // use defaultBsPopperConfig if needed...
-    // return newPopperConfig
-  }
-})
+// var dropdown = new bootstrap.Dropdown(element, {
+//   popperConfig: function (defaultBsPopperConfig) {
+//     // var newPopperConfig = {...}
+//     // use defaultBsPopperConfig if needed...
+//     // return newPopperConfig
+//   }
+// })
 
 var myModal = document.getElementById('myModal')
 var myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
+// myModal.addEventListener('shown.bs.modal', function () {
+//   myInput.focus()
+// })
 
 // DROPDOWN NAVIGATION
 function toggleNavbar() {
@@ -113,22 +113,38 @@ function toggleNavbarProfile() {
   }
 }
 
+function stopVideo() {
+  const videoElement = document.getElementById('user-video');
+  videoElement.pause()
+}
 
 // Define the functions outside the addEventListener block
 function playAudio() {
   const audioElement = document.getElementById('user-profile-audio');
   audioElement.play();
+  audioElement.volume = 0.4
   const playButton = document.getElementById('play-user-profile');
   const stopButton = document.getElementById('stop-user-profile');
   playButton.style.display = 'none';
   stopButton.style.display = 'inline';
   audioElement.style.display = 'none';
+  stopVideo()
 }
 
 function stopAudio() {
   const audioElement = document.getElementById('user-profile-audio');
   audioElement.pause();
   audioElement.currentTime = 0;
+  const stopButton = document.getElementById('stop-user-profile');
+  const playButton = document.getElementById('play-user-profile');
+  audioElement.style.display = 'none';
+  stopButton.style.display = 'none';
+  playButton.style.display = 'inline';
+}
+
+function pauseAudio() {
+  const audioElement = document.getElementById('user-profile-audio');
+  audioElement.pause();
   const stopButton = document.getElementById('stop-user-profile');
   const playButton = document.getElementById('play-user-profile');
   audioElement.style.display = 'none';
@@ -188,8 +204,15 @@ const audioElement = document.getElementById('user-profile-audio');
 const playButton = document.getElementById('play-user-profile');
 const stopButton = document.getElementById('stop-user-profile');
 
+videoElement.addEventListener("play", (event) => {
+  console.log(
+    "The Boolean paused property is now 'false'. Either the play() method was called or the autoplay attribute was toggled."
+  );
+});
+
 videoElement.addEventListener('play', function() {
-  stopAudio();
+  videoElement.volume = 0.5
+  pauseAudio()
 });
 
 videoElement.addEventListener('pause', function() {

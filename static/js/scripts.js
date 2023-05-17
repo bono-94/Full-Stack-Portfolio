@@ -507,3 +507,13 @@ window.addEventListener('hashchange', function() {
     targetElement.style.marginTop = '120px';
   }
 });
+
+// Attach scroll event listener to update the active link on scroll
+window.addEventListener('scroll', updateActiveLink);
+
+$(document).ready(function(){
+  $("body").scrollspy({
+      target: "#profile-occupation"
+  }) 
+  $('#profile-personal-occupation').addClass('bg-warning');
+});

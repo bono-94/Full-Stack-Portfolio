@@ -12,7 +12,7 @@
     <i class="fa-solid fa-repeat text-light d-none" id="profile-collapse-all-icon"></i>
   </button>
 </div>
-<div class="container-fluid bg-transparent me-0 fixed-bottom ps-1" id="sticky-profile">
+<div class="container-fluid bg-transparent me-0 fixed-bottom ps-1 scrollspy-container" id="sticky-profile" >
   <div class="row-fluid text-warning d-flex flex-row justify-content-between" id="sticky-profile-row">
     <div class="p-0 ms-0">
       <button class="navbar-toggler btn btn-warning p-1 bg-dark text-warning border rounded border-info border-2 mt-1 ms-0 mb-1 shadow-lg" id="navbar-dropdown-profile" type="button"
@@ -34,7 +34,7 @@
         <a href="#profile-personal" id="profile-personal-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-address-card me-3"></i></i>Personal</strong>
         </a>
-        <a href="#profile-occupation" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
+        <a href="#profile-occupation" id="profile-personal-occupation" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-briefcase me-3"></i>Occupation</strong>
         </a>
         <a href="#profile-career" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 border border-1 border-info bg-dark shadow-lg col-10 offset-1 w-75" onclick="closeNavbarProfile()">

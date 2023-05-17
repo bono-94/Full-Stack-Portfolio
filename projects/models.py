@@ -20,10 +20,6 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Profile(models.Model):
 
     # CHOICES
-    STATUS_CHOICES = (
-        ('Online', 'Online'),
-        ('Offline', 'Offline'),
-    )
 
     GENDER_CHOICES = (
         ('Male', 'Male'),
@@ -78,13 +74,6 @@ class Profile(models.Model):
         blank=True,
         null=True
         )
-    status = models.CharField(
-        max_length=10,
-        choices=STATUS_CHOICES,
-        default='Offline',
-        blank=True,
-        null=True
-    )
     profile_quote = models.CharField(max_length=84, blank=True, null=True)
     active_days = models.CharField(max_length=63, blank=True, null=True)
     active_hours = models.CharField(max_length=42, blank=True, null=True)

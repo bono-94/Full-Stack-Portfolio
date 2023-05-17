@@ -69,7 +69,7 @@
 <div class="container pt-3 pb-3 ps-3 pe-3 mb-5 mt-3 mt-md-3 rounded border border-2 border-dark" style="background-color: {{ profile.profile_color }};">
   <div class="row pt-2">
     <div class="col-11 col-sm-6 col-md-4 col-lg-3 ms-2 mt-3 mb-2 mb-md-3 text-center" id="profile-general">
-      <h3 class="rounded border border-2 border-dark mb- bg-light p-1 shadow-lg profile-titles ps-2 pe-2">My Profile</h3>
+      <h3 class="rounded border border-2 border-dark mb- bg-light p-1 shadow-sm profile-titles ps-2 pe-2">My Profile</h3>
     </div>
   </div>
   <div class="row mb-4 pb-2 pb-md-2 pb-lg-3 mt-4 ">
@@ -111,7 +111,7 @@
       {% else %}
       <img src="{% static 'images/21104.png' %}" alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2">
       {% endif %}
-      <p class="card-text ms-4 me-4 me-md-0 mt-4 text-break ms-md-5 mt-2 p-2 border border-1 border-dark shadow-lg rounded bg-light"><strong>WISDOM: </strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
+      <p class="card-text ms-4 me-4 me-md-0 mt-4 text-break ms-md-5 mt-2 p-2 border border-1 border-dark shadow-sm rounded bg-light"><strong>WISDOM: </strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
       {% if profile.profile_audio %}
       <div class ="d-flex d-md-block justify-content-center">
         <button class="btn bg-dark shadow-lg w-42 rounded-pill ms-md-5 mt-2 shadow-lg" id="play-user-profile" onclick="playAudio()">
@@ -207,7 +207,7 @@
   <!-- PERSONAL INFORMATION -->
   <div class="row" id="profile-personal">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="personalCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="personalCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-personal-icon"></i>
         <span class="me-0 w-100 pe-1">Personal Info</span>
       </h5>
@@ -235,7 +235,7 @@
   <!-- OCCUPATION -->
   <div class="row" id="profile-occupation">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="occupationCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="occupationCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-occupation-icon"></i>
         <span class="me-0 w-100 pe-1">Occupation</span>
       </h5>
@@ -257,9 +257,9 @@
   <!-- EMPLOYMENT HISTORY -->
   <div class="row" id="profile-history">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="pastEmploymentCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="pastEmploymentCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-history-icon"></i>
-        <span class="me-0 w-100 pe-1">Employment History</span>
+        <span class="me-0 w-100 pe-1">Career</span>
       </h5>
     </div>
   </div> 
@@ -279,7 +279,7 @@
   <!-- ACHIEVEMENTS -->
   <div class="row" id="profile-achievements">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="achievementsCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="achievementsCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-achievements-icon"></i>
         <span class="me-0 w-100 pe-1">Achievements</span>
       </h5>
@@ -301,7 +301,7 @@
   <!-- ATTRIBUTES -->
   <div class="row" id="profile-attributes">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="attributesCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="attributesCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-attributes-icon"></i>
         <span class="me-0 w-100 pe-1">Attributes</span>
       </h5>
@@ -321,7 +321,7 @@
   <!-- BUSINESS FOCUS -->
   <div class="row" id="profile-focus">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="focusCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="focusCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-focus-icon"></i>
         <span class="me-0 w-100 pe-1">Business Focus</span>
       </h5>
@@ -370,7 +370,7 @@
   <!-- BUSINESS SPECIALTY -->
   <div class="row" id="profile-specializations">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="specializationsCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="specializationsCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-specializations-icon"></i>
         <span class="me-0 w-100 pe-1">Specializations</span>
       </h5>
@@ -423,7 +423,7 @@
   <!-- RESULTS -->
   <div class="row" id="profile-results">
     <div class="col-10 offset-1 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="resultsCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="resultsCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-results-icon"></i>
         <span class="me-0 w-100 pe-1">Results</span>
       </h5>
@@ -445,7 +445,7 @@
   <!-- REWARDS -->
   <div class="row" id="profile-rewards">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="rewardsCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="rewardsCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-rewards-icon"></i>
         <span class="me-0 w-100 pe-1">Rewards</span>
       </h5>
@@ -464,7 +464,7 @@
   <!-- PERSONAL WALL -->
   <div class="row" id="profile-wall">
     <div class="col-11 col-sm-8 col-lg-5 ms-2 ms-sm-3 ms-md-5 mt-4 text-center">
-      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-lg profile-titles ps-1 pe-1" onclick="personalWallCollapse()" type="button">
+      <h5 class="rounded border border-2 border-dark mb-4 bg-light p-1 shadow-sm profile-titles ps-1 pe-1" onclick="personalWallCollapse()" type="button">
         <i class="fa-solid fa-square-plus me-2 ms-1 text-dark profile-collapse" id="profile-wall-icon"></i>
         <span class="me-0 w-100 pe-1">Personal Wall</span>
       </h5>

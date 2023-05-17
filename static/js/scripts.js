@@ -94,7 +94,8 @@ function toggleNavbarProfile() {
       navbarSticky.classList.remove("border-2")
       navbarSticky.classList.remove("border-dark")
       navbarIcon.classList.remove("fa-ellipsis-vertical")
-      navbarIcon.classList.add("fa-ellipsis");
+      navbarIcon.classList.add("fa-ellipsis")
+      navbarIcon.classList.remove("text-light");
   } else {
       navbarCollapse.classList.add("show")
       navbarCollapse.classList.add("mt-1")
@@ -107,7 +108,8 @@ function toggleNavbarProfile() {
       navbarSticky.classList.add("border-2")
       navbarSticky.classList.add("border-dark")
       navbarIcon.classList.remove("fa-ellipsis")
-      navbarIcon.classList.add("fa-ellipsis-vertical");
+      navbarIcon.classList.add("fa-ellipsis-vertical")
+      navbarIcon.classList.add("text-light");
   }
 }
 

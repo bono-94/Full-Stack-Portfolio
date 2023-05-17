@@ -164,7 +164,7 @@ function closeNavbarProfileTop() {
     navbarSticky.classList.remove("border-dark")
   }
   targetElement.style.paddingTop = '';
-  targetElement.style.marginTop = '';
+    targetElement.style.marginTop = '';
 }
 
 function closeNavbarProfile() {

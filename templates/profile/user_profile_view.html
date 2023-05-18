@@ -143,6 +143,8 @@
           <h4 class="card-title ps-0 mb-4 mt-3 mb-2 mb-md-0  text-center">{{ user.username }}</h4>
           <p class="card-text"><strong class="me-2">STATUS: </strong>{% if user.is_authenticated %}Online <span class="text-success">●</span>{% else %}{{ profile.status }}{% endif %}</p>
           <hr>
+          <p class="card-text text-break"><strong class="me-2">USER TYPE: </strong>{% if profile.user_type == "Human" %}<span class="badge badge-pill bg-warning text-dark d-inline-block p-2 border border-1 border-secondary">{{ profile.user_type }}</span>{% elif profile.user_type == "AI" %}<span class="badge badge-pill bg-secondary text-light d-inline-block p-2 border border-1 border-secondary">{{ profile.user_type }}</span>{% else %}(blank){% endif %}</p>
+          <hr>
           <p class="card-text text-break"><strong class="me-2">ACTIVE DAYS: </strong>{% if profile.active_days %}{{ profile.active_days }}{% else %}(blank){% endif %}</p>
           <hr>
           <p class="card-text text-break"><strong class="me-2">ACTIVE HOURS: </strong>{% if profile.active_hours %}{{ profile.active_hours }}{% else %}(blank){% endif %}</p>

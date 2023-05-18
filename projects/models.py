@@ -27,6 +27,11 @@ class Profile(models.Model):
         ('Other', 'Other'),
     )
 
+    TYPE_OF_USER = (
+        ('Human', 'Human'),
+        ('AI', 'AI'),
+    )
+
     # MAXIMUM FILE NAME LENGTH
     def validate_file_name_length(value):
         if len(value.name) > 84:
@@ -77,6 +82,7 @@ class Profile(models.Model):
     profile_quote = models.CharField(max_length=84, blank=True, null=True)
     active_days = models.CharField(max_length=63, blank=True, null=True)
     active_hours = models.CharField(max_length=42, blank=True, null=True)
+    user_type = models.CharField(max_length=5, choices=TYPE_OF_USER, blank=True, null=True)
     verified = models.BooleanField(default=False)
     member = models.BooleanField(default=False)
     lifecoin_balance = models.IntegerField(null=True, blank=True)

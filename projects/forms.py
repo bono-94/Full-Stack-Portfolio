@@ -15,6 +15,7 @@ class ProfileForm(forms.ModelForm):
             'profile_audio',
             'profile_image',
             'profile_quote',
+            'user_type',
             'active_days',
             'active_hours',
             'website_link',

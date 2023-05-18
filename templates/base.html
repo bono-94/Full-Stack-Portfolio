@@ -74,19 +74,19 @@
                 href="#" id="navbar-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <strong>Projects</strong>
               </a>
-              <ul class="dropdown-menu text-center bg-gradient bg-light mt-0 mb-0 p-1 border border-1 border-secondary shadow-sm"
+              <ul class="dropdown-menu text-center bg-gradient bg-light mt-0 mb-0 p-1 border border-1 border-secondary rounded-md-1 shadow-sm"
                 aria-labelledby="navbarDropdown" id="navbar-dropdown-subs">
-                <li><a class="dropdown-item bg-gradient bg-light text-dark nav-button-shadow p-1" href="{% url 'all_projects' %}">Public
+                <li><a class="dropdown-item bg-gradient bg-light text-dark nav-button-shadow  py-2" href="{% url 'all_projects' %}">Public
                     Projects</a></li>
                 <li>
-                  <hr class="dropdown-divider bg-info mt-0 mb-0">
+                  <hr class="dropdown-divider bg-info my-0">
                 </li>
-                <li><a class="dropdown-item bg-secondary bg-light text-dark nav-button-shadow p-1" href="{% url 'user_posts' %}">My
+                <li><a class="dropdown-item bg-secondary bg-light text-dark nav-button-shadow py-2" href="{% url 'user_posts' %}">My
                     Projects</a></li>
                 <li>
-                  <hr class="dropdown-divider bg-info mt-0 mb-0">
+                  <hr class="dropdown-divider bg-info my-0">
                 </li>
-                <li><a class="dropdown-item bg-gradient bg-light text-dark nav-button-shadow p-1" href="{% url 'post_create' %}">Create
+                <li><a class="dropdown-item bg-gradient bg-light text-dark nav-button-shadow  py-2" href="{% url 'post_create' %}">Create
                     Project</a></li>
               </ul>
             </li>

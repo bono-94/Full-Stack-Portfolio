@@ -525,159 +525,195 @@ function personalWallCollapse() {
 function editProfilePrivacy() {
   let editPopover = document.getElementById('edit-privacy');
   let editPopoverButton = document.getElementById('edit-privacy-bttn');
-  let isExpanded = editPopover.classList.contains("show");
-
-  editPopoverButton.style.backgroundColor = "#41c2ed75 !important";
-
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    editPopover.classList.remove("show");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+
   } else {
-    editPopover.classList.add("show");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
      // Set the desired background color with important
   }
 }
 
 // EDIT CARD COLLAPSE
 function editProfileCard() {
-  let profilePopover = document.getElementById('edit-card');
-  let profilePopoverIcon = document.getElementById('edit-card-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-card');
+  let editPopoverButton = document.getElementById('edit-card-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 
 // EDIT VIDEO COLLAPSE
 function editProfileVideo() {
-  let profilePopover = document.getElementById('edit-video');
-  let profilePopoverIcon = document.getElementById('edit-video-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-video');
+  let editPopoverButton = document.getElementById('edit-video-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 
 // EDIT GENERAL COLLAPSE
 function editProfileGeneral() {
-  let profilePopover = document.getElementById('edit-general');
-  let profilePopoverIcon = document.getElementById('edit-general-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-general');
+  let editPopoverButton = document.getElementById('edit-general-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 
 // EDIT OCCUPATION COLLAPSE
 function editProfileOccupation() {
-  let profilePopover = document.getElementById('edit-occupation');
-  let profilePopoverIcon = document.getElementById('edit-occupation-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-occupation');
+  let editPopoverButton = document.getElementById('edit-occupation-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 
 // EDIT CAREER COLLAPSE
 function editProfileCareer() {
-  let profilePopover = document.getElementById('edit-career');
-  let profilePopoverIcon = document.getElementById('edit-career-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-career');
+  let editPopoverButton = document.getElementById('edit-career-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 
 // EDIT ACHIEVEMENTS COLLAPSE
 function editProfileAchievements() {
-  let profilePopover = document.getElementById('edit-achievements');
-  let profilePopoverIcon = document.getElementById('edit-achievements-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-achievements');
+  let editPopoverButton = document.getElementById('edit-achievements-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 
 // EDIT ATTRIBUTES COLLAPSE
 function editProfileAttributes() {
-  let profilePopover = document.getElementById('edit-attributes');
-  let profilePopoverIcon = document.getElementById('edit-attributes-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-attributes');
+  let editPopoverButton = document.getElementById('edit-attributes-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 
 // EDIT BUSINESS FOCUS COLLAPSE
 function editProfileFocus() {
-  let profilePopover = document.getElementById('edit-focus');
-  let profilePopoverIcon = document.getElementById('edit-focus-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-focus');
+  let editPopoverButton = document.getElementById('edit-focus-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 
 // EDIT BUSINESS SPECIALIZATIONS COLLAPSE
 function editProfileSpecialization() {
-  let profilePopover = document.getElementById('edit-specializations');
-  let profilePopoverIcon = document.getElementById('edit-specializations-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-specializations');
+  let editPopoverButton = document.getElementById('edit-specializations-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 
 // EDIT ACCOMPLISHMENTS COLLAPSE
 function editProfileAccomplishments() {
-  let profilePopover = document.getElementById('edit-accomplishments');
-  let profilePopoverIcon = document.getElementById('edit-accomplishments-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-accomplishments');
+  let editPopoverButton = document.getElementById('edit-accomplishments-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
+
 // EDIT REWARDSL COLLAPSE
 function editProfileRewards() {
-  let profilePopover = document.getElementById('edit-rewards');
-  let profilePopoverIcon = document.getElementById('edit-rewards-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-rewards');
+  let editPopoverButton = document.getElementById('edit-rewards-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 
 // EDIT PERSONAL WALL COLLAPSE
 function editProfileWall() {
-  let profilePopover = document.getElementById('edit-wall');
-  let profilePopoverIcon = document.getElementById('edit-wall-bttn');
-  let isExpanded = profilePopover.classList.contains("collapse");
+  let editPopover = document.getElementById('edit-wall');
+  let editPopoverButton = document.getElementById('edit-wall-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
   if (isExpanded) {
-    profilePopover.classList.remove("collapse");
-    profilePopoverIcon.classList.add('!bg-as-nav');
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
   } else {
-    profilePopover.classList.add("collapse");
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
   }
 }
 

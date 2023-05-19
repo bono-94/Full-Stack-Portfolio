@@ -249,29 +249,60 @@ $(document).ready(function() {
   });
 });
 
+// let popover;
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   const profileExamplePopover = document.getElementById('profile-example');
+//   popover = new bootstrap.Popover(profileExamplePopover);
+
+
+//   })
+
+// function showPopover() {
+
+//   // Destroy previous popover instance
+//   if (popover) {
+//     console.log('profileExamplePopover exists')
+//     popover.hide();
+//     console.log('profileExamplePopover disposed')
+//   }
+  
+//   // Create new popover instance
+//   popover.show();
+//   console.log('popover shown')
+// }
+
+// function closePopover() {
+//   popover.hide();
+// }
+
+
+
 function showPopover() {
-  const profileExamplePopover = document.getElementById('profile-example');
 
+  const profileExamplePopover = document.getElementById('profile-example');
+  let popover = new bootstrap.Popover(profileExamplePopover);
+  
   // Destroy previous popover instance
-  if (profileExamplePopover._popover) {
-    profileExamplePopover._popover.dispose();
+  if (popover) {
+    console.log('profileExamplePopover exists')
+    popover.show();
+    console.log('profileExamplePopover disposed')
+  } else {
+    // / Create new popover instance;
+    popover.hide();
+    console.log('popover shown')
   }
-
-  // Create new popover instance
-  const popover = new bootstrap.Popover(profileExamplePopover);
-  popover.show();
-
-  // Store the popover instance on the element for later reference
-  profileExamplePopover._popover = popover;
+  
 }
 
-function closePopover() {
-  const profileExamplePopover = document.getElementById('profile-example');
-  const popover = new bootstrap.Popover(profileExamplePopover);
-  popover.hide();
-}
-id=profile-expand-all-icon
-id=profile-collapse-all-icon
+// function closePopover() {
+//   const profileExamplePopover = document.getElementById('profile-example');
+//   const popover = new bootstrap.Popover(profileExamplePopover);
+//   popover.hide();
+// }
+
+
 // PUBLIC PROFILE COLLAPSES
 
 // FULL PAGE COLLAPSE
@@ -483,14 +514,180 @@ function personalWallCollapse() {
   let isExpanded = profilePopover.classList.contains("collapse");
   if (isExpanded) {
     profilePopover.classList.remove("collapse");
-    profilePopoverIcon.classList.remove("fa-square-plus");
-    profilePopoverIcon.classList.add("fa-square-minus");
   } else {
     profilePopover.classList.add("collapse");
-    profilePopoverIcon.classList.remove("fa-square-minus");
-    profilePopoverIcon.classList.add("fa-square-plus");
   }
 }
+
+// EDIT PROFILE COLLAPSES
+
+// EDIT PRIVACY COLLAPSE
+function editProfilePrivacy() {
+  let editPopover = document.getElementById('edit-privacy');
+  let editPopoverButton = document.getElementById('edit-privacy-bttn');
+  let isExpanded = editPopover.classList.contains("show");
+
+  editPopoverButton.style.backgroundColor = "#41c2ed75 !important";
+
+  if (isExpanded) {
+    editPopover.classList.remove("show");
+  } else {
+    editPopover.classList.add("show");
+     // Set the desired background color with important
+  }
+}
+
+// EDIT CARD COLLAPSE
+function editProfileCard() {
+  let profilePopover = document.getElementById('edit-card');
+  let profilePopoverIcon = document.getElementById('edit-card-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+// EDIT VIDEO COLLAPSE
+function editProfileVideo() {
+  let profilePopover = document.getElementById('edit-video');
+  let profilePopoverIcon = document.getElementById('edit-video-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+// EDIT GENERAL COLLAPSE
+function editProfileGeneral() {
+  let profilePopover = document.getElementById('edit-general');
+  let profilePopoverIcon = document.getElementById('edit-general-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+// EDIT OCCUPATION COLLAPSE
+function editProfileOccupation() {
+  let profilePopover = document.getElementById('edit-occupation');
+  let profilePopoverIcon = document.getElementById('edit-occupation-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+// EDIT CAREER COLLAPSE
+function editProfileCareer() {
+  let profilePopover = document.getElementById('edit-career');
+  let profilePopoverIcon = document.getElementById('edit-career-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+// EDIT ACHIEVEMENTS COLLAPSE
+function editProfileAchievements() {
+  let profilePopover = document.getElementById('edit-achievements');
+  let profilePopoverIcon = document.getElementById('edit-achievements-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+// EDIT ATTRIBUTES COLLAPSE
+function editProfileAttributes() {
+  let profilePopover = document.getElementById('edit-attributes');
+  let profilePopoverIcon = document.getElementById('edit-attributes-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+// EDIT BUSINESS FOCUS COLLAPSE
+function editProfileFocus() {
+  let profilePopover = document.getElementById('edit-focus');
+  let profilePopoverIcon = document.getElementById('edit-focus-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+// EDIT BUSINESS SPECIALIZATIONS COLLAPSE
+function editProfileSpecialization() {
+  let profilePopover = document.getElementById('edit-specializations');
+  let profilePopoverIcon = document.getElementById('edit-specializations-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+// EDIT ACCOMPLISHMENTS COLLAPSE
+function editProfileAccomplishments() {
+  let profilePopover = document.getElementById('edit-accomplishments');
+  let profilePopoverIcon = document.getElementById('edit-accomplishments-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+// EDIT REWARDSL COLLAPSE
+function editProfileRewards() {
+  let profilePopover = document.getElementById('edit-rewards');
+  let profilePopoverIcon = document.getElementById('edit-rewards-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+// EDIT PERSONAL WALL COLLAPSE
+function editProfileWall() {
+  let profilePopover = document.getElementById('edit-wall');
+  let profilePopoverIcon = document.getElementById('edit-wall-bttn');
+  let isExpanded = profilePopover.classList.contains("collapse");
+  if (isExpanded) {
+    profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.add('!bg-as-nav');
+  } else {
+    profilePopover.classList.add("collapse");
+  }
+}
+
+
+
+
+
+
+
+
 
 // REMOVING EXTRA SPACE UPON CLICKING TOP OF PROFILE
 let targetElement = document.getElementById('public-profile-hook');

@@ -637,6 +637,18 @@ max-width: 700px;
   z-index: 9999;
 }
 
+.padding-mini {
+  padding: 2px;
+}
+
+.bg-as-nav {
+  background-color: #41c2ed75
+}
+
+.small-shadow {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 296px) {
   /* CSS rules for screens under 331px */

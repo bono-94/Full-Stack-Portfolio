@@ -38,7 +38,7 @@ class ProfileForm(forms.ModelForm):
             'date_of_birth',
             'height_cm',
             'weight_kg',
-            # CURRENT EMPLOYMENT
+            # OCCUPATION
             'current_employment_privacy',
             'industry',
             'company',
@@ -46,7 +46,7 @@ class ProfileForm(forms.ModelForm):
             'occupation',
             'start_date',
             'hours_per_week',
-            # PREVIOUS EMPLOYMENT
+            # CAREER
             'history_employment_privacy',
             'cv',
             'education',

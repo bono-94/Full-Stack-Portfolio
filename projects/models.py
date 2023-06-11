@@ -161,7 +161,7 @@ class Profile(models.Model):
     # OCCUPATION
     current_employment_privacy = models.BooleanField(default=False)
     industry = models.CharField(max_length=42, blank=True, null=True)
-    company = models.CharField(max_length=42, blank=True, null=True)
+    organization = models.CharField(max_length=42, blank=True, null=True)
     department = models.CharField(max_length=21, blank=True, null=True)
     occupation = models.CharField(max_length=42, blank=True, null=True)
     start_date = models.DateField(default=timezone.now, blank=True, null=True)
@@ -421,33 +421,356 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 
 class Post(models.Model):
 
+    TYPE_OF_AUTHOR = (
+        ('Human', 'Human'),
+        ('AI', 'AI'),
+    )
+
+    TYPE_OF_POST = (
+        ('Organization', 'Organization'),
+        ('Project', 'Project'),
+        ('Product', 'Product'),
+        ('Service', 'Service'),
+    )
+
+    # MAXIMUM FILE NAME LENGTH
+    def validate_file_name_length(value):
+        if len(value.name) > 84:
+            raise ValidationError("Filename must be under 84 characters.")
+
+    # MAXIMUM FILE SIZE
+    def max_file_size_ten(value):
+        limit = 10 * 1024 * 1024
+
+        if value.size > limit:
+            raise ValidationError("Please upload a file under 10 MB.")
+
+    def max_file_size_hundred(value):
+        limit = 100 * 1024 * 1024
+
+        if value.size > limit:
+            raise ValidationError("Please upload a file under 100 MB.")
+
+    # POST LIST DESIGN
+    post_list_description = models.CharField(max_length=84, blank=True, null=True)
+    post_list_image = models.ImageField(
+        upload_to='post_list_images/',
+        blank=True,
+        null=True,
+        validators=[
+            validate_file_name_length,
+            max_file_size_ten
+        ]
+    )
+
+    # POST STRUCTURE
     slug = models.SlugField(max_length=210, unique=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+    public_visibility = models.BooleanField(default=False)
+    votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
+    post_audio = models.FileField(
+        upload_to='post_audio/',
+        blank=True,
+        null=True,
+        storage=VideoMediaCloudinaryStorage(),
+        validators=[
+            validate_file_name_length,
+            max_file_size_hundred
+        ]
+    )
+    post_color = models.CharField(
+        max_length=7,
+        default='#ffc107',
+        blank=True,
+        null=True
+        )
+
+    # POST LANDING
+
+    post_image = models.ImageField(
+        upload_to='post_images/',
+        blank=True,
+        null=True,
+        validators=[
+            validate_file_name_length,
+            max_file_size_ten
+        ]
+    )
+
+    post_verification = models.BooleanField(default=False)
     title = models.CharField(max_length=210, blank=False, unique=True)
-    industry = models.CharField(max_length=50, blank=False)
-    company = models.CharField(max_length=50, blank=False)
+    description = models.CharField(max_length=105, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    author_type = models.CharField(max_length=5, choices=TYPE_OF_AUTHOR, blank=True, null=True)
+
+    industry = models.CharField(max_length=50, blank=False)
+    department = models.CharField(max_length=21, blank=True, null=True)
+
+    post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=True, null=True)
+    organization = models.CharField(max_length=50, blank=False)
+    project = models.CharField(max_length=50, blank=False)
+    product = models.CharField(max_length=50, blank=False)
+    service = models.CharField(max_length=50, blank=False)
+    post_public_email = models.EmailField(max_length=42, blank=True, null=True)
+
+    post_location = models.CharField(max_length=42, blank=True, null=True)
+
+    launch_date = models.DateField(default=timezone.now, blank=True, null=True)
+    end_date = models.DateField(default=timezone.now, blank=True, null=True)
+    infinite_end_date = models.BooleanField(default=False)
+
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    content = models.TextField(blank=False)
-    project_image = models.ImageField(upload_to='project_images/', blank=True, null=True)
-    description = models.CharField(max_length=105, blank=False)
-    status = models.IntegerField(choices=STATUS, default=0)
-    votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
 
+    #  POST PITCH VIDEO
+
+    post_video_privacy = models.BooleanField(default=False)
+    post_video = models.FileField(
+        upload_to='posts-videos/',
+        blank=True,
+        null=True,
+        storage=VideoMediaCloudinaryStorage(),
+        validators=[
+            validate_video,
+            validate_file_name_length,
+            max_file_size_hundred
+        ],
+    )
+
+    # BUSINESS FOCUS
+    focus_privacy = models.BooleanField(default=False)
+    focus_innovation = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_financials = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_planning = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_monitoring = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_quality = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_quantity = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_collaboration = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_leadership = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+
+    # BUSINESS SPECIALTY
+    specialty_privacy = models.BooleanField(default=False)
+    special_ops = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_finance = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_marketing = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_supply_chain = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_hr = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_tech = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_sustainability = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_research = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+
+    # POST BODY
+    business_knowledge = models.TextField(max_length=840, blank=True, null=True)
+    main_content = models.TextField(max_length=210, blank=True, null=True)
+    story = models.TextField(max_length=2100, blank=True, null=True)
+    journey = models.TextField(max_length=2100, blank=True, null=True)
+    future = models.TextField(max_length=2100, blank=True, null=True)
+    legacy = models.TextField(max_length=2100, blank=True, null=True)
+    change = models.TextField(max_length=2100, blank=True, null=True)
+
+    # POST BRIDGE
+    certificates = models.TextField(max_length=840, blank=True, null=True)
+    articles = models.TextField(max_length=840, blank=True, null=True)
+    document = models.FileField(
+        upload_to='post_document/',
+        blank=True,
+        null=True,
+        storage=RawMediaCloudinaryStorage(),
+        validators=[
+            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            validate_file_name_length,
+            max_file_size_ten
+        ],
+    )
+    screenshot = models.FileField(
+        upload_to='screenshot/',
+        blank=True,
+        null=True,
+        storage=RawMediaCloudinaryStorage(),
+        validators=[
+            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+            validate_file_name_length,
+            max_file_size_ten
+        ],
+    )
+    sheet = models.FileField(
+        upload_to='sheet/',
+        blank=True,
+        null=True,
+        storage=RawMediaCloudinaryStorage(),
+        validators=[
+            FileExtensionValidator(allowed_extensions=[
+                'xlsx',
+                'xls',
+                'xlsm',
+                'xlsb',
+                'csv',
+                'parquet'
+            ]),
+            validate_file_name_length,
+            max_file_size_hundred
+        ],
+    )
+
+    # POST CONTACT
+
+    contact_days = models.CharField(max_length=63, blank=True, null=True)
+    contact_hours = models.CharField(max_length=42, blank=True, null=True)
+    website_link = models.URLField(
+        max_length=210,
+        blank=True,
+        null=True,
+        verbose_name='Website URL'
+    )
+    facebook_link = models.URLField(
+        max_length=210,
+        blank=True,
+        null=True,
+        verbose_name='Facebook URL'
+    )
+    twitter_link = models.URLField(
+        max_length=210,
+        blank=True,
+        null=True,
+        verbose_name='Twitter URL'
+    )
+    instagram_link = models.URLField(
+        max_length=210,
+        blank=True,
+        null=True,
+        verbose_name='Instagram URL'
+    )
+    linkedin_link = models.URLField(
+        max_length=210,
+        blank=True,
+        null=True,
+        verbose_name='LinkedIn URL'
+    )
+    youtube_link = models.URLField(
+        max_length=210,
+        blank=True,
+        null=True,
+        verbose_name='YouTube URL'
+    )
+
+    # POST RESULTS
+
+    amount_collected = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)], null=True, blank=True)
+
+    # ORDERING
     class Meta:
         ordering = ['-created_on']
 
+    # NAMING & SAVING
     def __str__(self):
         return self.title
-
-    def number_of_votes(self):
-        return self.votes.count()
 
     def save(self, *args, **kwargs):
 
         if not self.slug:
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
+
+    # COUNTING
+    def number_of_votes(self):
+        return self.votes.count()
+
+    # DURATION SINCE FOR CREATED ON & UPDATED ON
+    def post_duration_created(self):
+        if self.created_on is not None:
+            duration = (timezone.now() - self.created_on).days
+            return duration
+        else:
+            return None
+
+    def post_duration_updated(self):
+        if self.updated_on is not None:
+            duration = (timezone.now() - self.updated_on).days
+            return duration
+        else:
+            return None
+
+    # POST PROJECTED DURATION
+
+    def post_duration_days(self):
+        duration = self.end_date - self.launch_date
+        return duration.days
+
+    def post_duration_months(self):
+        duration = self.end_date - self.launch_date
+        total_months = duration.days // 30   # Assuming 30 days per month
+        return total_months
+
+    def post_duration_years(self):
+        duration = self.end_date - self.launch_date
+        total_years = duration.days // 365  # Assuming 365 days per year
+        return total_years
+
+    # PROGRESS BAR 1 - STYLE
+    @property
+    def focus_innovation_style(self):
+        return f"width: {self.focus_innovation}%"
+
+    @property
+    def focus_financials_style(self):
+        return f"width: {self.focus_financials}%"
+
+    @property
+    def focus_planning_style(self):
+        return f"width: {self.focus_planning}%"
+
+    @property
+    def focus_monitoring_style(self):
+        return f"width: {self.focus_monitoring}%"
+
+    @property
+    def focus_quality_style(self):
+        return f"width: {self.focus_quality}%"
+
+    @property
+    def focus_quantity_style(self):
+        return f"width: {self.focus_quantity}%"
+
+    @property
+    def focus_collaboration_style(self):
+        return f"width: {self.focus_collaboration}%"
+
+    @property
+    def focus_leadership_style(self):
+        return f"width: {self.focus_leadership}%"
+
+    # PROGRESS BAR 2 - STYLE
+    @property
+    def special_ops_style(self):
+        return f"width: {self.special_ops}%"
+
+    @property
+    def special_finance_style(self):
+        return f"width: {self.special_finance}%"
+
+    @property
+    def special_marketing_style(self):
+        return f"width: {self.special_marketing}%"
+
+    @property
+    def special_supply_chain_style(self):
+        return f"width: {self.special_supply_chain}%"
+
+    @property
+    def special_hr_style(self):
+        return f"width: {self.special_hr}%"
+
+    @property
+    def special_tech_style(self):
+        return f"width: {self.special_tech}%"
+
+    @property
+    def special_sustainability_style(self):
+        return f"width: {self.special_sustainability}%"
+
+    @property
+    def special_research_style(self):
+        return f"width: {self.special_research}%"
 
 
 class Note(models.Model):

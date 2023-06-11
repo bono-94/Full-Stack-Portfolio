@@ -181,9 +181,9 @@ class PostCreate(CreateView):
         'title',
         'description',
         'industry',
-        'company',
-        'content',
-        'project_image',
+        'organization',
+        'main_content',
+        'post_image',
     ]
 
     def form_valid(self, form):

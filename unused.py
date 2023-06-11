@@ -464,7 +464,7 @@ class CustomSignupForm(SignupForm):
 #     cursor = conn.cursor()
 
 #     # Execute a SQL query to retrieve data
-#     cursor.execute('SELECT * FROM projects_profile')
+#     cursor.execute('SELECT * FROM projects_profil')
 
 #     # Fetch all rows of data
 #     rows = cursor.fetchall()

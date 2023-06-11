@@ -22,10 +22,10 @@ admin.site.register(User, CustomUserAdmin)
 @admin.register(Profile)
 class ProfileAdmin(SummernoteModelAdmin):
 
-    list_display = ('first_name', 'last_name', 'username', 'public_email', 'location', 'company', 'occupation')
-    search_fields = ['first_name', 'last_name', 'username', 'public_email', 'location', 'company', 'occupation']
+    list_display = ('first_name', 'last_name', 'username', 'public_email', 'location', 'organization', 'occupation')
+    search_fields = ['first_name', 'last_name', 'username', 'public_email', 'location', 'organization', 'occupation']
     prepopulated_fields = {'slug': ('username',)}
-    list_filter = ('first_name', 'last_name', 'username', 'public_email', 'location', 'company', 'occupation')
+    list_filter = ('first_name', 'last_name', 'username', 'public_email', 'location', 'organization', 'occupation')
     summernote_fields = ('bio')
 
 
@@ -33,10 +33,10 @@ class ProfileAdmin(SummernoteModelAdmin):
 class PostAdmin(SummernoteModelAdmin):
 
     list_display = ('industry', 'author', 'created_on', 'status')
-    search_fields = ['content', 'industry', 'author', 'status']
+    search_fields = ['main_content', 'industry', 'author', 'status']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on', 'industry', 'updated_on')
-    summernote_fields = ('content', 'decription')
+    summernote_fields = ('main_content', 'decription')
 
 
 @admin.register(Note)

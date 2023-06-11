@@ -41,7 +41,7 @@ class ProfileForm(forms.ModelForm):
             # OCCUPATION
             'current_employment_privacy',
             'industry',
-            'company',
+            'organization',
             'department',
             'occupation',
             'start_date',
@@ -150,12 +150,12 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
-            'project_image',
+            'post_image',
             'title',
             'description',
             'industry',
-            'company',
-            'content',
+            'organization',
+            'main_content',
         ]
 
 

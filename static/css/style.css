@@ -205,6 +205,11 @@ body {
   width: 110%;
 }
 
+#profile-detail-close {
+  margin-top: 111px;
+  margin-right: 4px;
+}
+
 /* ABOUT HEAD IMAGE */
 
 .about-image {

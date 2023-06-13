@@ -13,6 +13,7 @@ import psycopg2
 import pandas as pd
 
 
+# ABOUT PAGE INFO
 def final(request):
     users = User.objects.all()
     total_users = User.objects.count()
@@ -40,6 +41,13 @@ def home_page(request):
         return render(request, 'index.html')
 
 
+def about_page(request):
+
+    if request.method == 'GET':
+
+        return render(request, 'about.html')
+
+# PROFILE
 @login_required
 def view_public_profiles(request, user_profile):
 
@@ -94,6 +102,7 @@ def delete_profile(request):
         return render(request, 'profile/user_profile_delete.html')
 
 
+# POST
 class PostList(ListView):
 
     model = Post
@@ -177,14 +186,7 @@ class PostCreate(CreateView):
     model = Post
     template_name = 'posts/post_create.html'
     success_url = '/my-projects'
-    fields = [
-        'title',
-        'caption',
-        'industry',
-        'organization',
-        'main_content',
-        'post_list_image',
-    ]
+    form_class = PostForm
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -192,23 +194,15 @@ class PostCreate(CreateView):
 
 
 class UserPosts(ListView):
-
     model = Post
     template_name = 'posts/user_posts.html'
-    paginate_by = 12
+    paginate_by = 8
 
     def get_queryset(self):
-        queryset = Post.objects.filter(author=self.request.user, status=1)
-        return queryset.order_by('-created_on')
+        return Post.objects.filter(author=self.request.user).order_by('-created_on')
 
 
-def about_page(request):
-
-    if request.method == 'GET':
-
-        return render(request, 'about.html')
-
-
+# REQUEST
 class SupportRequest(CreateView):
 
     model = Request

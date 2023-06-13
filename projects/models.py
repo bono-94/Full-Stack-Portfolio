@@ -1081,9 +1081,9 @@ class Post(models.Model):
     event_content = models.TextField(max_length=420, blank=True, null=True)
     event_date = models.DateTimeField(blank=True, null=True)
     event_location = models.CharField(max_length=42, blank=True, null=True)
-    event_price = models.PositiveIntegerFieldField(validators=[MinValueValidator(0), MaxValueValidator(999999999)], null=True, blank=True)
-    event_price_cents = models.PositiveIntegerFieldField(validators=[MinValueValidator(0), MaxValueValidator(99)], null=True, blank=True)
-    event_capacity = models.PositiveIntegerFieldField(validators=[MinValueValidator(0), MaxValueValidator(9999999999)], null=True, blank=True)
+    event_price = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(999999999)], null=True, blank=True)
+    event_price_cents = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(99)], null=True, blank=True)
+    event_capacity = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(9999999999)], null=True, blank=True)
 
     rspv_yes = models.ManyToManyField(User, related_name="rspv_yes", blank=True)
     rspv_no = models.ManyToManyField(User, related_name="rspv_no", blank=True)

@@ -499,6 +499,7 @@ class Post(models.Model):
     # POST STRUCTURE
     slug = models.SlugField(max_length=210, unique=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    post_verification = models.BooleanField(default=False)
     votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
     views = models.ManyToManyField(User, related_name="projects_views", blank=True)
     rating = models.ManyToManyField(User, related_name="projects_rating", blank=True)
@@ -528,7 +529,6 @@ class Post(models.Model):
     )
 
     # POST INTRODUCTION
-
     post_author_image = models.ImageField(
         upload_to='post_author_images/',
         blank=True,
@@ -557,7 +557,6 @@ class Post(models.Model):
         ]
     )
 
-    post_verification = models.BooleanField(default=False)
     title = models.CharField(max_length=210, blank=False, unique=True)
     caption = models.CharField(max_length=105, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
@@ -1054,7 +1053,6 @@ class Post(models.Model):
     )
 
     # POST EVENT
-
     event_color = models.CharField(
         max_length=7,
         default='#ffc107',
@@ -1079,7 +1077,9 @@ class Post(models.Model):
     event_title = models.CharField(max_length=84, blank=True, null=True)
     event_host = models.CharField(max_length=42, blank=True, null=True)
     event_content = models.TextField(max_length=420, blank=True, null=True)
-    event_date = models.DateTimeField(blank=True, null=True)
+    event_date = models.DateField(blank=True, null=True)
+    event_hour = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(24)], null=True, blank=True)
+    event_minute = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(59)], null=True, blank=True)
     event_location = models.CharField(max_length=42, blank=True, null=True)
     event_price = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(999999999)], null=True, blank=True)
     event_price_cents = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(99)], null=True, blank=True)

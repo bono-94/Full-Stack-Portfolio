@@ -329,6 +329,8 @@ class PostForm(forms.ModelForm):
             'event_host',
             'event_content',
             'event_date',
+            'event_hour',
+            'event_minute',
             'event_location',
             'event_price',
             'event_price_cents',

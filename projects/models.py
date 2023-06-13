@@ -1228,6 +1228,25 @@ class Post(models.Model):
 
 class Note(models.Model):
 
+    NOTE_CHOICES = (
+        ('Comment', 'Comment'),
+        ('Offer', 'Offer'),
+        ('Feedback', 'Feedback'),
+        ('Compliment', 'Compliment'),
+        ('Critique', 'Critique'),
+        ('Advice', 'Advice'),
+        ('Features Request', 'Features Request'),
+        ('Collaboration Request', 'Collaboration Request'),
+        ('Partnership Request', 'Partnership Request'),
+        ('Sponsorship Request', 'Sponsorship Request'),
+        ('Fresh Ideas', 'Fresh Ideas'),
+        ('Community Access', 'Community Access'),
+        ('End-user Request', 'End-user Request'),
+        ('Stakeholder Request', 'Stakeholder Request'),
+        ('Other', 'Other'),
+    )
+
+    note_privacy = models.BooleanField(default=False)
     note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='note')
     name = models.CharField(max_length=50)
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_note")

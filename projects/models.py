@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from django.utils.text import slugify
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.exceptions import ValidationError
 from datetime import date, datetime
 from django.core.validators import FileExtensionValidator
 from cloudinary_storage.storage import RawMediaCloudinaryStorage
@@ -165,7 +166,7 @@ class Profile(models.Model):
     department = models.CharField(max_length=21, blank=True, null=True)
     occupation = models.CharField(max_length=42, blank=True, null=True)
     start_date = models.DateField(default=timezone.now, blank=True, null=True)
-    hours_per_week = models.PositiveIntegerField(null=True, blank=True)
+    hours_per_week = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(168)], null=True, blank=True)
 
     # PREVIOUS EMPLOYMENT
     history_employment_privacy = models.BooleanField(default=False)
@@ -474,6 +475,15 @@ class Post(models.Model):
         if value.size > limit:
             raise ValidationError("Please upload a file under 100 MB.")
 
+    # STOCK VALIDATION - if doesnt work, remove self and replace one below with instance.
+
+    def validate_stock_offering(value, self):
+        stocks_offering = value
+        stocks_supply = self.stocks_supply
+
+        if stocks_offering and stocks_supply and stocks_offering > stocks_supply:
+            raise ValidationError("Stocks offering cannot be higher than stocks supply.")
+
     # POST LIST DESIGN
     post_list_description = models.CharField(max_length=84, blank=True, null=True)
     post_list_image = models.ImageField(
@@ -561,7 +571,6 @@ class Post(models.Model):
     project = models.CharField(max_length=50, blank=False)
     product = models.CharField(max_length=50, blank=False)
     service = models.CharField(max_length=50, blank=False)
-    post_public_email = models.EmailField(max_length=42, blank=True, null=True)
 
     post_location_city = models.CharField(max_length=42, blank=True, null=True)
     post_location_country = models.CharField(max_length=42, blank=True, null=True)
@@ -574,8 +583,8 @@ class Post(models.Model):
 
     introduction = models.TextField(max_length=210, blank=True, null=True)
 
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
+    created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_on = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     #  POST PITCH VIDEO
     post_video_privacy = models.BooleanField(default=False)
@@ -977,12 +986,12 @@ class Post(models.Model):
     post_fee_model_privacy = models.BooleanField(default=False)
 
     fee_model = models.CharField(max_length=12, choices=TYPE_OF_FEE_MODEL, blank=True, null=True)
-    offer_model = models.CharField(max_length=12, choices=TYPE_OF_OFFER_MODEL, blank=True, null=True)
+    offer_model = models.CharField(max_length=30, choices=TYPE_OF_OFFER_MODEL, blank=True, null=True)
 
     amount_requested = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], null=True, blank=True)
     payout_date = models.DateField(blank=True, null=True)
 
-    stocks_offering = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], null=True, blank=True)
+    stocks_offering = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999), validate_stock_offering], null=True, blank=True)
     stocks_supply = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], null=True, blank=True)
     ownership_percentage = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
     return_amount = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], null=True, blank=True)
@@ -1003,6 +1012,8 @@ class Post(models.Model):
 
     # POST CONTACT
     post_contact_privacy = models.BooleanField(default=False)
+    post_public_email = models.EmailField(max_length=42, blank=True, null=True)
+    public_phone = models.CharField(max_length=21, blank=True, null=True)
     contact_days = models.CharField(max_length=63, blank=True, null=True)
     contact_hours = models.CharField(max_length=42, blank=True, null=True)
     website_link = models.URLField(
@@ -1042,9 +1053,55 @@ class Post(models.Model):
         verbose_name='YouTube URL'
     )
 
+    # POST EVENT
+
+    event_color = models.CharField(
+        max_length=7,
+        default='#ffc107',
+        blank=True,
+        null=True
+    )
+    event_image = models.ImageField(
+        upload_to='post_event_images/',
+        blank=True,
+        null=True,
+        validators=[
+            validate_file_name_length,
+            max_file_size_ten
+        ]
+    )
+    event_link = models.URLField(
+        max_length=210,
+        blank=True,
+        null=True,
+        verbose_name='Event URL'
+    )
+    event_title = models.CharField(max_length=84, blank=True, null=True)
+    event_host = models.CharField(max_length=42, blank=True, null=True)
+    event_content = models.TextField(max_length=420, blank=True, null=True)
+    event_date = models.DateTimeField(blank=True, null=True)
+    event_location = models.CharField(max_length=42, blank=True, null=True)
+    event_price = models.PositiveIntegerFieldField(validators=[MinValueValidator(0), MaxValueValidator(999999999)], null=True, blank=True)
+    event_price_cents = models.PositiveIntegerFieldField(validators=[MinValueValidator(0), MaxValueValidator(99)], null=True, blank=True)
+    event_capacity = models.PositiveIntegerFieldField(validators=[MinValueValidator(0), MaxValueValidator(9999999999)], null=True, blank=True)
+
+    rspv_yes = models.ManyToManyField(User, related_name="rspv_yes", blank=True)
+    rspv_no = models.ManyToManyField(User, related_name="rspv_no", blank=True)
+    rspv_maybe = models.ManyToManyField(User, related_name="rspv_maybe", blank=True)
+    rspv_next_time = models.ManyToManyField(User, related_name="rspv_next_time", blank=True)
+
     # POST RESULTS
     post_results_privacy = models.BooleanField(default=False)
-    amount_collected = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)], null=True, blank=True)
+    number_of_phases = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(8)], null=True, blank=True)
+
+    amount_asked = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(999999999999)], null=True, blank=True)
+    amount_collected = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(999999999999)], null=True, blank=True)
+
+    ownership_offered = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    ownerhip_given = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+
+    team_positions_offered = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(21042004)], null=True, blank=True)
+    team_positions_given = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(21042004)], null=True, blank=True)
 
     # ORDERING
     class Meta:
@@ -1060,9 +1117,32 @@ class Post(models.Model):
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
 
-    # COUNTING
+    # COUNTING PUBLIC OPINIONS
     def number_of_votes(self):
         return self.votes.count()
+
+    def number_of_views(self):
+        return self.views.count()
+
+    def number_of_rating(self):
+        return self.rating.count()
+
+    def number_of_favourites(self):
+        return self.favourites.count()
+
+    # COUNTING OF EVENT RSPVS
+
+    def number_of_rspv_yes(self):
+        return self.rspv_yes.count()
+
+    def number_of_rspv_no(self):
+        return self.rspv_no.count()
+
+    def number_of_rspv_maybe(self):
+        return self.rspv_maybe.count()
+
+    def number_of_rspv_next_time(self):
+        return self.rspv_next_time.count()
 
     # DURATION SINCE FOR CREATED ON & UPDATED ON
     def post_duration_created(self):
@@ -1145,39 +1225,6 @@ class Post(models.Model):
     def focus_leadership_style(self):
         return f"width: {self.focus_leadership}%"
 
-    # PROGRESS BAR 2 - STYLE
-    @property
-    def special_ops_style(self):
-        return f"width: {self.special_ops}%"
-
-    @property
-    def special_finance_style(self):
-        return f"width: {self.special_finance}%"
-
-    @property
-    def special_marketing_style(self):
-        return f"width: {self.special_marketing}%"
-
-    @property
-    def special_supply_chain_style(self):
-        return f"width: {self.special_supply_chain}%"
-
-    @property
-    def special_hr_style(self):
-        return f"width: {self.special_hr}%"
-
-    @property
-    def special_tech_style(self):
-        return f"width: {self.special_tech}%"
-
-    @property
-    def special_sustainability_style(self):
-        return f"width: {self.special_sustainability}%"
-
-    @property
-    def special_research_style(self):
-        return f"width: {self.special_research}%"
-
 
 class Note(models.Model):
 
@@ -1186,7 +1233,7 @@ class Note(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_note")
     email = models.EmailField(max_length=100, blank=True)
     content_note = models.TextField(max_length=500)
-    created_on_note = models.DateTimeField(auto_now_add=True)
+    created_on_note = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     approved = models.BooleanField(default=False)
 
     class Meta:
@@ -1204,7 +1251,7 @@ class Request(models.Model):
     name = models.CharField(max_length=50, default='', blank=False)
     email = models.EmailField(max_length=42, blank=False)
     request = models.TextField(max_length=428, blank=False)
-    created_on_request = models.DateTimeField(auto_now_add=True)
+    created_on_request = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
         return self.name

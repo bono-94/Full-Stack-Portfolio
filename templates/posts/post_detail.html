@@ -29,9 +29,9 @@
 <div class="container">
     <div class="row">
         <div class="image-container">
-            {% if post.post_image %}
+            {% if post.post_list_image %}
             <a>
-                <img src="{{ post.post_image.url }}" alt="Project Image">
+                <img src="{{ post.post_list_image.url }}" alt="Project Image">
             </a>
              {% else %}
             <a>
@@ -48,7 +48,7 @@
         </p>
         <p class="card-text">
             Info:
-            {{ post.description }}
+            {{ post.caption }}
         </p>
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">

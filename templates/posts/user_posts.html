@@ -28,7 +28,7 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
-                                {% if post.post_image %}
+                                {% if post.post_list_image %}
                                 <a>
                                     <img src="{{ post.project_image.url }}" alt="Project Image">
                                 </a>
@@ -57,7 +57,7 @@
                             </p>
                             <p class="card-text">
                                 Info:
-                                {{ post.description }}
+                                {{ post.caption }}
                             </p>
                             <hr>
                             <p class="card-text text-muted h6">

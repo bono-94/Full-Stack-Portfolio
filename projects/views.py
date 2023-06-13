@@ -179,11 +179,11 @@ class PostCreate(CreateView):
     success_url = '/my-projects'
     fields = [
         'title',
-        'description',
+        'caption',
         'industry',
         'organization',
         'main_content',
-        'post_image',
+        'post_list_image',
     ]
 
     def form_valid(self, form):

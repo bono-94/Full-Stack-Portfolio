@@ -32,11 +32,50 @@ class ProfileAdmin(SummernoteModelAdmin):
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
-    list_display = ('industry', 'author', 'created_on', 'status')
-    search_fields = ['main_content', 'industry', 'author', 'status']
+    list_display = (
+        'post_type',
+        'title',
+        'industry',
+        'author',
+        'author_type',
+        'created_on',
+        'status',
+        'post_verification',
+    )
+    search_fields = [
+        'title',
+        'caption',
+        'author',
+        'project_owner',
+        'organization',
+        'project',
+        'product',
+        'service',
+        'post_location_city',
+        'post_location_country',
+        'post_location_continent',
+        'post_location_planet',
+        'main_content',
+        'business_knowledge',
+    ]
+    list_filter = (
+        'status',
+        'post_verification',
+        'public_visibility',
+        'author_type',
+        'post_type',
+        'infinite_end_date',
+        'fee_model',
+        'offer_model',
+        'open_offers'
+    )
+    summernote_fields = (
+        'main_content',
+        'business_knowledge',
+        'caption',
+        'introduction'
+    )
     prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('status', 'created_on', 'industry', 'updated_on')
-    summernote_fields = ('main_content', 'decription')
 
 
 @admin.register(Note)

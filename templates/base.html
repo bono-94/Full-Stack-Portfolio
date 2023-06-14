@@ -76,17 +76,17 @@
               </a>
               <ul class="dropdown-menu text-center bg-gradient bg-dark mt-0 mb-0 padding-mini rounded-0 border border-2 border-secondary shadow-lg"
                 aria-labelledby="navbarDropdown" id="navbar-dropdown-subs">
-                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2" href="{% url 'all_projects' %}">Public
+                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2" href="{% url 'public_posts_list' %}">Public
                   Projects</a></li>
                 <li>
                   <hr class="dropdown-divider bg-warning my-0">
                 </li>
-                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow py-2" href="{% url 'user_posts' %}">My
+                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow py-2" href="{% url 'user_posts_list' %}">My
                     Projects</a></li>
                 <li>
                   <hr class="dropdown-divider bg-warning my-0">
                 </li>
-                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2" href="{% url 'post_create' %}">Create
+                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2" href="{% url 'user_post_create' %}">Create
                     Project</a></li>
               </ul>
             </li>
@@ -101,7 +101,7 @@
             </li>
             {% else %}
             <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow">
-              <a class="nav-link" href="{% url 'all_projects' %}"><strong>Public Projects</strong></a>
+              <a class="nav-link" href="{% url 'public_posts_list' %}"><strong>Public Projects</strong></a>
             </li>
             <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow">
               <a class="nav-link" href="{% url 'account_signup' %}"><strong>Register</strong></a>

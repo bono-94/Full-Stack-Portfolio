@@ -107,7 +107,7 @@ class PostList(ListView):
 
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'posts/all_projects.html'
+    template_name = 'posts/public_posts_list.html'
     paginate_by = 8
 
 
@@ -124,7 +124,7 @@ class PostDetail(View):
 
         return render(
             request,
-            "posts/post_detail.html",
+            "posts/public_post_details.html",
             {
                 "post": post,
                 "notes": notes,
@@ -157,7 +157,7 @@ class PostDetail(View):
 
         return render(
             request,
-            "posts/post_detail.html",
+            "posts/public_post_details.html",
             {
                 "post": post,
                 "note": note,
@@ -182,7 +182,7 @@ class PostDetailDraft(View):
 
         return render(
             request,
-            "posts/user_post_detail.html",
+            "posts/user_post_details.html",
             {
                 "post": post,
                 "notes": notes,
@@ -215,7 +215,7 @@ class PostDetailDraft(View):
 
         return render(
             request,
-            "posts/user_post_detail.html",
+            "posts/user_post_details.html",
             {
                 "post": post,
                 "note": note,
@@ -237,12 +237,12 @@ class PostVote(View):
         else:
             post.votes.add(request.user)
 
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('public_post_details', args=[slug]))
 
 
 class PostCreate(CreateView):
     model = Post
-    template_name = 'posts/post_create.html'
+    template_name = 'posts/user_post_create.html'
     success_url = '/my-projects'
     form_class = PostForm
 
@@ -261,13 +261,13 @@ def post_edit(request, post_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your post is updated successfully.')
-            return redirect('user_posts')
+            return redirect('user_posts_list')
         else:
             messages.error(request, 'Please check all input fields for errors.')
     else:
         form = PostForm(instance=post)
 
-    return render(request, 'posts/user_posts_edit.html', {'form': form})
+    return render(request, 'posts/user_post_edit.html', {'form': form})
 
 
 @login_required
@@ -277,15 +277,15 @@ def post_delete(request, post_id):
 
     if request.method == 'POST':
         post.delete()
-        return redirect('user_posts')
+        return redirect('user_posts_list')
 
     else:
-        return render(request, 'posts/user_posts_delete.html', {'post': post})
+        return render(request, 'posts/user_post_delete.html', {'post': post})
 
 
 class UserPosts(ListView):
     model = Post
-    template_name = 'posts/user_posts.html'
+    template_name = 'posts/user_posts_list.html'
     paginate_by = 8
 
     def get_queryset(self):

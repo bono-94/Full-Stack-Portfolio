@@ -9,7 +9,7 @@
                 Create a new Project:
             </h1>
         </div>
-        <form method="POST" action="{% url 'post_create' %}" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'user_post_create' %}" enctype="multipart/form-data">
             {% csrf_token %}
         
             {{ form.as_p }}

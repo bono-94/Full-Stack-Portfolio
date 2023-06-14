@@ -193,6 +193,35 @@ class PostCreate(CreateView):
         return super().form_valid(form)
 
 
+@login_required
+def post_edit(request, post_id):
+
+    post = get_object_or_404(Post, id=post_id, author=request.user)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your post is updated successfully.')
+            return redirect('user_posts')
+        else:
+            messages.error(request, 'Please check all input fields for errors.')
+    else:
+        form = PostForm(instance=post)
+
+    return render(request, 'posts/user_posts_edit.html', {'form': form})
+
+
+@login_required
+def post_delete(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        return redirect('home')
+    else:
+        return render(request, 'profile/user_profile_delete.html')
+
+
 class UserPosts(ListView):
     model = Post
     template_name = 'posts/user_posts.html'

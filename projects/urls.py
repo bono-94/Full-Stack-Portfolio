@@ -20,7 +20,7 @@ urlpatterns = [
     path('projects/<slug:slug>', views.PostDetail.as_view(), name='post_detail'),
     path('vote/<slug:slug>', views.PostVote.as_view(), name='vote'),
     path('my-projects', views.UserPosts.as_view(), name='user_posts'),
+    path('post/edit/<int:post_id>/', views.post_edit, name='post_edit'),
     # REQUEST
     path('request', views.SupportRequest.as_view(), name='request'),
-    
 ]

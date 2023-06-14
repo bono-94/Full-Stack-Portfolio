@@ -1111,10 +1111,13 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
+    original_title = None
 
-        if not self.slug:
+    def save(self, *args, **kwargs):
+        if not self.slug or self.title != self.original_title:
             self.slug = slugify(self.title)
+        if not self.original_title:
+            self.original_title = self.title
         return super().save(*args, **kwargs)
 
     # COUNTING PUBLIC OPINIONS

@@ -43,7 +43,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                            {% if post.status == 0 %}
+                                <a href="{% url 'post_detail_draft' post.slug %}" class="post-link">
+                            {% else %}
+                                <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                            {% endif %}
                                 <h2 class="card-title">
                                     {{ post.title }}
                                 </h2>

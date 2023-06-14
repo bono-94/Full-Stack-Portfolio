@@ -27,6 +27,7 @@
 </div>
 {% if post.author == request.user %}
     <a href="{% url 'post_edit' post_id=post.id %}">Edit Post</a>
+    <a href="{% url 'post_delete' post_id=post.id %}">Delete Post</a>
 {% endif %}
 <p>Number of registered users: {{ num_users }}</p>
 <div class="container">

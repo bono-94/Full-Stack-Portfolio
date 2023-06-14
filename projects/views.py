@@ -213,13 +213,16 @@ def post_edit(request, post_id):
 
 
 @login_required
-def post_delete(request):
+def post_delete(request, post_id):
+
+    post = get_object_or_404(Post, id=post_id, author=request.user)
+
     if request.method == 'POST':
-        user = request.user
-        user.delete()
-        return redirect('home')
+        post.delete()
+        return redirect('user_posts')
+
     else:
-        return render(request, 'profile/user_profile_delete.html')
+        return render(request, 'posts/user_posts_delete.html', {'post': post})
 
 
 class UserPosts(ListView):

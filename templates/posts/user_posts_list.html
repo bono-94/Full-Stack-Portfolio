@@ -17,11 +17,10 @@
             </div>
 
  <!-- Here add if user has no posts render create page website -->
-
         </div>
+        {% if post_list %}
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
-            <div class="row">
             {% for post in post_list %}
                 <div class="col-md-4">
                     <div class="card mb-4">
@@ -76,6 +75,9 @@
                 {% endfor %} 
             </div>
         </div>
+        {% else %}
+            <p>User has no posts available.</p>
+        {% endif %}
     </div>
     {% if is_paginated %}
     <nav aria-label="Page navigation">

@@ -111,6 +111,15 @@ class PostList(ListView):
     paginate_by = 8
 
 
+class UserPosts(ListView):
+    model = Post
+    template_name = 'posts/user_posts_list.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        return Post.objects.filter(author=self.request.user).order_by('-created_on')
+
+
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -118,6 +127,8 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
         voted = False
         if post.votes.filter(id=self.request.user.id).exists():
             voted = True
@@ -176,6 +187,8 @@ class PostDetailDraft(View):
         queryset = Post.objects.filter(status=0)
         post = get_object_or_404(queryset, slug=slug)
         notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
         voted = False
         if post.votes.filter(id=self.request.user.id).exists():
             voted = True
@@ -281,15 +294,6 @@ def post_delete(request, post_id):
 
     else:
         return render(request, 'posts/user_post_delete.html', {'post': post})
-
-
-class UserPosts(ListView):
-    model = Post
-    template_name = 'posts/user_posts_list.html'
-    paginate_by = 8
-
-    def get_queryset(self):
-        return Post.objects.filter(author=self.request.user).order_by('-created_on')
 
 
 # REQUEST

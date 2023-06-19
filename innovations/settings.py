@@ -33,7 +33,7 @@ DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['innovation-land.herokuapp.com', 'localhost', '8000-bono94-fullstackportfol-kdnutfdtdp2.ws-eu99.gitpod.io']
+ALLOWED_HOSTS = ['innovation-land.herokuapp.com', 'localhost', '8000-bono94-fullstackportfol-kdnutfdtdp2.ws-eu100.gitpod.io']
 
 
 # Application definition

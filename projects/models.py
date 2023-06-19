@@ -502,8 +502,6 @@ class Post(models.Model):
     post_verification = models.BooleanField(default=False)
     votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
     views = models.ManyToManyField(User, related_name="projects_views", blank=True)
-    rating = models.ManyToManyField(User, related_name="projects_rating", blank=True)
-    favourites = models.ManyToManyField(User, related_name="projects_favourites", blank=True)
     public_visibility = models.BooleanField(default=False)
     post_background_audio = models.FileField(
         upload_to='post_audio/',

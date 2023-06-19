@@ -1122,15 +1122,6 @@ class Post(models.Model):
     def number_of_votes(self):
         return self.votes.count()
 
-    def number_of_views(self):
-        return self.views.count()
-
-    def number_of_rating(self):
-        return self.rating.count()
-
-    def number_of_favourites(self):
-        return self.favourites.count()
-
     # COUNTING OF EVENT RSPVS
 
     def number_of_rspv_yes(self):

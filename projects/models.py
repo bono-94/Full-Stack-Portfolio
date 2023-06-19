@@ -525,6 +525,7 @@ class Post(models.Model):
         blank=True,
         null=True
     )
+    post_colors_list = models.BooleanField(default=False)
 
     # POST INTRODUCTION
     post_author_image = models.ImageField(

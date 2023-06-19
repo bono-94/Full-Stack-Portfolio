@@ -326,4 +326,247 @@
   </div>
   <hr>   
 
+
+public_visibility
+
+post_background_audio
+post_color_primary
+post_color_secondary
+
+post_verification + icon
+
+post_author_image
+post_organization_image
+post_banner_image
+
+created_on + post_duration_created
+updated_on + post_duration_updated
+
+title
+caption
+author + author_type
+project_owner
+
+industry
+
+if post_type =
+organization: organization if not empty
+project: organization + project if not empty
+product: organization + project + product if not empty
+service: organization + project + service if not empty
+
+post_location_city
+post_location_country
+post_location_continent
+post_location_planet
+
+launch_date
+end_date - if infinite_end_date = True add infinity sign no matter end date
+if infinite_end_date is false then:
+  add post_duration_days
+  add post_duration_months
+  add post_duration_years
+
+
+introduction
+
+if post_video_privacy = false:
+post_video
+
+if post_about_privacy = False:
+  organization_info
+  organization_culture
+  organization_mission
+  organization_vision
+
+  products_provided
+  services_provided
+
+  pps_objectives
+  pps_goals
+  pps_milestones
+
+  team
+  partners
+  collaborators
+  sponsors
+  community
+  stakeholders
+  shareholders
+
+  resources_requiered 
+  target_markets
+  target_group
+  values_provided
+  differentiation
+  sdg_goals
+  intellectual_property
+  legal_protection
+  licencing
+  franchizing
+
+  risks
+  challenges
+  change
+  impact
+
+  strengths
+  weaknesses
+  opportunities
+  threats
+
+  if focus_privacy:
+    focus_innovation
+    focus_financials
+    focus_planning
+    focus_monitoring
+    focus_quality
+    focus_quantity
+    focus_collaboration
+    focus_leadership
+
+  if specialty_privacy:
+    special_ops
+    special_finance
+    special_marketing
+    special_supply_chain
+    special_hr
+    special_tech
+    special_sustainability
+    special_research
+
+  if specialty_privacy_two:
+    special_ops_two
+    special_finance_two
+    special_marketing_two
+    special_supply_chain_two
+    special_hr_two
+    special_tech_two
+    special_sustainability_two
+    special_research_two
+
+if post_body_privacy:
+
+  main_content
+  business_knowledge
+  story
+  journey
+  future
+  legacy
+
+if post_bridge_privacy_library:
+
+  organizational_structure
+  flowchart
+  agenda
+  timeline
+  tasklist
+  schedule
+  financial_reports
+  supply_chain_map
+  data_architecture_map
+  standard_operational_procedures
+  marketing_strategy_map
+  hr_handbook
+  sustainability_report
+  research_and_development_agenda
+  promotional_materials
+  certification
+  articles
+
+if post_bridge_privacy_documents:
+  business_plan
+  implementation_plan
+  pestle_report
+  internal_report
+  capabilities
+  business_model_canvas
+  contracts
+  terms_conditions
+
+
+if post_conclusion_privacy & post_fee_model_privacy:
+
+  fee_model
+  offer_model
+
+  amount_requested
+  payout_date
+  + post_payout_duration_days, + post_payout_duration_months, + post_payout_duration_years
+
+  stocks_offering
+  stocks_supply
+  ownership_percentage
+  return_amount
+  end_product_or_service_quality
+  end_product_or_service_quantity
+  lifetime_discount_percentages
+  team_guaranteed_position
+  partnership
+  collaboration
+  sponsorship
+  community_access
+  pioneering
+  merchandize
+  special_acknowledgement
+  open_offers
+
+  offer_terms
+
+if post_contact_privacy:
+
+  post_public_email
+  public_phone
+  contact_days
+  contact_hours
+  website_link
+  facebook_link
+  twitter_link
+  instagram_link
+  linkedin_link
+  youtube_link
+
+if event_privacy:
+
+  event_color
+  event_image
+  event_link
+  event_title
+  event_host
+  event_content
+  event_date
+  event_hour
+  event_minute
+  event_location
+  event_price
+  event_price_cents
+  event_capacity
+  rspv_yes + number_of_rspv_yes
+  rspv_no + number_of_rspv_no
+  rspv_maybe + number_of_rspv_maybe
+  rspv_next_time + number_of_rspv_next_time
+
+
+if post_results_privacy:
+
+  number_of_phases
+  amount_asked
+  amount_collected
+  ownership_offered
+  ownerhip_given
+  team_positions_offered
+  team_positions_given
+
+  
+
+
+
+
+
+
+
+
+
+
+
 {% endblock content %}

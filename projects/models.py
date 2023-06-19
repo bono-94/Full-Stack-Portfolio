@@ -683,10 +683,8 @@ class Post(models.Model):
     future = models.TextField(max_length=2100, blank=True, null=True)
     legacy = models.TextField(max_length=2100, blank=True, null=True)
 
-    # POST BRIDGE
-    post_bridge_privacy = models.BooleanField(default=False)
-
     # POST BRIDGE - BUSINESS LIBRARY
+    post_bridge_privacy_library = models.BooleanField(default=False)
     organizational_structure = models.FileField(
         upload_to='organizational_structures/',
         blank=True,
@@ -890,6 +888,7 @@ class Post(models.Model):
     )
 
     # POST BRIDGE - BUSINESS DOCUMENTS
+    post_bridge_privacy_documents = models.BooleanField(default=False)
     business_plan = models.FileField(
         upload_to='business_plans/',
         blank=True,
@@ -934,8 +933,8 @@ class Post(models.Model):
             max_file_size_ten
         ],
     )
-    business_plan = models.FileField(
-        upload_to='business_plans/',
+    capabilities = models.FileField(
+        upload_to='capabilities/',
         blank=True,
         null=True,
         storage=RawMediaCloudinaryStorage(),
@@ -1052,6 +1051,7 @@ class Post(models.Model):
     )
 
     # POST EVENT
+    event_privacy = models.BooleanField(default=False)
     event_color = models.CharField(
         max_length=7,
         default='#ffc107',

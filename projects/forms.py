@@ -136,6 +136,7 @@ class ProfileForm(forms.ModelForm):
             'focus_collaboration',
             'focus_leadership',
         ]
+
         focus_values = [cleaned_data.get(field) for field in focus_fields]
         for i in range(0, 8, 2):
             if not all(focus_values[i:i+2]):
@@ -355,6 +356,30 @@ class PostForm(forms.ModelForm):
             'payout_date': forms.DateInput(attrs={'type': 'date'}),
             'event_date': forms.DateInput(attrs={'type': 'date'}),
         }
+
+    def clean(self):
+
+        cleaned_data = super().clean()
+        focus_fields = [
+            'focus_innovation',
+            'focus_financials',
+            'focus_planning',
+            'focus_monitoring',
+            'focus_quality',
+            'focus_quantity',
+            'focus_collaboration',
+            'focus_leadership',
+        ]
+
+        focus_values = [cleaned_data.get(field) for field in focus_fields]
+        for i in range(0, 8, 2):
+            if not all(focus_values[i:i+2]):
+                continue
+            if sum(focus_values[i:i+2]) != 100:
+                msg = f"The sum of {focus_fields[i].split('_', 1)[1]} and {focus_fields[i+1].split('_', 1)[1]} must be equal to 100."
+                self.add_error(focus_fields[i], msg)
+                self.add_error(focus_fields[i+1], msg)
+        return cleaned_data
 
 
 class NoteForm(forms.ModelForm):

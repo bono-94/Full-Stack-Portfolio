@@ -257,7 +257,8 @@ class PostForm(forms.ModelForm):
             'future',
             'legacy',
             # POST BRIDGE
-            'post_bridge_privacy',
+            'post_bridge_privacy_library',
+            'post_bridge_privacy_documents',
             # POST BRIDGE - BUSINESS LIBRARY
             'organizational_structure',
             'flowchart',

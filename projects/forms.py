@@ -156,7 +156,7 @@ class PostForm(forms.ModelForm):
             'post_list_description',
             'post_list_image',
             # POST STRUCTURE
-            'public_visibility',
+            'public_privacy',
             'post_background_audio',
             'post_color_primary',
             'post_color_secondary',

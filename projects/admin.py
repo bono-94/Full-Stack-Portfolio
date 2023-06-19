@@ -61,7 +61,7 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = (
         'status',
         'post_verification',
-        'public_visibility',
+        'public_privacy',
         'author_type',
         'post_type',
         'infinite_end_date',

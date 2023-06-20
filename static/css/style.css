@@ -673,6 +673,42 @@ max-width: 700px;
   right: 0;
 }
 
+/* OVERLAY */
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: fit-content;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.overlay-posts {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.image-container:hover .image {
+  opacity: 0.3;
+}
+
+.image-container:hover .overlay-posts {
+  opacity: 1;
+}
+
+.overlay-posts-bttn {
+  background-color: #000000;
+  color: orange;
+  font-size: 16px;
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 296px) {
   /* CSS rules for screens under 331px */

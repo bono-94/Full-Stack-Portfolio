@@ -562,24 +562,24 @@ class Post(models.Model):
         ]
     )
 
-    title = models.CharField(max_length=210, blank=False, unique=True)
+    title = models.CharField(max_length=21, blank=False, unique=True)
     caption = models.CharField(max_length=105, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     author_type = models.CharField(max_length=5, choices=TYPE_OF_AUTHOR, blank=True, null=True)
-    project_owner = models.CharField(max_length=50, blank=False)
+    project_owner = models.CharField(max_length=21, blank=False)
 
-    industry = models.CharField(max_length=50, blank=False)
+    industry = models.CharField(max_length=21, blank=False)
 
     post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=True, null=True)
-    organization = models.CharField(max_length=50, blank=False)
-    project = models.CharField(max_length=50, blank=False)
-    product = models.CharField(max_length=50, blank=False)
-    service = models.CharField(max_length=50, blank=False)
+    organization = models.CharField(max_length=21, blank=False)
+    project = models.CharField(max_length=21, blank=False)
+    product = models.CharField(max_length=21, blank=False)
+    service = models.CharField(max_length=21, blank=False)
 
-    post_location_city = models.CharField(max_length=42, blank=True, null=True)
-    post_location_country = models.CharField(max_length=42, blank=True, null=True)
-    post_location_continent = models.CharField(max_length=42, blank=True, null=True)
-    post_location_planet = models.CharField(max_length=42, blank=True, null=True)
+    post_location_city = models.CharField(max_length=21, blank=True, null=True)
+    post_location_country = models.CharField(max_length=21, blank=True, null=True)
+    post_location_continent = models.CharField(max_length=21, blank=True, null=True)
+    post_location_planet = models.CharField(max_length=21, blank=True, null=True)
 
     launch_date = models.DateField(default=timezone.now, blank=True, null=True)
     end_date = models.DateField(default=timezone.now, blank=True, null=True)

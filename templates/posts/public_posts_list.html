@@ -59,13 +59,13 @@
               <h5 class="card-title">
                 <a href="{% url 'public_post_details' post.slug %}" class="post-link">
                   {% if post.post_colors_list == False %}
-                  <h2 class="card-title mb-2">
+                  <h3 class="card-title mb-2">
                     {{ post.title }}
-                  </h2>
+                  </h3>
                   {% else %}
-                  <h2 class="card-title mb-2" style="color: {{ post.post_color_text }};">
+                  <h3 class="card-title mb-2" style="color: {{ post.post_color_text }};">
                     {{ post.title }}
-                  </h2>
+                  </h3>
                   {% endif %}
                 </a>
               </h5>

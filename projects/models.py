@@ -513,6 +513,7 @@ class Post(models.Model):
             max_file_size_hundred
         ]
     )
+    post_colors_list = models.BooleanField(default=False)
     post_color_primary = models.CharField(
         max_length=7,
         default='#292b2c',
@@ -525,7 +526,12 @@ class Post(models.Model):
         blank=True,
         null=True
     )
-    post_colors_list = models.BooleanField(default=False)
+    post_color_text = models.CharField(
+        max_length=7,
+        default='#000000',
+        blank=True,
+        null=True
+    )
 
     # POST INTRODUCTION
     post_author_image = models.ImageField(

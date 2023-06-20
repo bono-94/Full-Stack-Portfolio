@@ -161,6 +161,7 @@ class PostForm(forms.ModelForm):
             'post_colors_list',
             'post_color_primary',
             'post_color_secondary',
+            'post_color_text',
             # POST INTRODUCTION
             'post_author_image',
             'post_organization_image',

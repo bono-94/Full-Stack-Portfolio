@@ -659,6 +659,14 @@ max-width: 700px;
   background-color: rgba(108, 117, 125, 0.4); /* Adjust the RGB values and alpha (0.5) as per your needs */
 }
 
+.bg-as-nav-two {
+  background-color: #17bef6f0;
+}
+
+.text-as-nav-two {
+  color: #00bfff;
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 296px) {
   /* CSS rules for screens under 331px */

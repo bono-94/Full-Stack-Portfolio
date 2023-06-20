@@ -158,6 +158,7 @@ class PostForm(forms.ModelForm):
             # POST STRUCTURE
             'public_privacy',
             'post_background_audio',
+            'post_colors_list',
             'post_color_primary',
             'post_color_secondary',
             # POST INTRODUCTION

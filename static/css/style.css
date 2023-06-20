@@ -667,6 +667,12 @@ max-width: 700px;
   color: #00bfff;
 }
 
+.top-right-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 296px) {
   /* CSS rules for screens under 331px */

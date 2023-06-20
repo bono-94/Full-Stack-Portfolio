@@ -13,7 +13,7 @@
       </p>
       <div class="mt-4">
         <a href="{% url 'user_posts_list' %}" class="btn btn-dark text-warning my-2 mx-1 shadow-sm rounded-pill">VIEW PRIVATE</a>
-        <a href="{% url 'user_post_create' %}" class="btn btn-warning text-dark my-2 mx-1 shadow-sm rounded-pill">CREATE NEW</a>
+        <a href="{% url 'user_post_create' %}" class="btn btn-warning text-dark my-2 mx-1 shadow-sm rounded-pill ms-md-3">CREATE NEW</a>
       </div>
     </div>
   </div>
@@ -34,65 +34,150 @@
 <hr class="p-0 m-0">
   <div class="album py-5 bg-secondary-transparent">
     <div class="container-fluid ps-4 pe-4 pt-4 pb-5">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
         {% for post in post_list %}
         {% if post.public_privacy == False %}
         <div class="col">
           {% if post.post_colors_list == False %}
           <div class="card shadow-sm bg-light">
           {% else %}
-          <div class="card shadow-sm" style="background-color: {{ post.post_color_primary }};">
+          <div class="card shadow-sm" style="background-color: {{ post.post_color_primary }}; color: {{ post.post_color_text }};">
           {% endif %}
-            <div class="image-container">
+            <div class="image-container border border-1 border-secondary rounded-top">
               {% if post.post_list_image %}
                 <img src="{{ post.post_list_image.url }}" alt="Project Image" class="bd-placeholder-img card-img-top" width="100%" height="225">
               {% else %}
-              <img src="{% static 'images/21104.png' %}" alt="Project Placeholder" class="bd-placeholder-img card-img-top" width="100%" height="225">
+                <img src="{% static 'images/21104.png' %}" alt="Project Placeholder" class="bd-placeholder-img card-img-top" width="100%" height="225">
+              {% endif %} 
+              {% if post.post_verification == True %}
+              <i class="fa-solid fa-shield-halved top-right-icon me-2 mt-2"></i>
+              {% else %}
+              <i class="fa-solid fa-triangle-exclamation top-right-icon me-2 mt-2"></i>
               {% endif %} 
             </div>
             <div class="card-body">
               <h5 class="card-title">
                 <a href="{% url 'public_post_details' post.slug %}" class="post-link">
-                  <h2 class="card-title">
-                      {{ post.title }}
+                  {% if post.post_colors_list == False %}
+                  <h2 class="card-title mb-2">
+                    {{ post.title }}
                   </h2>
+                  {% else %}
+                  <h2 class="card-title mb-2" style="color: {{ post.post_color_text }};">
+                    {{ post.title }}
+                  </h2>
+                  {% endif %}
                 </a>
               </h5>
-              <h6 class="card-subtitle mb-2 text-muted">Author: {{ post.author }}</h6>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item pt-0 pb-0">
+              {% if post.post_colors_list == False %}
+                <h6 class="card-subtitle mb-3 text-muted">
+                  <strong>Author:</strong> {{ post.author }}
+                </h6>
+              {% else %}
+                <h6 class="card-subtitle mb-3" style="color: {{ post.post_color_text }};">
+                  <strong>Author:</strong> {{ post.author }}
+                </h6>
+              {% endif %}
+              <p class="card-text">
+                {{post.post_list_description}}
+              </p>
+              <ul class="list-group list-group-flush border border-1 border-secondary">
+              {% if post.post_colors_list == False %}
+                <li class="list-group-item pt-1 pb-0">
                   <p class="card-text">
-                    Organization: {{ post.organization }}
+                    <strong>Post type:</strong> {{ post.post_type }}
                   </p>
                 </li>
                 <li class="list-group-item pt-0 pb-0">
                   <p class="card-text">
-                    Industry:
-                    {{ post.industry }}
+                    <strong>Industry:</strong> {{ post.industry }}
                   </p>
                 </li>
-                <li class="list-group-item pt-0 pb-0">A third item</li>
+                {% if post.organization %}
+                <li class="list-group-item pt-0 pb-0">
+                  <p class="card-text">
+                    <strong>Organization:</strong> {{ post.organization }}
+                  </p>
+                </li>
+                {% endif %}
+                {% if post.project_owner %}
+                <li class="list-group-item pt-0 pb-0">
+                  <p class="card-text">
+                    <strong>Owner:</strong> {{ post.project_owner }}
+                  </p>
+                </li>
+                {% endif %}
+                <li class="list-group-item pt-0 pb-0">
+                  <p class="card-text">
+                    <strong>Location:</strong> {{ post.post_location_city }}, {{ post.post_location_country }}
+                  </p>
+                </li>
+                {% if post.launch_date %}
+                <li class="list-group-item pt-0 pb-1">
+                  <p class="card-text">
+                    <strong>Launch Date:</strong> {{ post.launch_date }}
+                  </p>
+                </li>
+                {% endif %}
+              {% else %}
+                <li class="list-group-item pt-1 pb-0" style="background-color: {{ post.post_color_secondary }};">
+                  <p class="card-text">
+                    <strong>Post type:</strong> {{ post.post_type }}
+                  </p>
+                </li>
+                <li class="list-group-item pt-0 pb-0" style="background-color: {{ post.post_color_secondary }};">
+                  <p class="card-text">
+                    <strong>Industry:</strong> {{ post.industry }}
+                  </p>
+                </li>
+                {% if post.organization %}
+                <li class="list-group-item pt-0 pb-0" style="background-color: {{ post.post_color_secondary }};">
+                  <p class="card-text">
+                    <strong>Organization:</strong> {{ post.organization }}
+                  </p>
+                </li>
+                {% endif %}
+                {% if post.project_owner %}
+                <li class="list-group-item pt-0 pb-0" style="background-color: {{ post.post_color_secondary }};">
+                  <p class="card-text">
+                    <strong>Owner:</strong> {{ post.project_owner }}
+                  </p>
+                </li>
+                {% endif %}
+                <li class="list-group-item pt-0 pb-0" style="background-color: {{ post.post_color_secondary }};">
+                  <p class="card-text">
+                    <strong>Location:</strong> {{ post.post_location_city }}, {{ post.post_location_country }}
+                  </p>
+                </li>
+                {% if post.launch_date %}
+                <li class="list-group-item pt-0 pb-1" style="background-color: {{ post.post_color_secondary }};">
+                  <p class="card-text">
+                    <strong>Launch Date:</strong> {{ post.launch_date }}
+                  </p>
+                </li>
+                {% endif %}
+              {% endif %}
               </ul>
-              <div class="card-footer">
-                Card footer
-                <p class="card-text text-muted h6">
-                  {{ post.created_on }}
+              <div class="card-footer border border-1 border-secondary">
+                <p class="card-text text-muted h6 mt-1">
+                  {% if post.post_colors_list == False %}
+                    <span>
+                  {% else %}
+                    <span style="color: {{ post.post_color_text }};">
+                  {% endif %}
+                      <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
+                      <i class="fa-solid fa-eye ms-2"></i> {{ post.views }}
+                    </span>
                 </p>
                 <p class="card-text text-muted h6">
-                  {{ post.number_of_votes }}
+                  {% if post.post_colors_list == False %}
+                    <span>
+                  {% else %}
+                    <span style="color: {{ post.post_color_text }};">
+                  {% endif %}
+                      {{ post.created_on }}
+                    </span>
                 </p>
-                <p class="card-text text-muted h6">
-                  {{ post.views }}
-                </p>
-              </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <a href="#" class="btn btn-primary">Button</a>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
@@ -101,19 +186,19 @@
         {% endfor %}
       </div>
     </div>
-  {% if is_paginated %}
+    {% if is_paginated %}
       <nav aria-label="Page navigation">
           <ul class="pagination justify-content-center">
               {% if page_obj.has_previous %}
               <li>
-                  <a href="?page={{ page_obj.previous_page_number }}" class="page-link mb-4 mt-3 shadow-sm rounded-pill text-as-nav-two bg-light">
+                  <a href="?page={{ page_obj.previous_page_number }}" class="page-link mb-2 mb-sm-4 mt-3 shadow-sm rounded-pill text-light bg-dark border-1 border-info">
                       &laquo; BACK
                   </a>
               </li>
               {% endif %}
               {% if page_obj.has_next %}
               <li>
-                  <a href="?page={{ page_obj.next_page_number }}" class="page-link mb-4 mt-3 shadow-sm rounded-pill text-as-nav-two bg-light">
+                  <a href="?page={{ page_obj.next_page_number }}" class="page-link mb-2 mb-sm-4 mt-3 shadow-sm rounded-pill text-light bg-dark border-1 border-info">
                       NEXT &raquo;
                   </a>
               </li>
@@ -122,36 +207,4 @@
       </nav>
         {% endif %}
   </div>
-
-post_colors_list
-post_color_primary
-post_color_secondary
-
-post_verification icon
-
-votes
-views
-
-post_list_image
-post_list_description
-
-title
-author
-author type icon
-
-
-post_type
-industry
-post_location_city, post_location_country
-project_owner
-
-
-created_on
-launch_date
-
-
-
-
-
-
 {%endblock%}

@@ -2,8 +2,8 @@
 {% load crispy_forms_tags %}
 
 {% load static %}
-<!-- CLOSE BUTTON -->
-<button type="button" id="profile-detail-close" class="btn btn-close shadow-sm bg-light border border-2 border-warning fixed-top ms-auto" aria-label="Close" onclick="javascript:history.back()"></button>
+<!-- NAVIGATIONAL FIXED BUTTONS -->
+<button type="button" id="profile-detail-close" class="btn btn-close shadow-sm bg-light border border-2 border-warning fixed-top ms-auto mb-0" aria-label="Close" onclick="javascript:history.back()"></button>
 {% if post.author == request.user %}
   <div class="fixed-bottom p-0 mb-4 pb-3 text-end">
     <a href="{% url 'post_edit' post_id=post.id %}" class="btn btn-light text-secondary border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
@@ -16,43 +16,39 @@
     </a>
   </div>
 {% endif %}
-<div class="masthead">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <!-- Post title goes in these h1 tags -->
-                <h1 class="post-title">
-                    {{ post.title }}
-                </h1>
-                <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle"> {{ post.author }} | {{ post.created_on }} </p>
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                <!-- The featured image URL goes in the src attribute -->
-                {% if "placeholder" in post.featured_image.url %}
-                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
-                {% else %}
-                <img src="{{ post.featured_image.url }}" width="100%">
-                {% endif %}
-            </div>
-        </div>
+{% if post.public_privacy == False %}
+<!-- POST HEADER -->
+<div class="container-fluid bg-dark bg-gradient" id="post-detail-header">
+  <div class="row-fluid">
+    <div class="col pt-4 pt-lg-1 pb-4 pb-lg-1">
+        <h1 class="post-title text-light text-break">
+            {{ post.title }}
+        </h1>
+        <hr class="text-warning d-none d-sm-block col-sm-10 ms-sm-4">
+        <p class="post-subtitle mt-3 mb-1 mb-lg-2">By: {{ post.author }}</p>
+        <p class="post-subtitle mb-2 mb-lg-4">Created: {{ post.created_on }} </p>
     </div>
+  </div>
 </div>
-
-<div class="container">
-    <div class="row">
-        <div class="image-container w-100">
-            {% if post.post_list_image %}
-        <div class="image-container">
-            <a>
-                <img src="{{ post.post_list_image.url }}" class="w-100" alt="Project Image">
-            </a>
-             {% else %}
-            <a>
-                <img src="{% static 'images/21104.png' %}" class="w-100" alt="Project Placeholder">
-            </a>
-            {% endif %}                           
-        </div>
+<!-- POST IMAGE -->
+<div class="container-fluid p-0">
+  <div class="row-fluid">
+    <div class="image-container bg-secondary-lighter pt-5 pb-5">
+        {% if post.post_list_image %}
+        <a>
+            <img src="{{ post.post_list_image.url }}" class="w-100 m-0" alt="Project Image">
+        </a>
+          {% else %}
+        <a>
+            <img src="{% static 'images/21104.png' %}" class="w-100 m-0" alt="Project Placeholder">
+        </a>
+        {% endif %}                           
+    </div>
+  </div>
+</div>
+<!-- CONTENT -->
+<div class="container-fluid bg-secondary-lighter">
+  <div class="row-fluid">    
         <p class="card-text">
           Organization: {{ post.organization }}
         </p>
@@ -60,9 +56,9 @@
             Industry:
             {{ post.industry }}
         </p>
-        <p class="card-text">
-            <!-- Info:
-            {{ post.caption }} -->
+        <p class="card-text text-break">
+            Info:
+            {{ post.caption }}
         </p>
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
@@ -334,9 +330,12 @@
       </p>
     </div>
   </div>
-  <hr>   
-
-
+  <hr>
+{% else %}
+<div class="container public-privacy-message">
+  <h1 class="text-center">This post is not open for public.</h1>
+</div>   
+{% endif %}
 public_privacy
 
 post_background_audio

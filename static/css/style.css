@@ -52,40 +52,6 @@ body {
     text-transform: uppercase;
 }
 
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
-
-.masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
-
 .post-link {
     text-decoration: none;
     color: #445261;
@@ -97,7 +63,7 @@ body {
 }
 
 .post-title {
-    margin-top: 20%;
+    margin-top: 14%;
     margin-left: 5%;
 }
 
@@ -167,7 +133,7 @@ body {
 
 .nav-margin-mobile-short {
 
-  margin-top: 124px;
+  margin-top: 120px;
 }
 
 .nav-margin-tablet {
@@ -177,12 +143,12 @@ body {
 
 .nav-margin-tablet-short {
 
-  margin-top: 144px;
+  margin-top: 120px;
 }
 
 .nav-margin-pc {
 
-  margin-top: 150px;
+  margin-top: 125px;
 }
 
 #navbar-collapse {
@@ -206,7 +172,7 @@ body {
 }
 
 #profile-detail-close {
-  margin-top: 111px;
+  margin-top: 104px;
   margin-right: 6px;
 }
 
@@ -659,6 +625,11 @@ max-width: 700px;
   background-color: rgba(108, 117, 125, 0.4); /* Adjust the RGB values and alpha (0.5) as per your needs */
 }
 
+.bg-secondary-lighter {
+  /* Add transparency to the background color */
+  background-color: rgba(232, 233, 235, 0.43); /* Adjust the RGB values and alpha (0.5) as per your needs */
+}
+
 .bg-as-nav-two {
   background-color: #17bef6f0;
 }
@@ -671,6 +642,18 @@ max-width: 700px;
   position: absolute;
   top: 0;
   right: 0;
+}
+
+#post-detail-header {
+  margin-top: -25px;
+}
+
+.public-privacy-message {
+  margin-top: 200px;
+  margin-bottom: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* OVERLAY */
@@ -788,6 +771,10 @@ max-width: 700px;
     transform: scale(1.2);
     margin-left: 5px;
     margin-right: 5px;
+  }
+
+  #profile-detail-close {
+    margin-top: 108px;
   }
   /* ... */
 }

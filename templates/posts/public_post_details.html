@@ -18,23 +18,96 @@
 {% endif %}
 {% if post.public_privacy == False %}
 <!-- POST HEADER -->
-<div class="container-fluid bg-dark bg-gradient" id="post-detail-header">
-  <div class="row-fluid">
-    <div class="col pt-4 pt-lg-1 pb-4 pb-lg-1">
-        <h1 class="post-title text-light text-break pt-5 pt-sm-4">
-            {{ post.title }}
-            {% if post.post_verification == True %}
-            <i class="fa-solid fa-shield-halved" style="font-size: 0.5em; vertical-align: middle; margin-top: -24px;"></i>
-            {% else %}
-            <i class="fa-solid fa-triangle-exclamation" style="font-size: 0.5em; vertical-align: middle; margin-top: -24px;"></i>
-            {% endif %}
-        </h1>
-        <hr class="text-light col-9 col-sm-10 ms-2 ms-sm-4 ms-lg-5">
-        <p class="post-subtitle text-light mt-3 mb-1 mb-lg-2">By: {{ post.author }}</p>
-        <p class="post-subtitle text-light mb-2 mb-lg-4">Created: {{ post.created_on }} </p>
+<section class="bg-secondary-lighter">
+  <div class="container bg-dark bg-gradient" id="post-detail-header">
+    <div class="row">
+      <div class="col-10 mt-4">
+          {% if post.post_list_image %}
+            <img src="{{ post.post_list_image.url }}" class="rounded-circle border border-2 border-warning shadow-sm profile-picture ms-2 ms-sm-3 ms-md-4 ms-lg-5" alt="Profile Picture" width="125" height="125">
+          {% else %}
+            <img src="{% static 'images/21104.png' %}" class="rounded-circle border border-2 border-warning shadow-sm profile-picture ms-2 ms-sm-3 ms-md-4 ms-lg-5" alt="Default Profile Picture" width="125" height="125">
+          {% endif %}                           
+      </div>
+      <div class="col-12 pb-4 pb-lg-3">
+          <h1 class="post-title text-light text-break mt-3 mt-sm-4 ms-2 ms-sm-3 ms-md-4 ms-lg-5 me-2 me-sm-3 me-md-4 me-lg-5">
+              {{ post.title }}
+              {% if post.post_verification == True %}
+              <i class="fa-solid fa-shield-halved" style="font-size: 0.5em; vertical-align: middle; margin-top: -24px;"></i>
+              {% else %}
+              <i class="fa-solid fa-triangle-exclamation" style="font-size: 0.5em; vertical-align: middle; margin-top: -24px;"></i>
+              {% endif %}
+          </h1>
+          <hr class="text-light col-10 col-sm-10 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          <p class="post-subtitle text-light mt-3 mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">Author: <a href="{% url 'public_profile' post.author.user_profile.id %}" class="text-warning">{{ post.author }}</a></p>
+          <span class="post-subtitle text-light mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            {% if user.is_authenticated %}
+                <form class="d-inline" action="{% url 'vote' post.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if voted %}
+                      <button type="submit" id="vote-button-anim-take" name="post_note_id" value="{{post.slug}}" class="btn-like text-light" onclick="addShakeClass('vote-button-anim-take')">
+                        <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
+                      </button>
+                      <span> |</span>
+                    {% else %}
+                      <button type="submit" id="vote-button-anim-add" name="post_note_id" value="{{post.slug}}" class="btn-like text-light" onclick="addBounceClass('vote-button-anim-add')">
+                        <i class="fa-regular fa-heart"></i> {{ post.number_of_votes }}
+                      </button>
+                      <span> |</span>
+                    {% endif %}
+                </form>
+                {% else %}
+                    <span class="text-light">
+                      <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
+                      <span> |</span>
+                    </span>
+                {% endif %}
+            <i class="fa-solid fa-eye ms-1"></i> {{ post.views }} |
+            {% with notes.count as total_notes %}
+              <i class="fa-solid fa-comment ms-1"></i> {{ total_notes }}
+            {% endwith %}
+          </span>
+          {% if post.post_duration_created == 1 %}
+          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            <span class="d-block d-sm-inline">
+              Created:
+            </span>
+            <span class="text-break">
+              {{ post.created_on }} [{{ post.post_duration_created }} day ago]
+            </span> 
+          </p>
+          {% else %}
+          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            <span class="d-block d-sm-inline">
+              Created:
+            </span>
+            <span class="text-break">
+              {{ post.created_on }} [{{ post.post_duration_created }} days ago]
+            </span> 
+          </p>
+          {% endif %}
+          {% if post.post_duration_updated == 1 %}
+          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            <span class="d-block d-sm-inline">
+              Updated:
+            </span>
+            <span class="text-break">
+              {{ post.updated_on }} [{{ post.post_duration_updated }} day ago]
+            </span> 
+          </p>
+          {% else %}
+          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            <span class="d-block d-sm-inline">
+              Updated:
+            </span>
+            <span class="text-break">
+              {{ post.updated_on }} [{{ post.post_duration_updated }} days ago]
+            </span>
+          </p>
+          {% endif %}
+      </div>
     </div>
   </div>
-</div>
+</section>
 <!-- POST IMAGE -->
 <div class="container-fluid p-0">
   <div class="row-fluid">
@@ -74,49 +147,7 @@
                 </p>
                 <div class="row">
                     
-                    <div class="col-1">
-                        <strong>
-                            {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'vote' post.slug %}" method="POST">
-                                {% csrf_token %}
-                                {% if voted %}
-                                    <button type="submit" name="post_note_id" value="{{post.slug}}" class="btn-like text-secondary">
-                                        <i class="fas fa-heart"></i>
-                                        {{ post.number_of_votes }}
-                                    </button>
-                                {% else %}
-                                    <button type="submit" name="post_note_id" value="{{post.slug}}" class="btn-like text-secondary">
-                                        <i class="far fa-heart"></i>
-                                        {{ post.number_of_votes }}
-                                    </button>
-                                {% endif %}
-                            </form>
-                            {% else %}
-                                <span class="text-secondary">
-                                    <i class="far fa-heart"></i>
-                                    {{ post.number_of_votes }}
-                                </span>
-                            {% endif %}
-                        </strong>
-                    </div>
-                    <div class="col-1">
-                        {% with notes.count as total_notes %}
-                        <strong class="text-secondary">
-                            <i class="far fa-comments"></i>
-                            <!-- Our total_comments variable goes before the closing strong tag -->
-                            {{ total_notes }}
-                        </strong>
-                        {% endwith %}
-                    </div>
-                    Views: {{ post.views }}
-                    <p class="card-text">
-                        Last Updated:
-                        {{ post.updated_on }}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+                    
     <div class="row">
         <div class="col">
             <hr>
@@ -204,7 +235,7 @@
      <hr> -->
 
      {% endcomment %}
-<p>Author: <a href="{% url 'public_profile' post.author.user_profile.id %}">Name</a></p>
+
 
 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
     <div class="card-header">Header</div>
@@ -349,12 +380,8 @@ post_color_secondary
 post_author_image
 post_organization_image
 post_banner_image
-
-created_on + post_duration_created
-updated_on + post_duration_updated
-
-title
 caption
+
 author + author_type
 project_owner
 

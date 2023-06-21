@@ -62,16 +62,6 @@ body {
     color: #E84610;
 }
 
-.post-title {
-    margin-top: 14%;
-    margin-left: 5%;
-}
-
-.post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
-}
-
 .btn-signup {
     background-color: #23BBBB;
     color: #fff;
@@ -660,6 +650,10 @@ max-width: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#post-detail-counter {
+  margin-left: 50px;
 }
 
 /* OVERLAY */

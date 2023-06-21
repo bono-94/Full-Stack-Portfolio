@@ -750,3 +750,24 @@ $(document).ready(function(){
   }) 
   $('#profile-personal-occupation').addClass('bg-warning');
 });
+
+
+function addBounceClass(elementId) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.classList.add('fa-bounce');
+    setTimeout(() => {
+      element.classList.remove('fa-bounce');
+    }, 900);
+  }
+}
+
+function addShakeClass(elementId) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.classList.add('fa-shake');
+    setTimeout(() => {
+      element.classList.remove('fa-shake');
+    }, 900);
+  }
+}

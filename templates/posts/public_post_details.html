@@ -21,7 +21,7 @@
 <div class="container-fluid bg-dark bg-gradient" id="post-detail-header">
   <div class="row-fluid">
     <div class="col pt-4 pt-lg-1 pb-4 pb-lg-1">
-        <h1 class="post-title text-light text-break">
+        <h1 class="post-title text-light text-break pt-5 pt-sm-4">
             {{ post.title }}
             {% if post.post_verification == True %}
             <i class="fa-solid fa-shield-halved" style="font-size: 0.5em; vertical-align: middle; margin-top: -24px;"></i>
@@ -29,7 +29,7 @@
             <i class="fa-solid fa-triangle-exclamation" style="font-size: 0.5em; vertical-align: middle; margin-top: -24px;"></i>
             {% endif %}
         </h1>
-        <hr class="text-warning d-none d-sm-block col-sm-10 ms-sm-4">
+        <hr class="text-light col-9 col-sm-10 ms-2 ms-sm-4 ms-lg-5">
         <p class="post-subtitle text-light mt-3 mb-1 mb-lg-2">By: {{ post.author }}</p>
         <p class="post-subtitle text-light mb-2 mb-lg-4">Created: {{ post.created_on }} </p>
     </div>
@@ -345,8 +345,6 @@
 post_background_audio
 post_color_primary
 post_color_secondary
-
-post_verification + icon
 
 post_author_image
 post_organization_image

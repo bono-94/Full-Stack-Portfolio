@@ -2,7 +2,20 @@
 {% load crispy_forms_tags %}
 
 {% load static %}
-<button type="button" id="profile-detail-close" class="btn btn-close shadow-sm bg-light border border-1 border-warning fixed-top ms-auto" aria-label="Close" onclick="javascript:history.back()"></button>
+<!-- CLOSE BUTTON -->
+<button type="button" id="profile-detail-close" class="btn btn-close shadow-sm bg-light border border-2 border-warning fixed-top ms-auto" aria-label="Close" onclick="javascript:history.back()"></button>
+{% if post.author == request.user %}
+  <div class="fixed-bottom p-0 mb-4 pb-3 text-end">
+    <a href="{% url 'post_edit' post_id=post.id %}" class="btn btn-light text-secondary border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
+      <i class="fa-solid fa-pencil"></i>
+    </a>
+  </div>
+  <div class="fixed-bottom p-0 mb-1 pb-1 text-end">
+    <a href="{% url 'post_delete' post_id=post.id %}" class="btn btn-light text-secondary border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
+      <i class="fa-regular fa-trash-can"></i> 
+    </a>
+  </div>
+{% endif %}
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -25,21 +38,18 @@
         </div>
     </div>
 </div>
-{% if post.author == request.user %}
-    <a href="{% url 'post_edit' post_id=post.id %}">Edit Post</a>
-    <a href="{% url 'post_delete' post_id=post.id %}">Delete Post</a>
-{% endif %}
-<p>Number of registered users: {{ num_users }}</p>
+
 <div class="container">
     <div class="row">
-        <div class="image-container">
+        <div class="image-container w-100">
             {% if post.post_list_image %}
+        <div class="image-container">
             <a>
-                <img src="{{ post.post_list_image.url }}" alt="Project Image">
+                <img src="{{ post.post_list_image.url }}" class="w-100" alt="Project Image">
             </a>
              {% else %}
             <a>
-                <img src="{% static 'images/21104.png' %}" alt="Project Placeholder">
+                <img src="{% static 'images/21104.png' %}" class="w-100" alt="Project Placeholder">
             </a>
             {% endif %}                           
         </div>
@@ -51,8 +61,8 @@
             {{ post.industry }}
         </p>
         <p class="card-text">
-            Info:
-            {{ post.caption }}
+            <!-- Info:
+            {{ post.caption }} -->
         </p>
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">

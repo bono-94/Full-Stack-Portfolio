@@ -23,10 +23,15 @@
     <div class="col pt-4 pt-lg-1 pb-4 pb-lg-1">
         <h1 class="post-title text-light text-break">
             {{ post.title }}
+            {% if post.post_verification == True %}
+            <i class="fa-solid fa-shield-halved" style="font-size: 0.5em; vertical-align: middle; margin-top: -24px;"></i>
+            {% else %}
+            <i class="fa-solid fa-triangle-exclamation" style="font-size: 0.5em; vertical-align: middle; margin-top: -24px;"></i>
+            {% endif %}
         </h1>
         <hr class="text-warning d-none d-sm-block col-sm-10 ms-sm-4">
-        <p class="post-subtitle mt-3 mb-1 mb-lg-2">By: {{ post.author }}</p>
-        <p class="post-subtitle mb-2 mb-lg-4">Created: {{ post.created_on }} </p>
+        <p class="post-subtitle text-light mt-3 mb-1 mb-lg-2">By: {{ post.author }}</p>
+        <p class="post-subtitle text-light mb-2 mb-lg-4">Created: {{ post.created_on }} </p>
     </div>
   </div>
 </div>
@@ -336,7 +341,6 @@
   <h1 class="text-center">This post is not open for public.</h1>
 </div>   
 {% endif %}
-public_privacy
 
 post_background_audio
 post_color_primary

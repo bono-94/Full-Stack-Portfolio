@@ -445,6 +445,18 @@ body {
     color: #727272;
   }
   
+
+  .image-container {
+    max-height: 100vh;
+  }
+  .object-fit-contain {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+
+
   /*
    * Footer
    */
@@ -523,6 +535,13 @@ body {
     background-position: center center;
     background-size: cover;
   }
+
+/* CUSTOM IMAGES */
+.object-fit-contain {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
 
 /* PRICING TEMPLATE EXTRA STYLE */
 
@@ -649,10 +668,6 @@ max-width: 700px;
   left: 0;
 }
 
-#post-detail-header {
-  margin-top: -25px;
-}
-
 .public-privacy-message {
   margin-top: 200px;
   margin-bottom: 200px;
@@ -663,6 +678,10 @@ max-width: 700px;
 
 #post-detail-counter {
   margin-left: 50px;
+}
+
+#post-main-image {
+  margin-top: -24px;
 }
 
 /* OVERLAY */

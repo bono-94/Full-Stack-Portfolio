@@ -17,10 +17,28 @@
   </div>
 {% endif %}
 {% if post.public_privacy == False %}
+<!-- POST IMAGE -->
+<section id="post-main-image">
+  <div class="container-fluid p-0 overflow-hidden border border-2 border-warning">
+    <div class="row-fluid">
+      <div class="image-container bg-secondary-lighter d-flex align-items-center justify-content-center">
+        {% if post.post_list_image %}
+        <a>
+          <img src="{{ post.post_banner_image.url }}" class="img-fluid object-fit-contain" alt="Project Image">
+        </a>
+        {% else %}
+        <a>
+          <img src="{% static 'images/21105.jpg' %}" class="img-fluid object-fit-contain" alt="Project Placeholder">
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
 <!-- POST HEADER -->
-<section class="bg-secondary-lighter">
+<section class="bg-secondary-lighter pb-sm-3 pb-md-4 pb-lg-5">
   <div class="container bg-dark bg-gradient pb-3 pt-2" id="post-detail-header">
-    <div class="row">
+    <div class="row-fluid">
       <div class="col-10 mt-4">
           {% if post.post_list_image %}
             <img src="{{ post.post_logo_image.url }}" class="rounded-circle border border-2 border-warning shadow-sm profile-picture ms-2 ms-sm-3 ms-md-4 ms-lg-5" alt="Profile Picture" width="125" height="125">
@@ -128,80 +146,80 @@
     </div>
   </div>
 </section>
-<!-- POST IMAGE -->
-<section id="post-main-image">
-  <div class="container-fluid p-0">
-    <div class="row-fluid">
-      <div class="image-container bg-secondary-lighter pt-5 pb-5">
-          {% if post.post_list_image %}
-          <a>
-              <img src="{{ post.post_banner_image.url }}" class="w-100 m-0" alt="Project Image">
-          </a>
-            {% else %}
-          <a>
-              <img src="{% static 'images/21104.png' %}" class="w-100 m-0" alt="Project Placeholder">
-          </a>
-          {% endif %}                           
-      </div>
-    </div>
-  </div>
-</section>
 <!-- ABOUT CARD -->
-<ul class="list-group mt-3 col-10 offset-1">
-  <li class="list-group-item bg-secondary-lighter text-light p-1 ps-3">
-    Author: 
-    <a href="{% url 'public_profile' post.author.user_profile.id %}" class="text-warning ms-1" style="text-shadow: 0px 0px 2px black;">
-      {{ post.author }}
-    </a>
-    {% if post.author_type == 'Human' %}
-    <span class="ms-1">(Human)</span>
-    {% else %}
-    <span class="ms-1">(A.I.)</span>
-    {% endif %}
-  </li>
-  <li class="list-group-item bg-secondary-lighter text-light p-1 ps-3">
-    Post Owner:
-    <span class="ms-1">
-      {{ post.project_owner }}
-    </span>
-  </li>
-  <li class="list-group-item bg-secondary-lighter text-light p-1 ps-3">
-    Industry:
-    <span class="ms-1">
-      {{ post.industry }}
-    </span>
-  </li>
-</ul>
-<!-- CONTENT -->
-<div class="container-fluid bg-secondary-lighter">
-  <div class="row-fluid">    
-        <p class="card-text">
-          Organization: {{ post.organization }}
-        </p>
-        <p class="card-text">
-            Industry:
-            {{ post.industry }}
-        </p>
-        <p class="card-text text-break">
-            Info:
-            {{ post.caption }}
-        </p>
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text ">
-                    {{ post.main_content | safe }}
-                </p>
-                <div class="row">
+<section class="bg-secondary-lighter pt-3 pb-4">
+  <ul class="list-group mt-3 col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 border border-1 border-dark">
+    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-bottom border-1 border-light">
+      Post Type:
+      <span class="ms-1">
+        {{ post.post_type }}
+      </span>
+    </li>
+    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+      Industry:
+      <span class="ms-1">
+        {{ post.industry }}
+      </span>
+    </li>
+    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+      Organization:
+      <span class="ms-1">
+        {{ post.organization }}
+      </span>
+    </li>
+    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+      Project:
+      <span class="ms-1">
+        {{ post.project }}
+      </span>
+    </li>
+    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+      Product:
+      <span class="ms-1">
+        {{ post.product }}
+      </span>
+    </li>
+    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+      Service:
+      <span class="ms-1">
+        {{ post.service }}
+      </span>
+    </li>
+    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+      City:
+      <span class="ms-1">
+        {{ post.post_location_city }}
+      </span>
+    </li>
+    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+      Country:
+      <span class="ms-1">
+        {{ post.post_location_country }}
+      </span>
+    </li>
+    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+      Continent:
+      <span class="ms-1">
+        {{ post.post_location_continent }}
+      </span>
+    </li>
+    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-bottom border-1 border-light">
+      Planet:
+      <span class="ms-1">
+        {{ post.post_location_planet }}
+      </span>
+    </li>
+  </ul>
+</section>
+
                     
                     
-    <div class="row">
+    <div class="row-fluid">
         <div class="col">
             <hr>
         </div>
     </div>
-    <div class="row">
+    <div class="row-fluid">
         <div class="col-md-8 card mb-4  mt-3 ">
             <h3>Notes:</h3>
             <div class="card-body">
@@ -429,17 +447,12 @@ post_background_audio
 post_color_primary
 post_color_secondary
 
-industry
 if post_type =
 organization: organization if not empty
 project: organization + project if not empty
 product: organization + project + product if not empty
 service: organization + project + service if not empty
 
-post_location_city
-post_location_country
-post_location_continent
-post_location_planet
 
 launch_date
 end_date - if infinite_end_date = True add infinity sign no matter end date

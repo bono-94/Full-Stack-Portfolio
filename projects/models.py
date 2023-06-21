@@ -422,11 +422,6 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 
 class Post(models.Model):
 
-    TYPE_OF_AUTHOR = (
-        ('Human', 'Human'),
-        ('AI', 'AI'),
-    )
-
     TYPE_OF_POST = (
         ('Organization', 'Organization'),
         ('Project', 'Project'),
@@ -497,7 +492,7 @@ class Post(models.Model):
     )
 
     # POST STRUCTURE
-    slug = models.SlugField(max_length=210, unique=True)
+    slug = models.SlugField(max_length=21, unique=True)
     status = models.IntegerField(choices=STATUS, default=0)
     post_verification = models.BooleanField(default=False)
     votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
@@ -534,17 +529,8 @@ class Post(models.Model):
     )
 
     # POST INTRODUCTION
-    post_author_image = models.ImageField(
-        upload_to='post_author_images/',
-        blank=True,
-        null=True,
-        validators=[
-            validate_file_name_length,
-            max_file_size_ten
-        ]
-    )
-    post_organization_image = models.ImageField(
-        upload_to='post_organizations_images/',
+    post_logo_image = models.ImageField(
+        upload_to='post_logo_images/',
         blank=True,
         null=True,
         validators=[
@@ -563,9 +549,8 @@ class Post(models.Model):
     )
 
     title = models.CharField(max_length=21, blank=False, unique=True)
-    caption = models.CharField(max_length=105, blank=False)
+    caption = models.CharField(max_length=42, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
-    author_type = models.CharField(max_length=5, choices=TYPE_OF_AUTHOR, blank=True, null=True)
     project_owner = models.CharField(max_length=21, blank=False)
 
     industry = models.CharField(max_length=21, blank=False)

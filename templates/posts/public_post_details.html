@@ -19,11 +19,11 @@
 {% if post.public_privacy == False %}
 <!-- POST HEADER -->
 <section class="bg-secondary-lighter">
-  <div class="container bg-dark bg-gradient" id="post-detail-header">
+  <div class="container bg-dark bg-gradient pb-3 pt-2" id="post-detail-header">
     <div class="row">
       <div class="col-10 mt-4">
           {% if post.post_list_image %}
-            <img src="{{ post.post_list_image.url }}" class="rounded-circle border border-2 border-warning shadow-sm profile-picture ms-2 ms-sm-3 ms-md-4 ms-lg-5" alt="Profile Picture" width="125" height="125">
+            <img src="{{ post.post_logo_image.url }}" class="rounded-circle border border-2 border-warning shadow-sm profile-picture ms-2 ms-sm-3 ms-md-4 ms-lg-5" alt="Profile Picture" width="125" height="125">
           {% else %}
             <img src="{% static 'images/21104.png' %}" class="rounded-circle border border-2 border-warning shadow-sm profile-picture ms-2 ms-sm-3 ms-md-4 ms-lg-5" alt="Default Profile Picture" width="125" height="125">
           {% endif %}                           
@@ -31,15 +31,13 @@
       <div class="col-12 pb-4 pb-lg-3">
           <h1 class="post-title text-light text-break mt-3 mt-sm-4 ms-2 ms-sm-3 ms-md-4 ms-lg-5 me-2 me-sm-3 me-md-4 me-lg-5">
               {{ post.title }}
-              {% if post.post_verification == True %}
-              <i class="fa-solid fa-shield-halved" style="font-size: 0.5em; vertical-align: middle; margin-top: -24px;"></i>
-              {% else %}
-              <i class="fa-solid fa-triangle-exclamation" style="font-size: 0.5em; vertical-align: middle; margin-top: -24px;"></i>
-              {% endif %}
           </h1>
-          <hr class="text-light col-10 col-sm-10 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-          <p class="post-subtitle text-light mt-3 mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">Author: <a href="{% url 'public_profile' post.author.user_profile.id %}" class="text-warning">{{ post.author }}</a></p>
-          <span class="post-subtitle text-light mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          <p class="post-subtitle text-light mt-2 mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            <span class="text-break">
+              {{ post.caption }}
+            </span>
+          </p>
+          <span class="post-subtitle text-light mb-1 mb-lg-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
             {% if user.is_authenticated %}
                 <form class="d-inline" action="{% url 'vote' post.slug %}" method="POST">
                     {% csrf_token %}
@@ -64,14 +62,36 @@
             <i class="fa-solid fa-eye ms-1"></i> {{ post.views }} |
             {% with notes.count as total_notes %}
               <i class="fa-solid fa-comment ms-1"></i> {{ total_notes }}
+              <span> |</span>
             {% endwith %}
+            {% if post.post_verification == True %}
+              <i class="fa-solid fa-shield-halved fa-beat ms-1"></i>
+            {% else %}
+              <i class="fa-solid fa-triangle-exclamation fa-beat ms-1"></i>
+            {% endif %}
           </span>
+          <hr class="text-light col-10 col-sm-10 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          <p class="post-subtitle text-light mt-3 mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            Author: 
+            <a href="{% url 'public_profile' post.author.user_profile.id %}" class="text-warning ms-1">
+            {{ post.author }}
+            </a>
+          </p>
+          <p class="post-subtitle text-light mb-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            Owner:
+            <a href="#post-contact" class="text-warning ms-1">
+              <span class="ms-1">
+                {{ post.project_owner }}
+              </span>
+            </a>
+          </p>
+          <hr class="text-light col-10 col-sm-10 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
           {% if post.post_duration_created == 1 %}
           <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
             <span class="d-block d-sm-inline">
               Created:
             </span>
-            <span class="text-break">
+            <span class="text-break text-light-grey">
               {{ post.created_on }} [{{ post.post_duration_created }} day ago]
             </span> 
           </p>
@@ -80,7 +100,7 @@
             <span class="d-block d-sm-inline">
               Created:
             </span>
-            <span class="text-break">
+            <span class="text-break text-light-grey">
               {{ post.created_on }} [{{ post.post_duration_created }} days ago]
             </span> 
           </p>
@@ -90,7 +110,7 @@
             <span class="d-block d-sm-inline">
               Updated:
             </span>
-            <span class="text-break">
+            <span class="text-break text-light-grey">
               {{ post.updated_on }} [{{ post.post_duration_updated }} day ago]
             </span> 
           </p>
@@ -99,7 +119,7 @@
             <span class="d-block d-sm-inline">
               Updated:
             </span>
-            <span class="text-break">
+            <span class="text-break text-light-grey">
               {{ post.updated_on }} [{{ post.post_duration_updated }} days ago]
             </span>
           </p>
@@ -109,21 +129,49 @@
   </div>
 </section>
 <!-- POST IMAGE -->
-<div class="container-fluid p-0">
-  <div class="row-fluid">
-    <div class="image-container bg-secondary-lighter pt-5 pb-5">
-        {% if post.post_list_image %}
-        <a>
-            <img src="{{ post.post_list_image.url }}" class="w-100 m-0" alt="Project Image">
-        </a>
-          {% else %}
-        <a>
-            <img src="{% static 'images/21104.png' %}" class="w-100 m-0" alt="Project Placeholder">
-        </a>
-        {% endif %}                           
+<section id="post-main-image">
+  <div class="container-fluid p-0">
+    <div class="row-fluid">
+      <div class="image-container bg-secondary-lighter pt-5 pb-5">
+          {% if post.post_list_image %}
+          <a>
+              <img src="{{ post.post_banner_image.url }}" class="w-100 m-0" alt="Project Image">
+          </a>
+            {% else %}
+          <a>
+              <img src="{% static 'images/21104.png' %}" class="w-100 m-0" alt="Project Placeholder">
+          </a>
+          {% endif %}                           
+      </div>
     </div>
   </div>
-</div>
+</section>
+<!-- ABOUT CARD -->
+<ul class="list-group mt-3 col-10 offset-1">
+  <li class="list-group-item bg-secondary-lighter text-light p-1 ps-3">
+    Author: 
+    <a href="{% url 'public_profile' post.author.user_profile.id %}" class="text-warning ms-1" style="text-shadow: 0px 0px 2px black;">
+      {{ post.author }}
+    </a>
+    {% if post.author_type == 'Human' %}
+    <span class="ms-1">(Human)</span>
+    {% else %}
+    <span class="ms-1">(A.I.)</span>
+    {% endif %}
+  </li>
+  <li class="list-group-item bg-secondary-lighter text-light p-1 ps-3">
+    Post Owner:
+    <span class="ms-1">
+      {{ post.project_owner }}
+    </span>
+  </li>
+  <li class="list-group-item bg-secondary-lighter text-light p-1 ps-3">
+    Industry:
+    <span class="ms-1">
+      {{ post.industry }}
+    </span>
+  </li>
+</ul>
 <!-- CONTENT -->
 <div class="container-fluid bg-secondary-lighter">
   <div class="row-fluid">    
@@ -367,6 +415,10 @@
     </div>
   </div>
   <hr>
+
+<section id="post-contact">
+  General contact info
+</section>
 {% else %}
 <div class="container public-privacy-message">
   <h1 class="text-center">This post is not open for public.</h1>
@@ -377,16 +429,7 @@ post_background_audio
 post_color_primary
 post_color_secondary
 
-post_author_image
-post_organization_image
-post_banner_image
-caption
-
-author + author_type
-project_owner
-
 industry
-
 if post_type =
 organization: organization if not empty
 project: organization + project if not empty
@@ -405,12 +448,14 @@ if infinite_end_date is false then:
   add post_duration_months
   add post_duration_years
 
-
+<!-- separate -->
 introduction
 
+<!-- separate -->
 if post_video_privacy = false:
 post_video
 
+<!-- separate -->
 if post_about_privacy = False:
   organization_info
   organization_culture

@@ -163,12 +163,10 @@ class PostForm(forms.ModelForm):
             'post_color_secondary',
             'post_color_text',
             # POST INTRODUCTION
-            'post_author_image',
-            'post_organization_image',
+            'post_logo_image',
             'post_banner_image',
             'title',
             'caption',
-            'author_type',
             'project_owner',
             'industry',
             'post_type',

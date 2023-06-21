@@ -771,3 +771,13 @@ function addShakeClass(elementId) {
     }, 900);
   }
 }
+
+function addBeatClass(elementId) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.classList.add('fa-beat');
+    setTimeout(() => {
+      element.classList.remove('fa-beat');
+    }, 900);
+  }
+}

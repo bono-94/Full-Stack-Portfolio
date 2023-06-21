@@ -553,9 +553,8 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     project_owner = models.CharField(max_length=21, blank=False)
 
-    industry = models.CharField(max_length=21, blank=False)
-
     post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=False, null=True)
+    industry = models.CharField(max_length=21, blank=False)    
     organization = models.CharField(max_length=21, blank=False)
     project = models.CharField(max_length=21, blank=False)
     product = models.CharField(max_length=21, blank=False)
@@ -563,8 +562,8 @@ class Post(models.Model):
 
     post_location_city = models.CharField(max_length=21, blank=False, null=True)
     post_location_country = models.CharField(max_length=21, blank=False, null=True)
-    post_location_continent = models.CharField(max_length=21, blank=True, null=True)
-    post_location_planet = models.CharField(max_length=21, blank=True, null=True)
+    post_location_continent = models.CharField(max_length=21, blank=False, null=True)
+    post_location_planet = models.CharField(max_length=21, blank=False, null=True)
 
     launch_date = models.DateField(default=timezone.now, blank=True, null=True)
     end_date = models.DateField(default=timezone.now, blank=True, null=True)

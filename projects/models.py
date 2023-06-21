@@ -555,14 +555,14 @@ class Post(models.Model):
 
     industry = models.CharField(max_length=21, blank=False)
 
-    post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=True, null=True)
+    post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=False, null=True)
     organization = models.CharField(max_length=21, blank=False)
     project = models.CharField(max_length=21, blank=False)
     product = models.CharField(max_length=21, blank=False)
     service = models.CharField(max_length=21, blank=False)
 
-    post_location_city = models.CharField(max_length=21, blank=True, null=True)
-    post_location_country = models.CharField(max_length=21, blank=True, null=True)
+    post_location_city = models.CharField(max_length=21, blank=False, null=True)
+    post_location_country = models.CharField(max_length=21, blank=False, null=True)
     post_location_continent = models.CharField(max_length=21, blank=True, null=True)
     post_location_planet = models.CharField(max_length=21, blank=True, null=True)
 

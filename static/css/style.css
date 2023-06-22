@@ -684,6 +684,10 @@ max-width: 700px;
   margin-top: -24px;
 }
 
+.text-shdw-sharp {
+  text-shadow: 0px 0px 2px black;
+}
+
 /* OVERLAY */
 
 .image {

@@ -422,6 +422,11 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 
 class Post(models.Model):
 
+    AUTHOR_TYPE = (
+        ('Human', 'Human'),
+        ('A.I.', 'A.I.'),
+    )
+
     TYPE_OF_POST = (
         ('Organization', 'Organization'),
         ('Project', 'Project'),
@@ -551,6 +556,7 @@ class Post(models.Model):
     title = models.CharField(max_length=21, blank=False, unique=True)
     caption = models.CharField(max_length=42, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    author_type = models.CharField(max_length=5, choices=AUTHOR_TYPE, blank=False, null=True)
     project_owner = models.CharField(max_length=21, blank=False)
 
     post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=False, null=True)

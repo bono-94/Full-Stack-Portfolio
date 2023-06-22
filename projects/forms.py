@@ -167,6 +167,7 @@ class PostForm(forms.ModelForm):
             'post_banner_image',
             'title',
             'caption',
+            'author_type',
             'project_owner',
             'industry',
             'post_type',

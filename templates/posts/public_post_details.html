@@ -18,7 +18,7 @@
 {% endif %}
 {% if post.public_privacy == False %}
 <!-- POST HEADER -->
-<section class="bg-secondary-lighter border-bottom border-1 border-warning">
+<section class="bg-secondary-lighter border-bottom border-2 border-warning">
   <div class="container-fluid bg-dark bg-gradient pb-3 pt-2" id="post-detail-header">
     <div class="row-fluid">
       <div class="col-10 mt-4">
@@ -150,66 +150,66 @@
     </div>
   </div>
 </section>
-
 <!-- ABOUT CARD -->
-<section class="bg-secondary-lighter pt-3 pb-4">
-  <ul class="list-group mt-3 col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 border border-1 border-dark">
+<section class="bg-secondary-lighter pt-3 pb-5">
+  <h3 class="ms-3 mt-4 mb-4 pb-2 mt-md-5 mb-md-5 text-start text-sm-center">ABOUT:</h3>
+  <ul class="list-group mt-3 col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 border border-1 border-dark mb-4">
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-bottom border-1 border-light">
-      Post Type:
+      <strong>Post Type:</strong>
       <span class="ms-1">
         {{ post.post_type }}
       </span>
     </li>
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
-      Industry:
+      <strong>Industry:</strong>
       <span class="ms-1">
         {{ post.industry }}
       </span>
     </li>
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
-      Organization:
+      <strong>Organization:</strong>
       <span class="ms-1">
         {{ post.organization }}
       </span>
     </li>
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
-      Project:
+      <strong>Project:</strong>
       <span class="ms-1">
         {{ post.project }}
       </span>
     </li>
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
-      Product:
+      <strong>Product:</strong>
       <span class="ms-1">
         {{ post.product }}
       </span>
     </li>
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
-      Service:
+      <strong>Service:</strong>
       <span class="ms-1">
         {{ post.service }}
       </span>
     </li>
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
-      City:
+      <strong>City:</strong>
       <span class="ms-1">
         {{ post.post_location_city }}
       </span>
     </li>
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
-      Country:
+      <strong>Country:</strong>
       <span class="ms-1">
         {{ post.post_location_country }}
       </span>
     </li>
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
-      Continent:
+      <strong>Continent:</strong>
       <span class="ms-1">
         {{ post.post_location_continent }}
       </span>
     </li>
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-bottom border-1 border-light">
-      Planet:
+      <strong>Planet:</strong>
       <span class="ms-1">
         {{ post.post_location_planet }}
       </span>

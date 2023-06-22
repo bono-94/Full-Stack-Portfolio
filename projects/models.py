@@ -572,8 +572,10 @@ class Post(models.Model):
     post_location_planet = models.CharField(max_length=21, blank=False, null=True)
 
     launch_date = models.DateField(default=timezone.now, blank=True, null=True)
+    start_date = models.DateField(default=timezone.now, blank=True, null=True)
     end_date = models.DateField(default=timezone.now, blank=True, null=True)
     infinite_end_date = models.BooleanField(default=False)
+    same_start_launch_date = models.BooleanField(default=False)
 
     introduction = models.TextField(max_length=210, blank=True, null=True)
 
@@ -1148,7 +1150,22 @@ class Post(models.Model):
         else:
             return None
 
-    # POST PROJECTED DURATION
+    # POST LAUNCH DATE DURATION
+    def post_launch_days(self):
+        duration = (self.launch_date - date.today()).days
+        return duration
+
+    def post_launch_months(self):
+        duration = (self.launch_date - date.today()).days
+        total_months = duration // 30  # Assuming 30 days per month
+        return total_months
+
+    def post_launch_years(self):
+        duration = (self.launch_date - date.today()).days
+        total_years = duration // 365  # Assuming 365 days per year
+        return total_years
+    
+    # POST OFFER DURATION
     def post_duration_days(self):
         duration = self.end_date - self.launch_date
         return duration.days

@@ -180,6 +180,8 @@ class PostForm(forms.ModelForm):
             'post_location_continent',
             'post_location_planet',
             'launch_date',
+            'start_date',
+            'same_start_launch_date',
             'end_date',
             'infinite_end_date',
             'introduction',

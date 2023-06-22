@@ -215,6 +215,41 @@
       </span>
     </li>
   </ul>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="col-10 offset-1 bg-dark rounded text-light mt-5 pt-3 pb-3 text-center">
+        <h6>Official Launch Date:</h6>
+        <p class="mt-3 text-info"><strong>{{ post.launch_date }}</strong></p>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="col-10 offset-1 bg-dark rounded text-light mt-4 pt-3 pb-3 text-center">
+        <h6>Offer Start Date:</h6>
+        <p class="mt-3 text-info">
+          <strong>
+            {% if post.same_start_launch_date == True %}
+            {{ post.launch_date }}
+            {% else %}
+            {{ post.start_date }}
+            {{ post.post_launch_days }}
+            {% endif %}
+          </strong></p>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="col-10 offset-1 bg-dark rounded text-light mt-4 pt-3 pb-3 text-center">
+        <h6>Offer End Date:</h6>
+        <p class="mt-3 text-info">
+          <strong>
+            {% if post.infinite_end_date == True %}
+            Infinite
+            {% else %}
+            {{ post.end_date }}
+            {% endif %}
+          </strong></p>
+      </div>
+    </div>
+  </div>
 </section>
 
                     
@@ -453,8 +488,7 @@ post_color_primary
 post_color_secondary
 
 
-launch_date
-end_date - if infinite_end_date = True add infinity sign no matter end date
+
 if infinite_end_date is false then:
   add post_duration_days
   add post_duration_months

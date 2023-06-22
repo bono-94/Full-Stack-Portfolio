@@ -1167,16 +1167,16 @@ class Post(models.Model):
     
     # POST OFFER DURATION
     def post_duration_days(self):
-        duration = self.end_date - self.launch_date
+        duration = self.end_date - self.start_date
         return duration.days
 
     def post_duration_months(self):
-        duration = self.end_date - self.launch_date
+        duration = self.end_date - self.start_date
         total_months = duration.days // 30   # Assuming 30 days per month
         return total_months
 
     def post_duration_years(self):
-        duration = self.end_date - self.launch_date
+        duration = self.end_date - self.start_date
         total_years = duration.days // 365  # Assuming 365 days per year
         return total_years
 

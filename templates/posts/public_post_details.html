@@ -266,7 +266,7 @@
             <strong>
               {% if post.infinite_end_date == True %}
               Infinite
-              <i class="fa-solid fa-infinity fa-spin ms-1"></i>
+              <i class="fa-solid fa-infinity ms-1"></i>
               {% else %}
               {{ post.end_date }}
               {% endif %}
@@ -280,20 +280,42 @@
           <div class="row justify-content-between text-dark mt-1">
             <div class="col bg-warning rounded ms-2 me-1 pt-2 border border-1 border-info">
               <p class="mb-2"><strong>YEARS</strong></p>
-              <p class="bg-secondary text-info rounded d-inline-block ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp"><strong>[{{ post.post_payout_duration_years }}]</strong></p>
+              <p class="bg-secondary text-info rounded d-inline-block ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp">
+                <strong>
+                  {% if post.infinite_end_date == True %}
+                    <i class="fa-solid fa-infinity fa-spin"></i>
+                  {% else %}
+                    [{{ post.post_duration_years }}]
+                  {% endif %}
+                </strong></p>
             </div>
             <div class="col bg-warning rounded ms-1 me-1 pt-2">
               <p class="mb-2"><strong>MONTHS</strong></p>
-              <p class="bg-secondary text-info rounded d-inline-block ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp"><strong>[{{ post.post_payout_duration_months }}]</strong></p>
+              <p class="bg-secondary text-info rounded d-inline-block ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp">
+                <strong>
+                  {% if post.infinite_end_date == True %}
+                    <i class="fa-solid fa-infinity fa-spin"></i>
+                  {% else %}
+                     [{{ post.post_duration_months }}]
+                  {% endif %}
+                </strong></p>
             </div>
             <div class="col bg-warning rounded ms-1 me-2 pt-2">
               <p class="mb-2"><strong>DAYS</strong></p>
-              <p class="bg-secondary text-info rounded d-inline-block ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp"><strong>[{{ post.post_payout_duration_days }}]</strong></p>
+              <p class="bg-secondary text-info rounded d-inline-block ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp">
+                <strong>
+                  {% if post.infinite_end_date == True %}
+                    <i class="fa-solid fa-infinity fa-spin"></i>
+                  {% else %}
+                    [{{ post.post_duration_days }}]
+                  {% endif %}
+                </strong></p>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <hr>
   </div>
 </section>
 
@@ -533,11 +555,6 @@ post_color_secondary
 
 
 post_background_audio
-
-if infinite_end_date is false then:
-  add post_duration_days
-  add post_duration_months
-  add post_duration_years
 
 <!-- separate -->
 introduction

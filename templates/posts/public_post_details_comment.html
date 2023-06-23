@@ -1,0 +1,83 @@
+<hr class="p-0 m-0">                   
+    <div class="row-fluid">
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <h3>Notes:</h3>
+            <div class="card-body">
+                <!-- We want a for loop inside the tags to iterate through each comment in comments -->
+                {% for note in notes %}
+                <div class="notes" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                        {{ note.name }}
+                        <span class=" text-muted font-weight-normal">
+                            <!-- The comment's created date goes here -->
+                            {{ note.created_on_note }}
+                        </span> wrote:
+                    </p>
+                    <!-- The body of the comment goes before the | -->
+                    {{  note.content_note | linebreaks }}
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4 card mb-4  mt-3 ">
+            <div class="card-body">
+                <!-- For later -->
+                {% if noted %}
+                <div class="alert alert-success" role="alert">
+                    Your note is now waiting for approval..
+                </div>
+                {% else %}
+
+                {% if user.is_authenticated %}
+                <h3>
+                    Leave a note with opinion, offer, advice, or critique
+                </h3>
+                <p>
+                    By: {{ user.username }}
+                </p>
+                <form method="post" style="margin-top: 1.3 em;">
+                    {{ note_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">
+                        Submit
+                    </button>
+                </form>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+    <hr>
+
+    <hr>
+    {% comment %}
+
+
+
+    <!-- <hr>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{ post.title }}</h1>
+          <p>{{ post.content }}</p>
+          <p>Author: <a href="{% url 'public_profile' profile_id %}">{{ profile_id }}</a></p>
+          Add any other post information you want to display here 
+          <a href="{% url 'public_profile' profile_id %}" class="btn btn-primary">View Author Profile</a>
+        </div>
+      </div>
+    </div>
+    
+    <a href="{% url 'public_profile' profile_id %}">
+      Tejst
+    </a>
+    
+    <hr>
+    
+    <hr>
+    
+     <hr> -->
+
+     {% endcomment %}

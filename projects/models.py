@@ -533,7 +533,8 @@ class Post(models.Model):
         null=True
     )
 
-    # POST INTRODUCTION
+    # PAGE 1
+    # POST DETAIL KEY INFORMATION
     post_logo_image = models.ImageField(
         upload_to='post_logo_images/',
         blank=True,
@@ -543,6 +544,15 @@ class Post(models.Model):
             max_file_size_ten
         ]
     )
+    title = models.CharField(max_length=21, blank=False, unique=True)
+    caption = models.CharField(max_length=42, blank=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    author_type = models.CharField(max_length=5, choices=AUTHOR_TYPE, blank=False, null=True)
+    project_owner = models.CharField(max_length=21, blank=False)
+    created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_on = models.DateTimeField(auto_now=True, blank=True, null=True)
+
+    # POST LANDING MEDIA
     post_banner_image = models.ImageField(
         upload_to='post_banner_images/',
         blank=True,
@@ -553,36 +563,22 @@ class Post(models.Model):
         ]
     )
 
-    title = models.CharField(max_length=21, blank=False, unique=True)
-    caption = models.CharField(max_length=42, blank=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
-    author_type = models.CharField(max_length=5, choices=AUTHOR_TYPE, blank=False, null=True)
-    project_owner = models.CharField(max_length=21, blank=False)
-
+    # POST DETAIL GENERAL INFORMATION
     post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=False, null=True)
     industry = models.CharField(max_length=21, blank=False)    
     organization = models.CharField(max_length=21, blank=False)
     project = models.CharField(max_length=21, blank=False)
     product = models.CharField(max_length=21, blank=False)
     service = models.CharField(max_length=21, blank=False)
-
     post_location_city = models.CharField(max_length=21, blank=False, null=True)
     post_location_country = models.CharField(max_length=21, blank=False, null=True)
     post_location_continent = models.CharField(max_length=21, blank=False, null=True)
     post_location_planet = models.CharField(max_length=21, blank=False, null=True)
 
-    launch_date = models.DateField(default=timezone.now, blank=True, null=True)
-    start_date = models.DateField(default=timezone.now, blank=True, null=True)
-    end_date = models.DateField(default=timezone.now, blank=True, null=True)
-    infinite_end_date = models.BooleanField(default=False)
-    same_start_launch_date = models.BooleanField(default=False)
-
+    # INTRODUCTION
     introduction = models.TextField(max_length=210, blank=True, null=True)
 
-    created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    updated_on = models.DateTimeField(auto_now=True, blank=True, null=True)
-
-    #  POST PITCH VIDEO
+    # POST PITCH VIDEO
     post_video_privacy = models.BooleanField(default=False)
     post_video = models.FileField(
         upload_to='posts-videos/',
@@ -596,17 +592,12 @@ class Post(models.Model):
         ],
     )
 
-    # POST ABOUT
-    post_about_privacy = models.BooleanField(default=False)
+    # POST LAUNCH
+    launch_date = models.DateField(default=timezone.now, blank=True, null=True)
+    same_start_launch_date = models.BooleanField(default=False)
 
-    organization_info = models.TextField(max_length=210, blank=True, null=True)
-    organization_culture = models.TextField(max_length=210, blank=True, null=True)
-    organization_mission = models.CharField(max_length=42, blank=True, null=True)
-    organization_vision = models.CharField(max_length=42, blank=True, null=True)
-
-    products_provided = models.CharField(max_length=42, blank=True, null=True)
-    services_provided = models.CharField(max_length=42, blank=True, null=True)
-
+    # PAGE 2
+    # POST DETAILS O/P/P/S
     pps_objectives = models.TextField(max_length=210, blank=True, null=True)
     pps_goals = models.TextField(max_length=210, blank=True, null=True)
     pps_milestones = models.TextField(max_length=210, blank=True, null=True)
@@ -634,6 +625,17 @@ class Post(models.Model):
     challenges = models.TextField(max_length=210, blank=True, null=True)
     change = models.TextField(max_length=210, blank=True, null=True)
     impact = models.TextField(max_length=210, blank=True, null=True)
+
+    # PAGE 3
+    # POST MORE ABOUT US
+    post_about_privacy = models.BooleanField(default=False)
+
+    organization_info = models.TextField(max_length=210, blank=True, null=True)
+    products_provided = models.CharField(max_length=42, blank=True, null=True)
+    services_provided = models.CharField(max_length=42, blank=True, null=True)
+    organization_culture = models.TextField(max_length=210, blank=True, null=True)
+    organization_mission = models.CharField(max_length=42, blank=True, null=True)
+    organization_vision = models.CharField(max_length=42, blank=True, null=True)
 
     strengths = models.TextField(max_length=210, blank=True, null=True)
     weaknesses = models.TextField(max_length=210, blank=True, null=True)
@@ -670,17 +672,18 @@ class Post(models.Model):
     special_sustainability_two = models.TextField(max_length=210, blank=True, null=True)
     special_research_two = models.TextField(max_length=210, blank=True, null=True)
 
+    # PAGE 4 ARTICLES
     # POST BODY
     post_body_privacy = models.BooleanField(default=False)
 
     main_content = models.TextField(max_length=8400, blank=True, null=True)
     business_knowledge = models.TextField(max_length=8400, blank=True, null=True)
-
     story = models.TextField(max_length=2100, blank=True, null=True)
     journey = models.TextField(max_length=2100, blank=True, null=True)
     future = models.TextField(max_length=2100, blank=True, null=True)
     legacy = models.TextField(max_length=2100, blank=True, null=True)
 
+    # PAGE 5
     # POST BRIDGE - BUSINESS LIBRARY
     post_bridge_privacy_library = models.BooleanField(default=False)
     organizational_structure = models.FileField(
@@ -885,6 +888,7 @@ class Post(models.Model):
         ],
     )
 
+    # PAGE 6
     # POST BRIDGE - BUSINESS DOCUMENTS
     post_bridge_privacy_documents = models.BooleanField(default=False)
     business_plan = models.FileField(
@@ -976,7 +980,8 @@ class Post(models.Model):
         ],
     )
 
-    # POST CONCLUSION
+    # PAGE 7
+    # POST OFFER
     post_conclusion_privacy = models.BooleanField(default=False)
     post_fee_model_privacy = models.BooleanField(default=False)
 
@@ -985,6 +990,9 @@ class Post(models.Model):
 
     amount_requested = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], null=True, blank=True)
     payout_date = models.DateField(blank=True, null=True)
+    start_date = models.DateField(default=timezone.now, blank=True, null=True)
+    end_date = models.DateField(default=timezone.now, blank=True, null=True)
+    infinite_end_date = models.BooleanField(default=False)
 
     stocks_offering = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999), validate_stock_offering], null=True, blank=True)
     stocks_supply = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], null=True, blank=True)
@@ -1005,6 +1013,7 @@ class Post(models.Model):
 
     offer_terms = models.TextField(max_length=8400, blank=True, null=True)
 
+    # PAGE 8
     # POST CONTACT
     post_contact_privacy = models.BooleanField(default=False)
     post_public_email = models.EmailField(max_length=42, blank=True, null=True)
@@ -1048,6 +1057,7 @@ class Post(models.Model):
         verbose_name='YouTube URL'
     )
 
+    # PAGE 9
     # POST EVENT
     event_privacy = models.BooleanField(default=False)
     event_color = models.CharField(
@@ -1087,6 +1097,7 @@ class Post(models.Model):
     rspv_maybe = models.ManyToManyField(User, related_name="rspv_maybe", blank=True)
     rspv_next_time = models.ManyToManyField(User, related_name="rspv_next_time", blank=True)
 
+    # PAGE 10
     # POST RESULTS
     post_results_privacy = models.BooleanField(default=False)
     number_of_phases = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(8)], null=True, blank=True)
@@ -1231,7 +1242,7 @@ class Post(models.Model):
     def focus_leadership_style(self):
         return f"width: {self.focus_leadership}%"
 
-
+# POST PAGE 11
 class Note(models.Model):
 
     NOTE_CHOICES = (
@@ -1270,7 +1281,7 @@ class Note(models.Model):
     def number_of_notes(self):
         return self.content_note.count()
 
-
+# CONTACT REQUEST
 class Request(models.Model):
 
     name = models.CharField(max_length=50, default='', blank=False)

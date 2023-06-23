@@ -533,7 +533,7 @@ class Post(models.Model):
         null=True
     )
 
-    # PAGE 1
+    # PAGE CONSTANT
     # POST DETAIL KEY INFORMATION
     post_logo_image = models.ImageField(
         upload_to='post_logo_images/',
@@ -552,6 +552,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_on = models.DateTimeField(auto_now=True, blank=True, null=True)
 
+    # PAGE 1
     # POST LANDING MEDIA
     post_banner_image = models.ImageField(
         upload_to='post_banner_images/',
@@ -576,7 +577,7 @@ class Post(models.Model):
     post_location_planet = models.CharField(max_length=21, blank=False, null=True)
 
     # INTRODUCTION
-    introduction = models.TextField(max_length=210, blank=True, null=True)
+    introduction = models.TextField(max_length=420, blank=True, null=True)
 
     # POST PITCH VIDEO
     post_video_privacy = models.BooleanField(default=False)

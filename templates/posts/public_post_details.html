@@ -222,6 +222,7 @@
   <h3 class="ms-3 mt-4 mb-4 pb-2 mt-md-5 mb-md-5 text-start text-sm-center">Introduction</h3>
   <p class="text-break w-75 text-center mx-auto">{{ post.introduction }}</p>
 </section>
+<hr class="bg-secondary-lighter p-0 m-0">
 <!-- LAUNCH DATE -->
 <section class="bg-secondary-lighter pt-3 pb-5">
   <hr class="mt-0 pt-0">
@@ -256,14 +257,30 @@
 <!-- NEXT PAGE -->
 <section class="bg-secondary-lighter pt-3 pb-5">
   <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="col-10 offset-1 text-center">
-        <a class="btn btn-dark text-warning rounded-pill me-1" onclick="javascript:history.back()">
-          Back
-        </a>
-        <a class="btn btn-dark text-warning rounded-pill ms-1" href="#post-main-image">
-          Next
-        </a>
+    <div class="row">
+      <div class="d-flex justify-content-center">
+        <div class="text-end">
+          <a class="btn btn-dark text-warning rounded-pill me-3 me-md-4 shadow-sm" onclick="javascript:history.back()">
+            &laquo; Back
+          </a>
+        </div>  
+        <div class="text-center">
+          <a class="btn btn-warning text-dark rounded-pill shadow-sm" onclick="javascript:history.back()">
+            Read more
+          </a>
+        </div>   
+        <div class="text-start">
+          <a class="btn btn-dark text-warning rounded-pill ms-3 ms-md-4 shadow-sm" href="#post-main-image">
+            Next &raquo;
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center mb-4 mt-4">
+        <p class="text-dark ps-1" style="font-size: 20px; font-weight: bold;">
+          1/10
+        </p>
       </div>
     </div>
   </div>

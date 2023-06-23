@@ -223,9 +223,18 @@
   <p class="text-break w-75 text-center mx-auto">{{ post.introduction }}</p>
 </section>
 <hr class="bg-secondary-lighter p-0 m-0">
+<!-- POST VIDEO -->
+{% if post.post_video %}
+<div class="row justify-content-center">
+  <div class="col-11 offset rounded border border-3 border-dark bg-secondary mt-4 mb-4 pt-2 shadow-sm h-100">
+    <video class="bg-info w-100 h-100 shadow-lg align-items-center" controls type="video/mp4" src="{{ post.post_video.url }}"></video>
+  </div>
+</div>
+<hr class="bg-secondary-lighter p-0 m-0">
+{% else %}
+{% endif %}
 <!-- LAUNCH DATE -->
 <section class="bg-secondary-lighter pt-3 pb-5">
-  <hr class="mt-0 pt-0">
   <div class="container-fluid">
     <div class="row-fluid pt-1 pb-1">
       <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mt-4 mb-sm-2 mb-lg-4 pt-4 pb-3 text-center position-relative shadow-sm">

@@ -499,3 +499,34 @@ class CustomSignupForm(SignupForm):
 # So this is all the information in detail and I would like to know if both scenarios are actually possible to render total amount of unique users and potentially
 #  all their names inside of a table on hmtl templates and if it is indeed possible to import or capture dataframe from postgreSQL because I know how to manipulate
 #  dataframe data
+
+
+
+#    {% comment %}
+
+
+
+#     <!-- <hr>
+#     <div class="container mt-4">
+#       <div class="row">
+#         <div class="col-md-12">
+#           <h1>{{ post.title }}</h1>
+#           <p>{{ post.content }}</p>
+#           <p>Author: <a href="{% url 'public_profile' profile_id %}">{{ profile_id }}</a></p>
+#           Add any other post information you want to display here 
+#           <a href="{% url 'public_profile' profile_id %}" class="btn btn-primary">View Author Profile</a>
+#         </div>
+#       </div>
+#     </div>
+    
+#     <a href="{% url 'public_profile' profile_id %}">
+#       Tejst
+#     </a>
+    
+#     <hr>
+    
+#     <hr>
+    
+#      <hr> -->
+
+#      {% endcomment %}

@@ -15,6 +15,12 @@
       <i class="fa-regular fa-trash-can"></i> 
     </a>
   </div>
+{% else %}
+  <div class="fixed-bottom p-0 mb-1 pb-1 text-end">
+    <a href="#profile-detail-close" class="btn btn-light border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
+      <i class="fa-solid fa-sack-dollar text-success"></i>
+    </a>
+  </div>
 {% endif %}
 {% if post.public_privacy == False %}
 <!-- POST HEADER -->

@@ -484,7 +484,7 @@ class Post(models.Model):
         if stocks_offering and stocks_supply and stocks_offering > stocks_supply:
             raise ValidationError("Stocks offering cannot be higher than stocks supply.")
 
-    # POST LIST DESIGN
+    # POST LIST CARD CONTENT
     post_list_description = models.CharField(max_length=84, blank=True, null=True)
     post_list_image = models.ImageField(
         upload_to='post_list_images/',
@@ -890,7 +890,7 @@ class Post(models.Model):
     )
 
     # PAGE 6
-    # POST BRIDGE - BUSINESS DOCUMENTS
+    # POST BRIDGE - BUSINESS CABINET
     post_bridge_privacy_documents = models.BooleanField(default=False)
     business_plan = models.FileField(
         upload_to='business_plans/',

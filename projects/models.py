@@ -485,7 +485,7 @@ class Post(models.Model):
             raise ValidationError("Stocks offering cannot be higher than stocks supply.")
 
     # POST LIST CARD CONTENT
-    post_list_description = models.CharField(max_length=84, blank=True, null=True)
+    post_list_description = models.CharField(max_length=84, blank=False, null=True)
     post_list_image = models.ImageField(
         upload_to='post_list_images/',
         blank=True,
@@ -500,8 +500,8 @@ class Post(models.Model):
     slug = models.SlugField(max_length=21, unique=True)
     status = models.IntegerField(choices=STATUS, default=0)
     post_verification = models.BooleanField(default=False)
-    votes = models.ManyToManyField(User, related_name="projects_votes", blank=True)
-    views = models.IntegerField(default=0, blank=True)
+    votes = models.ManyToManyField(User, related_name="projects_votes")
+    views = models.IntegerField(default=0)
     public_privacy = models.BooleanField(default=False)
     post_background_audio = models.FileField(
         upload_to='post_audio/',
@@ -517,20 +517,14 @@ class Post(models.Model):
     post_color_primary = models.CharField(
         max_length=7,
         default='#292b2c',
-        blank=True,
-        null=True
     )
     post_color_secondary = models.CharField(
         max_length=7,
         default='#ffc107',
-        blank=True,
-        null=True
     )
     post_color_text = models.CharField(
         max_length=7,
         default='#000000',
-        blank=True,
-        null=True
     )
 
     # PAGE CONSTANT
@@ -547,7 +541,7 @@ class Post(models.Model):
     title = models.CharField(max_length=21, blank=False, unique=True)
     caption = models.CharField(max_length=42, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
-    author_type = models.CharField(max_length=5, choices=AUTHOR_TYPE, blank=False, null=True)
+    author_type = models.CharField(max_length=5, choices=AUTHOR_TYPE, blank=False)
     project_owner = models.CharField(max_length=21, blank=False)
     created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_on = models.DateTimeField(auto_now=True, blank=True, null=True)
@@ -565,19 +559,20 @@ class Post(models.Model):
     )
 
     # POST DETAIL GENERAL INFORMATION
-    post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=False, null=True)
+    post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=False)
     industry = models.CharField(max_length=21, blank=False)    
-    organization = models.CharField(max_length=21, blank=False)
-    project = models.CharField(max_length=21, blank=False)
-    product = models.CharField(max_length=21, blank=False)
-    service = models.CharField(max_length=21, blank=False)
-    post_location_city = models.CharField(max_length=21, blank=False, null=True)
-    post_location_country = models.CharField(max_length=21, blank=False, null=True)
-    post_location_continent = models.CharField(max_length=21, blank=False, null=True)
-    post_location_planet = models.CharField(max_length=21, blank=False, null=True)
+    organization = models.CharField(max_length=21, blank=True)
+    project = models.CharField(max_length=21, blank=True)
+    product = models.CharField(max_length=21, blank=True)
+    service = models.CharField(max_length=21, blank=True)
+    post_location_city = models.CharField(max_length=21, blank=False)
+    post_location_country = models.CharField(max_length=21, blank=False)
+    post_location_continent = models.CharField(max_length=21, blank=False)
+    post_location_planet = models.CharField(max_length=21, blank=False)
 
     # INTRODUCTION
-    introduction = models.TextField(max_length=420, blank=True, null=True)
+    introduction_privacy = models.BooleanField(default=False)
+    introduction = models.TextField(max_length=420, blank=True)
 
     # POST PITCH VIDEO
     post_video_privacy = models.BooleanField(default=False)
@@ -594,7 +589,8 @@ class Post(models.Model):
     )
 
     # POST LAUNCH
-    launch_date = models.DateField(default=timezone.now, blank=True, null=True)
+    launch_date_privacy = models.BooleanField(default=False)
+    launch_date = models.DateField(default=timezone.now, blank=True)
     same_start_launch_date = models.BooleanField(default=False)
 
     # PAGE 2

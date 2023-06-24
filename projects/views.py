@@ -109,7 +109,7 @@ class PostList(ListView):
 
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'posts/public_posts_list.html'
+    template_name = 'posts/public/public_posts_list.html'
     paginate_by = 8
 
 
@@ -135,25 +135,17 @@ class PostDetail(View):
         if post.votes.filter(id=self.request.user.id).exists():
             voted = True
 
-        # Render templates to strings
-        public_post_details_1_main = render_to_string("posts/public_post_details_1_main.html", {
-            "post": post,
-            "notes": notes,
-            "noted": False,
-            "voted": voted,
-            "note_form": NoteForm()
-        })
-
-        public_post_details_2_opps = render_to_string("posts/public_post_details_2_opps.html", {
-            "post": post,
-            "notes": notes,
-            "noted": False,
-            "voted": voted,
-            "note_form": NoteForm()
-            # Additional context variables
-        })
-
-        return HttpResponse(post_template_main + post_template_opps)
+        return render(
+            request,
+            "posts/public/public_post_details_1_landing.html",
+            {
+                "post": post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
 
     def post(self, request, slug, *args, **kwargs):
 
@@ -178,7 +170,7 @@ class PostDetail(View):
 
         return render(
             request,
-            "posts/public_post_details_1_main.html",
+            "posts/public/public_post_details_1_landing.html",
             {
                 "post": post,
                 "note": note,
@@ -260,7 +252,7 @@ class PostVote(View):
         else:
             post.votes.add(request.user)
 
-        return HttpResponseRedirect(reverse('public_post_details_1_main', args=[slug]))
+        return HttpResponseRedirect(reverse('public_post_details_1_landing', args=[slug]))
 
 
 class PostCreate(CreateView):

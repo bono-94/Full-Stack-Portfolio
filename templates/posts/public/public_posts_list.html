@@ -45,7 +45,7 @@
           {% endif %}
             <div class="image-container border border-1 border-secondary rounded-top">
               {% if post.post_list_image %}
-              <a href="{% url 'public_post_details_1_main' post.slug %}">
+              <a href="{% url 'public_post_details_1_landing' post.slug %}">
                 <img src="{{ post.post_list_image.url }}" alt="Project Image" class="bd-placeholder-img card-img-top" width="100%" height="225">
               </a>
               <a class="target-element d-none">
@@ -55,7 +55,7 @@
               <img src="{% static 'images/21104.png' %}" alt="Project Placeholder" class="bd-placeholder-img card-img-top image" width="100%" height="225">
               {% if post.author == request.user %}
               <div class="overlay-posts">
-                <a href="{% url 'public_post_details_1_main' post.slug %}">
+                <a href="{% url 'public_post_details_1_landing' post.slug %}">
                   <button type="button" class="btn btn-sm btn-outline-secondary overlay-posts-bttn">View</button>
                 </a>
                 <a href="{% url 'post_edit' post_id=post.id %}">
@@ -67,7 +67,7 @@
               </div>
               {% else %}
               <div class="overlay-posts">
-                <a href="{% url 'public_post_details_1_main' post.slug %}">
+                <a href="{% url 'public_post_details_1_landing' post.slug %}">
                   <button type="button" class="btn btn-sm btn-outline-secondary overlay-posts-bttn">View</button>
                 </a>
               </div>
@@ -81,7 +81,7 @@
             </div>
             <div class="card-body">
               <h5 class="card-title">
-                <a href="{% url 'public_post_details_1_main' post.slug %}" class="post-link">
+                <a href="{% url 'public_post_details_1_landing' post.slug %}" class="post-link">
                   {% if post.post_colors_list == False %}
                   <h3 class="card-title mb-2">
                     {{ post.title }}

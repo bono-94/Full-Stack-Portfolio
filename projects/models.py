@@ -599,9 +599,10 @@ class Post(models.Model):
 
     # PAGE 2
     # POST DETAILS O/P/P/S
-    pps_objectives = models.TextField(max_length=210, blank=True, null=True)
-    pps_goals = models.TextField(max_length=210, blank=True, null=True)
-    pps_milestones = models.TextField(max_length=210, blank=True, null=True)
+    pps_vision = models.TextField(max_length=168, blank=True, null=True)
+    pps_goals = models.TextField(max_length=168, blank=True, null=True)
+    pps_missions = models.TextField(max_length=168, blank=True, null=True)
+    pps_planner = models.TextField(max_length=168, blank=True, null=True)
 
     team = models.TextField(max_length=210, blank=True, null=True)
     partners = models.TextField(max_length=210, blank=True, null=True)
@@ -610,28 +611,27 @@ class Post(models.Model):
     community = models.TextField(max_length=210, blank=True, null=True)
     stakeholders = models.TextField(max_length=210, blank=True, null=True)
     shareholders = models.TextField(max_length=210, blank=True, null=True)
+    ecosystem_relationship = models.TextField(max_length=210, blank=True, null=True)
 
     resources_requiered = models.TextField(max_length=210, blank=True, null=True)
     target_markets = models.TextField(max_length=210, blank=True, null=True)
-    target_group = models.TextField(max_length=210, blank=True, null=True)
+    target_groups = models.TextField(max_length=210, blank=True, null=True)
     values_provided = models.TextField(max_length=210, blank=True, null=True)
     differentiation = models.TextField(max_length=210, blank=True, null=True)
     sdg_goals = models.TextField(max_length=210, blank=True, null=True)
-    intellectual_property = models.TextField(max_length=210, blank=True, null=True)
     legal_protection = models.TextField(max_length=210, blank=True, null=True)
-    licencing = models.TextField(max_length=210, blank=True, null=True)
-    franchizing = models.TextField(max_length=210, blank=True, null=True)
+    franchizing_licencing = models.TextField(max_length=210, blank=True, null=True)
 
-    risks = models.TextField(max_length=210, blank=True, null=True)
-    challenges = models.TextField(max_length=210, blank=True, null=True)
-    change = models.TextField(max_length=210, blank=True, null=True)
-    impact = models.TextField(max_length=210, blank=True, null=True)
+    risks = models.TextField(max_length=168, blank=True, null=True)
+    challenges = models.TextField(max_length=168, blank=True, null=True)
+    change = models.TextField(max_length=168, blank=True, null=True)
+    impact = models.TextField(max_length=168, blank=True, null=True)
 
     # PAGE 3
     # POST MORE ABOUT US
     post_about_privacy = models.BooleanField(default=False)
 
-    organization_info = models.TextField(max_length=210, blank=True, null=True)
+    organization_info = models.TextField(max_length=420, blank=True, null=True)
     products_provided = models.CharField(max_length=42, blank=True, null=True)
     services_provided = models.CharField(max_length=42, blank=True, null=True)
     organization_culture = models.TextField(max_length=210, blank=True, null=True)

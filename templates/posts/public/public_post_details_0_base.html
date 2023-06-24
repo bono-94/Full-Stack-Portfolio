@@ -195,6 +195,7 @@
 
 status for acess rules
 public_privacy for privacy on each page in once
+launch_date_privacy
 
 post_color_primary
 post_color_secondary
@@ -203,19 +204,18 @@ post_color_text
 
 post_background_audio
 
+
 <!-- separate -->
+if introduction_privacy = false:
 introduction
 
 <!-- separate -->
 if post_video_privacy = false:
 post_video
 
-<!-- separate -->
-if post_about_privacy = False:
-
 
 <!-- separate -->
-if post_about_privacy = False:
+if post_opps_details_privacy = False:
 
 pps_vision
 pps_goals
@@ -249,19 +249,11 @@ impact
 if post_about_privacy = False:
 
   organization_info
-  organization_culture
-  organization_mission
-  organization_vision
-
   products_provided
   services_provided
-
-
-
- 
-
-
-
+  organization_mission
+  organization_vision
+  organization_culture
 
   strengths
   weaknesses
@@ -269,6 +261,7 @@ if post_about_privacy = False:
   threats
 
   if focus_privacy:
+
     focus_innovation
     focus_financials
     focus_planning
@@ -279,6 +272,7 @@ if post_about_privacy = False:
     focus_leadership
 
   if specialty_privacy:
+
     special_ops
     special_finance
     special_marketing
@@ -289,6 +283,7 @@ if post_about_privacy = False:
     special_research
 
   if specialty_privacy_two:
+
     special_ops_two
     special_finance_two
     special_marketing_two
@@ -297,6 +292,32 @@ if post_about_privacy = False:
     special_tech_two
     special_sustainability_two
     special_research_two
+
+  if percentage_special_privacy:
+
+    percentage_special_ops
+    percentage_special_ops_two
+
+    percentage_special_finance
+    percentage_special_finance_two
+    
+    percentage_special_marketing
+    percentage_special_marketing_two
+    
+    percentage_special_supply_chain
+    percentage_special_supply_chain_two
+
+    percentage_special_hr
+    percentage_special_hr_two
+
+    percentage_special_tech
+    percentage_special_tech_two
+
+    percentage_special_sustainability
+    percentage_special_sustainability_two
+
+    percentage_special_research
+    percentage_special_research_two
 
 if post_body_privacy:
 
@@ -312,7 +333,6 @@ if post_bridge_privacy_library:
   organizational_structure
   flowchart
   agenda
-  timeline
   tasklist
   schedule
   financial_reports
@@ -327,7 +347,7 @@ if post_bridge_privacy_library:
   certification
   articles
 
-if post_bridge_privacy_documents:
+if post_bridge_privacy_cabinet:
   business_plan
   implementation_plan
   pestle_report

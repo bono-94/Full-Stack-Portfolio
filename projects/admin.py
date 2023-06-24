@@ -62,10 +62,7 @@ class PostAdmin(SummernoteModelAdmin):
         'post_verification',
         'public_privacy',
         'post_type',
-        'infinite_end_date',
-        'fee_model',
-        'offer_model',
-        'open_offers'
+        'funding_infinite_end_date',
     )
     summernote_fields = (
         'main_content',

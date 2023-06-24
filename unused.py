@@ -530,3 +530,8 @@ class CustomSignupForm(SignupForm):
 #      <hr> -->
 
 #      {% endcomment %}
+
+    TYPE_OF_FEE_MODEL = (
+        ('One-time Fee', 'One-time Fee'),
+        ('Percentage', 'Percentage'),
+    )

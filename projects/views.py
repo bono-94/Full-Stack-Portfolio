@@ -11,6 +11,8 @@ from django.contrib import messages
 from projects.models import *
 import psycopg2
 import pandas as pd
+from django.template.loader import render_to_string
+from django.http import HttpResponse
 
 
 # ABOUT PAGE INFO
@@ -113,7 +115,7 @@ class PostList(ListView):
 
 class UserPosts(ListView):
     model = Post
-    template_name = 'posts/user_posts_list.html'
+    template_name = 'posts/user/user_posts_list.html'
     paginate_by = 8
 
     def get_queryset(self):
@@ -133,17 +135,25 @@ class PostDetail(View):
         if post.votes.filter(id=self.request.user.id).exists():
             voted = True
 
-        return render(
-            request,
-            "posts/public_post_details.html",
-            {
-                "post": post,
-                "notes": notes,
-                "noted": False,
-                "voted": voted,
-                "note_form": NoteForm()
-            },
-        )
+        # Render templates to strings
+        public_post_details_1_main = render_to_string("posts/public_post_details_1_main.html", {
+            "post": post,
+            "notes": notes,
+            "noted": False,
+            "voted": voted,
+            "note_form": NoteForm()
+        })
+
+        public_post_details_2_opps = render_to_string("posts/public_post_details_2_opps.html", {
+            "post": post,
+            "notes": notes,
+            "noted": False,
+            "voted": voted,
+            "note_form": NoteForm()
+            # Additional context variables
+        })
+
+        return HttpResponse(post_template_main + post_template_opps)
 
     def post(self, request, slug, *args, **kwargs):
 
@@ -168,7 +178,7 @@ class PostDetail(View):
 
         return render(
             request,
-            "posts/public_post_details.html",
+            "posts/public_post_details_1_main.html",
             {
                 "post": post,
                 "note": note,
@@ -195,7 +205,7 @@ class PostDetailDraft(View):
 
         return render(
             request,
-            "posts/user_post_details.html",
+            "posts/user/user_post_details.html",
             {
                 "post": post,
                 "notes": notes,
@@ -228,7 +238,7 @@ class PostDetailDraft(View):
 
         return render(
             request,
-            "posts/user_post_details.html",
+            "posts/user/user_post_details.html",
             {
                 "post": post,
                 "note": note,
@@ -250,12 +260,12 @@ class PostVote(View):
         else:
             post.votes.add(request.user)
 
-        return HttpResponseRedirect(reverse('public_post_details', args=[slug]))
+        return HttpResponseRedirect(reverse('public_post_details_1_main', args=[slug]))
 
 
 class PostCreate(CreateView):
     model = Post
-    template_name = 'posts/user_post_create.html'
+    template_name = 'posts/user/user_post_create.html'
     success_url = '/my-projects'
     form_class = PostForm
 
@@ -280,7 +290,7 @@ def post_edit(request, post_id):
     else:
         form = PostForm(instance=post)
 
-    return render(request, 'posts/user_post_edit.html', {'form': form})
+    return render(request, 'posts/user/user_post_edit.html', {'form': form})
 
 
 @login_required
@@ -293,7 +303,7 @@ def post_delete(request, post_id):
         return redirect('user_posts_list')
 
     else:
-        return render(request, 'posts/user_post_delete.html', {'post': post})
+        return render(request, 'posts/user/user_post_delete.html', {'post': post})
 
 
 # REQUEST

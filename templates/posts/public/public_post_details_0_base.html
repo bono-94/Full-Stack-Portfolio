@@ -7,9 +7,6 @@
 {% load static %}
 
 <!-- NAVIGATIONAL FIXED BUTTONS -->
-<a href="{% url 'user_posts_list' %}">
-  <button type="button" id="profile-detail-close" class="btn btn-close shadow-sm bg-light border border-2 border-warning fixed-top ms-auto mb-0" aria-label="Close" onclick="javascript:history.back()"></button>
-</a>
 {% if post.author == request.user %}
   <div class="fixed-bottom p-0 mb-4 pb-3 text-end">
     <a href="{% url 'post_edit' post_id=post.id %}" class="btn btn-light text-secondary border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">

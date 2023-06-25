@@ -161,12 +161,7 @@ body {
   width: 110%;
 }
 
-#profile-detail-close {
-  margin-top: 133px;
-  margin-right: 5px;
-}
-
-.breadcrumb-bttn-padding{
+#breadcrumb-bttn-padding{
   padding: 2px;
 }
 

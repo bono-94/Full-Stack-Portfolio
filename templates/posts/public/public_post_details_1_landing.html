@@ -18,10 +18,17 @@
         </li>
       </ol>
     </nav>
-    <div class="col-2 text-end pe-1">
-      <button type="button" class="btn shadow-sm p-0 m-0 me-1" onclick="showOverlay()" aria-label="Overlay" style="line-height: 1;">
-        <i class="fa-solid fa-angles-down text-light m-0 breadcrumb-bttn-padding"></i> <!-- Add your desired icon class here -->
-      </button>
+    <div class="col-2 d-flex align-items-center justify-content-end align-items-stretch pe-0" id="breadcrumb-bttn-padding">
+      <a>
+        <button type="button" class="btn shadow-sm p-0 m-0 me-1 border border-1 border-warning" onclick="showOverlay()" aria-label="Overlay" style="line-height: 1;">
+          <i class="fa-solid fa-angles-down text-info p-1 m-0 breadcrumb-bttn-padding" style="font-size: 15.5px;"></i> <!-- Add your desired icon class here -->
+        </button>
+      </a>
+      <a href="{% url 'user_posts_list' %}" class="pe-1">
+        <button type="button" class="btn shadow-sm p-0 m-0 me-1 border border-1 border-warning ms-2 me-1" aria-label="Close" style="line-height: 1;">
+          <i class="fa-solid fa-xmark text-info p-1 m-0 breadcrumb-bttn-padding"></i> <!-- Add your desired icon class here -->
+        </button>
+      </a>
     </div>
   </div>
 </div>
@@ -143,15 +150,15 @@
           <div class="row justify-content-between text-dark mt-1">
             <div class="col bg-info rounded ms-2 me-1 pt-2">
               <p class="mb-2 mb-1 shadow-sm"><strong>DAYS</strong></p>
-              <p class="bg-dark text-info rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm"><strong>[{{ post.post_launch_days }}]</strong></p>
+              <p class="bg-dark text-white rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm"><strong>[{{ post.post_launch_days }}]</strong></p>
             </div>
             <div class="col bg-info rounded ms-1 me-1 pt-2">
               <p class="mb-2 mb-1 shadow-sm"><strong>MONTHS</strong></p>
-              <p class="bg-dark text-info rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm"><strong>[{{ post.post_launch_months }}]</strong></p>
+              <p class="bg-dark text-white rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm"><strong>[{{ post.post_launch_months }}]</strong></p>
             </div>
             <div class="col bg-info rounded ms-1 me-2 pt-2 border border-1 border-info">
               <p class="mb-2 mb-1 shadow-sm"><strong>YEARS</strong></p>
-              <p class="bg-dark text-info rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm"><strong>[{{ post.post_launch_years }}]</strong></p>
+              <p class="bg-dark text-white rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm"><strong>[{{ post.post_launch_years }}]</strong></p>
             </div>
           </div>
         </div>

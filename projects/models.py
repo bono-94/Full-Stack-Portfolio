@@ -748,8 +748,8 @@ class Post(models.Model):
     future = models.TextField(max_length=2100, blank=True, null=True)
     legacy = models.TextField(max_length=2100, blank=True, null=True)
 
-    # PAGE 6
-    # POST BRIDGE - BUSINESS LIBRARY
+    # PAGE 5
+    # POST FILES - BUSINESS LIBRARY
     post_bridge_privacy_library = models.BooleanField(default=False)
 
     organizational_structure = models.FileField(
@@ -958,7 +958,7 @@ class Post(models.Model):
         ],
     )
 
-    # POST BRIDGE - BUSINESS CABINET
+    # POST FILES - BUSINESS CABINET
     post_bridge_privacy_cabinet = models.BooleanField(default=False)
 
     business_plan = models.FileField(
@@ -1057,7 +1057,7 @@ class Post(models.Model):
         ],
     )
 
-    # PAGE 7
+    # PAGE 6
     # POST PROPOSALS & OFFERS
     post_proposal_model_privacy = models.BooleanField(default=False)
 
@@ -1121,8 +1121,7 @@ class Post(models.Model):
     # PROPOSAL TERMS
     proposal_terms_and_conditions = models.TextField(max_length=1050, blank=True, null=True)
 
-    # PAGE 8
-    # POST PROPOSAL CONTACT
+    # PROPOSAL CONTACT
     post_contact_privacy = models.BooleanField(default=False)
 
     public_email = models.EmailField(max_length=42, blank=True, null=True)

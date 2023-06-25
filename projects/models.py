@@ -635,8 +635,8 @@ class Post(models.Model):
     organization_info = models.TextField(max_length=420, blank=True, null=True)
     products_provided = models.CharField(max_length=42, blank=True, null=True)
     services_provided = models.CharField(max_length=42, blank=True, null=True)
-    organization_mission = models.CharField(max_length=42, blank=True, null=True)
-    organization_vision = models.CharField(max_length=42, blank=True, null=True)
+    organization_mission = models.TextField(max_length=42, blank=True, null=True)
+    organization_vision = models.TextField(max_length=42, blank=True, null=True)
     organization_culture = models.TextField(max_length=420, blank=True, null=True)
 
     strengths = models.TextField(max_length=168, blank=True, null=True)
@@ -1069,8 +1069,8 @@ class Post(models.Model):
 
     public_email = models.EmailField(max_length=42, blank=True, null=True)
     public_phone = models.CharField(max_length=21, blank=True, null=True)
-    contact_days = models.CharField(max_length=63, blank=True, null=True)
-    contact_hours = models.CharField(max_length=42, blank=True, null=True)
+    contact_days = models.TextField(max_length=63, blank=True, null=True)
+    contact_hours = models.TextField(max_length=42, blank=True, null=True)
     website_link = models.URLField(
         max_length=210,
         blank=True,

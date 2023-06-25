@@ -281,7 +281,7 @@ class PostForm(forms.ModelForm):
             'post_proposal_model_privacy',
             # POST CONTACT
             'post_contact_privacy',
-            'post_public_email',
+            'public_email',
             'public_phone',
             'contact_days',
             'contact_hours',
@@ -291,29 +291,6 @@ class PostForm(forms.ModelForm):
             'instagram_link',
             'linkedin_link',
             'youtube_link',
-            # POST EVENT
-            'event_color',
-            'event_image',
-            'event_link',
-            'event_title',
-            'event_host',
-            'event_content',
-            'event_date',
-            'event_hour',
-            'event_minute',
-            'event_location',
-            'event_price',
-            'event_price_cents',
-            'event_capacity',
-            # POST RESULTS
-            'post_results_privacy',
-            'number_of_phases',
-            'amount_asked',
-            'amount_collected',
-            'ownership_offered',
-            'ownerhip_given',
-            'team_positions_offered',
-            'team_positions_given',
         ]
 
         # CUSTOM INPUT TYPES

@@ -59,7 +59,7 @@ function toggleNavbar() {
   let navbarCollapse = document.getElementById("navbar-collapse");
   const navMarginMob = document.getElementById('nav-margin-mobile');
   const navMarginTab = document.getElementById('nav-margin-tablet');
-  const breadcrumbMargin = document.getElementById('post_breadcrumb');
+  const breadcrumbMargin = document.getElementById('post-breadcrumb');
   let isExpanded = navbarCollapse.classList.contains("show");
   if (isExpanded) {
       navbarCollapse.classList.remove("show")
@@ -68,13 +68,11 @@ function toggleNavbar() {
       breadcrumbMargin.classList.remove('d-none')
       navMarginMob.classList.add('nav-margin-mobile-short')
       navMarginTab.classList.add('nav-margin-tablet-short')
-      breadcrumbMargin.classList.add('d-inline-block');
 
   } else {
       navbarCollapse.classList.add("show")
       navMarginMob.classList.remove('nav-margin-mobile-short')
       navMarginTab.classList.remove('nav-margin-tablet-short')
-      breadcrumbMargin.classList.remove('d-inline-block')
       navMarginMob.classList.add('nav-margin-mobile')
       navMarginTab.classList.add('nav-margin-tablet');
       breadcrumbMargin.classList.add('d-none');

@@ -669,8 +669,8 @@ class Post(models.Model):
     organization_info = models.TextField(max_length=525, blank=True, null=True)
     products_provided = models.CharField(max_length=42, blank=True, null=True)
     services_provided = models.CharField(max_length=42, blank=True, null=True)
-    organization_mission = models.TextField(max_length=42, blank=True, null=True)
-    organization_vision = models.TextField(max_length=42, blank=True, null=True)
+    organization_mission = models.TextField(max_length=525, blank=True, null=True)
+    organization_vision = models.TextField(max_length=525, blank=True, null=True)
     organization_culture = models.TextField(max_length=525, blank=True, null=True)
 
     strengths = models.TextField(max_length=168, blank=True, null=True)

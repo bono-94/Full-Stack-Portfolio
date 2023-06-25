@@ -714,7 +714,7 @@ class Post(models.Model):
     future = models.TextField(max_length=2100, blank=True, null=True)
     legacy = models.TextField(max_length=2100, blank=True, null=True)
 
-    # PAGE 5
+    # PAGE 6
     # POST BRIDGE - BUSINESS LIBRARY
     post_bridge_privacy_library = models.BooleanField(default=False)
     organizational_structure = models.FileField(
@@ -908,7 +908,6 @@ class Post(models.Model):
         ],
     )
 
-    # PAGE 6
     # POST BRIDGE - BUSINESS CABINET
     post_bridge_privacy_cabinet = models.BooleanField(default=False)
     business_plan = models.FileField(
@@ -1067,7 +1066,8 @@ class Post(models.Model):
     # PAGE 8
     # POST PROPOSAL CONTACT
     post_contact_privacy = models.BooleanField(default=False)
-    post_public_email = models.EmailField(max_length=42, blank=True, null=True)
+
+    public_email = models.EmailField(max_length=42, blank=True, null=True)
     public_phone = models.CharField(max_length=21, blank=True, null=True)
     contact_days = models.CharField(max_length=63, blank=True, null=True)
     contact_hours = models.CharField(max_length=42, blank=True, null=True)
@@ -1112,62 +1112,6 @@ class Post(models.Model):
         null=True,
         verbose_name='YouTube URL'
     )
-
-    # PAGE 9
-    # POST EVENT
-    event_privacy = models.BooleanField(default=False)
-    event_color = models.CharField(
-        max_length=7,
-        default='#ffc107',
-        blank=True,
-        null=True
-    )
-    event_image = models.ImageField(
-        upload_to='post_event_images/',
-        blank=True,
-        null=True,
-        validators=[
-            validate_file_name_length,
-            max_file_size_ten
-        ]
-    )
-    event_link = models.URLField(
-        max_length=210,
-        blank=True,
-        null=True,
-        verbose_name='Event URL'
-    )
-    event_title = models.CharField(max_length=84, blank=True, null=True)
-    event_host = models.CharField(max_length=42, blank=True, null=True)
-    event_content = models.TextField(max_length=420, blank=True, null=True)
-    event_date = models.DateField(blank=True, null=True)
-    event_hour = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(24)], null=True, blank=True)
-    event_minute = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(59)], null=True, blank=True)
-    event_location = models.CharField(max_length=42, blank=True, null=True)
-    event_price = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(999999999)], null=True, blank=True)
-    event_price_cents = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(99)], null=True, blank=True)
-    event_capacity = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(9999999999)], null=True, blank=True)
-
-    rspv_yes = models.ManyToManyField(User, related_name="rspv_yes", blank=True)
-    rspv_no = models.ManyToManyField(User, related_name="rspv_no", blank=True)
-    rspv_maybe = models.ManyToManyField(User, related_name="rspv_maybe", blank=True)
-    rspv_next_time = models.ManyToManyField(User, related_name="rspv_next_time", blank=True)
-
-    # PAGE 10
-    # POST RESULTS
-    post_results_privacy = models.BooleanField(default=False)
-    number_of_phases = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(8)], null=True, blank=True)
-
-    amount_asked = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(999999999999)], null=True, blank=True)
-    amount_collected = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(999999999999)], null=True, blank=True)
-
-    ownership_offered = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    ownerhip_given = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-
-    team_positions_offered = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(21042004)], null=True, blank=True)
-    team_positions_given = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(21042004)], null=True, blank=True)
-
-# at the end adjust char vs text fields based on >21 characters, but test first
 
     # ORDERING
     class Meta:

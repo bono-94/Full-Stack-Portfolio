@@ -1,3 +1,193 @@
+{% extends 'posts/public/public_post_details_0_base.html' %}
+
+{% block posts_base_content %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+<!-- BREADCRUMB + OFFCANVAS -->
+<div class="container-fluid bg-secondary fixed-top shadow-sm" id="post_breadcrumb">
+  <div class="row">
+    <nav aria-label="breadcrumb" class="col-10 pt-1">
+      <ol class="breadcrumb mb-1">
+        <li class="breadcrumb-item d-flex align-items-center">
+          <a href="{% url 'public_post_details_1_landing' post.slug %}" class="text-info text-smaller">Home</a>
+        </li>
+        <li class="breadcrumb-item d-flex align-items-center">
+          <a href="#" class="text-smaller text-light text-decoration-none">Proposal</a>
+        </li>
+      </ol>
+    </nav>
+    <div class="col-2 d-flex align-items-center justify-content-end align-items-stretch pe-0" id="breadcrumb-bttn-padding">
+      <a>
+        <button type="button" class="btn shadow-sm p-0 m-0 me-1 border border-1 border-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="line-height: 1;">
+          <i class="fa-solid fa-angles-down text-info p-1 m-0 breadcrumb-bttn-padding" style="font-size: 12px;"></i> <!-- Add your desired icon class here -->
+        </button>
+      </a>
+      <a href="{% url 'public_posts_list' %}" class="pe-1 pb-1">
+        <button type="button" class="btn shadow-sm p-0 m-0 me-1 border border-1 border-dark ms-2 me-1" aria-label="Close" style="line-height: 1;">
+          <i class="fa-solid fa-xmark text-info p-1 m-0 breadcrumb-bttn-padding" style="font-size: 13px;"></i> <!-- Add your desired icon class here -->
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="offcanvas offcanvas-end ms-5 w-75" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <a href="{% url 'public_post_details_1_landing' post.slug %}">
+      <p>
+        1 Landing
+      </p>
+    </a>
+    <a href="{% url 'public_post_details_2_opps' post.slug %}">
+      <p>
+        2 Details
+      </p>
+    </a>
+    <a href="{% url 'public_post_details_3_about_us' post.slug %}">
+      <p>
+        3 About Us
+      </p>
+    </a>
+    <a href="{% url 'public_post_details_4_body' post.slug %}">
+      <p>
+        4 Articles
+      </p>
+    </a>
+    <a href="{% url 'public_post_details_5_files' post.slug %}">
+      <p>
+        5 Documents
+      </p>
+    </a>
+    <a href="{% url 'public_post_details_6_proposal' post.slug %}">
+      <p>
+        6 Proposal
+      </p>
+    </a>
+  </div>
+</div>
+<section class="bg-secondary-lighter">
+  <div class="container-fluid">
+    <div class="row-fluid pb-1">
+      <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mb-sm-2 mb-lg-4 pt-4 pb-3 text-center shadow-sm">
+        <h5>Funding Start</h5>
+        <p class="mt-3 pt-2 text-info">
+          <strong>
+            {% if post.same_start_launch_date == True %}
+            {{ post.launch_date }}
+            {% else %}
+            {{ post.funding_start_date }}
+            {% endif %}
+          </strong>
+        </p>
+      </div>
+      <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mt-4 mb-sm-2 mb-lg-4 pt-4 pb-3 text-center shadow-sm">
+        <h5>Funding End</h5>
+        <p class="mt-3 pt-2 text-info">
+          <strong>
+            {% if post.infinite_end_date == True %}
+            Infinity
+            <i class="fa-solid fa-infinity ms-1"></i>
+            {% else %}
+            {{ post.funding_end_date }}
+            {% endif %}
+          </strong>
+        </p>
+      </div>
+    </div>
+    <div class="row pb-3">
+      <div class="col-11 col-sm-8 col-md-6 mx-auto bg-dark rounded text-light mt-4 mb-2 mb-lg-4 pt-3 pb-4 text-center shadow-sm">
+        <h5 class="mb-4 pb-3 mt-2">Funding Campaign Countdowns</h5>
+        <div class="row justify-content-between text-dark mt-1">
+          <div class="col bg-info rounded ms-2 me-1 pt-2">
+            <p class="mb-2 mb-1 shadow-sm"><strong>DAYS</strong></p>
+            <p class="bg-dark text-warning rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
+              <strong>
+                {% if post.infinite_end_date == True %}
+                  <i class="fa-solid fa-infinity fa-spin"></i>
+                {% else %}
+                  [{{ post.post_duration_days }}]
+                {% endif %}
+              </strong>
+            </p>
+          </div>
+          <div class="col bg-info rounded ms-1 me-1 pt-2">
+            <p class="mb-2 mb-1 shadow-sm"><strong>MONTHS</strong></p>
+            <p class="bg-dark text-warning rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
+              <strong>
+                {% if post.infinite_end_date == True %}
+                  <i class="fa-solid fa-infinity fa-spin"></i>
+                {% else %}
+                   [{{ post.post_duration_months }}]
+                {% endif %}
+              </strong>
+            </p>
+          </div>
+          <div class="col bg-info rounded ms-1 me-2 pt-2 border border-1 border-info">
+            <p class="mb-2 mb-1 shadow-sm"><strong>YEARS</strong></p>
+            <p class="bg-dark text-warning rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
+              <strong>
+                {% if post.infinite_end_date == True %}
+                  <i class="fa-solid fa-infinity fa-spin"></i>
+                {% else %}
+                  [{{ post.post_duration_years }}]
+                {% endif %}
+              </strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+<!-- NEXT PAGE -->
+<section class="bg-secondary-lighter pb-2 pt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center"> <!-- Added "col-12" class for full width and "justify-content-center" class for center alignment -->
+        <nav aria-label="Page navigation example shadow-sm">
+          <ul class="pagination text-center rounded">
+            <li class="page-item">
+              <a class="page-link bg-dark text-warning" href="{% url 'public_post_details_5_files' post.slug %}" aria-label="Previous">
+                <span aria-hidden="true">
+                  &laquo;
+                  <span class="d-none d-sm-inline-block ms-1">Last</span>
+                </span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_1_landing' post.slug %}">1</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_2_opps' post.slug %}">2</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_3_about_us' post.slug %}">3</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_4_body' post.slug %}">4</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_5_files' post.slug %}">5</a></li>
+            <li class="page-item disabled"><a class="page-link bg-secondary text-info" href="{% url 'public_post_details_6_proposal' post.slug %}">6</a></li>
+            <li class="page-item">
+              <a class="page-link bg-dark text-warning" href="{% url 'public_post_details_1_landing' post.slug %}" aria-label="Next">
+                <span aria-hidden="true">
+                  <span class="d-none d-sm-inline-block me-1">Next</span>
+                  &raquo;
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="d-flex justify-content-center mt-4 mb-5">
+        <div class="text-center">
+          <a class="btn btn-dark text-warning rounded-pill shadow-sm p-0 ps-2 pe-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            Read more
+          </a>
+        </div>   
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock posts_base_content %}
 <!-- FUNDING DATES -->
 <section class="bg-secondary-lighter">
     <div class="container-fluid">

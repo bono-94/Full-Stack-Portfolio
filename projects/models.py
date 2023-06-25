@@ -594,7 +594,7 @@ class Post(models.Model):
 
     # POST DETAIL GENERAL INFORMATION
     post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=False)
-    industry = models.CharField(max_length=21, blank=False)    
+    industry = models.CharField(max_length=21, blank=False)
     organization = models.CharField(max_length=21, blank=True)
     project = models.CharField(max_length=21, blank=True)
     product = models.CharField(max_length=21, blank=True)

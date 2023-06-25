@@ -35,6 +35,7 @@ def final(request):
         }
     return render(request, 'index.html', context)
 
+
 # MAIN
 def home_page(request):
 
@@ -48,6 +49,7 @@ def about_page(request):
     if request.method == 'GET':
 
         return render(request, 'about.html')
+
 
 # PROFILE
 @login_required

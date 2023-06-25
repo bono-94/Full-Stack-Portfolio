@@ -5,8 +5,9 @@
 {% load crispy_forms_tags %}
 
 {% load static %}
-<!-- BREADCRUMB -->
-<div class="container-fluid bg-secondary fixed-top" id="post_breadcrumb">
+
+<!-- BREADCRUMB + OFFCANVAS -->
+<div class="container-fluid bg-secondary fixed-top shadow-sm" id="post_breadcrumb">
   <div class="row">
     <nav aria-label="breadcrumb" class="col-10">
       <ol class="breadcrumb mb-1">
@@ -14,22 +15,60 @@
           <a href="{% url 'public_post_details_1_landing' post.slug %}" class="text-info text-smaller">Home</a>
         </li>
         <li class="breadcrumb-item d-flex align-items-center">
-          <a href="#" class="text-smaller text-light">Landing</a>
+          <a href="#" class="text-smaller text-light text-decoration-none">Landing</a>
         </li>
       </ol>
     </nav>
     <div class="col-2 d-flex align-items-center justify-content-end align-items-stretch pe-0" id="breadcrumb-bttn-padding">
       <a>
-        <button type="button" class="btn shadow-sm p-0 m-0 me-1 border border-1 border-warning" onclick="showOverlay()" aria-label="Overlay" style="line-height: 1;">
-          <i class="fa-solid fa-angles-down text-info p-1 m-0 breadcrumb-bttn-padding" style="font-size: 15.5px;"></i> <!-- Add your desired icon class here -->
+        <button type="button" class="btn shadow-sm p-0 m-0 me-1 border border-1 border-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="line-height: 1;">
+          <i class="fa-solid fa-angles-down text-info p-1 m-0 breadcrumb-bttn-padding" style="font-size: 12px;"></i> <!-- Add your desired icon class here -->
         </button>
       </a>
-      <a href="{% url 'user_posts_list' %}" class="pe-1">
-        <button type="button" class="btn shadow-sm p-0 m-0 me-1 border border-1 border-warning ms-2 me-1" aria-label="Close" style="line-height: 1;">
-          <i class="fa-solid fa-xmark text-info p-1 m-0 breadcrumb-bttn-padding"></i> <!-- Add your desired icon class here -->
+      <a href="{% url 'public_posts_list' %}" class="pe-1">
+        <button type="button" class="btn shadow-sm p-0 m-0 me-1 border border-1 border-dark ms-2 me-1" aria-label="Close" style="line-height: 1;">
+          <i class="fa-solid fa-xmark text-info p-1 m-0 breadcrumb-bttn-padding" style="font-size: 13px;"></i> <!-- Add your desired icon class here -->
         </button>
       </a>
     </div>
+  </div>
+</div>
+<div class="offcanvas offcanvas-end ms-5 w-75" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <a href="{% url 'public_post_details_1_landing' post.slug %}">
+      <p>
+        1 Landing
+      </p>
+    </a>
+    <a href="{% url 'public_post_details_2_opps' post.slug %}">
+      <p>
+        2 Details
+      </p>
+    </a>
+    <a href="{% url 'public_post_details_3_about_us' post.slug %}">
+      <p>
+        3 About Us
+      </p>
+    </a>
+    <a href="{% url 'public_post_details_4_body' post.slug %}">
+      <p>
+        4 Articles
+      </p>
+    </a>
+    <a href="{% url 'public_post_details_5_files' post.slug %}">
+      <p>
+        5 Documents
+      </p>
+    </a>
+    <a href="{% url 'public_post_details_6_proposal' post.slug %}">
+      <p>
+        6 Proposal
+      </p>
+    </a>
   </div>
 </div>
 <!-- POST IMAGE -->

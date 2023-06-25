@@ -44,6 +44,7 @@ class ProfileForm(forms.ModelForm):
             'organization',
             'department',
             'occupation',
+            'start_date',
             'hours_per_week',
             # CAREER
             'history_employment_privacy',

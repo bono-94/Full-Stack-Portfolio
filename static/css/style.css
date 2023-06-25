@@ -603,6 +603,7 @@ max-width: 700px;
 
 /* CUSTOM BOOTSTRAP VERSION */
 
+
 .fit-content {
   
   width: fit-content;
@@ -684,18 +685,13 @@ max-width: 700px;
 }
 
 #post_breadcrumb {
-  margin-top: 98px;
+  margin-top:  98px; 
 }
 
 .text-smaller {
   font-size: 0.8rem; /* Adjust the font size as per your preference */
 }
-This will reduce the font size for that specific breadcrumb item.
-
-
-
-
-
+/* This will reduce the font size for that specific breadcrumb item. */
 
 
 /* OVERLAY */
@@ -834,3 +830,4 @@ This will reduce the font size for that specific breadcrumb item.
   }
 }
 
+}

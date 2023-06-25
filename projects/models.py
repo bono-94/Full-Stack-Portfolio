@@ -1224,34 +1224,34 @@ class Post(models.Model):
     
     # POST OFFER DURATION
     def post_duration_days(self):
-        duration = self.end_date - self.start_date
+        duration = self.funding_end_date - self.funding_start_date
         return duration.days
 
     def post_duration_months(self):
-        duration = self.end_date - self.start_date
+        duration = self.funding_end_date - self.funding_start_date
         total_months = duration.days // 30   # Assuming 30 days per month
         return total_months
 
     def post_duration_years(self):
-        duration = self.end_date - self.start_date
+        duration = self.funding_end_date - self.funding_start_date
         total_years = duration.days // 365  # Assuming 365 days per year
         return total_years
 
     # POST PAYOUT DATE DURATION
     def post_payout_duration_days(self):
         today = date.today()
-        duration = today - self.payout_date
+        duration = today - self.funding_payout_date
         return duration.days
 
     def post_payout_duration_months(self):
         today = date.today()
-        duration = today - self.payout_date
+        duration = today - self.funding_payout_date
         total_months = duration.days // 30   # Assuming 30 days per month
         return total_months
 
     def post_payout_duration_years(self):
         today = date.today()
-        duration = today - self.payout_date
+        duration = today - self.funding_payout_date
         total_years = duration.days // 365  # Assuming 365 days per year
         return total_years
 

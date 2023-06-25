@@ -95,7 +95,7 @@
                 {% if post.status == 1 %}
                     <a href="{% url 'public_post_details_1_landing' post.slug %}" class="post-link">
                 {% else %}
-                    <a href="{% url 'post_detail_draft' post.slug %}" class="post-link">
+                    <a href="{% url 'user_post_details_1_landing' post.slug %}" class="post-link">
                 {% endif %} 
                     {% if post.post_colors_list == False %}
                         <h3 class="card-title mb-2">

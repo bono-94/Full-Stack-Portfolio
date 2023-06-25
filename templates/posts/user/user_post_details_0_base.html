@@ -1,0 +1,431 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+<!-- NAVIGATIONAL FIXED BUTTONS -->
+<button type="button" id="profile-detail-close" class="btn btn-close shadow-sm bg-light border border-2 border-warning fixed-top ms-auto mb-0" aria-label="Close" onclick="javascript:history.back()"></button>
+{% if post.author == request.user %}
+  <div class="fixed-bottom p-0 mb-4 pb-3 text-end">
+    <a href="{% url 'post_edit' post_id=post.id %}" class="btn btn-light text-secondary border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
+      <i class="fa-solid fa-pencil"></i>
+    </a>
+  </div>
+  <div class="fixed-bottom p-0 mb-1 pb-1 text-end">
+    <a href="{% url 'post_delete' post_id=post.id %}" class="btn btn-light text-secondary border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
+      <i class="fa-regular fa-trash-can"></i> 
+    </a>
+  </div>
+{% else %}
+  <div class="fixed-bottom p-0 mb-1 pb-1 text-end">
+    <a href="#profile-detail-close" class="btn btn-light border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
+      <i class="fa-solid fa-sack-dollar text-success"></i>
+    </a>
+  </div>
+{% endif %}
+{% if post.public_privacy == False %}
+<!-- POST HEADER -->
+<section class="bg-secondary-lighter border-bottom border-2 border-warning">
+  <div class="container-fluid bg-dark bg-gradient pb-3 pt-2" id="post-detail-header">
+    <div class="row-fluid">
+      <div class="col-10 mt-4">
+          {% if post.post_list_image %}
+            <img src="{{ post.post_logo_image.url }}" class="rounded-circle border border-2 border-warning shadow-sm profile-picture ms-2 ms-sm-3 ms-md-4 ms-lg-5" alt="Profile Picture" width="125" height="125">
+          {% else %}
+            <img src="{% static 'images/21104.png' %}" class="rounded-circle border border-2 border-warning shadow-sm profile-picture ms-2 ms-sm-3 ms-md-4 ms-lg-5" alt="Default Profile Picture" width="125" height="125">
+          {% endif %}                           
+      </div>
+      <div class="col-12 pb-4 pb-lg-3">
+          <h1 class="post-title text-light text-break mt-3 mt-sm-4 ms-2 ms-sm-3 ms-md-4 ms-lg-5 me-2 me-sm-3 me-md-4 me-lg-5">
+              {{ post.title }}
+          </h1>
+          <p class="post-subtitle text-light mt-2 mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            <span class="text-break">
+              {{ post.caption }}
+            </span>
+          </p>
+          <span class="post-subtitle text-light mb-1 mb-lg-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            {% if user.is_authenticated %}
+                <form class="d-inline" action="{% url 'vote' post.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if voted %}
+                      <button type="submit" id="vote-button-anim-take" name="post_note_id" value="{{post.slug}}" class="btn-like text-light" onclick="addShakeClass('vote-button-anim-take')">
+                        <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
+                      </button>
+                      <span> |</span>
+                    {% else %}
+                      <button type="submit" id="vote-button-anim-add" name="post_note_id" value="{{post.slug}}" class="btn-like text-light" onclick="addBounceClass('vote-button-anim-add')">
+                        <i class="fa-regular fa-heart"></i> {{ post.number_of_votes }}
+                      </button>
+                      <span> |</span>
+                    {% endif %}
+                </form>
+                {% else %}
+                    <span class="text-light">
+                      <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
+                      <span> |</span>
+                    </span>
+                {% endif %}
+            <i class="fa-solid fa-eye ms-1"></i> {{ post.views }} |
+            {% with notes.count as total_notes %}
+              <i class="fa-solid fa-comment ms-1"></i> {{ total_notes }}
+              <span> |</span>
+            {% endwith %}
+            {% if post.post_verification == True %}
+              <i class="fa-solid fa-shield-halved fa-beat ms-1 text-info"></i>
+            {% else %}
+              <i class="fa-solid fa-triangle-exclamation fa-beat ms-1 text-danger"></i>
+            {% endif %}
+          </span>
+          <hr class="text-light col-10 col-sm-10 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          <p class="post-subtitle text-light mt-3 mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          {% if post.author_type == 'Human' %}  
+            Human Author:
+          {% else %}
+            A.I. Author:
+          {% endif %}
+            <a href="{% url 'public_profile' post.author.user_profile.id %}" class="text-warning ms-1">
+            {{ post.author }}
+            </a>
+          </p>
+          <p class="post-subtitle text-light mb-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            Owner:
+            <a href="#post-contact" class="text-warning ms-1">
+              <span class="ms-1">
+                {{ post.project_owner }}
+              </span>
+            </a>
+          </p>
+          <hr class="text-light col-10 col-sm-10 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          {% if post.post_duration_created == 1 %}
+          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            <span class="d-block d-sm-inline">
+              Created:
+            </span>
+            <span class="text-break text-light-grey">
+              {{ post.created_on }} [{{ post.post_duration_created }} day ago]
+            </span> 
+          </p>
+          {% else %}
+          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            <span class="d-block d-sm-inline">
+              Created:
+            </span>
+            <span class="text-break text-light-grey">
+              {{ post.created_on }} [{{ post.post_duration_created }} days ago]
+            </span> 
+          </p>
+          {% endif %}
+          {% if post.post_duration_updated == 1 %}
+          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            <span class="d-block d-sm-inline">
+              Updated:
+            </span>
+            <span class="text-break text-light-grey">
+              {{ post.updated_on }} [{{ post.post_duration_updated }} day ago]
+            </span> 
+          </p>
+          {% else %}
+          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+            <span class="d-block d-sm-inline">
+              Updated:
+            </span>
+            <span class="text-break text-light-grey">
+              {{ post.updated_on }} [{{ post.post_duration_updated }} days ago]
+            </span>
+          </p>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+  {% block posts_base_content %}
+  {% endblock posts_base_content %}
+<!-- COMMENTS -->
+<section class="bg-secondary-lighter pb-2">
+  <hr class="p-0 m-0">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 card mb-4 mt-3">
+        <h3>Notes:</h3>
+        <div class="card-body">
+          <!-- IF no comments just add title No comments yet. Be the first one to note something -->
+          {% for note in notes %}
+          <div class="notes" style="padding: 10px;">
+            <p class="font-weight-bold">
+              {{ note.name }}
+              <span class="text-muted font-weight-normal">
+                {{ note.created_on_note }}
+              </span> wrote:
+            </p>
+            {{ note.content_note | linebreaks }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-4 card mb-4 mt-3">
+        <div class="card-body">
+          {% if noted %}
+          <div class="alert alert-success" role="alert">
+            Your note is now waiting for approval..
+          </div>
+          {% else %}
+          {% if user.is_authenticated %}
+          <h3>Leave a note with opinion, offer, advice, or critique</h3>
+          <p>By: {{ user.username }}</p>
+          <form method="post" style="margin-top: 1.3em;">
+            {{ note_form | crispy }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+          </form>
+          {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+<div class="container public-privacy-message">
+  <h1 class="text-center">This post is not open for public.</h1>
+</div>   
+{% endif %}
+
+<p class="text-break">
+
+status for acess rules
+public_privacy for privacy on each page in once
+launch_date_privacy
+
+post_background_audio
+
+post_colors_list
+
+post_color_primary
+post_color_secondary
+post_color_text
+
+
+<!-- separate -->
+if introduction_privacy = false:
+introduction
+
+<!-- separate -->
+if post_video_privacy = false:
+post_video
+
+if launch_date_privacy:
+launch_date
+
+
+<!-- separate -->
+if post_opps_details_privacy = False:
+
+pps_vision
+pps_goals
+pps_missions
+pps_planner
+
+team
+partners
+collaborators
+sponsors
+community
+stakeholders
+shareholders
+ecosystem_relationship
+
+resources_requiered 
+target_markets
+target_group
+values_provided
+differentiation
+sdg_goals
+legal_protection
+franchizing_licencing
+
+risks
+challenges
+change
+impact
+
+<!-- separate -->
+if post_about_privacy = False:
+
+  organization_info
+  products_provided
+  services_provided
+  organization_mission
+  organization_vision
+  organization_culture
+
+  strengths
+  weaknesses
+  opportunities
+  threats
+
+  if focus_privacy:
+
+    focus_innovation
+    focus_financials
+    focus_planning
+    focus_monitoring
+    focus_quality
+    focus_quantity
+    focus_collaboration
+    focus_leadership
+
+  if specialty_privacy:
+
+    special_ops
+    special_finance
+    special_marketing
+    special_supply_chain
+    special_hr
+    special_tech
+    special_sustainability
+    special_research
+
+  if specialty_privacy_two:
+
+    special_ops_two
+    special_finance_two
+    special_marketing_two
+    special_supply_chain_two
+    special_hr_two
+    special_tech_two
+    special_sustainability_two
+    special_research_two
+
+  if percentage_special_privacy:
+
+    percentage_special_ops
+    percentage_special_ops_two
+
+    percentage_special_finance
+    percentage_special_finance_two
+    
+    percentage_special_marketing
+    percentage_special_marketing_two
+    
+    percentage_special_supply_chain
+    percentage_special_supply_chain_two
+
+    percentage_special_hr
+    percentage_special_hr_two
+
+    percentage_special_tech
+    percentage_special_tech_two
+
+    percentage_special_sustainability
+    percentage_special_sustainability_two
+
+    percentage_special_research
+    percentage_special_research_two
+
+if post_body_privacy:
+
+  main_content
+  business_knowledge
+  story
+  journey
+  future
+  legacy
+
+if post_bridge_privacy_library:
+
+  organizational_structure
+  flowchart
+  agenda
+  tasklist
+  schedule
+  financial_reports
+  supply_chain_map
+  data_architecture_map
+  standard_operational_procedures
+  marketing_strategy_map
+  hr_handbook
+  sustainability_report
+  research_and_development_agenda
+  promotional_materials
+  certification
+  articles
+
+if post_bridge_privacy_cabinet:
+  business_plan
+  implementation_plan
+  pestle_report
+  internal_report
+  capabilities
+  business_model_canvas
+  contracts
+  terms_conditions
+
+
+if post_proposal_model_privacy:
+
+  funding_start_date
+  funding_end_date
+  funding_infinite_end_date
+  funding_payout_date
+  + post_payout_duration_days, + post_payout_duration_months, + post_payout_duration_years
+
+  stocks_quantity_total_supply
+  stocks_quantity_proposal
+  stocks_proposal_note
+  stocks_proposal_return
+
+  ownership_percentage_opps_type
+  ownership_percentage_opps_quantity_proposal
+  ownership_percentage_opps_proposal_note
+  ownership_percentage_opps_proposal_return
+
+  end_product_or_service_type
+  end_product_or_service_total_supply
+  end_product_or_service_quantity_proposal
+  end_product_or_service_merch_proposal
+  end_product_or_service_membership_proposal
+  end_product_or_service_proposal_note
+  end_product_or_service_proposal_return
+
+  lifetime_discount_percentages_quantity_proposal
+  lifetime_discount_percentages_quality_proposal_note
+  lifetime_discount_percentages_proposal_return
+
+  team_guaranteed_position_title_proposal
+  team_guaranteed_responsibilities_proposal
+  team_guaranteed_employment_conditions_proposal
+  team_guaranteed_proposal_return
+
+  partnership_proposal
+  partnership_proposal_return
+  
+  collaboration_proposal
+  collaboration_proposal_return
+
+  sponsorship_proposal
+  sponsorship_proposal_return
+
+  open_proposal
+  open_proposal_proposal_return
+
+  proposal_terms_and_conditions
+
+if post_contact_privacy:
+
+  public_email
+  public_phone
+  contact_days
+  contact_hours
+  website_link
+  facebook_link
+  twitter_link
+  instagram_link
+  linkedin_link
+  youtube_link
+
+</p>
+
+{% endblock content %}

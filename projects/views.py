@@ -35,7 +35,7 @@ def final(request):
         }
     return render(request, 'index.html', context)
 
-
+# MAIN
 def home_page(request):
 
     if request.method == 'GET':
@@ -104,7 +104,7 @@ def delete_profile(request):
         return render(request, 'profile/user_profile_delete.html')
 
 
-# POST
+# POST LISTS
 class PostList(ListView):
 
     model = Post
@@ -122,6 +122,7 @@ class UserPosts(ListView):
         return Post.objects.filter(author=self.request.user).order_by('-created_on')
 
 
+# POST DETAILS PUBLISHED
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -242,7 +243,247 @@ class PostDetailOpps(View):
         )
 
 
+class PostDetailAboutUs(View):
 
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        return render(
+            request,
+            "posts/public/public_post_details_3_about_us.html",
+            {
+                "post": post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("created_on_note")
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        note_form = NoteForm(data=request.POST)
+
+        if note_form.is_valid():
+            note_form.instance.email = request.user.email
+            note_form.instance.name = request.user.username
+            note_form.instance.username = User.objects.get(id=request.user.id)
+            note = note_form.save(commit=False)
+            note.note = post
+            note.save()
+        else:
+            note_form = NoteForm()
+
+        return render(
+            request,
+            "posts/public/public_post_details_3_about_us.html",
+            {
+                "post": post,
+                "note": note,
+                "notes": notes,
+                "noted": True,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+
+class PostDetailBody(View):
+
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        return render(
+            request,
+            "posts/public/public_post_details_4_body.html",
+            {
+                "post": post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("created_on_note")
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        note_form = NoteForm(data=request.POST)
+
+        if note_form.is_valid():
+            note_form.instance.email = request.user.email
+            note_form.instance.name = request.user.username
+            note_form.instance.username = User.objects.get(id=request.user.id)
+            note = note_form.save(commit=False)
+            note.note = post
+            note.save()
+        else:
+            note_form = NoteForm()
+
+        return render(
+            request,
+            "posts/public/public_post_details_4_body.html",
+            {
+                "post": post,
+                "note": note,
+                "notes": notes,
+                "noted": True,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+
+class PostDetailFiles(View):
+
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        return render(
+            request,
+            "posts/public/public_post_details_5_files.html",
+            {
+                "post": post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("created_on_note")
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        note_form = NoteForm(data=request.POST)
+
+        if note_form.is_valid():
+            note_form.instance.email = request.user.email
+            note_form.instance.name = request.user.username
+            note_form.instance.username = User.objects.get(id=request.user.id)
+            note = note_form.save(commit=False)
+            note.note = post
+            note.save()
+        else:
+            note_form = NoteForm()
+
+        return render(
+            request,
+            "posts/public/public_post_details_5_files.html",
+            {
+                "post": post,
+                "note": note,
+                "notes": notes,
+                "noted": True,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+
+class PostDetailProposal(View):
+
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        return render(
+            request,
+            "posts/public/public_post_details_6_proposal.html",
+            {
+                "post": post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("created_on_note")
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        note_form = NoteForm(data=request.POST)
+
+        if note_form.is_valid():
+            note_form.instance.email = request.user.email
+            note_form.instance.name = request.user.username
+            note_form.instance.username = User.objects.get(id=request.user.id)
+            note = note_form.save(commit=False)
+            note.note = post
+            note.save()
+        else:
+            note_form = NoteForm()
+
+        return render(
+            request,
+            "posts/public/public_post_details_6_proposal.html",
+            {
+                "post": post,
+                "note": note,
+                "notes": notes,
+                "noted": True,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+
+# POST DETAILS DRAFT
 class PostDetailDraft(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -258,7 +499,7 @@ class PostDetailDraft(View):
 
         return render(
             request,
-            "posts/user/user_post_details.html",
+            "posts/user/user_post_details_1_landing.html",
             {
                 "post": post,
                 "notes": notes,
@@ -291,7 +532,307 @@ class PostDetailDraft(View):
 
         return render(
             request,
-            "posts/user/user_post_details.html",
+            "posts/user/user_post_details_1_landing.html",
+            {
+                "post": post,
+                "note": note,
+                "notes": notes,
+                "noted": True,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+
+class PostDetailOppsDraft(View):
+
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=0)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        return render(
+            request,
+            "posts/user/user_post_details_2_opps.html",
+            {
+                "post": post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=0)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("created_on_note")
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        note_form = NoteForm(data=request.POST)
+
+        if note_form.is_valid():
+            note_form.instance.email = request.user.email
+            note_form.instance.name = request.user.username
+            note_form.instance.username = User.objects.get(id=request.user.id)
+            note = note_form.save(commit=False)
+            note.note = post
+            note.save()
+        else:
+            note_form = NoteForm()
+
+        return render(
+            request,
+            "posts/user/user_post_details_2_opps.html",
+            {
+                "post": post,
+                "note": note,
+                "notes": notes,
+                "noted": True,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+
+class PostDetailAboutUsDraft(View):
+
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=0)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        return render(
+            request,
+            "posts/user/user_post_details_3_about_us.html",
+            {
+                "post": post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=0)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("created_on_note")
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        note_form = NoteForm(data=request.POST)
+
+        if note_form.is_valid():
+            note_form.instance.email = request.user.email
+            note_form.instance.name = request.user.username
+            note_form.instance.username = User.objects.get(id=request.user.id)
+            note = note_form.save(commit=False)
+            note.note = post
+            note.save()
+        else:
+            note_form = NoteForm()
+
+        return render(
+            request,
+            "posts/user/user_post_details_3_about_us.html",
+            {
+                "post": post,
+                "note": note,
+                "notes": notes,
+                "noted": True,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+
+class PostDetailBodyDraft(View):
+
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=0)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        return render(
+            request,
+            "posts/user/user_post_details_4_body.html",
+            {
+                "post": post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=0)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("created_on_note")
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        note_form = NoteForm(data=request.POST)
+
+        if note_form.is_valid():
+            note_form.instance.email = request.user.email
+            note_form.instance.name = request.user.username
+            note_form.instance.username = User.objects.get(id=request.user.id)
+            note = note_form.save(commit=False)
+            note.note = post
+            note.save()
+        else:
+            note_form = NoteForm()
+
+        return render(
+            request,
+            "posts/user/user_post_details_4_body.html",
+            {
+                "post": post,
+                "note": note,
+                "notes": notes,
+                "noted": True,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+
+class PostDetailFilesDraft(View):
+
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=0)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        return render(
+            request,
+            "posts/user/user_post_details_5_files.html",
+            {
+                "post": post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=0)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("created_on_note")
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        note_form = NoteForm(data=request.POST)
+
+        if note_form.is_valid():
+            note_form.instance.email = request.user.email
+            note_form.instance.name = request.user.username
+            note_form.instance.username = User.objects.get(id=request.user.id)
+            note = note_form.save(commit=False)
+            note.note = post
+            note.save()
+        else:
+            note_form = NoteForm()
+
+        return render(
+            request,
+            "posts/user/user_post_details_5_files.html",
+            {
+                "post": post,
+                "note": note,
+                "notes": notes,
+                "noted": True,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+
+class PostDetailProposalDraft(View):
+
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=0)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("-created_on_note")
+        post.views += 1
+        post.save()
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        return render(
+            request,
+            "posts/user/user_post_details_6_proposal.html",
+            {
+                "post": post,
+                "notes": notes,
+                "noted": False,
+                "voted": voted,
+                "note_form": NoteForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=0)
+        post = get_object_or_404(queryset, slug=slug)
+        notes = post.note.filter(approved=True).order_by("created_on_note")
+        voted = False
+        if post.votes.filter(id=self.request.user.id).exists():
+            voted = True
+
+        note_form = NoteForm(data=request.POST)
+
+        if note_form.is_valid():
+            note_form.instance.email = request.user.email
+            note_form.instance.name = request.user.username
+            note_form.instance.username = User.objects.get(id=request.user.id)
+            note = note_form.save(commit=False)
+            note.note = post
+            note.save()
+        else:
+            note_form = NoteForm()
+
+        return render(
+            request,
+            "posts/user/user_post_details_6_proposal.html",
             {
                 "post": post,
                 "note": note,

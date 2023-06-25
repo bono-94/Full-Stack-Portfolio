@@ -543,6 +543,23 @@ class Post(models.Model):
         ]
     )
 
+    post_colors_list = models.BooleanField(default=False)
+
+    post_color_primary = models.CharField(
+        max_length=7,
+        default='#292b2c',
+    )
+
+    post_color_secondary = models.CharField(
+        max_length=7,
+        default='#ffc107',
+    )
+
+    post_color_text = models.CharField(
+        max_length=7,
+        default='#000000',
+    )
+
     # PAGE CONSTANT
     # POST DETAIL KEY INFORMATION
     post_logo_image = models.ImageField(
@@ -1294,7 +1311,7 @@ class Note(models.Model):
     )
 
     note_privacy = models.BooleanField(default=False)
-    
+
     note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='note')
     name = models.CharField(max_length=50)
     username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_note")

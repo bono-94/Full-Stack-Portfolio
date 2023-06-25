@@ -560,7 +560,7 @@ class Post(models.Model):
         default='#000000',
     )
 
-    # PAGE CONSTANT
+    # PAGE CONSTANT BASE
     # POST DETAIL KEY INFORMATION
     post_logo_image = models.ImageField(
         upload_to='post_logo_images/',
@@ -921,7 +921,7 @@ class Post(models.Model):
             max_file_size_ten
         ],
     )
-    
+
     promotional_materials = models.FileField(
         upload_to='promotional_materials/',
         blank=True,

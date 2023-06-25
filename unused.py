@@ -590,3 +590,33 @@ class CustomSignupForm(SignupForm):
 
     team_positions_offered = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(21042004)], null=True, blank=True)
     team_positions_given = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(21042004)], null=True, blank=True)
+
+
+    post_colors_list = models.BooleanField(default=False)
+    post_color_primary = models.CharField(
+        max_length=7,
+        default='#292b2c',
+    )
+    post_color_secondary = models.CharField(
+        max_length=7,
+        default='#ffc107',
+    )
+    post_color_text = models.CharField(
+        max_length=7,
+        default='#000000',
+    )
+
+
+    # COUNTING OF EVENT RSPVS
+
+    def number_of_rspv_yes(self):
+        return self.rspv_yes.count()
+
+    def number_of_rspv_no(self):
+        return self.rspv_no.count()
+
+    def number_of_rspv_maybe(self):
+        return self.rspv_maybe.count()
+
+    def number_of_rspv_next_time(self):
+        return self.rspv_next_time.count()

@@ -197,11 +197,6 @@ status for acess rules
 public_privacy for privacy on each page in once
 launch_date_privacy
 
-post_color_primary
-post_color_secondary
-post_color_text
-
-
 post_background_audio
 
 
@@ -212,6 +207,9 @@ introduction
 <!-- separate -->
 if post_video_privacy = false:
 post_video
+
+if launch_date_privacy:
+launch_date
 
 
 <!-- separate -->
@@ -358,44 +356,58 @@ if post_bridge_privacy_cabinet:
   terms_conditions
 
 
-if post_offer_model_privacy:
+if post_proposal_model_privacy:
 
-  fee_model
-  offer_model
-
-  quantity_requested
-  quality_requested
-
-  quantity_returned
-  quality_returned
-
-
-
-  payout_date (funding dates end)
+  funding_start_date
+  funding_end_date
+  funding_infinite_end_date
+  funding_payout_date
   + post_payout_duration_days, + post_payout_duration_months, + post_payout_duration_years
 
-  stocks_offering
-  stocks_supply
-  ownership_percentage
-  return_amount
-  end_product_or_service_quality
-  end_product_or_service_quantity
-  lifetime_discount_percentages
-  team_guaranteed_position
-  partnership
-  collaboration
-  sponsorship
-  community_access
-  pioneering
-  merchandize
-  special_acknowledgement
-  open_offers
+  stocks_quantity_total_supply
+  stocks_quantity_proposal
+  stocks_proposal_note
+  stocks_proposal_return
 
-  offer_terms
+  ownership_percentage_opps_type
+  ownership_percentage_opps_quantity_proposal
+  ownership_percentage_opps_proposal_note
+  ownership_percentage_opps_proposal_return
+
+  end_product_or_service_type
+  end_product_or_service_total_supply
+  end_product_or_service_quantity_proposal
+  end_product_or_service_merch_proposal
+  end_product_or_service_membership_proposal
+  end_product_or_service_proposal_note
+  end_product_or_service_proposal_return
+
+  lifetime_discount_percentages_quantity_proposal
+  lifetime_discount_percentages_quality_proposal_note
+  lifetime_discount_percentages_proposal_return
+
+  team_guaranteed_position_title_proposal
+  team_guaranteed_responsibilities_proposal
+  team_guaranteed_employment_conditions_proposal
+  team_guaranteed_proposal_return
+
+  partnership_proposal
+  partnership_proposal_return
+  
+  collaboration_proposal
+  collaboration_proposal_return
+
+  sponsorship_proposal
+  sponsorship_proposal_return
+
+  open_proposal
+  open_proposal_proposal_return
+
+  proposal_terms_and_conditions
 
 if post_contact_privacy:
 
-  post_public_email
+  public_email
   public_phone
   contact_days
   contact_hours
@@ -406,35 +418,6 @@ if post_contact_privacy:
   linkedin_link
   youtube_link
 
-if event_privacy:
 
-  event_color
-  event_image
-  event_link
-  event_title
-  event_host
-  event_content
-  event_date
-  event_hour
-  event_minute
-  event_location
-  event_price
-  event_price_cents
-  event_capacity
-  rspv_yes + number_of_rspv_yes
-  rspv_no + number_of_rspv_no
-  rspv_maybe + number_of_rspv_maybe
-  rspv_next_time + number_of_rspv_next_time
-
-
-if post_results_privacy:
-
-  number_of_phases
-  amount_asked
-  amount_collected
-  ownership_offered
-  ownerhip_given
-  team_positions_offered
-  team_positions_given
 
 {% endblock content %}

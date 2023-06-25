@@ -142,7 +142,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='post',
             name='stocks_offering',
-            field=models.IntegerField(blank=True, null=True, validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(999999999999), projects.models.Post.validate_stock_offering]),
+            field=models.IntegerField(blank=True, null=True, validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(999999999999), projects.models.Post.validate_stock_proposal]),
         ),
         migrations.AlterField(
             model_name='post',

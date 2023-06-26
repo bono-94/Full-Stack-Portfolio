@@ -363,9 +363,11 @@ class PostForm(forms.ModelForm):
         widgets = {
             'post_color_primary': forms.TextInput(attrs={'type': 'color'}),
             'post_color_secondary': forms.TextInput(attrs={'type': 'color'}),
-            'event_color': forms.TextInput(attrs={'type': 'color'}),
+            'post_color_text': forms.TextInput(attrs={'type': 'color'}),
             'launch_date': forms.DateInput(attrs={'type': 'date'}),
             'funding_end_date': forms.DateInput(attrs={'type': 'date'}),
+            'funding_start_date': forms.DateInput(attrs={'type': 'date'}),
+            'funding_payout_date': forms.DateInput(attrs={'type': 'date'}),
             'payout_date': forms.DateInput(attrs={'type': 'date'}),
             'event_date': forms.DateInput(attrs={'type': 'date'}),
         }

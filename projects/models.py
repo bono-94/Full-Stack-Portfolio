@@ -572,11 +572,11 @@ class Post(models.Model):
         ]
     )
 
-    title = models.CharField(max_length=21, blank=False, unique=True)
-    caption = models.CharField(max_length=42, blank=False)
+    title = models.TextField(max_length=42, blank=False, unique=True)
+    caption = models.TextField(max_length=42, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     author_type = models.CharField(max_length=5, choices=AUTHOR_TYPE, blank=False)
-    project_owner = models.CharField(max_length=21,  blank=False, null=True)
+    project_owner = models.CharField(max_length=42,  blank=False, null=True)
     created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_on = models.DateTimeField(auto_now=True, blank=True, null=True)
 
@@ -594,15 +594,15 @@ class Post(models.Model):
 
     # POST DETAIL GENERAL INFORMATION
     post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=False)
-    industry = models.CharField(max_length=21, blank=False)
-    organization = models.CharField(max_length=21, blank=True)
-    project = models.CharField(max_length=21, blank=True)
-    product = models.CharField(max_length=21, blank=True)
-    service = models.CharField(max_length=21, blank=True)
-    post_location_city = models.CharField(max_length=21, blank=False)
-    post_location_country = models.CharField(max_length=21, blank=False)
-    post_location_continent = models.CharField(max_length=21, blank=False)
-    post_location_planet = models.CharField(max_length=21, blank=False)
+    industry = models.CharField(max_length=42, blank=False)
+    organization = models.CharField(max_length=42, blank=True)
+    project = models.CharField(max_length=42, blank=True)
+    product = models.CharField(max_length=42, blank=True)
+    service = models.CharField(max_length=42, blank=True)
+    post_location_city = models.CharField(max_length=42, blank=False)
+    post_location_country = models.CharField(max_length=42, blank=False)
+    post_location_continent = models.CharField(max_length=42, blank=False)
+    post_location_planet = models.CharField(max_length=42, blank=False)
 
     # INTRODUCTION
     introduction_privacy = models.BooleanField(default=False)
@@ -649,8 +649,8 @@ class Post(models.Model):
     ecosystem_relationship = models.TextField(max_length=525, blank=True, null=True)
 
     resources_requiered = models.TextField(max_length=210, blank=True, null=True)
-    target_markets = models.TextField(max_length=210, blank=True, null=True)
-    target_groups = models.TextField(max_length=210, blank=True, null=True)
+    target_markets = models.TextField(max_length=315, blank=True, null=True)
+    target_groups = models.TextField(max_length=315, blank=True, null=True)
     values_provided = models.TextField(max_length=210, blank=True, null=True)
     differentiation = models.TextField(max_length=210, blank=True, null=True)
     sdg_goals = models.TextField(max_length=525, blank=True, null=True)
@@ -667,8 +667,8 @@ class Post(models.Model):
     post_about_privacy = models.BooleanField(default=False)
 
     organization_info = models.TextField(max_length=525, blank=True, null=True)
-    products_provided = models.CharField(max_length=42, blank=True, null=True)
-    services_provided = models.CharField(max_length=42, blank=True, null=True)
+    products_provided = models.CharField(max_length=84, blank=True, null=True)
+    services_provided = models.CharField(max_length=84, blank=True, null=True)
     organization_mission = models.TextField(max_length=525, blank=True, null=True)
     organization_vision = models.TextField(max_length=525, blank=True, null=True)
     organization_culture = models.TextField(max_length=525, blank=True, null=True)
@@ -1065,7 +1065,7 @@ class Post(models.Model):
     funding_start_date = models.DateField(default=timezone.now, blank=True, null=True)
     funding_end_date = models.DateField(default=timezone.now, blank=True, null=True)
     funding_infinite_end_date = models.BooleanField(default=False)
-    funding_payout_date = models.DateField(blank=True, null=True)
+    funding_payout_date = models.DateField(default=timezone.now, blank=True, null=True)
 
     # STOCKS PROPOSAL
     stocks_quantity_total_supply = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)

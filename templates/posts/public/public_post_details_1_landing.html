@@ -92,8 +92,8 @@
     </div>
   </section>
   <!-- ABOUT CARD -->
-  <section class="bg-secondary-lighter pt-2 pb-3">
-    <h3 class="ms-3 mt-4 mb-4 pb-2 mt-md-5 mb-md-5 text-start text-sm-center">GENERAL INFORMATION</h3>
+  <section class="bg-secondary-lighter pt-5 pb-5">
+    <h3 class="ms-3 mt-4 mb-4 pb-4 mt-md-5 mb-md-5 text-start text-sm-center">GENERAL INFORMATION</h3>
     <ul class="list-group mt-3 mb-0 col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 border border-1 border-dark mb-4 shadow-sm">
       <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-bottom border-1 border-light">
         <strong>Post Type:</strong>
@@ -151,7 +151,7 @@
       </li>
       <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-bottom border-1 border-light">
         <strong>Planet:</strong>
-        <span class="ms-1">
+        <span class="ms-">
           {{ post.post_location_planet }}
         </span>
       </li>
@@ -159,13 +159,16 @@
   </section>
   <hr class="bg-secondary-lighter p-0 m-0">
   <!-- INTRODUCTION -->
+  {% if post.introduction_privacy == False and post.introduction %}
   <section class="bg-secondary-lighter pt-3 pb-5">
-    <h3 class="ms-3 mt-4 mb-4 pb-2 mt-md-5 mb-md-5 text-start text-sm-center">Introduction</h3>
-    <p class="text-break w-75 text-center mx-auto">{{ post.introduction }}</p>
+    <h3 class="ms-3 mt-5 mb-4 pb-3 mt-md-5 mb-md-5 text-start text-sm-center">Introduction</h3>
+    <p class="text-break w-75 text-center mx-auto mt-4">{{ post.introduction }}</p>
   </section>
   <hr class="bg-secondary-lighter p-0 m-0">
+  {% else %}
+  {% endif %}
   <!-- POST VIDEO -->
-  {% if post.post_video %}
+  {% if post.post_video_privacy == False and post.video %}
   <div class="row justify-content-center">
     <div class="col-11 offset rounded border border-3 border-dark bg-secondary mt-4 mb-4 pt-2 shadow-sm h-100">
       <video class="bg-info w-100 h-100 shadow-lg align-items-center" controls type="video/mp4" src="{{ post.post_video.url }}"></video>

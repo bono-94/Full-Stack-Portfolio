@@ -627,7 +627,7 @@ class Post(models.Model):
     # POST LAUNCH
     launch_date_privacy = models.BooleanField(default=False)
 
-    launch_date = models.DateField(default=timezone.now, blank=True)
+    launch_date = models.DateField(default=timezone.now, blank=True, null=True)
     same_start_launch_date = models.BooleanField(default=False)
 
     # PAGE 2

@@ -6,6 +6,53 @@
 
 {% load static %}
 
+<!-- POST OPPS DETAILS -->
+{% if post.post_opps_details_privacy == False %}
+
+<!-- SECTION -->
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-2 pb-1">
+  <div class="container">
+    <div class="row">
+      <h5 class="text-center mt-4 mb-4">Strategy</h5>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Vision</h6>
+        <p>
+          {{ post.pps_vision }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Missions</h6>
+        <p>
+          {{ post.pps_missions }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Goals</h6>
+        <p>
+          {{ post.pps_goals }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-3">
+        <h6 class="mt-2">Planner</h6>
+        <p>
+          {{ post.pps_planner }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION -->
+<section>
+  
+</section>
+
+{% else %}
+{% endif %}
+
+
+
 <!-- BREADCRUMB + OFFCANVAS -->
 <div class="container-fluid bg-secondary fixed-top shadow-sm p-0" id="post-breadcrumb">
   <div class="row">

@@ -193,8 +193,8 @@ class PostForm(forms.ModelForm):
             # POST OPPS SPECIFICS
             'post_opps_details_privacy',
             'pps_vision',
-            'pps_goals',
             'pps_missions',
+            'pps_goals',
             'pps_planner',
             'team',
             'partners',

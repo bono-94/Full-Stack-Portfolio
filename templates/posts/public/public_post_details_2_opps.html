@@ -6,6 +6,199 @@
 
 {% load static %}
 
+<!-- POST OPPS DETAILS -->
+{% if post.post_opps_details_privacy == False %}
+
+<!-- SECTION STRATEGY -->
+<section class="bg-secondary-lighter pt-2 pb-1">
+  <h3 class="text-center mt-5 mb-5">
+    {{ post.post_type }} Post Details
+  </h3>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <h5 class="text-center mt-4 mb-4">Strategy</h5>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Vision</h6>
+        <p>
+          {{ post.pps_vision }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Missions</h6>
+        <p>
+          {{ post.pps_missions }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Goals</h6>
+        <p>
+          {{ post.pps_goals }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-3">
+        <h6 class="mt-2">Planner</h6>
+        <p>
+          {{ post.pps_planner }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION CO-OPERATION -->
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-2 pb-1">
+  <div class="container">
+    <div class="row">
+      <h5 class="text-center mt-4 mb-4">Co-Operation</h5>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Team</h6>
+        <p>
+          {{ post.team }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Partners</h6>
+        <p>
+          {{ post.partners }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Collaborators</h6>
+        <p>
+          {{ post.collaborators }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Sponsors</h6>
+        <p>
+          {{ post.sponsors }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Community</h6>
+        <p>
+          {{ post.community }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Stakeholders</h6>
+        <p>
+          {{ post.stakeholders }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Shareholders</h6>
+        <p>
+          {{ post.shareholders }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-3">
+        <h6 class="mt-2">Ecosystem Relationship</h6>
+        <p>
+          {{ post.ecosystem_relationship }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION KEY ELEMENTS -->
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-2 pb-1">
+  <div class="container">
+    <div class="row">
+      <h5 class="text-center mt-4 mb-4">Key Elements</h5>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Resources</h6>
+        <p>
+          {{ post.resources_requiered }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Target Markets</h6>
+        <p>
+          {{ post.target_markets }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Target Groups</h6>
+        <p>
+          {{ post.target_groups }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Values Provided</h6>
+        <p>
+          {{ post.values_provided }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Differentiation</h6>
+        <p>
+          {{ post.differentiation }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">SDG Goals</h6>
+        <p>
+          {{ post.sdg_goals }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Legal Protection</h6>
+        <p>
+          {{ post.legal_protection }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-3">
+        <h6 class="mt-2">Franchizing & Licencing</h6>
+        <p>
+          {{ post.franchizing_licencing }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION DYNAMICS -->
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-2 pb-1">
+ <div class="container">
+    <div class="row">
+      <h5 class="text-center mt-4 mb-4">Dynamics</h5>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Risks</h6>
+        <p>
+          {{ post.risks }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Challenges</h6>
+        <p>
+          {{ post.challenges }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Change</h6>
+        <p>
+          {{ post.change }}
+        </p>
+      </div>
+      <div class="col-12 ms-1 me-1 mb-3">
+        <h6 class="mt-2">Impact</h6>
+        <p>
+          {{ post.impact }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+{% else %}
+{% endif %}
+
 <!-- BREADCRUMB + OFFCANVAS -->
 <div class="container-fluid bg-secondary fixed-top shadow-sm p-0" id="post-breadcrumb">
   <div class="row">
@@ -73,46 +266,47 @@
     </div>
   </div>
 </div>
-  <!-- NEXT PAGE -->
-  <section class="bg-secondary-lighter pb-2 pt-5">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-center"> <!-- Added "col-12" class for full width and "justify-content-center" class for center alignment -->
-          <nav aria-label="Page navigation example shadow-sm">
-            <ul class="pagination text-center rounded">
-              <li class="page-item">
-                <a class="page-link bg-dark text-warning" href="{% url 'public_post_details_1_landing' post.slug %}" aria-label="Previous">
-                  <span aria-hidden="true">
-                    &laquo;
-                    <span class="d-none d-sm-inline-block ms-1">Last</span>
-                  </span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_1_landing' post.slug %}">1</a></li>
-              <li class="page-item disabled"><a class="page-link bg-secondary text-warning" href="{% url 'public_post_details_2_opps' post.slug %}">2</a></li>
-              <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_3_about_us' post.slug %}">3</a></li>
-              <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_4_body' post.slug %}">4</a></li>
-              <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_5_files' post.slug %}">5</a></li>
-              <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_6_proposal' post.slug %}">6</a></li>
-              <li class="page-item">
-                <a class="page-link bg-dark text-warning" href="{% url 'public_post_details_3_about_us' post.slug %}" aria-label="Next">
-                  <span aria-hidden="true">
-                    <span class="d-none d-sm-inline-block me-1">Next</span>
-                    &raquo;
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="d-flex justify-content-center mt-4 mb-5">
-          <div class="text-center">
-            <a class="btn btn-dark text-warning rounded-pill shadow-sm p-0 ps-2 pe-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-              Read more
-            </a>
-          </div>   
-        </div>
+
+<!-- NEXT PAGE -->
+<section class="bg-secondary-lighter pb-2 pt-4">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center"> <!-- Added "col-12" class for full width and "justify-content-center" class for center alignment -->
+        <nav aria-label="Page navigation example shadow-sm">
+          <ul class="pagination text-center rounded">
+            <li class="page-item">
+              <a class="page-link bg-dark text-warning" href="{% url 'public_post_details_1_landing' post.slug %}" aria-label="Previous">
+                <span aria-hidden="true">
+                  &laquo;
+                  <span class="d-none d-sm-inline-block ms-1">Last</span>
+                </span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_1_landing' post.slug %}">1</a></li>
+            <li class="page-item disabled"><a class="page-link bg-secondary text-warning" href="{% url 'public_post_details_2_opps' post.slug %}">2</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_3_about_us' post.slug %}">3</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_4_body' post.slug %}">4</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_5_files' post.slug %}">5</a></li>
+            <li class="page-item"><a class="page-link bg-warning text-dark" href="{% url 'public_post_details_6_proposal' post.slug %}">6</a></li>
+            <li class="page-item">
+              <a class="page-link bg-dark text-warning" href="{% url 'public_post_details_3_about_us' post.slug %}" aria-label="Next">
+                <span aria-hidden="true">
+                  <span class="d-none d-sm-inline-block me-1">Next</span>
+                  &raquo;
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="d-flex justify-content-center mt-4 mb-5">
+        <div class="text-center">
+          <a class="btn btn-dark text-warning rounded-pill shadow-sm p-0 ps-2 pe-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            Read more
+          </a>
+        </div>   
       </div>
     </div>
-  </section>
+  </div>
+</section>
   {% endblock posts_base_content %}

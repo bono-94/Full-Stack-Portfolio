@@ -620,3 +620,39 @@ class CustomSignupForm(SignupForm):
 
     def number_of_rspv_next_time(self):
         return self.rspv_next_time.count()
+
+
+
+#         <!-- SECTION -->
+# <hr class="bg-secondary-lighter p-0 m-0">
+# <section class="bg-secondary-lighter pt-2 pb-1">
+#   <div class="container">
+#     <div class="row">
+#       <h5 class="text-center mt-4 mb-4">Page subtitle</h5>
+#       <div class="col-12 ms-1 me-1 mb-1">
+#         <h6 class="mt-2">Field Name</h6>
+#         <p>
+#           {{ post.pps_vision }}
+#         </p>
+#       </div>
+#       <div class="col-12 ms-1 me-1 mb-1">
+#         <h6 class="mt-2">Field Name</h6>
+#         <p>
+#           {{ post.pps_goals }}
+#         </p>
+#       </div>
+#       <div class="col-12 ms-1 me-1 mb-1">
+#         <h6 class="mt-2">Field Name</h6>
+#         <p>
+#           {{ post.pps_missions }}
+#         </p>
+#       </div>
+#       <div class="col-12 ms-1 me-1 mb-3">
+#         <h6 class="mt-2">Field Name</h6>
+#         <p>
+#           {{ post.pps_planner }}
+#         </p>
+#       </div>
+#     </div>
+#   </div>
+# </section>

@@ -7,51 +7,533 @@
 {% load static %}
 
 <!-- POST OPPS DETAILS -->
-{% if post.post_opps_details_privacy == False %}
+{% if post.post_about_privacy == False %}
 
-<!-- SECTION -->
+<!-- POST ABOUT CREATORS -->
 <hr class="bg-secondary-lighter p-0 m-0">
-<section class="bg-secondary-lighter pt-2 pb-1">
+<section class="bg-secondary-lighter pt-2 pb-2">
+  <h3 class="text-center mt-5 mb-5">
+    About Creators of this {{ post.post_type }}
+  </h3>
+  <hr>
   <div class="container">
-    <div class="row">
-      <h5 class="text-center mt-4 mb-4">Strategy</h5>
+    <div class="row-fluid">
+      <h5 class="text-center mt-4 mb-4">Who are we?</h5>
+      {% if post.organization_info %}
       <div class="col-12 ms-1 me-1 mb-1">
-        <h6 class="mt-2">Vision</h6>
+        <h6 class="mt-2">Let us introduce ourselves</h6>
         <p>
-          {{ post.pps_vision }}
+          {{ post.organization_info }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.organization_mission %}
       <div class="col-12 ms-1 me-1 mb-1">
-        <h6 class="mt-2">Missions</h6>
+        <h6 class="mt-2">Our Mission</h6>
         <p>
-          {{ post.pps_missions }}
+          {{ post.organization_mission }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.organization_vision %}
       <div class="col-12 ms-1 me-1 mb-1">
-        <h6 class="mt-2">Goals</h6>
+        <h6 class="mt-2">Our Vision</h6>
         <p>
-          {{ post.pps_goals }}
+          {{ post.organization_vision }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.organization_culture %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Our Culture</h6>
+        <p>
+          {{ post.organization_culture }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post. %}
       <div class="col-12 ms-1 me-1 mb-3">
         <h6 class="mt-2">Planner</h6>
         <p>
           {{ post.pps_planner }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
     </div>
   </div>
 </section>
 
-<!-- SECTION -->
-<section>
-  
+<!-- POST SWOT PRODUCTS & SERVICES -->
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-2 pb-2">
+  <div class="container">
+    <div class="row-fluid">
+      <h5 class="text-center mt-4 mb-4">What are we doing?</h5>
+      {% if post.products_provided %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Products we provide</h6>
+        <p>
+          {{ post.products_provided }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.services_provided %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Services we provide</h6>
+        <p>
+          {{ post.services_provided }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+    </div>
+  </div>
 </section>
 
+<!-- POST SWOT -->
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-2 pb-2">
+  <div class="container">
+    <div class="row-fluid">
+      <h5 class="text-center mt-4 mb-4">S.W.O.T.</h5>
+      {% if post.strengths %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Strengths </h6>
+        <p>
+          {{ post.strengths }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.weaknesses %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Weaknesses</h6>
+        <p>
+          {{ post.weaknesses }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.opportunities %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Opportunities</h6>
+        <p>
+          {{ post.opportunities }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.threats %}
+      <div class="col-12 ms-1 me-1 mb-3">
+        <h6 class="mt-2">Threats</h6>
+        <p>
+          {{ post.threats }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% if post.focus_privacy == False %}
+<!-- POST SWOT PRODUCTS & SERVICES -->
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-2 pb-2">
+  <div class="container">
+    <div class="row-fluid">
+      <h5 class="text-center mt-4 pt-4 mb-5">Business Focus</h5>
+      <div class="col-12 col-md-10 offset-md-1 shadow-sm pt-4 rounded border border-2 border-dark mb-5 mt-4 ps-2 pe-2">
+        <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">INNOVATION</h6>
+        <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{post.focus_innovation_style }}"><strong class="p-1">{% if post.focus_innovation > 10 %}{{ post.focus_innovation }} %{% else %}{{ post.focus_innovation }}%{% endif %}</strong></div>
+        </div>
+        <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">FINANCIALS</h6>
+        <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_financials_style }}"><strong class="p-1">{% if post.focus_financials > 10 %}{{ post.focus_financials }} %{% else %}{{ post.focus_financials }}%{% endif %}</strong></div>
+        </div>
+        <hr class="mb-4">
+        <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">PLANNING</h6>
+        <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_planning_style }}"><strong class="p-1">{% if post.focus_planning > 10 %}{{ post.focus_planning }} %{% else %}{{ post.focus_planning }}%{% endif %}</strong></div>
+        </div>
+        <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">MONITORING</h6>
+        <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_monitoring_style }}"><strong class="p-1">{% if post.focus_monitoring > 10 %}{{ post.focus_monitoring }} %{% else %}{{ post.focus_monitoring }}%{% endif %}</strong></div>
+        </div>
+        <hr class="mb-4">
+        <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">QUALITY</h6>
+        <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_quality_style }}"><strong class="p-1">{% if post.focus_quality > 10 %}{{ post.focus_quality }} %{% else %}{{ post.focus_quality }}%{% endif %}</strong></div>
+        </div>
+        <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">QUANTITY</h6>
+        <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_quantity_style }}"><strong class="p-1">{% if post.focus_quantity > 10 %}{{ post.focus_quantity }} %{% else %}{{ post.focus_quantity }}%{% endif %}</strong></div>
+        </div>
+        <hr class="mb-4">
+        <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">COLLABORATION</h6>
+        <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_collaboration_style }}"><strong class="p-1">{% if post.focus_collaboration > 10 %}{{ post.focus_collaboration }} %{% else %}{{ post.focus_collaboration }}%{% endif %}</strong></div>
+        </div>
+        <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">LEADERSHIP</h6>
+        <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_leadership_style }}"><strong class="p-1">{% if post.focus_leadership > 10 %}{{ post.focus_leadership }} %{% else %}{{ post.focus_leadership }}%{% endif %}</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% else %}
 {% endif %}
 
+{% if post.specialty_privacy == False %}
+<!-- POST BUSINESS SPECIALTIES -->
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-2 pb-2">
+  <div class="container">
+    <div class="row-fluid">
+      <h5 class="text-center mt-4 pt-4 mb-5">Business Departments</h5>
+      {% if post.specialty_privacy == False and post.special_ops %}
+      <div class="card text-white bg-dark mb-3 mt-4 shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">
+          Current
+          {% if post.percentage_special_privacy == False and post.percentage_special_ops %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_ops }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">OPERATIONS</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_ops }}
+          </p>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy_two == False and post.special_ops_two %}
+      <div class="card border-dark mb-3 border border-1 border-dark shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-dark d-flex justify-content-between align-items-center text-dark shadow-sm">
+          Future
+          {% if post.percentage_special_privacy == False and post.percentage_special_ops_two %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_ops_two }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">OPERATIONS</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_ops_two }}
+          </p>
+        </div>
+      </div> 
+      <hr>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy == False and post.special_supply_chain %}
+      <div class="card text-white bg-secondary mb-3 shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">
+          Current
+          {% if post.percentage_special_privacy == False and post.percentage_special_supply_chain %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_supply_chain }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">SUPPLY CHAIN</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_supply_chain }}
+          </p>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy_two == False and post.special_supply_chain_two %}
+      <div class="card border-secondary mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-secondary d-flex justify-content-between align-items-center text-secondary shadow-sm">
+          Future
+          {% if post.percentage_special_privacy == False and post.percentage_special_supply_chain_two %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_supply_chain_two }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">SUPPLY CHAIN</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_supply_chain_two }}
+          </p>
+        </div>
+      </div>
+      <hr>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy == False and post.special_tech %}
+      <div class="card text-white bg-primary mb-3 shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">
+          Current
+          {% if post.percentage_special_privacy == False and post.percentage_special_tech %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_tech }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">DATA & IT</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_tech }}
+          </p>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy_two == False and post.special_tech_two %}
+      <div class="card border-primary mb-3 border border-1 border-primary shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-primary d-flex justify-content-between align-items-center text-primary shadow-sm">
+          Future
+          {% if post.percentage_special_privacy == False and post.percentage_special_tech_two %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_tech_two }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">DATA & IT</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_tech_two }}
+          </p>
+        </div>
+      </div>
+      <hr>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy == False and post.special_hr %}
+      <div class="card text-dark bg-info mb-3 shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-dark d-flex justify-content-between align-items-center shadow-sm">
+          Current
+          {% if post.percentage_special_privacy == False and post.percentage_special_hr %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_hr }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">HUMAN RESOURCES</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_hr }}
+          </p>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy_two == False and post.special_hr_two %}
+      <div class="card border-info mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-info d-flex justify-content-between align-items-center text-info shadow-sm">
+          Future
+          {% if post.percentage_special_privacy == False and post.percentage_special_hr_two %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_hr_two }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">HUMAN RESOURCES</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_hr_two }}
+          </p>
+        </div>
+      </div>
+      <hr>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy == False and post.special_finance %}
+      <div class="card text-white bg-success mb-3 shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">
+          Current
+          {% if post.percentage_special_privacy == False and post.percentage_special_finance %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_finance }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">FINANCIAL</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_finance }}
+          </p>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy_two == False and post.special_finance_two %}
+      <div class="card border-success mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-success text-success d-flex justify-content-between align-items-center shadow-sm">
+          Future
+          {% if post.percentage_special_privacy == False and post.percentage_special_finance_two %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_finance_two }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">FINANCIAL</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_finance_two }}
+          </p>
+        </div>
+      </div>
+      <hr>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy == False and post.special_marketing %}
+      <div class="card text-dark bg-warning mb-3 shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-dark d-flex justify-content-between align-items-center shadow-sm">
+          Current
+          {% if post.percentage_special_privacy == False and post.percentage_special_marketing %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_marketing }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">MARKETING</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_marketing }}
+          </p>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy_two == False and post.special_marketing_two %}
+      <div class="card border-warning mb-3 border border-1 border-warning shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-warning d-flex justify-content-between align-items-center text-warning shadow-sm">
+          Future
+          {% if post.percentage_special_privacy == False and post.percentage_special_marketing_two %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_marketing_two }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">MARKETING</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_marketing_two }}
+          </p>
+        </div>
+      </div>
+      <hr>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy == False and post.special_research %}
+      <div class="card text-white bg-danger mb-3 shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">
+          Current
+          {% if post.percentage_special_privacy == False and post.percentage_special_research %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_research }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">R&D</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_research }}
+          </p>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy_two == False and post.special_research_two %}
+      <div class="card border-danger mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-danger d-flex justify-content-between align-items-center text-danger shadow-sm">
+          Future
+          {% if post.percentage_special_privacy == False and post.percentage_special_research_two %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_research_two }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">R&D</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_research_two }}
+          </p>
+        </div>
+      </div>
+      <hr>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy == False and post.special_sustainability %}
+      <div class="card text-dark bg-light mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-secondary d-flex justify-content-between align-items-center bg-light text-secondary shadow-sm">
+          Current
+          {% if post.percentage_special_privacy == False and post.percentage_special_sustainability %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_sustainability }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">SUSTAINABILITY</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_sustainability }}
+          </p>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.specialty_privacy_two == False and post.special_sustainability_two %}
+      <div class="card mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+        <div class="card-header border-bottom border-1 border-secondary d-flex justify-content-between align-items-center text-secondary shadow-sm">
+          Future
+          {% if post.percentage_special_privacy == False and post.percentage_special_sustainability_two %}
+          <p class="text-end mb-0">
+            {{ post.percentage_special_sustainability_two }} %
+          </p>
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="card-body shadow-sm">
+          <h5 class="card-title pt-1">SUSTAINABILITY</h5>
+          <p class="card-text pt-2 pb-1">
+            {{ post.special_sustainability_two }}
+          </p>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}     
+    </div>
+  </div>
+</section>
+{% else %}
+{% endif %}
 
+{% else %}
+{% endif %}
 
 <!-- BREADCRUMB + OFFCANVAS -->
 <div class="container-fluid bg-secondary fixed-top shadow-sm p-0" id="post-breadcrumb">
@@ -120,137 +602,6 @@
     </div>
   </div>
 </div>
-<!-- SECTION CARDS -->
-<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Primary card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Secondary card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Success card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Danger card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Warning card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card text-dark bg-info mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Info card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Light card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Dark card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<hr>
-<div class="card border-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body text-primary">
-    <h5 class="card-title">Primary card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card border-secondary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body text-secondary">
-    <h5 class="card-title">Secondary card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card border-success mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body text-success">
-    <h5 class="card-title">Success card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card border-danger mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body text-danger">
-    <h5 class="card-title">Danger card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card border-warning mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Warning card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card border-info mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Info card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card border-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Light card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<div class="card border-dark mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body text-dark">
-    <h5 class="card-title">Dark card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div>
-<hr>
 <!-- NEXT PAGE -->
 <section class="bg-secondary-lighter pb-2 pt-5">
   <div class="container-fluid">

@@ -667,11 +667,12 @@ class Post(models.Model):
     post_about_privacy = models.BooleanField(default=False)
 
     organization_info = models.TextField(max_length=525, blank=True, null=True)
-    products_provided = models.CharField(max_length=84, blank=True, null=True)
-    services_provided = models.CharField(max_length=84, blank=True, null=True)
     organization_mission = models.TextField(max_length=525, blank=True, null=True)
     organization_vision = models.TextField(max_length=525, blank=True, null=True)
     organization_culture = models.TextField(max_length=525, blank=True, null=True)
+
+    products_provided = models.CharField(max_length=84, blank=True, null=True)
+    services_provided = models.CharField(max_length=84, blank=True, null=True)
 
     strengths = models.TextField(max_length=168, blank=True, null=True)
     weaknesses = models.TextField(max_length=168, blank=True, null=True)

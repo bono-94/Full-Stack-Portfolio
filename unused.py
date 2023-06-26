@@ -623,36 +623,99 @@ class CustomSignupForm(SignupForm):
 
 
 
-#         <!-- SECTION -->
+# #         <!-- SECTION -->
+# # <hr class="bg-secondary-lighter p-0 m-0">
+# # <section class="bg-secondary-lighter pt-2 pb-1">
+# #   <div class="container">
+# #     <div class="row">
+# #       <h5 class="text-center mt-4 mb-4">Page subtitle</h5>
+# #       <div class="col-12 ms-1 me-1 mb-1">
+# #         <h6 class="mt-2">Field Name</h6>
+# #         <p>
+# #           {{ post.pps_vision }}
+# #         </p>
+# #       </div>
+# #       <div class="col-12 ms-1 me-1 mb-1">
+# #         <h6 class="mt-2">Field Name</h6>
+# #         <p>
+# #           {{ post.pps_goals }}
+# #         </p>
+# #       </div>
+# #       <div class="col-12 ms-1 me-1 mb-1">
+# #         <h6 class="mt-2">Field Name</h6>
+# #         <p>
+# #           {{ post.pps_missions }}
+# #         </p>
+# #       </div>
+# #       <div class="col-12 ms-1 me-1 mb-3">
+# #         <h6 class="mt-2">Field Name</h6>
+# #         <p>
+# #           {{ post.pps_planner }}
+# #         </p>
+# #       </div>
+# #     </div>
+# #   </div>
+# # </section>
+
+# <!-- POST OPPS DETAILS -->
+# {% if post.post_opps_details_privacy == False %}
+
+# <!-- SECTION -->
 # <hr class="bg-secondary-lighter p-0 m-0">
 # <section class="bg-secondary-lighter pt-2 pb-1">
+#   <h3 class="text-center mt-5 mb-5">
+#     {{ post.post_type }} Post Details
+#   </h3>
+#   <hr>
 #   <div class="container">
 #     <div class="row">
-#       <h5 class="text-center mt-4 mb-4">Page subtitle</h5>
+#       <h5 class="text-center mt-4 mb-4">Strategy</h5>
+#       {% if post. %}
 #       <div class="col-12 ms-1 me-1 mb-1">
-#         <h6 class="mt-2">Field Name</h6>
+#         <h6 class="mt-2">Vision</h6>
 #         <p>
 #           {{ post.pps_vision }}
 #         </p>
 #       </div>
+#       {% else %}
+#       {% endif %}
+#       {% if post. %}
 #       <div class="col-12 ms-1 me-1 mb-1">
-#         <h6 class="mt-2">Field Name</h6>
-#         <p>
-#           {{ post.pps_goals }}
-#         </p>
-#       </div>
-#       <div class="col-12 ms-1 me-1 mb-1">
-#         <h6 class="mt-2">Field Name</h6>
+#         <h6 class="mt-2">Missions</h6>
 #         <p>
 #           {{ post.pps_missions }}
 #         </p>
 #       </div>
+#       {% else %}
+#       {% endif %}
+#       {% if post. %}
+#       <div class="col-12 ms-1 me-1 mb-1">
+#         <h6 class="mt-2">Goals</h6>
+#         <p>
+#           {{ post.pps_goals }}
+#         </p>
+#       </div>
+#       {% else %}
+#       {% endif %}
+#       {% if post. %}
 #       <div class="col-12 ms-1 me-1 mb-3">
-#         <h6 class="mt-2">Field Name</h6>
+#         <h6 class="mt-2">Planner</h6>
 #         <p>
 #           {{ post.pps_planner }}
 #         </p>
 #       </div>
+#       {% else %}
+#       {% endif %}
 #     </div>
 #   </div>
 # </section>
+
+# <!-- SECTION -->
+# <section>
+  
+# </section>
+
+# {% else %}
+# {% endif %}
+
+

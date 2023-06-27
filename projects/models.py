@@ -752,6 +752,21 @@ class Post(models.Model):
     # PAGE 5
     # POST FILES - BUSINESS LIBRARY
     post_bridge_privacy_library = models.BooleanField(default=False)
+    document_file_validators = ['doc', 'docx', 'pdf', 'zip']
+    image_file_validators = ['jpg', 'jpeg', 'png']
+    data_file_validators = [
+        'xlsx',
+        'xls',
+        'xlsm',
+        'xlsb',
+        'csv',
+        'parquet'
+        ]
+
+    m = document_file_validators
+    a = image_file_validators
+    x = data_file_validators
+    all_file_extension_validator = m + a + x
 
     organizational_structure = models.FileField(
         upload_to='organizational_structures/',
@@ -759,7 +774,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -771,7 +788,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -783,7 +802,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -795,7 +816,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -807,14 +830,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=[
-                'xlsx',
-                'xls',
-                'xlsm',
-                'xlsb',
-                'csv',
-                'parquet'
-            ]),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_hundred
         ],
@@ -826,14 +844,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=[
-                'xlsx',
-                'xls',
-                'xlsm',
-                'xlsb',
-                'csv',
-                'parquet'
-            ]),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_hundred
         ],
@@ -845,7 +858,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -857,7 +872,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -869,7 +886,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -881,7 +900,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -893,7 +914,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -905,7 +928,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -917,7 +942,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -929,7 +956,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -941,7 +970,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -953,7 +984,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -968,7 +1001,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -980,7 +1015,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -992,7 +1029,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -1004,7 +1043,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -1016,7 +1057,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -1028,7 +1071,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -1040,7 +1085,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -1052,7 +1099,9 @@ class Post(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=all_file_extension_validator
+                ),
             validate_file_name_length,
             max_file_size_ten
         ],

@@ -6,6 +6,306 @@
 
 {% load static %}
 
+<!-- POST LIBRARY -->
+{% if post.post_bridge_privacy_library == False %}
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-4 pb-4">
+  <div class="container">
+    <div class="row-fluid pb-2">
+      <h5 class="text-center mt-4 mb-4 pb-3">Library</h5>
+      <ul class="list-group border border-1 border-secondary mb-4 shadow-sm">
+        {% if post.organizational_structure %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Organizational Structure
+          <div class="text-end position-absolute top-0 end-0 pt-1 mt-1 pe-2">
+            <a href="{{ post.organizational_structure.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-sitemap text-secondary me-2 pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.flowchart %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Flowchart
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.flowchart.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-share-nodes me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.agenda %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Agenda
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.agenda.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-timeline text-secondary me-2 pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.tasklist %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Tasklist
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.tasklist.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-rectangle-list me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.schedule %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Schedule
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.schedule.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-calendar-days me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.financial_reports %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Financial Reports
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.financial_reports.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-file-invoice-dollar me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.supply_chain_map %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Supply Chain
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.supply_chain_map.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-truck-fast me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.data_architecture_map %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Data Architecture
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.data_architecture_map.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-network-wired me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.standard_operational_procedures %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          <span class="d-flex d-sm-none">
+            S.O.P. (Procedures)
+          </span> 
+          <span class="d-none d-sm-flex">
+            Standard Operational Procedures
+          </span> 
+          
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.standard_operational_procedures.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-book-open-reader me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.marketing_strategy_map %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Marketing Strategy
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.marketing_strategy_map.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-person-rays me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.hr_handbook %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          HR Handbook
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.hr_handbook.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-address-book me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.sustainability_report %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Sustainability Report
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.sustainability_report.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-leaf me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.research_and_development_agenda %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          R&D Agenda
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.research_and_development_agenda.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-microscope me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.promotional_materials %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Promotional Materials
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.promotional_materials.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-tag me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.certification %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Certification
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.certification.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-certificate me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.articles %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Articles
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.articles.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-newspaper me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% else %}
+{% endif %}
+
+<!-- POST CABINET -->
+{% if post.post_bridge_privacy_cabinet == False %}
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-2">
+  <div class="container">
+    <div class="row-fluid pb-2">
+      <h5 class="text-center mt-5 mb-4 pb-3">Cabinet</h5>
+      <ul class="list-group border border-1 border-secondary mb-4 shadow-sm">
+        {% if post.business_plan %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Business Plan
+          <div class="text-end position-absolute top-0 end-0 pt-1 mt-1 pe-2">
+            <a href="{{ post.business_plan.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-book-atlas text-secondary me-2 pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.implementation_plan %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Implementation Plan
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.implementation_plan.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-book me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.pestle_report %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          PESTLE Report
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.pestle_report.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-earth-americas text-secondary me-2 pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.internal_report %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Internal Report
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.internal_report.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-person-shelter me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.capabilities %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Capabilities
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.capabilities.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-users-gear me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.business_model_canvas %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Business Model Canvas
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.business_model_canvas.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-cubes me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.contracts %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Contracts
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.contracts.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-file-signature me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+        {% if post.terms_conditions %}
+        <li class="list-group-item list-group-item-info text-secondary">
+          Terms & Conditions
+          <div class="text-end position-absolute top-0 end-0 pt-2 pe-2">
+            <a href="{{ post.terms_conditions.url }}" target="_blank" class="hvr-sweep-to-bottom">
+                <i class="fa-solid fa-scale-balanced me-2 text-secondary pb-1 border-bottom border-2 border-secondary"></i>
+            </a>
+        </div>
+        </li>
+        {% else %}
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% else %}
+{% endif %}
+
 <!-- BREADCRUMB + OFFCANVAS -->
 <div class="container-fluid bg-secondary fixed-top shadow-sm p-0" id="post-breadcrumb">
   <div class="row">

@@ -628,7 +628,6 @@ class Post(models.Model):
     launch_date_privacy = models.BooleanField(default=False)
 
     launch_date = models.DateField(default=timezone.now, blank=True, null=True)
-    same_start_launch_date = models.BooleanField(default=False)
 
     # PAGE 2
     # POST DETAILS O/P/P/S
@@ -1112,6 +1111,7 @@ class Post(models.Model):
     post_proposal_model_privacy = models.BooleanField(default=False)
 
     # FUNDING TIMING
+    same_start_launch_date = models.BooleanField(default=False)
     funding_start_date = models.DateField(default=timezone.now, blank=True, null=True)
     funding_end_date = models.DateField(default=timezone.now, blank=True, null=True)
     funding_infinite_end_date = models.BooleanField(default=False)
@@ -1272,7 +1272,7 @@ class Post(models.Model):
         total_years = duration // 365  # Assuming 365 days per year
         return total_years
     
-    # POST OFFER DURATION
+    # POST PROPOSAL DURATION
     def post_duration_days(self):
         duration = self.funding_end_date - self.funding_start_date
         return duration.days

@@ -6,68 +6,111 @@
 
 {% load static %}
 
-<!-- POST LIBRARY -->
-{% if post.post_bridge_privacy_library == False %}
+<!-- POST OPPS DETAILS -->
+{% if post.post_opps_details_privacy == False %}
+
+funding_start_date
+funding_end_date
+funding_infinite_end_date
+funding_payout_date
++ post_payout_duration_days, + post_payout_duration_months, + post_payout_duration_years
+
+<!-- FUNDING DATE -->
+{% if post.launch_date_privacy == False and post.launch_date %}
 <hr class="bg-secondary-lighter p-0 m-0">
-<section class="bg-secondary-lighter pt-4 pb-2">
-  <div class="container">
-    <div class="row-fluid">
-      <h5 class="text-center mt-4 mb-4">Story</h5>
-      {% if post.business_knowledge %}
-      <div class="col-12 ms-1 me-1 mb-1">
-        <h6 class="mt-2">Knowledge </h6>
-        <p>
-          {{ post.business_knowledge }}
+<section class="bg-secondary-lighter pt-2 pb-2">
+  <h3 class="text-center mt-5 mb-5">
+    {{ post.post_type }} Proposal
+  </h3>
+  <hr>
+  <div class="container-fluid">
+    <div class="row-fluid pt-2 pb-2">
+      <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mt-5 mb-sm-2 mb-lg-4 pt-4 pb-3 text-center position-relative shadow-sm">
+        <i class="fa-solid fa-rocket text-end position-absolute top-0 end-0 mt-2 me-2"></i>
+        <h5>Funding Start</h5>
+        <p class="mt-3 pt-2 text-info">
+          <strong>
+            {% if post.same_start_launch_date == True %}
+            {{ post.launch_date }}
+            {% else %}
+            {{ post.funding_start_date }}
+            {% endif %}
+          </strong>
         </p>
       </div>
-      {% else %}
-      {% endif %}
-      {% if post.journey %}
-      <div class="col-12 ms-1 me-1 mb-1">
-        <h6 class="mt-2">Journey (past - present)</h6>
-        <p>
-          {{ post.journey }}
+    </div>
+    <div class="row-fluid pt-3 pb-4">
+      <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mt-4 mb-sm-2 mb-lg-4 pt-4 pb-3 text-center position-relative shadow-sm">
+        <i class="fa-solid fa-rocket text-end position-absolute top-0 end-0 mt-2 me-2"></i>
+        <h5>Funding End</h5>
+        <p class="mt-3 pt-2 text-info">
+          <strong>
+            {% if post.infinite_end_date == True %}
+            Infinity
+            <i class="fa-solid fa-infinity ms-1"></i>
+            {% else %}
+            {{ post.funding_end_date }}
+            {% endif %}
+          </strong>
         </p>
       </div>
-      {% else %}
-      {% endif %}
-      {% if post.future %}
-      <div class="col-12 ms-1 me-1 mb-1">
-        <h6 class="mt-2">Future</h6>
-        <p>
-          {{ post.future }}
-        </p>
+    </div>
+    <div class="row pb-4">
+      <div class="col-11 col-sm-8 col-md-6 mx-auto bg-dark rounded text-light mt-4 mb-2 mb-lg-4 pt-3 pb-4 text-center shadow-sm position-relative shadow-sm">
+        <i class="fa-solid fa-stopwatch position-absolute top-0 end-0 mt-3 me-2" style="font-size: 18px;"></i>
+        <h5 class="mb-4 pb-3 mt-2">Duration Countdowns</h5>
+        <div class="row justify-content-between text-dark mt-1">
+          <div class="col bg-info rounded ms-2 me-1 pt-2">
+            <p class="mb-2 mb-1 shadow-sm"><strong>DAYS</strong></p>
+            <p class="bg-dark text-white rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
+              <strong>
+                {% if post.infinite_end_date == True %}
+                  <i class="fa-solid fa-infinity fa-spin"></i>
+                {% else %}
+                  [{{ post.post_duration_days }}]
+                {% endif %}
+              </strong>
+            </p>
+          </div>
+          <div class="col bg-info rounded ms-1 me-1 pt-2">
+            <p class="mb-2 mb-1 shadow-sm"><strong>MONTHS</strong></p>
+            <p class="bg-dark text-white rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
+              <strong>
+                {% if post.infinite_end_date == True %}
+                  <i class="fa-solid fa-infinity fa-spin"></i>
+                {% else %}
+                   [{{ post.post_duration_months }}]
+                {% endif %}
+              </strong>
+            </p>
+          </div>
+          <div class="col bg-info rounded ms-1 me-2 pt-2 border border-1 border-info">
+            <p class="mb-2 mb-1 shadow-sm"><strong>YEARS</strong></p>
+            <p class="bg-dark text-white rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
+              <strong>
+                {% if post.infinite_end_date == True %}
+                  <i class="fa-solid fa-infinity fa-spin"></i>
+                {% else %}
+                  [{{ post.post_duration_years }}]
+                {% endif %}
+              </strong>
+            </p>
+          </div>
+        </div>
       </div>
-      {% else %}
-      {% endif %}
-      {% if post.legacy %}
-      <div class="col-12 ms-1 me-1 mb-3">
-        <h6 class="mt-2">Legacy</h6>
-        <p>
-          {{ post.legacy }}
-        </p>
-      </div>
-      {% else %}
-      {% endif %}
     </div>
   </div>
 </section>
-
 {% else %}
 {% endif %}
-<!-- POST OPPS DETAILS -->
-{% if post.post_opps_details_privacy == False %}
 
 <!-- SECTION -->
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
-  <h3 class="text-center mt-5 mb-5">
-    {{ post.post_type }} Post Details
-  </h3>
-  <hr>
+  
   <div class="container">
     <div class="row">
-      <h5 class="text-center mt-4 mb-4">Strategy</h5>
+      
       {% if post. %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Vision</h6>
@@ -115,6 +158,57 @@
 
 {% else %}
 {% endif %}
+
+<!-- POST LIBRARY -->
+{% if post.post_bridge_privacy_library == False %}
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-4 pb-">
+  <div class="container">
+    <div class="row-fluid">
+      <h5 class="text-center mt-4 mb-4">Story</h5>
+      {% if post.business_knowledge %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Knowledge </h6>
+        <p>
+          {{ post.business_knowledge }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.journey %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Journey (past - present)</h6>
+        <p>
+          {{ post.journey }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.future %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Future</h6>
+        <p>
+          {{ post.future }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.legacy %}
+      <div class="col-12 ms-1 me-1 mb-3">
+        <h6 class="mt-2">Legacy</h6>
+        <p>
+          {{ post.legacy }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% else %}
+{% endif %}
+
 
 <!-- BREADCRUMB + OFFCANVAS -->
 <div class="container-fluid bg-secondary fixed-top shadow-sm p-0" id="post-breadcrumb">
@@ -183,81 +277,7 @@
     </div>
   </div>
 </div>
-<!--  -->
-<section class="bg-secondary-lighter">
-  <div class="container-fluid">
-    <div class="row-fluid pb-1">
-      <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mb-sm-2 mb-lg-4 pt-4 pb-3 text-center shadow-sm">
-        <h5>Funding Start</h5>
-        <p class="mt-3 pt-2 text-info">
-          <strong>
-            {% if post.same_start_launch_date == True %}
-            {{ post.launch_date }}
-            {% else %}
-            {{ post.funding_start_date }}
-            {% endif %}
-          </strong>
-        </p>
-      </div>
-      <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mt-4 mb-sm-2 mb-lg-4 pt-4 pb-3 text-center shadow-sm">
-        <h5>Funding End</h5>
-        <p class="mt-3 pt-2 text-info">
-          <strong>
-            {% if post.infinite_end_date == True %}
-            Infinity
-            <i class="fa-solid fa-infinity ms-1"></i>
-            {% else %}
-            {{ post.funding_end_date }}
-            {% endif %}
-          </strong>
-        </p>
-      </div>
-    </div>
-    <div class="row pb-3">
-      <div class="col-11 col-sm-8 col-md-6 mx-auto bg-dark rounded text-light mt-4 mb-2 mb-lg-4 pt-3 pb-4 text-center shadow-sm">
-        <h5 class="mb-4 pb-3 mt-2">Funding Campaign Countdowns</h5>
-        <div class="row justify-content-between text-dark mt-1">
-          <div class="col bg-info rounded ms-2 me-1 pt-2">
-            <p class="mb-2 mb-1 shadow-sm"><strong>DAYS</strong></p>
-            <p class="bg-dark text-warning rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
-              <strong>
-                {% if post.infinite_end_date == True %}
-                  <i class="fa-solid fa-infinity fa-spin"></i>
-                {% else %}
-                  [{{ post.post_duration_days }}]
-                {% endif %}
-              </strong>
-            </p>
-          </div>
-          <div class="col bg-info rounded ms-1 me-1 pt-2">
-            <p class="mb-2 mb-1 shadow-sm"><strong>MONTHS</strong></p>
-            <p class="bg-dark text-warning rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
-              <strong>
-                {% if post.infinite_end_date == True %}
-                  <i class="fa-solid fa-infinity fa-spin"></i>
-                {% else %}
-                   [{{ post.post_duration_months }}]
-                {% endif %}
-              </strong>
-            </p>
-          </div>
-          <div class="col bg-info rounded ms-1 me-2 pt-2 border border-1 border-info">
-            <p class="mb-2 mb-1 shadow-sm"><strong>YEARS</strong></p>
-            <p class="bg-dark text-warning rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
-              <strong>
-                {% if post.infinite_end_date == True %}
-                  <i class="fa-solid fa-infinity fa-spin"></i>
-                {% else %}
-                  [{{ post.post_duration_years }}]
-                {% endif %}
-              </strong>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> 
+
 <!-- NEXT PAGE -->
 <section class="bg-secondary-lighter pb-2 pt-5">
   <div class="container-fluid">
@@ -300,79 +320,5 @@
     </div>
   </div>
 </section>
+
 {% endblock posts_base_content %}
-<!-- FUNDING DATES -->
-<section class="bg-secondary-lighter">
-    <div class="container-fluid">
-      <div class="row-fluid pb-1">
-        <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mb-sm-2 mb-lg-4 pt-4 pb-3 text-center shadow-sm">
-          <h5>Funding Start</h5>
-          <p class="mt-3 pt-2 text-info">
-            <strong>
-              {% if post.same_start_launch_date == True %}
-              {{ post.launch_date }}
-              {% else %}
-              {{ post.start_date }}
-              {% endif %}
-            </strong>
-          </p>
-        </div>
-        <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mt-4 mb-sm-2 mb-lg-4 pt-4 pb-3 text-center shadow-sm">
-          <h5>Funding End</h5>
-          <p class="mt-3 pt-2 text-info">
-            <strong>
-              {% if post.infinite_end_date == True %}
-              Infinity
-              <i class="fa-solid fa-infinity ms-1"></i>
-              {% else %}
-              {{ post.funding_end_date }}
-              {% endif %}
-            </strong>
-          </p>
-        </div>
-      </div>
-      <div class="row pb-3">
-        <div class="col-11 col-sm-8 col-md-6 mx-auto bg-dark rounded text-light mt-4 mb-2 mb-lg-4 pt-3 pb-4 text-center shadow-sm">
-          <h5 class="mb-4 pb-3 mt-2">Funding Campaign Countdowns</h5>
-          <div class="row justify-content-between text-dark mt-1">
-            <div class="col bg-info rounded ms-2 me-1 pt-2">
-              <p class="mb-2 mb-1 shadow-sm"><strong>DAYS</strong></p>
-              <p class="bg-dark text-warning rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
-                <strong>
-                  {% if post.infinite_end_date == True %}
-                    <i class="fa-solid fa-infinity fa-spin"></i>
-                  {% else %}
-                    [{{ post.post_duration_days }}]
-                  {% endif %}
-                </strong>
-              </p>
-            </div>
-            <div class="col bg-info rounded ms-1 me-1 pt-2">
-              <p class="mb-2 mb-1 shadow-sm"><strong>MONTHS</strong></p>
-              <p class="bg-dark text-warning rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
-                <strong>
-                  {% if post.infinite_end_date == True %}
-                    <i class="fa-solid fa-infinity fa-spin"></i>
-                  {% else %}
-                     [{{ post.post_duration_months }}]
-                  {% endif %}
-                </strong>
-              </p>
-            </div>
-            <div class="col bg-info rounded ms-1 me-2 pt-2 border border-1 border-info">
-              <p class="mb-2 mb-1 shadow-sm"><strong>YEARS</strong></p>
-              <p class="bg-dark text-warning rounded d-inline-block mt-1 ps-2 pe-2 pt-1 pb-1 border border-1 border-dark text-shdw-sharp shadow-sm">
-                <strong>
-                  {% if post.infinite_end_date == True %}
-                    <i class="fa-solid fa-infinity fa-spin"></i>
-                  {% else %}
-                    [{{ post.post_duration_years }}]
-                  {% endif %}
-                </strong>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> 

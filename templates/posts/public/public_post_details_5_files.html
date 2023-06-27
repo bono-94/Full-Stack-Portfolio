@@ -10,9 +10,13 @@
 {% if post.post_bridge_privacy_library == False %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-4 pb-4">
+  <h3 class="text-center mt-5 mb-5">
+    {{ post.post_type }} Documentation
+  </h3>
+  <hr>
   <div class="container">
     <div class="row-fluid pb-2">
-      <h5 class="text-center mt-4 mb-4 pb-3">Library</h5>
+      <h5 class="text-center mt-5 mb-4 pb-3">Library</h5>
       <ul class="list-group border border-1 border-secondary mb-4 shadow-sm">
         {% if post.organizational_structure %}
         <li class="list-group-item list-group-item-info text-secondary">
@@ -415,4 +419,5 @@
     </div>
   </div>
 </section>
+
 {% endblock posts_base_content %}

@@ -1105,14 +1105,14 @@ class Post(models.Model):
     stocks_quantity_total_supply = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
 
     stocks_quantity_proposal = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
-    stocks_proposal_note = models.CharField(max_length=84, blank=True, null=True)
+    stocks_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
     stocks_proposal_return = models.TextField(max_length=210, blank=True, null=True)
 
     # OWNERSHIP PERCENTAGE PER O.P.P.S TYPES PROPOSAL
     ownership_percentage_opps_type = models.CharField(max_length=12, choices=TYPE_OF_OWNERSHIP_PCT_OFFER, blank=True, null=True)
 
     ownership_percentage_opps_quantity_proposal = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    ownership_percentage_opps_proposal_note = models.CharField(max_length=84, blank=True, null=True)
+    ownership_percentage_opps_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
     ownership_percentage_opps_proposal_return = models.TextField(max_length=210, blank=True, null=True)
 
     # END PRODUCT OR SERVICE PROPOSAL
@@ -1120,36 +1120,36 @@ class Post(models.Model):
     end_product_or_service_total_supply = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
     
     end_product_or_service_quantity_proposal = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
-    end_product_or_service_merch_proposal = models.TextField(max_length=84, blank=True, null=True)
-    end_product_or_service_membership_proposal = models.TextField(max_length=84, blank=True, null=True)
-    end_product_or_service_proposal_note = models.CharField(max_length=84, blank=True, null=True)
+    end_product_or_service_merch_proposal = models.TextField(max_length=210, blank=True, null=True)
+    end_product_or_service_membership_proposal = models.TextField(max_length=210, blank=True, null=True)
+    end_product_or_service_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
     end_product_or_service_proposal_return = models.TextField(max_length=210, blank=True, null=True)
 
     # LIFETIME DISCOUNT PERCENTAGE PROPOSAL
     lifetime_discount_percentages_quantity_proposal = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    lifetime_discount_percentages_quality_proposal_note = models.CharField(max_length=84, blank=True, null=True)
+    lifetime_discount_percentages_quality_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
     lifetime_discount_percentages_proposal_return = models.TextField(max_length=210, blank=True, null=True)
 
     # GUARANTEEED TEAM POSITION PROPOSAL
-    team_guaranteed_position_title_proposal = models.CharField(max_length=42, blank=True, null=True)
+    team_guaranteed_position_title_proposal = models.TextField(max_length=42, blank=True, null=True)
     team_guaranteed_responsibilities_proposal = models.TextField(max_length=210, blank=True, null=True)
     team_guaranteed_employment_conditions_proposal = models.TextField(max_length=210, blank=True, null=True)
-    team_guaranteed_proposal_return = models.TextField(max_length=210, blank=True, null=True)
+    team_guaranteed_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
 
     # PARTNERSHIP PROPOSAL
-    partnership_proposal = models.TextField(max_length=210, blank=True, null=True)
+    partnership_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
     partnership_proposal_return = models.TextField(max_length=210, blank=True, null=True)
     
     # COLLABORATION PROPOSAL
-    collaboration_proposal = models.TextField(max_length=210, blank=True, null=True)
+    collaboration_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
     collaboration_proposal_return = models.TextField(max_length=210, blank=True, null=True)
 
     # SPONSORSHIP PROPOSAL
-    sponsorship_proposal = models.TextField(max_length=210, blank=True, null=True)
+    sponsorship_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
     sponsorship_proposal_return = models.TextField(max_length=210, blank=True, null=True)
 
     # OPEN PROPOSAL
-    open_proposal = models.TextField(max_length=210, blank=True, null=True)
+    open_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
     open_proposal_proposal_return = models.TextField(max_length=210, blank=True, null=True)
 
     # PROPOSAL TERMS

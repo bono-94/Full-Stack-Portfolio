@@ -493,23 +493,7 @@ class Post(models.Model):
         if value.size > limit:
             raise ValidationError("Please upload a file under 100 MB.")
 
-    # STOCK VALIDATION - if doesnt work, remove self and replace one below with instance.
-
-    def validate_stock_proposal(value, self):
-        stocks_proposal = value
-        stocks_supply = self.stocks_quantity_total_supply
-
-        if stocks_proposal and stocks_supply and stocks_proposal > stocks_supply:
-            raise ValidationError("Stocks offering cannot be higher than stocks supply.")
-
-    # END PRODUCT OR SERVICE VALIDATION - if doesnt work, remove self and replace one below with instance.
-
-    def validate_end_ps_proposal(value, self):
-        stocks_offering = value
-        stocks_supply = self.stocks_supply
-
-        if stocks_offering and stocks_supply and stocks_offering > stocks_supply:
-            raise ValidationError("Stocks offering cannot be higher than stocks supply.")
+    
 
     # POST LIST CARD CONTENT
     post_list_description = models.CharField(max_length=84, blank=False, null=True)
@@ -1120,7 +1104,7 @@ class Post(models.Model):
     # STOCKS PROPOSAL
     stocks_quantity_total_supply = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
 
-    stocks_quantity_proposal = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999), validate_stock_proposal], blank=True, null=True)
+    stocks_quantity_proposal = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
     stocks_proposal_note = models.CharField(max_length=84, blank=True, null=True)
     stocks_proposal_return = models.TextField(max_length=210, blank=True, null=True)
 
@@ -1135,7 +1119,7 @@ class Post(models.Model):
     end_product_or_service_type = models.CharField(max_length=7, choices=TYPE_OF_END_SERVICE_OR_PRODUCT, blank=True, null=True)
     end_product_or_service_total_supply = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
     
-    end_product_or_service_quantity_proposal = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999), validate_end_ps_proposal], blank=True, null=True)
+    end_product_or_service_quantity_proposal = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
     end_product_or_service_merch_proposal = models.TextField(max_length=84, blank=True, null=True)
     end_product_or_service_membership_proposal = models.TextField(max_length=84, blank=True, null=True)
     end_product_or_service_proposal_note = models.CharField(max_length=84, blank=True, null=True)

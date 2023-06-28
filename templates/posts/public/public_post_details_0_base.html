@@ -199,60 +199,35 @@ status for acess rules
 public_privacy for privacy on each page in once
 launch_date_privacy
 
-post_background_audio
-
 post_colors_list
-
 post_color_primary
 post_color_secondary
 post_color_text
 
+post_background_audio
+check all media once
+Remove all media after checking until next check
+
 
 ------------------------
-
-!!! if post_proposal_model_privacy:!!!
-
-
-  stocks_quantity_total_supply
-  stocks_quantity_proposal
-  stocks_proposal_note
-  stocks_proposal_return
-
-  ownership_percentage_opps_type
-  ownership_percentage_opps_quantity_proposal
-  ownership_percentage_opps_proposal_note
-  ownership_percentage_opps_proposal_return
-
-  end_product_or_service_type
-  end_product_or_service_total_supply
-  end_product_or_service_quantity_proposal
-  end_product_or_service_merch_proposal
-  end_product_or_service_membership_proposal
-  end_product_or_service_proposal_note
-  end_product_or_service_proposal_return
-
-  lifetime_discount_percentages_quantity_proposal
-  lifetime_discount_percentages_quality_proposal_note
-  lifetime_discount_percentages_proposal_return
-
-  team_guaranteed_position_title_proposal
-  team_guaranteed_responsibilities_proposal
-  team_guaranteed_employment_conditions_proposal
-  team_guaranteed_proposal_return
-
-  partnership_proposal
-  partnership_proposal_return
   
-  collaboration_proposal
-  collaboration_proposal_return
+  
 
-  sponsorship_proposal
-  sponsorship_proposal_return
+  team_tile = longer
+  team_guaranteed_responsibilities_proposal - longer
+  team_guaranteed_employment_conditions_proposal - longer
+  team_costs rename from team_guaranteed_proposal_return and same length as other costs
 
-  open_proposal
-  open_proposal_proposal_return
+  fee payment model on every offer but only showed to the author above stocks page
+  add costs to each proposal model under quantity
+  Add place offer button that leads to offer modal
+  rename note to costs and allow them to be as long as return
+  
+  add contact link to author and owner page
 
-  proposal_terms_and_conditions
+  offer money takes you to offer page, but buttons on each offer create custom email modal for sending offer
+
+sixth page above dates:
 
 if post_contact_privacy:
 
@@ -260,13 +235,13 @@ if post_contact_privacy:
   public_phone
   contact_days
   contact_hours
-  website_link
-  facebook_link
-  twitter_link
-  instagram_link
-  linkedin_link
-  youtube_link
-
+  links
+    website_link
+    facebook_link
+    twitter_link
+    instagram_link
+    linkedin_link
+    youtube_link
 </p>
 
 {% endblock content %}

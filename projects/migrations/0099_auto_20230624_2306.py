@@ -175,7 +175,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='end_product_or_service_quantity_proposal',
-            field=models.IntegerField(blank=True, null=True, validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(999999999999), projects.models.Post.validate_end_ps_proposal]),
+            field=models.IntegerField(blank=True, null=True, validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(999999999999)]),
         ),
         migrations.AddField(
             model_name='post',

@@ -145,6 +145,7 @@ class ProfileForm(forms.ModelForm):
                 msg = f"The sum of {focus_fields[i].split('_', 1)[1]} and {focus_fields[i+1].split('_', 1)[1]} must be equal to 100."
                 self.add_error(focus_fields[i], msg)
                 self.add_error(focus_fields[i+1], msg)
+
         return cleaned_data
 
 
@@ -385,6 +386,8 @@ class PostForm(forms.ModelForm):
             'focus_collaboration',
             'focus_leadership',
         ]
+        total_supply = cleaned_data.get('stocks_quantity_total_supply')
+        proposal = cleaned_data.get('stocks_quantity_proposal')
 
         focus_values = [cleaned_data.get(field) for field in focus_fields]
         for i in range(0, 8, 2):
@@ -394,6 +397,10 @@ class PostForm(forms.ModelForm):
                 msg = f"The sum of {focus_fields[i].split('_', 1)[1]} and {focus_fields[i+1].split('_', 1)[1]} must be equal to 100."
                 self.add_error(focus_fields[i], msg)
                 self.add_error(focus_fields[i+1], msg)
+
+        if total_supply is not None and proposal is not None and proposal > total_supply:
+            self.add_error('stocks_quantity_proposal', "Stocks proposed cannot be higher than stocks total supply.")
+
         return cleaned_data
 
 

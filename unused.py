@@ -719,3 +719,24 @@ class CustomSignupForm(SignupForm):
 # {% endif %}
 
 
+# STOCK VALIDATION - if doesnt work, remove self and replace one below with instance.
+
+    def validate_stock_proposal(value, instance):
+        stocks_proposal = value
+        stocks_supply = instance.stocks_quantity_total_supply
+
+        if stocks_proposal and stocks_supply and stocks_proposal > stocks_supply:
+            raise ValidationError("Stocks offering cannot be higher than stocks supply.")
+
+    def clean(self):
+        super().clean()
+        self.validate_stock_proposal(self.stocks_quantity_proposal, self)
+
+    # END PRODUCT OR SERVICE VALIDATION - if doesnt work, remove self and replace one below with instance.
+
+    def validate_end_ps_proposal(value, self):
+        stocks_offering = value
+        stocks_supply = self.stocks_supply
+
+        if stocks_offering and stocks_supply and stocks_offering > stocks_supply:
+            raise ValidationError("Stocks offering cannot be higher than stocks supply.")

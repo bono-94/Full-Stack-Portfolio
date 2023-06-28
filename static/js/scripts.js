@@ -324,10 +324,6 @@ function modalOpenOfferClose() {
   $('#open-offer-modal').modal('hide');
 }
 
-
-
-
-
 $(document).ready(function() {
   // Enable tooltip functionality
   $('[data-toggle="tooltip"]').tooltip();

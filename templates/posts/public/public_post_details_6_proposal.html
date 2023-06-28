@@ -159,11 +159,31 @@
       </div>
       {% else %}
       {% endif %}
+      <button class="w-100 btn btn-secondary mb-4" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalStocksActivate()">OFFER</button>
+      <!-- SAVE BUTTON MODAL -->
+      <div class="modal fade" id="stocks-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+        <div class="modal-dialog mt-3 mt-md-5" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="edit-profile-label">Stocks Offer</h5>
+            </div>
+            <div class="modal-body">
+              <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+              <br>
+              <span class="block"></span>
+              <br>
+              <span class="block">Do you wish to save changes?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalStocksClose()">Close</button>
+              <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-{% else %}
-{% endif %}
 
 <!-- OWNERSHIP PERCENTAGE -->
 <hr class="bg-secondary-lighter p-0 m-0">
@@ -207,6 +227,28 @@
       </div>
       {% else %}
       {% endif %}
+      <button class="w-100 btn btn-secondary mb-4" type="button" data-toggle="modal" data-target="#ownership-pct-modal" onclick="modalOwnershipPctActivate()">OFFER</button>
+      <!-- SAVE BUTTON MODAL -->
+      <div class="modal fade" id="ownership-pct-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+        <div class="modal-dialog mt-3 mt-md-5" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="edit-profile-label">Ownership Percentage Offer</h5>
+            </div>
+            <div class="modal-body">
+              <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+              <br>
+              <span class="block"></span>
+              <br>
+              <span class="block">Do you wish to save changes?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalOwnershipPctClose()">Close</button>
+              <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -280,6 +322,28 @@
       </div>
       {% else %}
       {% endif %}
+      <button class="w-100 btn btn-secondary mb-4" type="button" data-toggle="modal" data-target="#products-services-modal" onclick="modalProductsServicesActivate()">OFFER</button>
+      <!-- SAVE BUTTON MODAL -->
+      <div class="modal fade" id="products-services-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+        <div class="modal-dialog mt-3 mt-md-5" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="edit-profile-label">Products or Services Offer</h5>
+            </div>
+            <div class="modal-body">
+              <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+              <br>
+              <span class="block"></span>
+              <br>
+              <span class="block">Do you wish to save changes?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalProductsServicesClose()">Close</button>
+              <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -317,6 +381,28 @@
       </div>
       {% else %}
       {% endif %}
+      <button class="w-100 btn btn-secondary mb-4" type="button" data-toggle="modal" data-target="#lifetime-discount-modal" onclick="modalLifetimeDiscountActivate()">OFFER</button>
+      <!-- SAVE BUTTON MODAL -->
+      <div class="modal fade" id="lifetime-discount-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+        <div class="modal-dialog mt-3 mt-md-5" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="edit-profile-label">Lifetime Discount Offer</h5>
+            </div>
+            <div class="modal-body">
+              <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+              <br>
+              <span class="block"></span>
+              <br>
+              <span class="block">Do you wish to save changes?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalLifetimeDiscountClose()">Close</button>
+              <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -363,6 +449,28 @@
       </div>
       {% else %}
       {% endif %}
+      <button class="w-100 btn btn-secondary mb-4" type="button" data-toggle="modal" data-target="#team-position-modal" onclick="modalGuaranteedTeamActivate()">OFFER</button>
+      <!-- SAVE BUTTON MODAL -->
+      <div class="modal fade" id="team-position-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+        <div class="modal-dialog mt-3 mt-md-5" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="edit-profile-label">Guaranteed Team Position Offer</h5>
+            </div>
+            <div class="modal-body">
+              <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+              <br>
+              <span class="block"></span>
+              <br>
+              <span class="block">Do you wish to save changes?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalGuaranteedTeamClose()">Close</button>
+              <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -391,6 +499,28 @@
       </div>
       {% else %}
       {% endif %}
+      <button class="w-100 btn btn-secondary mb-4" type="button" data-toggle="modal" data-target="#partnerships-modal" onclick="modalPartnershipsActivate()">OFFER</button>
+      <!-- SAVE BUTTON MODAL -->
+      <div class="modal fade" id="partnerships-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+        <div class="modal-dialog mt-3 mt-md-5" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="edit-profile-label">Partnership Offer</h5>
+            </div>
+            <div class="modal-body">
+              <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+              <br>
+              <span class="block"></span>
+              <br>
+              <span class="block">Do you wish to save changes?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalPartnershipsClose()">Close</button>
+              <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -419,6 +549,28 @@
       </div>
       {% else %}
       {% endif %}
+      <button class="w-100 btn btn-secondary mb-4" type="button" data-toggle="modal" data-target="#collaborations-modal" onclick="modalCollaborationsActivate()">OFFER</button>
+      <!-- SAVE BUTTON MODAL -->
+      <div class="modal fade" id="collaborations-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+        <div class="modal-dialog mt-3 mt-md-5" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="edit-profile-label">Collaboration Offer</h5>
+            </div>
+            <div class="modal-body">
+              <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+              <br>
+              <span class="block"></span>
+              <br>
+              <span class="block">Do you wish to save changes?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalCollaborationsClose()">Close</button>
+              <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -447,6 +599,28 @@
       </div>
       {% else %}
       {% endif %}
+      <button class="w-100 btn btn-secondary mb-4" type="button" data-toggle="modal" data-target="#sponsorships-modal" onclick="modalSponsorshipsActivate()">OFFER</button>
+      <!-- SAVE BUTTON MODAL -->
+      <div class="modal fade" id="sponsorships-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+        <div class="modal-dialog mt-3 mt-md-5" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="edit-profile-label">Sponsorship Offer</h5>
+            </div>
+            <div class="modal-body">
+              <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+              <br>
+              <span class="block"></span>
+              <br>
+              <span class="block">Do you wish to save changes?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalSponsorshipsClose()">Close</button>
+              <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -475,6 +649,28 @@
       </div>
       {% else %}
       {% endif %}
+      <button class="w-100 btn btn-secondary mb-4" type="button" data-toggle="modal" data-target="#open-offer-modal" onclick="modalOpenOfferActivate()">OFFER</button>
+      <!-- SAVE BUTTON MODAL -->
+      <div class="modal fade" id="open-offer-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+        <div class="modal-dialog mt-3 mt-md-5" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="edit-profile-label">Open Offer</h5>
+            </div>
+            <div class="modal-body">
+              <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+              <br>
+              <span class="block"></span>
+              <br>
+              <span class="block">Do you wish to save changes?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalOpenOfferClose()">Close</button>
+              <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -689,5 +885,7 @@
     </div>
   </div>
 </section>
+{% else %}
+{% endif %}
 
 {% endblock posts_base_content %}

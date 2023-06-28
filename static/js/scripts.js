@@ -243,6 +243,91 @@ function modalEditProfileClose() {
   $('#edit-profile-save').modal('hide');
 }
 
+// STOCKS OFFER MODAL
+function modalStocksActivate() {
+  $('#stocks-modal').modal('toggle');
+}
+
+function modalStocksClose() {
+  $('#stocks-modal').modal('hide');
+}
+
+// OWNERSHIP PERCENTAGE OFFER MODAL
+function modalOwnershipPctActivate() {
+  $('#ownership-pct-modal').modal('toggle');
+}
+
+function modalOwnershipPctClose() {
+  $('#ownership-pct-modal').modal('hide');
+}
+
+// PRODUCTS OR SERVICES OFFER MODAL
+function modalProductsServicesActivate() {
+  $('#products-services-modal').modal('toggle');
+}
+
+function modalProductsServicesClose() {
+  $('#products-services-modal').modal('hide');
+}
+
+// LIFETIME DISCOUNT OFFER MODAL
+function modalLifetimeDiscountActivate() {
+  $('#lifetime-discount-modal').modal('toggle');
+}
+
+function modalLifetimeDiscountClose() {
+  $('#lifetime-discount-modal').modal('hide');
+}
+
+// GUARANTEED TEAM POSITION OFFER MODAL
+function modalGuaranteedTeamActivate() {
+  $('#team-position-modal').modal('toggle');
+}
+
+function modalGuaranteedTeamClose() {
+  $('#team-position-modal').modal('hide');
+}
+
+// PARTNERSHIPS OFFER MODAL
+function modalPartnershipsActivate() {
+  $('#partnerships-modal').modal('toggle');
+}
+
+function modalPartnershipsClose() {
+  $('#partnerships-modal').modal('hide');
+}
+
+// COLLABORATIONS OFFER MODAL
+function modalCollaborationsActivate() {
+  $('#collaborations-modal').modal('toggle');
+}
+
+function modalCollaborationsClose() {
+  $('#collaborations-modal').modal('hide');
+}
+
+// SPONSORSHIPS OFFER MODAL
+function modalSponsorshipsActivate() {
+  $('#sponsorships-modal').modal('toggle');
+}
+
+function modalSponsorshipsClose() {
+  $('#sponsorships-modal').modal('hide');
+}
+
+// OPEN OFFER MODAL
+function modalOpenOfferActivate() {
+  $('#open-offer-modal').modal('toggle');
+}
+
+function modalOpenOfferClose() {
+  $('#open-offer-modal').modal('hide');
+}
+
+
+
+
+
 $(document).ready(function() {
   // Enable tooltip functionality
   $('[data-toggle="tooltip"]').tooltip();

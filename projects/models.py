@@ -1131,9 +1131,9 @@ class Post(models.Model):
     lifetime_discount_percentages_proposal_return = models.TextField(max_length=210, blank=True, null=True)
 
     # GUARANTEEED TEAM POSITION PROPOSAL
-    team_guaranteed_position_title_proposal = models.CharField(max_length=21, blank=True, null=True)
-    team_guaranteed_responsibilities_proposal = models.TextField(max_length=84, blank=True, null=True)
-    team_guaranteed_employment_conditions_proposal = models.TextField(max_length=84, blank=True, null=True)
+    team_guaranteed_position_title_proposal = models.CharField(max_length=42, blank=True, null=True)
+    team_guaranteed_responsibilities_proposal = models.TextField(max_length=210, blank=True, null=True)
+    team_guaranteed_employment_conditions_proposal = models.TextField(max_length=210, blank=True, null=True)
     team_guaranteed_proposal_return = models.TextField(max_length=210, blank=True, null=True)
 
     # PARTNERSHIP PROPOSAL

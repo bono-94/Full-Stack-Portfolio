@@ -1289,20 +1289,17 @@ class Post(models.Model):
 
     # POST PAYOUT DATE DURATION
     def post_payout_duration_days(self):
-        today = date.today()
-        duration = today - self.funding_payout_date
-        return duration.days
+        duration = (self.funding_payout_date - date.today()).days
+        return duration
 
     def post_payout_duration_months(self):
-        today = date.today()
-        duration = today - self.funding_payout_date
-        total_months = duration.days // 30   # Assuming 30 days per month
+        duration = (self.funding_payout_date - date.today()).days
+        total_months = duration // 30   # Assuming 30 days per month
         return total_months
 
     def post_payout_duration_years(self):
-        today = date.today()
-        duration = today - self.funding_payout_date
-        total_years = duration.days // 365  # Assuming 365 days per year
+        duration = (self.funding_payout_date - date.today()).days
+        total_years = duration // 365  # Assuming 365 days per year
         return total_years
 
     # PROGRESS BAR 1 - STYLE

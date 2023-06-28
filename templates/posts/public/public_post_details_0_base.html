@@ -20,7 +20,7 @@
   </div>
 {% else %}
   <div class="fixed-bottom p-0 mb-1 pb-1 text-end">
-    <a href="#profile-detail-close" class="btn btn-light border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
+    <a href="{% url 'public_post_details_6_proposal' post.slug %}" class="btn btn-light border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
       <i class="fa-solid fa-sack-dollar text-success"></i>
     </a>
   </div>
@@ -213,8 +213,7 @@ Remove all media after checking until next check
 ------------------------
   
 
-  
-  offer money bag symbol takes you to offer page, but buttons on each offer create custom email modal for sending offer
+   but buttons on each offer create custom email modal for sending offer
   Add place offer button that leads to offer modal
 
 

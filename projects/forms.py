@@ -310,6 +310,7 @@ class PostForm(forms.ModelForm):
             'terms_conditions',
             # POST PROPOSALS & OFFERS
             'post_proposal_model_privacy',
+            'proposal_fee_type',
             'same_start_launch_date',
             'funding_start_date',
             'funding_end_date',

@@ -461,6 +461,11 @@ class Post(models.Model):
         ('Service', 'Service'),
     )
 
+    TYPE_OF_PROPOSAL_COMMISION = (
+        ('One-time Fee', 'One-time Fee'),
+        ('Commision', 'Commision'),
+    )
+
     TYPE_OF_OWNERSHIP_PCT_OFFER = (
         ('Organization', 'Organization'),
         ('Project', 'Project'),
@@ -1093,6 +1098,7 @@ class Post(models.Model):
     # PAGE 6
     # POST PROPOSALS & OFFERS
     post_proposal_model_privacy = models.BooleanField(default=False)
+    proposal_fee_type = models.CharField(max_length=12, choices=TYPE_OF_PROPOSAL_COMMISION, blank=True, null=True)
 
     # FUNDING TIMING
     same_start_launch_date = models.BooleanField(default=False)

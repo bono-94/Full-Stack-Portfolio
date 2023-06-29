@@ -151,6 +151,7 @@
 
 <!-- POST CONTACT -->
 {% if post.post_contact_privacy == False %}
+{% if post.public_email or post.public_phone %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-warning bg-gradient pt-2">
   <div class="container">
@@ -174,7 +175,7 @@
         </div>
       </div>
       <div class="col-12">
-        <p class="mt-4 mb-4">
+        <p class="mt-4 mb-2 pt-2">
           <strong>Contact Days:</strong>
           <span class="d-block">
             {{ post.contact_days }}
@@ -182,30 +183,30 @@
         </p>
       </div>
       <div class="col-12">
-        <p class="mt-4 mb-4 pt-2">
+        <p class="mt-2 mb-4 pt-2">
           <strong>Contact Hours:</strong>
           <span class="d-block">
             {{ post.contact_days }}
           </span>
         </p>
       </div>
-      <div class="social-links d-flex justify-content-center mt-4 mb-4">
-        <a href="{{ website_link }}" target="_blank" class="btn btn-dark ms-2 me-2">
+      <div class="social-links d-flex justify-content-center mt-4 pt-2 mb-4">
+        <a href="{{ post.website_link }}" target="_blank" class="btn btn-dark ms-2 me-2">
           <i class="fa-solid fa-globe"></i>
         </a>
-        <a href="{{ facebook_link }}" target="_blank" class="btn btn-dark me-2">
+        <a href="{{ post.facebook_link }}" target="_blank" class="btn btn-dark me-2">
           <i class="fa-brands fa-facebook"></i>
         </a>
-        <a href="{{ twitter_link }}" target="_blank" class="btn btn-dark me-2">
+        <a href="{{ post.twitter_link }}" target="_blank" class="btn btn-dark me-2">
           <i class="fa-brands fa-twitter"></i>
         </a>
-        <a href="{{ instagram_link }}" target="_blank" class="btn btn-dark me-2">
+        <a href="{{ post.instagram_link }}" target="_blank" class="btn btn-dark me-2">
           <i class="fa-brands fa-instagram"></i>
         </a>
-        <a href="{{ linkedin_link }}" target="_blank" class="btn btn-dark me-2">
+        <a href="{{ post.linkedin_link }}" target="_blank" class="btn btn-dark me-2">
           <i class="fa-brands fa-linkedin"></i>
         </a>
-        <a href="{{ youtube_link }}" target="_blank" class="btn btn-dark me-2">
+        <a href="{{ post.youtube_link }}" target="_blank" class="btn btn-dark me-2">
           <i class="fa-brands fa-youtube"></i>
         </a>
       </div>
@@ -214,48 +215,70 @@
 </section>
 {% else %}
 {% endif %}
+{% else %}
+{% endif %}
 
 <!-- POST COMMENTS -->
 <section class="bg-secondary-lighter pb-2">
   <hr class="p-0 m-0">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8 card mb-4 mt-3">
-        <h3>Notes:</h3>
-        <div class="card-body">
-          <!-- IF no comments just add title No comments yet. Be the first one to note something -->
-          {% for note in notes %}
-          <div class="notes" style="padding: 10px;">
-            <p class="font-weight-bold">
-              {{ note.name }}
-              <span class="text-muted font-weight-normal">
-                {{ note.created_on_note }}
-              </span> wrote:
-            </p>
-            {{ note.content_note | linebreaks }}
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-      <div class="col-md-4 card mb-4 mt-3">
+      <div class="col-md-4 card mb-4" id="comment">
         <div class="card-body">
           {% if noted %}
-          <div class="alert alert-success" role="alert">
-            Your note is now waiting for approval..
+          <div class="alert alert-warning" role="alert">
+            Your comment is now waiting for approval...
           </div>
           {% else %}
           {% if user.is_authenticated %}
-          <h3>Leave a note with opinion, offer, advice, or critique</h3>
-          <p>By: {{ user.username }}</p>
-          <form method="post" style="margin-top: 1.3em;">
+          <h3 class="mt-4">Leave a comment:</h3>
+          <p class="mb-4">By: {{ user.username }}</p>
+          <form method="post">
             {{ note_form | crispy }}
             {% csrf_token %}
-            <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+            <button type="submit" class="btn btn-dark text-warning mt-5 w-100 mx-auto">Send</button>
           </form>
           {% endif %}
           {% endif %}
         </div>
       </div>
+      <hr>
+      <div class="col-md-8 card mb-4 mt-3">
+        <h3 class="text-center mt-4 mb-3">
+          Public Comments:
+        </h3>
+        <div class="card-body">
+          {% if notes %}
+          {% for note in notes %}
+          <div class="notes" style="padding: 4px;">
+            <h6 class="font-weight-bold">
+              {{ note.name }}:
+            </h6>
+            <p class="text-muted text-smaller pb-1">
+              {{ note.created_on_note }}
+            </p>
+            <p>
+              {{ note.content_note | linebreaks }}
+            </p>
+            {% if not forloop.last %}
+            <hr class="mb-3">
+            {% endif %}
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="bg-white rounded border border-1 border-secondary">
+            <p class="ps-2 pt-2">
+              No comments yet...
+            </p>
+            <p class="ps-2 pb-1">
+              Be the first one to comment.
+            </p>
+          </div>
+          <hr>
+          {% endif %}
+        </div>
+      </div>
+      
     </div>
   </div>
 </section>

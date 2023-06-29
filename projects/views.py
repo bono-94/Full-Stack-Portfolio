@@ -473,7 +473,7 @@ class PostDetailProposal(View):
 
         return render(
             request,
-            "posts/public/public_post_details_6_proposal.html",
+            "posts/public/public_post_details_6_proposal.html/",
             {
                 "post": post,
                 "note": note,
@@ -862,7 +862,7 @@ class PostVote(View):
 class PostCreate(CreateView):
     model = Post
     template_name = 'posts/user/user_post_create.html'
-    success_url = '/my-projects'
+    success_url = '/my-posts'
     form_class = PostForm
 
     def form_valid(self, form):

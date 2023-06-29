@@ -54,7 +54,6 @@ class PostAdmin(SummernoteModelAdmin):
         'post_location_country',
         'post_location_continent',
         'post_location_planet',
-        'main_content',
         'business_knowledge',
     ]
     list_filter = (
@@ -65,7 +64,6 @@ class PostAdmin(SummernoteModelAdmin):
         'funding_infinite_end_date',
     )
     summernote_fields = (
-        'main_content',
         'business_knowledge',
         'caption',
         'introduction'

@@ -109,28 +109,28 @@
 </div>
 
 <!-- POST IMAGE -->
-{% if post.post_list_image %}
 <section id="post-main-image">
     <div class="container-fluid p-0 overflow-hidden border-bottom border-2 border-info">
       <div class="row-fluid">
         <div class="image-container bg-secondary-lighter d-flex align-items-center justify-content-center">
-          
+          {% if post.post_list_image %}
           <a>
             <img src="{{ post.post_banner_image.url }}" class="img-fluid object-fit-contain" alt="Project Image">
           </a>
+          {% else %}
           <a>
             <img src="{% static 'images/21105.jpg' %}" class="img-fluid object-fit-contain" alt="Project Placeholder">
           </a>
+          {% endif %}
         </div>
       </div>
     </div>
 </section>
-{% else %}
-{% endif %}
+
 <!-- ABOUT CARD -->
 <section class="bg-secondary-lighter pt-5 pb-5">
-  <h3 class="ms-3 mt-4 mb-4 pb-4 mt-md-5 mb-md-5 text-start text-sm-center">GENERAL INFORMATION</h3>
-  <ul class="list-group mt-3 mb-0 col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 border border-1 border-dark mb-4 shadow-sm">
+  <h3 class="ms-3 mt-4 mb-4 pb-4 mt-md-5 mb-md-5 text-start text-sm-center">General information</h3>
+  <ul class="list-group mt-4 mb-0 col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 border border-1 border-dark mb-4 shadow-sm">
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-bottom border-1 border-light">
       <strong>Post Type:</strong>
       <span class="ms-1">
@@ -216,6 +216,7 @@
 {% if post.launch_date_privacy == False and post.launch_date %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-2">
+  <h3 class="ms-3 mt-5 mb-2 pb-3 mt-md-5 mb-md-5 text-start text-sm-center">Remember the Date</h3>
   <div class="container-fluid">
     <div class="row-fluid pt-3 pb-2">
       <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mt-4 mb-sm-2 mb-lg-4 pt-4 pb-3 text-center position-relative shadow-sm">
@@ -248,6 +249,7 @@
 </section>
 {% else %}
 {% endif %}
+
   <!-- NEXT PAGE -->
   <section class="bg-secondary-lighter pb-2 pt-5">
     <div class="container-fluid">

@@ -514,7 +514,7 @@ class Post(models.Model):
     )
 
     # POST STRUCTURE
-    slug = models.SlugField(max_length=21, unique=True)
+    slug = models.SlugField(max_length=42, unique=True)
     status = models.IntegerField(choices=STATUS, default=0)
     post_verification = models.BooleanField(default=False)
     votes = models.ManyToManyField(User, related_name="projects_votes")
@@ -562,7 +562,7 @@ class Post(models.Model):
     )
 
     title = models.TextField(max_length=42, blank=False, unique=True)
-    caption = models.TextField(max_length=42, blank=False)
+    caption = models.TextField(max_length=84, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     author_type = models.CharField(max_length=5, choices=AUTHOR_TYPE, blank=False)
     project_owner = models.CharField(max_length=42,  blank=False, null=True)
@@ -730,9 +730,7 @@ class Post(models.Model):
     # POST BODY
     post_body_privacy = models.BooleanField(default=False)
 
-    main_content = models.TextField(max_length=2100, blank=True, null=True)
     business_knowledge = models.TextField(max_length=2100, blank=True, null=True)
-    story = models.TextField(max_length=2100, blank=True, null=True)
     journey = models.TextField(max_length=2100, blank=True, null=True)
     future = models.TextField(max_length=2100, blank=True, null=True)
     legacy = models.TextField(max_length=2100, blank=True, null=True)

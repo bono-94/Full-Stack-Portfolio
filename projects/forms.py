@@ -274,9 +274,7 @@ class PostForm(forms.ModelForm):
             'percentage_special_sustainability_two',
             # POST BODY
             'post_body_privacy',
-            'main_content',
             'business_knowledge',
-            'story',
             'journey',
             'future',
             'legacy',

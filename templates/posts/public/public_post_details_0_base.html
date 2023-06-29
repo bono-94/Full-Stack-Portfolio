@@ -19,7 +19,6 @@
     </a>
   </div>
 {% else %}
-
 {% url 'public_post_details_6_proposal' post.slug as target_url %}
 {% if target_url != request.path %}
   <div class="fixed-bottom p-0 mb-1 pb-1 text-end">
@@ -28,10 +27,10 @@
     </a>
   </div>
 {% endif %}
-
 {% endif %}
-{% if post.public_privacy == False %}
+
 <!-- POST HEADER -->
+{% if post.public_privacy == False %}
 <section class="bg-secondary-lighter border-bottom border-2 border-warning">
   <div class="container-fluid bg-dark bg-gradient pb-3 pt-4" id="post-detail-header">
     <div class="row-fluid">
@@ -149,7 +148,74 @@
   {% block posts_base_content %}
   {% endblock posts_base_content %}
 <div id="contact"></div>
-<!-- COMMENTS -->
+
+<!-- POST CONTACT -->
+{% if post.post_contact_privacy == False %}
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-warning bg-gradient pt-2">
+  <div class="container">
+    <div class="row-fluid pb-2">
+      <div class="col-12">
+        <h3 class="text-center mt-5 mb-4 pb-3">
+          {{ post.post_type }} Contact
+        </h3>
+      </div>
+      <div class="bg-light bg-gradient ms-5 me-5 rounded border border-1 border-dark">
+        <div class="">
+          <h6 class="text-center pt-2">
+            {{ post.public_email }}
+          </h6>
+        </div>
+        <div class="">
+          <h6 class="text-center mt-2 pb-2">
+            <strong class="text-dark">+</strong>
+            {{ post.public_phone }}
+          </h6>
+        </div>
+      </div>
+      <div class="col-12">
+        <p class="mt-4 mb-4">
+          <strong>Contact Days:</strong>
+          <span class="d-block">
+            {{ post.contact_days }}
+          </span>
+        </p>
+      </div>
+      <div class="col-12">
+        <p class="mt-4 mb-4 pt-2">
+          <strong>Contact Hours:</strong>
+          <span class="d-block">
+            {{ post.contact_days }}
+          </span>
+        </p>
+      </div>
+      <div class="social-links d-flex justify-content-center mt-4 mb-4">
+        <a href="{{ website_link }}" target="_blank" class="btn btn-dark ms-2 me-2">
+          <i class="fa-solid fa-globe"></i>
+        </a>
+        <a href="{{ facebook_link }}" target="_blank" class="btn btn-dark me-2">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="{{ twitter_link }}" target="_blank" class="btn btn-dark me-2">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+        <a href="{{ instagram_link }}" target="_blank" class="btn btn-dark me-2">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="{{ linkedin_link }}" target="_blank" class="btn btn-dark me-2">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="{{ youtube_link }}" target="_blank" class="btn btn-dark me-2">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+{% endif %}
+
+<!-- POST COMMENTS -->
 <section class="bg-secondary-lighter pb-2">
   <hr class="p-0 m-0">
   <div class="container-fluid">
@@ -215,48 +281,10 @@
     </div>
   </div>
 </div>
-
 {% else %}
 <div class="container public-privacy-message">
   <h1 class="text-center">This post is not open for public.</h1>
 </div>   
 {% endif %}
-
-<p class="text-break">
-
-status for acess rules
-public_privacy for privacy on each page in once
-launch_date_privacy
-
-post_colors_list
-post_color_primary
-post_color_secondary
-post_color_text
-
-
-- Media Test
-post_background_audio
-check all media once
-Remove all media after checking until next check
-
-
-------------------------
-
-
-constant before/ after comments:
-if post_contact_privacy:
-
-  public_email
-  public_phone
-  contact_days
-  contact_hours
-  links
-    website_link
-    facebook_link
-    twitter_link
-    instagram_link
-    linkedin_link
-    youtube_link
-</p>
 
 {% endblock content %}

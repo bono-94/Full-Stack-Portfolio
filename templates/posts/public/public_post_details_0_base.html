@@ -193,6 +193,29 @@
     </div>
   </div>
 </section>
+
+<!-- OPEN OFFER MODAL -->
+<div class="modal fade" id="open-offer-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+  <div class="modal-dialog mt-3 mt-md-5" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit-profile-label">Open Offer</h5>
+      </div>
+      <div class="modal-body">
+        <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+        <br>
+        <span class="block"></span>
+        <br>
+        <span class="block">Do you wish to save changes?</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalOpenOfferClose()">Close</button>
+        <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% else %}
 <div class="container public-privacy-message">
   <h1 class="text-center">This post is not open for public.</h1>

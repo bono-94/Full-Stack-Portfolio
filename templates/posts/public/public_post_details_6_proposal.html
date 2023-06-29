@@ -6,11 +6,10 @@
 
 {% load static %}
 
-<!-- POST OPPS DETAILS -->
+<!-- PROPOSAL FUNDING PRIVACY -->
 {% if post.post_proposal_model_privacy == False %}
 
 <!-- FUNDING DATE -->
-{% if post.launch_date or post.funding_start_date %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-2">
   <h3 class="text-center mt-5 mb-5">
@@ -19,16 +18,19 @@
   {% if post.author == request.user and post.proposal_fee_type %}
   {% if post.proposal_fee_type == 'One-time Fee' %}
   <h6 class="text-center mb-5">
-    (One-time Fixed Amount)
+    Fee: (One-time Fixed Amount)
   </h6>
   {% else %}
   <h6 class="text-center mb-5">
-    (Percentage Commision)
+    Fee: (Percentage Commision)
   </h6>
   {% endif %}
   {% else %}
   {% endif %}
   <hr>
+
+  <!-- FUNDING CAMPAIGN -->
+  {% if post.launch_date or post.funding_start_date %}
   <div class="container-fluid">
     <div class="row-fluid pt-2">
       <h5 class="text-center mt-4 mb-4">Funding Campaign</h5>
@@ -117,7 +119,8 @@
 {% else %}
 {% endif %}
 
-<!-- STOCKS -->
+<!-- STOCKS PROPOSAL -->
+{% if post.stocks_quantity_total_supply and post.stocks_quantity_proposal and post.stocks_proposal_return and post.stocks_proposal_costs %}
 <hr class="bg-secondary-lighter p-0 m-0"  id="funding-countdown">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
@@ -159,11 +162,11 @@
       </div>
       {% else %}
       {% endif %}
-
       <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalStocksActivate()">ACCEPT</button>
       <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalStocksActivate()">CUSTOM OFFER</button>
-      
-      <!-- SAVE BUTTON MODAL -->
+{% else %}
+{% endif %}
+      <!-- STOCKS OFFER MODAL -->
       <div class="modal fade" id="stocks-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
           <div class="modal-content">
@@ -188,7 +191,8 @@
   </div>
 </section>
 
-<!-- OWNERSHIP PERCENTAGE -->
+<!-- OWNERSHIP PERCENTAGE PROPOSAL -->
+{% if post.ownership_percentage_opps_type and post.ownership_percentage_opps_quantity_proposal and post.ownership_percentage_opps_proposal_return and post.ownership_percentage_opps_proposal_costs %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
@@ -230,11 +234,11 @@
       </div>
       {% else %}
       {% endif %}
-
       <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
       <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalOwnershipPctActivate()">CUSTOM OFFER</button>
-     
-      <!-- SAVE BUTTON MODAL -->
+{% else %}
+{% endif %}
+      <!-- OWNERSHIP PERCENTAGE MODAL -->
       <div class="modal fade" id="ownership-pct-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
           <div class="modal-content">
@@ -259,7 +263,8 @@
   </div>
 </section>
 
-<!-- END PRODUCT OR SERVICE -->
+<!-- END PRODUCT OR SERVICE PROPOSAL -->
+{% if post.end_product_or_service_type and post.end_product_or_service_quantity_proposal and post.end_product_or_service_proposal_return and post.end_product_or_service_proposal_costs %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
@@ -328,10 +333,10 @@
       </div>
       {% else %}
       {% endif %}
-
       <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
-      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalProductsServicesActivate()">CUSTOM OFFER</button>
-     
+      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalProductsServicesActivate()">CUSTOM OFFER</button>  
+{% else %}
+{% endif %}
       <!-- PRODUCT OR SERVICE OFFER MODAL -->
       <div class="modal fade" id="products-services-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
@@ -357,7 +362,8 @@
   </div>
 </section>
 
-<!-- LIFETIME DISCOUNT -->
+<!-- LIFETIME DISCOUNT PROPOSAL -->
+{% if post.lifetime_discount_percentages_quantity_proposal and post.lifetime_discount_percentages_proposal_return and post.lifetime_discount_percentages_quality_proposal_costs %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
@@ -390,10 +396,10 @@
       </div>
       {% else %}
       {% endif %}
-
       <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
       <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalLifetimeDiscountActivate()">CUSTOM OFFER</button>
-      
+{% else %}
+{% endif %}
       <!-- LIFETIME DISCOUNT OFFER MODAL -->
       <div class="modal fade" id="lifetime-discount-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
@@ -419,7 +425,8 @@
   </div>
 </section>
 
-<!-- GUARANTEED TEAM POSITION -->
+<!-- GUARANTEED TEAM POSITION PROPOSAL -->
+{% if post.team_guaranteed_position_title_proposal and post.team_guaranteed_responsibilities_proposal and post.team_guaranteed_employment_conditions_proposal and post.team_guaranteed_proposal_costs %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
@@ -461,10 +468,10 @@
       </div>
       {% else %}
       {% endif %}
-
       <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
       <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalGuaranteedTeamActivate()">CUSTOM OFFER</button>
-      
+{% else %}
+{% endif %}      
       <!-- GUARANTEED TEAM POSITION OFFER MODAL -->
       <div class="modal fade" id="team-position-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
@@ -490,7 +497,8 @@
   </div>
 </section>
 
-<!-- PARTNERSHIPS -->
+<!-- PARTNERSHIPS PROPOSAL -->
+{% if post.partnership_proposal_return and post.partnership_proposal_costs %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
@@ -514,10 +522,10 @@
       </div>
       {% else %}
       {% endif %}
-
       <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
       <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalPartnershipsActivate()">CUSTOM OFFER</button>
-      
+{% else %}
+{% endif %}
       <!-- PARTNERSHIPS OFFER MODAL -->
       <div class="modal fade" id="partnerships-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
@@ -543,7 +551,8 @@
   </div>
 </section>
 
-<!-- COLLABORATIONS -->
+<!-- COLLABORATIONS PROPOSAL -->
+{% if post.collaboration_proposal_return and post.collaboration_proposal_costs %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
@@ -567,10 +576,10 @@
       </div>
       {% else %}
       {% endif %}
-
       <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
       <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalCollaborationsActivate()">CUSTOM OFFER</button>
-      
+{% else %}
+{% endif %}
       <!-- COLLABORATION OFFER MODAL -->
       <div class="modal fade" id="collaborations-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
@@ -596,7 +605,8 @@
   </div>
 </section>
 
-<!-- SPONSORSHIPS -->
+<!-- SPONSORSHIPS PROPOSAL -->
+{% if post.sponsorship_proposal_return and post.sponsorship_proposal_costs %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
@@ -620,10 +630,10 @@
       </div>
       {% else %}
       {% endif %}
-
       <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
       <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalSponsorshipsActivate()">CUSTOM OFFER</button>
-      
+{% else %}
+{% endif %}  
       <!-- SPONSORSHIP OFFER MODAL -->
       <div class="modal fade" id="sponsorships-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
@@ -650,6 +660,7 @@
 </section>
 
 <!-- OPEN PROPOSAL -->
+{% if post.open_proposal_proposal_return and post.open_proposal_costs %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
@@ -673,10 +684,10 @@
       </div>
       {% else %}
       {% endif %}
-
       <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#open-offer-modal">ACCEPT</button>
       <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#open-offer-modal" onclick="modalOpenOfferActivate()">OPEN OFFER</button>
-      
+{% else %}
+{% endif %}
       <!-- OPEN OFFER MODAL -->
       <div class="modal fade" id="open-offer-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
@@ -703,23 +714,23 @@
 </section>
 
 <!-- TERMS & CONDITIONS -->
+{% if post.proposal_terms_and_conditions %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
     <div class="row-fluid">
       <h5 class="text-center mb-4 pb-3 mt-5">Terms & Conditions</h5>
-      {% if post.proposal_terms_and_conditions %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">General</h6>
         <p>
           {{ post.proposal_terms_and_conditions }}
         </p>
       </div>
-      {% else %}
-      {% endif %}
     </div>
   </div>
 </section>
+{% else %}
+{% endif %}
 
 <!-- PAYOUT DATE -->
 {% if post.funding_payout_date %}
@@ -780,7 +791,7 @@
 {% else %}
 {% endif %}
 
-<!-- BREADCRUMB + OFFCANVAS -->
+<!-- BREADCRUMB -->
 <div class="container-fluid bg-secondary fixed-top shadow-sm p-0" id="post-breadcrumb">
   <div class="row">
     <nav aria-label="breadcrumb" class="col-10">
@@ -941,5 +952,6 @@
 </section>
 {% else %}
 {% endif %}
+
 
 {% endblock posts_base_content %}

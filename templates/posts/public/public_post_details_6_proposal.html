@@ -159,7 +159,10 @@
       </div>
       {% else %}
       {% endif %}
-      <button class="w-100 btn btn-secondary mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalStocksActivate()">OFFER</button>
+
+      <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalStocksActivate()">ACCEPT</button>
+      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalStocksActivate()">CUSTOM OFFER</button>
+      
       <!-- SAVE BUTTON MODAL -->
       <div class="modal fade" id="stocks-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
@@ -227,7 +230,10 @@
       </div>
       {% else %}
       {% endif %}
-      <button class="w-100 btn btn-secondary mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#ownership-pct-modal" onclick="modalOwnershipPctActivate()">OFFER</button>
+
+      <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
+      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalOwnershipPctActivate()">CUSTOM OFFER</button>
+     
       <!-- SAVE BUTTON MODAL -->
       <div class="modal fade" id="ownership-pct-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
@@ -322,8 +328,11 @@
       </div>
       {% else %}
       {% endif %}
-      <button class="w-100 btn btn-secondary mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#products-services-modal" onclick="modalProductsServicesActivate()">OFFER</button>
-      <!-- SAVE BUTTON MODAL -->
+
+      <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
+      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalProductsServicesActivate()">CUSTOM OFFER</button>
+     
+      <!-- PRODUCT OR SERVICE OFFER MODAL -->
       <div class="modal fade" id="products-services-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
           <div class="modal-content">
@@ -381,8 +390,11 @@
       </div>
       {% else %}
       {% endif %}
-      <button class="w-100 btn btn-secondary mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#lifetime-discount-modal" onclick="modalLifetimeDiscountActivate()">OFFER</button>
-      <!-- SAVE BUTTON MODAL -->
+
+      <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
+      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalLifetimeDiscountActivate()">CUSTOM OFFER</button>
+      
+      <!-- LIFETIME DISCOUNT OFFER MODAL -->
       <div class="modal fade" id="lifetime-discount-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
           <div class="modal-content">
@@ -449,8 +461,11 @@
       </div>
       {% else %}
       {% endif %}
-      <button class="w-100 btn btn-secondary mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#team-position-modal" onclick="modalGuaranteedTeamActivate()">OFFER</button>
-      <!-- SAVE BUTTON MODAL -->
+
+      <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
+      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalGuaranteedTeamActivate()">CUSTOM OFFER</button>
+      
+      <!-- GUARANTEED TEAM POSITION OFFER MODAL -->
       <div class="modal fade" id="team-position-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
           <div class="modal-content">
@@ -499,8 +514,11 @@
       </div>
       {% else %}
       {% endif %}
-      <button class="w-100 btn btn-secondary mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#partnerships-modal" onclick="modalPartnershipsActivate()">OFFER</button>
-      <!-- SAVE BUTTON MODAL -->
+
+      <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
+      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalPartnershipsActivate()">CUSTOM OFFER</button>
+      
+      <!-- PARTNERSHIPS OFFER MODAL -->
       <div class="modal fade" id="partnerships-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
           <div class="modal-content">
@@ -549,8 +567,11 @@
       </div>
       {% else %}
       {% endif %}
-      <button class="w-100 btn btn-secondary mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#collaborations-modal" onclick="modalCollaborationsActivate()">OFFER</button>
-      <!-- SAVE BUTTON MODAL -->
+
+      <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
+      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalCollaborationsActivate()">CUSTOM OFFER</button>
+      
+      <!-- COLLABORATION OFFER MODAL -->
       <div class="modal fade" id="collaborations-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
           <div class="modal-content">
@@ -599,8 +620,11 @@
       </div>
       {% else %}
       {% endif %}
-      <button class="w-100 btn btn-secondary mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#sponsorships-modal" onclick="modalSponsorshipsActivate()">OFFER</button>
-      <!-- SAVE BUTTON MODAL -->
+
+      <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
+      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalSponsorshipsActivate()">CUSTOM OFFER</button>
+      
+      <!-- SPONSORSHIP OFFER MODAL -->
       <div class="modal fade" id="sponsorships-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
           <div class="modal-content">
@@ -649,8 +673,11 @@
       </div>
       {% else %}
       {% endif %}
-      <button class="w-100 btn btn-secondary mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#open-offer-modal" onclick="modalOpenOfferActivate()">OFFER</button>
-      <!-- SAVE BUTTON MODAL -->
+
+      <button class="w-100 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal">ACCEPT</button>
+      <button class="w-100 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalOpenOfferActivate()">OPEN OFFER</button>
+      
+      <!-- OPEN OFFER MODAL -->
       <div class="modal fade" id="open-offer-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
         <div class="modal-dialog mt-3 mt-md-5" role="document">
           <div class="modal-content">
@@ -760,7 +787,7 @@
       <ol class="breadcrumb m-0 p-0">
         <li class="breadcrumb-item d-flex align-items-center">
           <a href="{% url 'public_post_details_1_landing' post.slug %}"
-            class="text-info text-smaller ms-2 ms-md-3">Home</a>
+            class="text-info text-smaller ms-2 ms-md-3">Homee</a>
         </li>
         <li class="breadcrumb-item d-flex align-items-center">
           <a href="#" class="text-smaller text-light text-decoration-none pt-1">Proposal</a>

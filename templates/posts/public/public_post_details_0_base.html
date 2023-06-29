@@ -19,11 +19,16 @@
     </a>
   </div>
 {% else %}
+
+{% url 'public_post_details_6_proposal' post.slug as target_url %}
+{% if target_url != request.path %}
   <div class="fixed-bottom p-0 mb-1 pb-1 text-end">
-    <a href="{% url 'public_post_details_6_proposal' post.slug %}" class="btn btn-light border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
-      <i class="fa-solid fa-sack-dollar text-success"></i>
+    <a href="{{ target_url }}" class="btn btn-light border rounded border-info border-2 me-1 shadow-sm p-0 post-nav-icons">
+      <i class="fa-solid fa-sack-dollar text-secondary"></i>
     </a>
   </div>
+{% endif %}
+
 {% endif %}
 {% if post.public_privacy == False %}
 <!-- POST HEADER -->
@@ -38,105 +43,105 @@
           {% endif %}                           
       </div>
       <div class="col-12 pb-4 pb-lg-3">
-          <h1 class="post-title text-light text-break mt-3 mt-sm-4 ms-2 ms-sm-3 ms-md-4 ms-lg-5 me-2 me-sm-3 me-md-4 me-lg-5">
-              {{ post.title }}
-          </h1>
-          <p class="post-subtitle text-light mt-2 mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-            <span class="text-break">
-              {{ post.caption }}
-            </span>
-          </p>
-          <span class="post-subtitle text-light mb-1 mb-lg-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-            {% if user.is_authenticated %}
-                <form class="d-inline" action="{% url 'vote' post.slug %}" method="POST">
-                    {% csrf_token %}
-                    {% if voted %}
-                      <button type="submit" id="vote-button-anim-take" name="post_note_id" value="{{post.slug}}" class="btn-like text-light pe-0 me-0" onclick="addShakeClass('vote-button-anim-take')">
-                        <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
-                      </button>
-                      <span> |</span>
-                    {% else %}
-                      <button type="submit" id="vote-button-anim-add" name="post_note_id" value="{{post.slug}}" class="btn-like text-light" onclick="addBounceClass('vote-button-anim-add')">
-                        <i class="fa-regular fa-heart"></i> {{ post.number_of_votes }}
-                      </button>
-                      <span> |</span>
-                    {% endif %}
-                </form>
-                {% else %}
-                    <span class="text-light">
-                      <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
-                      <span> |</span>
-                    </span>
-                {% endif %}
-            <i class="fa-solid fa-eye ms-1"></i> {{ post.views }} |
-            {% with notes.count as total_notes %}
-              <i class="fa-solid fa-comment ms-1"></i> {{ total_notes }}
-              <span> |</span>
-            {% endwith %}
-            {% if post.post_verification == True %}
-              <i class="fa-solid fa-shield-halved fa-beat ms-1 text-info"></i>
-            {% else %}
-              <i class="fa-solid fa-triangle-exclamation fa-beat ms-1 text-danger"></i>
-            {% endif %}
+        <h1 class="post-title text-light text-break mt-3 mt-sm-4 ms-2 ms-sm-3 ms-md-4 ms-lg-5 me-2 me-sm-3 me-md-4 me-lg-5">
+            {{ post.title }}
+        </h1>
+        <p class="post-subtitle text-light mt-2 mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          <span class="text-break">
+            {{ post.caption }}
           </span>
-          <hr class="text-light col-10 col-sm-10 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-          <p class="post-subtitle text-light mt-3 mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-          {% if post.author_type == 'Human' %}  
-            Human Author:
+        </p>
+        <span class="post-subtitle text-light mb-1 mb-lg-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          {% if user.is_authenticated %}
+              <form class="d-inline" action="{% url 'vote' post.slug %}" method="POST">
+                  {% csrf_token %}
+                  {% if voted %}
+                    <button type="submit" id="vote-button-anim-take" name="post_note_id" value="{{post.slug}}" class="btn-like text-light pe-0 me-0" onclick="addShakeClass('vote-button-anim-take')">
+                      <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
+                    </button>
+                    <span> |</span>
+                  {% else %}
+                    <button type="submit" id="vote-button-anim-add" name="post_note_id" value="{{post.slug}}" class="btn-like text-light" onclick="addBounceClass('vote-button-anim-add')">
+                      <i class="fa-regular fa-heart"></i> {{ post.number_of_votes }}
+                    </button>
+                    <span> |</span>
+                  {% endif %}
+              </form>
+              {% else %}
+                  <span class="text-light">
+                    <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
+                    <span> |</span>
+                  </span>
+              {% endif %}
+          <i class="fa-solid fa-eye ms-1"></i> {{ post.views }} |
+          {% with notes.count as total_notes %}
+            <i class="fa-solid fa-comment ms-1"></i> {{ total_notes }}
+            <span> |</span>
+          {% endwith %}
+          {% if post.post_verification == True %}
+            <i class="fa-solid fa-shield-halved fa-beat ms-1 text-info"></i>
           {% else %}
-            A.I. Author:
+            <i class="fa-solid fa-triangle-exclamation fa-beat ms-1 text-danger"></i>
           {% endif %}
-            <a href="{% url 'public_profile' post.author.user_profile.id %}" class="text-warning ms-1">
-            {{ post.author }}
-            </a>
-          </p>
-          <p class="post-subtitle text-light mb-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-            Owner:
-            <a href="#contact" class="text-warning ms-1">
-              <span class="ms-1">
-                {{ post.project_owner }}
-              </span>
-            </a>
-          </p>
-          <hr class="text-light col-10 col-sm-10 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-          {% if post.post_duration_created == 1 %}
-          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-            <span class="d-block d-sm-inline">
-              Created:
+        </span>
+        <hr class="text-light col-10 col-sm-10 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+        <p class="post-subtitle text-light mt-3 mb-1 mb-lg-2 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+        {% if post.author_type == 'Human' %}  
+          Human Author:
+        {% else %}
+          A.I. Author:
+        {% endif %}
+          <a href="{% url 'public_profile' post.author.user_profile.id %}" class="text-warning ms-1">
+          {{ post.author }}
+          </a>
+        </p>
+        <p class="post-subtitle text-light mb-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          Owner:
+          <a href="#contact" class="text-warning ms-1">
+            <span class="ms-1">
+              {{ post.project_owner }}
             </span>
-            <span class="text-break text-light-grey">
-              {{ post.created_on }} [{{ post.post_duration_created }} day ago]
-            </span> 
-          </p>
-          {% else %}
-          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-            <span class="d-block d-sm-inline">
-              Created:
-            </span>
-            <span class="text-break text-light-grey">
-              {{ post.created_on }} [{{ post.post_duration_created }} days ago]
-            </span> 
-          </p>
-          {% endif %}
-          {% if post.post_duration_updated == 1 %}
-          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-            <span class="d-block d-sm-inline">
-              Updated:
-            </span>
-            <span class="text-break text-light-grey">
-              {{ post.updated_on }} [{{ post.post_duration_updated }} day ago]
-            </span> 
-          </p>
-          {% else %}
-          <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
-            <span class="d-block d-sm-inline">
-              Updated:
-            </span>
-            <span class="text-break text-light-grey">
-              {{ post.updated_on }} [{{ post.post_duration_updated }} days ago]
-            </span>
-          </p>
-          {% endif %}
+          </a>
+        </p>
+        <hr class="text-light col-10 col-sm-10 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+        {% if post.post_duration_created == 1 %}
+        <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          <span class="d-block d-sm-inline">
+            Created:
+          </span>
+          <span class="text-break text-light-grey">
+            {{ post.created_on }} [{{ post.post_duration_created }} day ago]
+          </span> 
+        </p>
+        {% else %}
+        <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          <span class="d-block d-sm-inline">
+            Created:
+          </span>
+          <span class="text-break text-light-grey">
+            {{ post.created_on }} [{{ post.post_duration_created }} days ago]
+          </span> 
+        </p>
+        {% endif %}
+        {% if post.post_duration_updated == 1 %}
+        <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          <span class="d-block d-sm-inline">
+            Updated:
+          </span>
+          <span class="text-break text-light-grey">
+            {{ post.updated_on }} [{{ post.post_duration_updated }} day ago]
+          </span> 
+        </p>
+        {% else %}
+        <p class="post-subtitle text-light mb-1 mt-3 mt-sm-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">
+          <span class="d-block d-sm-inline">
+            Updated:
+          </span>
+          <span class="text-break text-light-grey">
+            {{ post.updated_on }} [{{ post.post_duration_updated }} days ago]
+          </span>
+        </p>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -211,10 +216,6 @@ Remove all media after checking until next check
 
 
 ------------------------
-  
-
-   but buttons on each offer create custom email modal for sending offer
-  Add place offer button that leads to offer modal
 
 
 constant before/ after comments:

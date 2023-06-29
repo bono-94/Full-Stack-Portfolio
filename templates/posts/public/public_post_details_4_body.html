@@ -89,46 +89,81 @@
     </div>
   </div>
 </div>
-<div class="offcanvas offcanvas-end ms-5 bg-light" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+
+<!-- OFFCANVAS -->
+<div class="offcanvas offcanvas-end ms-5 bg-light" tabindex="-1" id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel">
   <div class="text-end">
     <button type="button" class="btn-close text-reset m-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="mt-1 ms-2 ps-1 mb-4">
+  <div class="mt-1 mb-4">
     <h4 id="offcanvasRightLabel" class="mt-4 pt-2 text-center">
       {{ post.post_type }} Post
     </h4>
   </div>
   <hr>
-  <div class="ms-2 mt-4 ps-1">
-    <h6>{{ post.title }}</h6>
-    <h6 class="text-muted mt-4">{{ post.post_location_city }}</h6>
-    <h6 class="text-muted">{{ post.industry }}</h6>
-    <h6 class="text-muted">{{ post.author }}</h6>
-    <h6 class="text-muted mt-5">Sections:</h6>
+  <div>
+    <h6 class="ms-2 ps-1">{{ post.title }}</h6>
+    <h6 class="text-muted ms-2 ps-1">{{ post.industry }}</h6>
+    <h6 class="text-muted ms-2 ps-1">{{ post.author }}</h6>
+    <hr>
+    <h6 class="mt-4 ms-3 ps-1">Sections:</h6>
   </div>
-  <div class="list-group offcanvas-body mt-2">
-    <div class="ms-2 me-2 text-dark border border-1 border-dark mb-5">
-      <a href="{% url 'public_post_details_1_landing' post.slug %}" class="text-decoration-none p-0  list-group-item list-group-item-action list-group-item-info p-1 m-0 ps-2">
-        <p class="mb-1">1. WELCOME</p>
+  <div class="list-group offcanvas-body mt-1">
+    <div class="ms-2 me-2 border border-2 border-dark">
+      <a href="{% url 'public_post_details_1_landing' post.slug %}"
+        class="text-decoration-none p-0  list-group-item list-group-item-action bg-warning bg-gradient p-1 m-0 ps-2">
+        <p class="mb-1">
+          <strong>
+            1. WELCOME
+          </strong>
+        </p>
       </a>
-      <a href="{% url 'public_post_details_2_opps' post.slug %}" class="text-decoration-none list-group-item list-group-item-action list-group-item-info p-1 m-0 ps-2">
-        <p class="mb-1">2. DETAILS</p>
+      <a href="{% url 'public_post_details_2_opps' post.slug %}"
+        class="text-decoration-none list-group-item list-group-item-action bg-warning bg-gradient p-1 m-0 ps-2">
+        <p class="mb-1">
+          <strong>
+            2. DETAILS
+          </strong>
+        </p>
       </a>
-      <a href="{% url 'public_post_details_3_about_us' post.slug %}" class="text-decoration-none list-group-item list-group-item-action list-group-item-info p-1 m-0 ps-2">
-        <p class="mb-1">3. ABOUT US</p>
+      <a href="{% url 'public_post_details_3_about_us' post.slug %}"
+        class="text-decoration-none list-group-item list-group-item-action bg-warning bg-gradient p-1 m-0 ps-2">
+        <p class="mb-1">
+          <strong>
+            3. ABOUT US
+          </strong>
+        </p>
       </a>
-      <a href="{% url 'public_post_details_4_body' post.slug %}" class="text-decoration-none list-group-item list-group-item-action list-group-item-info p-1 m-0 ps-2 active bg-dark disabled">
-        <p class="mb-1">4. ARTICLES</p>
+      <a href="{% url 'public_post_details_4_body' post.slug %}"
+        class="text-decoration-none list-group-item list-group-item-action bg-gradient p-1 m-0 ps-2 bg-dark disabled">
+        <p class="mb-1 text-warning">
+          <strong>
+            4. ARTICLES
+          </strong>
+        </p>
       </a>
-      <a href="{% url 'public_post_details_5_files' post.slug %}" class="text-decoration-none list-group-item list-group-item-action list-group-item-info p-1 m-0 ps-2">
-        <p class="mb-1">5. DOCUMENTS</p>
+      <a href="{% url 'public_post_details_5_files' post.slug %}"
+        class="text-decoration-none list-group-item list-group-item-action bg-warning bg-gradient p-1 m-0 ps-2">
+        <p class="mb-1">
+          <strong>
+            5. DOCUMENTS
+          </strong>
+        </p>
       </a>
-      <a href="{% url 'public_post_details_6_proposal' post.slug %}" class="text-decoration-none list-group-item list-group-item-action list-group-item-info p-1 m-0 ps-2 ">
-        <p class="mb-1">6. PROPOSAL</p>
+      <a href="{% url 'public_post_details_6_proposal' post.slug %}"
+        class="text-decoration-none list-group-item list-group-item-action bg-warning bg-gradient p-1 m-0 ps-2">
+        <p class="mb-1">
+          <strong>
+            6. PROPOSAL
+          </strong>
+        </p>
       </a>
     </div>
   </div>
+  <button class="w-50 mx-auto p-1 mt-1 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#open-offer-modal" onclick="modalOpenOfferActivate()">OPEN OFFER</button>
 </div>
+
 <!-- NEXT PAGE -->
 <section class="bg-secondary-lighter pb-2 pt-5">
   <div class="container-fluid">

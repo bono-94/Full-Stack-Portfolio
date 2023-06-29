@@ -13,11 +13,11 @@
         <div class="image-container bg-secondary-lighter d-flex align-items-center justify-content-center">
           {% if post.post_list_image %}
           <a>
-            <img src="{{ post.post_banner_image.url }}" class="img-fluid object-fit-contain" alt="Project Image">
+            <img src="{{ post.post_banner_image.url }}" class="img-fluid object-fit-contain" alt="Post Image">
           </a>
           {% else %}
           <a>
-            <img src="{% static 'images/21105.jpg' %}" class="img-fluid object-fit-contain" alt="Project Placeholder">
+            <img src="{% static 'images/21105.jpg' %}" class="img-fluid object-fit-contain" alt="Post Placeholder">
           </a>
           {% endif %}
         </div>

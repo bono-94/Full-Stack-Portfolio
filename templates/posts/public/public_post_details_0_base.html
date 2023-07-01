@@ -173,7 +173,7 @@
         {% if post.public_phone %}
         <hr>
         <div>
-          <h6 class="text-center mt-2 ">
+          <h6 class="text-start mt-2 ">
             <i class="fa-solid fa-phone ms-2 me-2 d-inline"></i>
             <span class="text-break text-smaller d-inline">
               +{{ post.public_phone }}
@@ -185,7 +185,7 @@
         {% if post.public_email %}
         <hr>
         <div>
-          <h6 class="text-center pt-2">
+          <h6 class="text-start pt-2">
             <i class="fa-solid fa-envelope ms-2 me-2 d-inline"></i>
             <span class="text-break text-smaller d-inline">
               {{ post.public_email }}
@@ -197,7 +197,7 @@
           {% if post.contact_days %}
           <hr>
           <div>
-            <p class="mb-2 ps-1">
+            <p class="mb-2">
               <strong class="text-smaller">Contact Days:</strong>
               <span class="d-block text-smaller">
                 {{ post.contact_days }}
@@ -207,7 +207,7 @@
             {% endif %}
             {% if post.contact_hours %}
             <hr>
-            <p class="mb-0 ps-1">
+            <p class="mb-0">
               <strong class="text-smaller">Contact Hours:</strong>
               <span class="d-block text-smaller">
                 {{ post.contact_hours }}
@@ -219,38 +219,38 @@
         </div>
       </div>
       {% if post.website_link or post.facebook_link or post.twitter_link or post.instagram_link or post.linkedin_link or post.youtube_link %}
-      <div class=" bg-light social-links rounded border border-1 border-dark d-flex justify-content-center mt-4 pt-2 pb-2 mb-4 shadow-sm ms-1 me-1">
-        {% if post.contact_hours %}
+      <div id="post-contact-icons" class="bg-light social-links rounded border border-1 border-dark d-flex justify-content-center mt-4 pt-2 pb-2 mb-4 shadow-sm ms-1 me-1">
+        {% if post.website_link %}
         <a href="{{ post.website_link }}" target="_blank" class="btn btn-dark ms-2 me-2">
           <i class="fa-solid fa-globe"></i>
         </a>
         {% else %}
         {% endif %}
-        {% if post.contact_hours %}
+        {% if post.facebook_link %}
         <a href="{{ post.facebook_link }}" target="_blank" class="btn btn-dark me-2">
           <i class="fa-brands fa-facebook"></i>
         </a>
         {% else %}
         {% endif %}
-        {% if post.contact_hours %}
+        {% if post.twitter_link %}
         <a href="{{ post.twitter_link }}" target="_blank" class="btn btn-dark me-2">
           <i class="fa-brands fa-twitter"></i>
         </a>
         {% else %}
         {% endif %}
-        {% if post.contact_hours %}
+        {% if post.instagram_link %}
         <a href="{{ post.instagram_link }}" target="_blank" class="btn btn-dark me-2">
           <i class="fa-brands fa-instagram"></i>
         </a>
         {% else %}
         {% endif %}
-        {% if post.contact_hours %}
+        {% if post.linkedin_link %}
         <a href="{{ post.linkedin_link }}" target="_blank" class="btn btn-dark me-2">
           <i class="fa-brands fa-linkedin"></i>
         </a>
         {% else %}
         {% endif %}
-        {% if post.contact_hours %}
+        {% if post.youtube_link %}
         <a href="{{ post.youtube_link }}" target="_blank" class="btn btn-dark me-2">
           <i class="fa-brands fa-youtube"></i>
         </a>

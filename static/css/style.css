@@ -701,8 +701,6 @@ max-width: 700px;
 }
 
 
-
-
 /* OVERLAY */
 
 .image {
@@ -774,6 +772,11 @@ max-width: 700px;
     margin-left: 3px;
     margin-right: 3px;
   }
+
+  #post-contact-icons i {
+    font-size: 0.8rem;
+  }
+
 }
 
 @media (max-width: 420px) and (min-width: 390px) {

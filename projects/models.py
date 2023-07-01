@@ -498,8 +498,6 @@ class Post(models.Model):
         if value.size > limit:
             raise ValidationError("Please upload a file under 100 MB.")
 
-    
-
     # POST LIST CARD CONTENT
     post_list_description = models.CharField(max_length=84, blank=False, null=True)
 

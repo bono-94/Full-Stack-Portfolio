@@ -41,6 +41,7 @@ class PostAdmin(SummernoteModelAdmin):
         'status',
         'post_verification',
     )
+
     search_fields = [
         'title',
         'caption',
@@ -56,6 +57,7 @@ class PostAdmin(SummernoteModelAdmin):
         'post_location_planet',
         'business_knowledge',
     ]
+
     list_filter = (
         'status',
         'post_verification',
@@ -63,13 +65,23 @@ class PostAdmin(SummernoteModelAdmin):
         'post_type',
         'funding_infinite_end_date',
     )
+
     summernote_fields = (
         'business_knowledge',
         'caption',
         'introduction'
     )
+
     prepopulated_fields = {'slug': ('title',)}
 
+    # ACTIONS
+    actions = ['approved_post', 'frozen_post']
+
+    def approved_post(self, request, queryset):
+        queryset.update(status=1)
+
+    def frozen_post(self, request, queryset):
+        queryset.update(status=0)
 
 @admin.register(Note)
 class NotesAdmin(admin.ModelAdmin):

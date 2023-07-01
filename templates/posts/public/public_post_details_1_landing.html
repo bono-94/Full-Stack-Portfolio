@@ -141,30 +141,42 @@
         {{ post.industry }}
       </span>
     </li>
+    {% if post.organization %}
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
       <strong>Organization:</strong>
       <span class="ms-1">
         {{ post.organization }}
       </span>
     </li>
+    {% else %}
+    {% endif %}
+    {% if post.project %}
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
       <strong>Project:</strong>
       <span class="ms-1">
         {{ post.project }}
       </span>
     </li>
+    {% else %}
+    {% endif %}
+    {% if post.product %}
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
       <strong>Product:</strong>
       <span class="ms-1">
         {{ post.product }}
       </span>
     </li>
+    {% else %}
+    {% endif %}
+    {% if post.service %}
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
       <strong>Service:</strong>
       <span class="ms-1">
         {{ post.service }}
       </span>
     </li>
+    {% else %}
+    {% endif %}
     <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
       <strong>City:</strong>
       <span class="ms-1">

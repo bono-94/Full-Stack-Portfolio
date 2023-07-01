@@ -9,192 +9,278 @@
 <!-- POST OPPS DETAILS -->
 {% if post.post_opps_details_privacy == False %}
 
+<!-- POST OPPS TITLE -->
+<h3 class="text-center pt-5 pb-5 bg-secondary-lighter mb-0 border-bottom border-1 border-dark bg-info-subtle">
+  {{ post.post_type }} Post Details
+</h3>
+
 <!-- SECTION STRATEGY -->
-<section class="bg-secondary-lighter pt-2 pb-1">
-  <h3 class="text-center mt-5 mb-5">
-    {{ post.post_type }} Post Details
-  </h3>
+{% if post.pps_vision or post.pps_missions or post.pps_goals or post.pps_planner %}
+<section class="bg-secondary-lighter pt-2 pb-2">
   <hr>
   <div class="container">
     <div class="row-fluid">
       <h5 class="text-center mt-5 mb-4">Strategy</h5>
+      {% if post.pps_vision %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Vision</h6>
         <p>
           {{ post.pps_vision }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.pps_missions %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Missions</h6>
         <p>
           {{ post.pps_missions }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.pps_goals %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Goals</h6>
         <p>
           {{ post.pps_goals }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.pps_planner %}
       <div class="col-12 ms-1 me-1 mb-3">
         <h6 class="mt-2">Planner</h6>
         <p>
           {{ post.pps_planner }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
     </div>
   </div>
 </section>
+{% else %}
+{% endif %}
 
 <!-- SECTION CO-OPERATION -->
-<hr class="bg-secondary-lighter p-0 m-0">
+{% if post.team or post.partners or post.collaborators or post.sponsors or post.community or post.stakeholders or post.shareholders or post.ecosystem_relationship %}
 <section class="bg-secondary-lighter pt-2 pb-1">
+  <hr class="bg-secondary-lighter p-0 m-0">
   <div class="container">
     <div class="row-fluid">
       <h5 class="text-center mt-4 mb-4">Co-Operation</h5>
+      {% if post.team %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Team</h6>
         <p>
           {{ post.team }}
         </p>
       </div>
+      {% else %}
+      {% endif %} 
+      {% if post.partners %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Partners</h6>
         <p>
           {{ post.partners }}
         </p>
       </div>
+      {% else %}
+      {% endif %} 
+      {% if post.collaborators %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Collaborators</h6>
         <p>
           {{ post.collaborators }}
         </p>
       </div>
+      {% else %}
+      {% endif %} 
+      {% if post.sponsors %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Sponsors</h6>
         <p>
           {{ post.sponsors }}
         </p>
       </div>
+      {% else %}
+      {% endif %} 
+      {% if post.community %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Community</h6>
         <p>
           {{ post.community }}
         </p>
       </div>
+      {% else %}
+      {% endif %} 
+      {% if post.stakeholders %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Stakeholders</h6>
         <p>
           {{ post.stakeholders }}
         </p>
       </div>
+      {% else %}
+      {% endif %} 
+      {% if post.shareholders %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Shareholders</h6>
         <p>
           {{ post.shareholders }}
         </p>
       </div>
+      {% else %}
+      {% endif %} 
+      {% if post.ecosystem_relationship %}
       <div class="col-12 ms-1 me-1 mb-3">
         <h6 class="mt-2">Ecosystem Relationship</h6>
         <p>
           {{ post.ecosystem_relationship }}
         </p>
       </div>
+      {% else %}
+      {% endif %} 
     </div>
   </div>
 </section>
+{% else %}
+{% endif %}
 
 <!-- SECTION KEY ELEMENTS -->
+{% if post.resources_requiered or post.target_markets or post.target_groups or post.values_provided or post.differentiation or post.sdg_goals or post.legal_protection or post.franchizing_licencing %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
   <div class="container">
     <div class="row-fluid">
       <h5 class="text-center mt-4 mb-4">Key Elements</h5>
+      {% if post.resources_requiered %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Resources</h6>
         <p>
           {{ post.resources_requiered }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.target_markets %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Target Markets</h6>
         <p>
           {{ post.target_markets }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.target_groups %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Target Groups</h6>
         <p>
           {{ post.target_groups }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.values_provided %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Values Provided</h6>
         <p>
           {{ post.values_provided }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.differentiation %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Differentiation</h6>
         <p>
           {{ post.differentiation }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.sdg_goals %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">SDG Goals</h6>
         <p>
           {{ post.sdg_goals }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.legal_protection %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Legal Protection</h6>
         <p>
           {{ post.legal_protection }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.franchizing_licencing %}
       <div class="col-12 ms-1 me-1 mb-3">
         <h6 class="mt-2">Franchizing & Licencing</h6>
         <p>
           {{ post.franchizing_licencing }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
     </div>
   </div>
 </section>
+{% else %}
+{% endif %}
 
 <!-- SECTION DYNAMICS -->
+{% if post.risks or post.challenges or post.change or post.impact %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-1">
  <div class="container">
     <div class="row-fluid">
       <h5 class="text-center mt-4 mb-4">Dynamics</h5>
+      {% if post.risks %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Risks</h6>
         <p>
           {{ post.risks }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.challenges %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Challenges</h6>
         <p>
           {{ post.challenges }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.change %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Change</h6>
         <p>
           {{ post.change }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
+      {% if post.impact %}
       <div class="col-12 ms-1 me-1 mb-3">
         <h6 class="mt-2">Impact</h6>
         <p>
           {{ post.impact }}
         </p>
       </div>
+      {% else %}
+      {% endif %}
     </div>
   </div>
 </section>
+{% else %}
+{% endif %}
  
 {% else %}
 {% endif %}
@@ -341,4 +427,5 @@
     </div>
   </div>
 </section>
-  {% endblock posts_base_content %}
+
+{% endblock posts_base_content %}

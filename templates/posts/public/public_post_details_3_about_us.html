@@ -6,16 +6,18 @@
 
 {% load static %}
 
-<!-- POST OPPS DETAILS -->
+<!-- POST ABOUT CREATORS PRIVACY -->
 {% if post.post_about_privacy == False %}
 
+<!-- POST ABOUT CREATORS TITLE -->
+<h3 class="text-center mb-0 pt-5 pb-5 border-bottom border-1 border-dark bg-info-subtle">
+  About Creators of {{ post.post_type }}
+</h3>
+
 <!-- POST ABOUT CREATORS -->
-<hr class="bg-secondary-lighter p-0 m-0">
-<section class="bg-secondary-lighter pt-2 pb-2">
-  <h3 class="text-center mt-5 mb-5">
-    About Creators of {{ post.post_type }}
-  </h3>
-  <hr>
+{% if post.organization_info or post.organization_mission or post.organization_vision or post.organization_culture %}
+<section class="bg-secondary-lighter pt-0 pb-2">
+  <hr class="bg-secondary-lighter p-0 m-0">
   <div class="container">
     <div class="row-fluid">
       <h5 class="text-center mt-5 mb-4 pb-2">Who are we?</h5>
@@ -55,20 +57,14 @@
       </div>
       {% else %}
       {% endif %}
-      {% if post. %}
-      <div class="col-12 ms-1 me-1 mb-3">
-        <h6 class="mt-2">Planner</h6>
-        <p>
-          {{ post.pps_planner }}
-        </p>
-      </div>
-      {% else %}
-      {% endif %}
     </div>
   </div>
 </section>
+{% else %}
+{% endif %}
 
 <!-- POST PRODUCTS & SERVICES -->
+{% if post.products_provided or post.services_provided %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-2">
   <div class="container">
@@ -95,8 +91,11 @@
     </div>
   </div>
 </section>
+{% else %}
+{% endif %}
 
 <!-- POST SWOT -->
+{% if post.strengths or post.weaknesses or post.opportunities or post.threats %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-2">
   <div class="container">
@@ -141,9 +140,12 @@
     </div>
   </div>
 </section>
+{% else %}
+{% endif %}
 
+<!-- POST SWOT -->
 {% if post.focus_privacy == False %}
-<!-- POST SWOT PRODUCTS & SERVICES -->
+{% if post.focus_innovation or post.focus_financials or post.focus_planning or post.focus_monitoring or post.focus_quality or post.focus_quantity or post.focus_collaboration or post.focus_leadership %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-2">
   <div class="container">
@@ -152,38 +154,38 @@
       <div class="col-12 col-md-10 offset-md-1 shadow-sm pt-4 rounded border border-2 border-dark mb-5 mt-4 ps-2 pe-2">
         <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">INNOVATION</h6>
         <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{post.focus_innovation_style }}"><strong class="p-1">{% if post.focus_innovation > 10 %}{{ post.focus_innovation }} %{% else %}{{ post.focus_innovation }}%{% endif %}</strong></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{post.focus_innovation_style }}"><strong class="p-1">{% if post.focus_innovation > 10 %}{{ post.focus_innovation }} %{% else %}{{ post.focus_innovation }} %{% endif %}</strong></div>
         </div>
         <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">FINANCIALS</h6>
         <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_financials_style }}"><strong class="p-1">{% if post.focus_financials > 10 %}{{ post.focus_financials }} %{% else %}{{ post.focus_financials }}%{% endif %}</strong></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_financials_style }}"><strong class="p-1">{% if post.focus_financials > 10 %}{{ post.focus_financials }} %{% else %}{{ post.focus_financials }} %{% endif %}</strong></div>
         </div>
         <hr class="mb-4">
         <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">PLANNING</h6>
         <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_planning_style }}"><strong class="p-1">{% if post.focus_planning > 10 %}{{ post.focus_planning }} %{% else %}{{ post.focus_planning }}%{% endif %}</strong></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_planning_style }}"><strong class="p-1">{% if post.focus_planning > 10 %}{{ post.focus_planning }} %{% else %}{{ post.focus_planning }} %{% endif %}</strong></div>
         </div>
         <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">MONITORING</h6>
         <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_monitoring_style }}"><strong class="p-1">{% if post.focus_monitoring > 10 %}{{ post.focus_monitoring }} %{% else %}{{ post.focus_monitoring }}%{% endif %}</strong></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_monitoring_style }}"><strong class="p-1">{% if post.focus_monitoring > 10 %}{{ post.focus_monitoring }} %{% else %}{{ post.focus_monitoring }} %{% endif %}</strong></div>
         </div>
         <hr class="mb-4">
         <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">QUALITY</h6>
         <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_quality_style }}"><strong class="p-1">{% if post.focus_quality > 10 %}{{ post.focus_quality }} %{% else %}{{ post.focus_quality }}%{% endif %}</strong></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_quality_style }}"><strong class="p-1">{% if post.focus_quality > 10 %}{{ post.focus_quality }} %{% else %}{{ post.focus_quality }} %{% endif %}</strong></div>
         </div>
         <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">QUANTITY</h6>
         <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_quantity_style }}"><strong class="p-1">{% if post.focus_quantity > 10 %}{{ post.focus_quantity }} %{% else %}{{ post.focus_quantity }}%{% endif %}</strong></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_quantity_style }}"><strong class="p-1">{% if post.focus_quantity > 10 %}{{ post.focus_quantity }} %{% else %}{{ post.focus_quantity }} %{% endif %}</strong></div>
         </div>
         <hr class="mb-4">
         <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">COLLABORATION</h6>
         <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_collaboration_style }}"><strong class="p-1">{% if post.focus_collaboration > 10 %}{{ post.focus_collaboration }} %{% else %}{{ post.focus_collaboration }}%{% endif %}</strong></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info text-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_collaboration_style }}"><strong class="p-1">{% if post.focus_collaboration > 10 %}{{ post.focus_collaboration }} %{% else %}{{ post.focus_collaboration }} %{% endif %}</strong></div>
         </div>
         <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">LEADERSHIP</h6>
         <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_leadership_style }}"><strong class="p-1">{% if post.focus_leadership > 10 %}{{ post.focus_leadership }} %{% else %}{{ post.focus_leadership }}%{% endif %}</strong></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="{{ post.focus_leadership_style }}"><strong class="p-1">{% if post.focus_leadership > 10 %}{{ post.focus_leadership }} %{% else %}{{ post.focus_leadership }} %{% endif %}</strong></div>
         </div>
       </div>
     </div>
@@ -191,9 +193,12 @@
 </section>
 {% else %}
 {% endif %}
+{% else %}
+{% endif %}
 
-{% if post.specialty_privacy == False %}
 <!-- POST BUSINESS SPECIALTIES -->
+{% if post.specialty_privacy == False %}
+{% if post.special_ops or post.special_ops_two or post.special_supply_chain or post.special_supply_chain_two or post.special_tech or post.special_tech_two or post.special_hr or post.special_hr_two or post.special_finance or post.special_finance_two or post.special_marketing or post.special_marketing_two or post.special_research or post.special_research_two or post.special_sustainability or post.special_ops_two %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-2">
   <div class="container">
@@ -530,8 +535,10 @@
   </div>
 </section>
 {% else %}
+<div class="pt-5 bg-secondary-lighter"></div>
 {% endif %}
-
+{% else %}
+{% endif %}
 {% else %}
 {% endif %}
 
@@ -636,7 +643,7 @@
 </div>
 
 <!-- NEXT PAGE -->
-<section class="bg-secondary-lighter pb-2 pt-5">
+<section class="bg-secondary-lighter pb-2 pt-2">
   <div class="container-fluid mt-2">
     <div class="row">
       <div class="col-12 d-flex justify-content-center"> <!-- Added "col-12" class for full width and "justify-content-center" class for center alignment -->

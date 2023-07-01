@@ -6,14 +6,16 @@
 
 {% load static %}
 
+<!-- POST DOCUMENTATION TITLE -->
+<h3 class="text-center mb-0 pt-5 pb-5 border-bottom border-1 border-dark bg-info-subtle">
+  {{ post.post_type }} Documentation
+</h3>
+
 <!-- POST LIBRARY -->
 {% if post.post_bridge_privacy_library == False %}
+{% if post.organizational_structure or post.flowchart or post.agenda or post.tasklist or post.schedule or post.financial_reports or post.supply_chain_map or post.data_architecture_map or post.standard_operational_procedures or post.marketing_strategy_map or post.hr_handbook or post.sustainability_report or post.research_and_development_agenda or post.promotional_materials or post.certification or post.articles %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-4 pb-4">
-  <h3 class="text-center mt-5 mb-5">
-    {{ post.post_type }} Documentation
-  </h3>
-  <hr>
   <div class="container">
     <div class="row-fluid pb-2">
       <h5 class="text-center mt-5 mb-4 pb-3">
@@ -209,9 +211,12 @@
 </section>
 {% else %}
 {% endif %}
+{% else %}
+{% endif %}
 
 <!-- POST CABINET -->
 {% if post.post_bridge_privacy_cabinet == False %}
+{% if post.business_plan or post.implementation_plan or post.pestle_report or post.internal_report or post.capabilities or post.business_model_canvas or post.contracts or post.terms_conditions %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2">
   <div class="container">
@@ -313,6 +318,8 @@
     </div>
   </div>
 </section>
+{% else %}
+{% endif %}
 {% else %}
 {% endif %}
 

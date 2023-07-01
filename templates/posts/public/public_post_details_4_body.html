@@ -6,16 +6,18 @@
 
 {% load static %}
 
-<!-- POST OPPS DETAILS -->
+<!-- POST MAIN BODY PRIVACY -->
 {% if post.post_body_privacy == False %}
 
-<!-- POST SWOT -->
+<!-- POST MAIN BODY TITLE -->
+<h3 class="text-center mb-0 pt-5 pb-5 border-bottom border-1 border-dark bg-info-subtle">
+  Articles about {{ post.post_type }}
+</h3>
+
+<!-- POST ARTICLES -->
+{% if post.business_knowledge or post.journey or post.future or post.legacy %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-4 pb-2">
-  <h3 class="text-center mt-5 mb-5">
-    Articles about {{ post.post_type }}
-  </h3>
-  <hr>
   <div class="container">
     <div class="row-fluid">
       <h5 class="text-center mt-4 mb-4">Story</h5>
@@ -58,7 +60,8 @@
     </div>
   </div>
 </section>
-
+{% else %}
+{% endif %}
 {% else %}
 {% endif %}
 

@@ -1120,7 +1120,7 @@ class Post(models.Model):
     # END PRODUCT OR SERVICE PROPOSAL
     end_product_or_service_type = models.CharField(max_length=7, choices=TYPE_OF_END_SERVICE_OR_PRODUCT, blank=True, null=True)
     end_product_or_service_total_supply = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
-    
+
     end_product_or_service_quantity_proposal = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
     end_product_or_service_merch_proposal = models.TextField(max_length=210, blank=True, null=True)
     end_product_or_service_membership_proposal = models.TextField(max_length=210, blank=True, null=True)

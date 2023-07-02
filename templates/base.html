@@ -76,6 +76,17 @@
               </a>
               <ul class="dropdown-menu text-center bg-gradient bg-dark mt-0 mb-0 padding-mini rounded-0 border border-2 border-secondary shadow-lg"
                 aria-labelledby="navbarDropdown" id="navbar-dropdown-subs">
+                <li>
+                  <hr class="dropdown-divider bg-warning my-0">
+                </li>
+                <li>
+                  <a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2" href="{% url 'user_post_create' %}">
+                    Create
+                </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider bg-warning my-0">
+                </li>
                 <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2" href="{% url 'public_posts_list' %}">Public
                   Posts</a></li>
                 <li>
@@ -86,8 +97,6 @@
                 <li>
                   <hr class="dropdown-divider bg-warning my-0">
                 </li>
-                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2" href="{% url 'user_post_create' %}">Create
-                    Post</a></li>
               </ul>
             </li>
             <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow">

@@ -6,6 +6,8 @@
 
 {% load static %}
 
+{% if user.is_authenticated %}
+
 <!-- NAVIGATIONAL FIXED BUTTONS -->
 {% if post.author == request.user %}
   <div class="fixed-bottom p-0 mb-4 pb-3 text-end">
@@ -358,6 +360,11 @@
   </div>
 </div>
 
+{% else %}
+<div class="container public-privacy-message">
+  <h1 class="text-center">This post is private.</h1>
+</div>   
+{% endif %}
 {% else %}
 <div class="container public-privacy-message">
   <h1 class="text-center">This post is not open for public.</h1>

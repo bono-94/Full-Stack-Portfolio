@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <h1>Post for editing</h1>
 
 <h1>Profile</h1>
@@ -16,4 +18,9 @@
     <button type="submit" class="fixed-bottom">Save</button>
 </form>
 
+{% else %}
+<div class="container public-privacy-message">
+  <h1 class="text-center">This feature is not open for public.</h1>
+</div>  
+{% endif %} 
 {% endblock content %}

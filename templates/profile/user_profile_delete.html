@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
+
 <div class="bg-light shadow-lg col-10 offset-1 col-lg-6 offset-lg-3 pb-5 pt-2 mt-5 mb-5">
   <div class="col-10 offset-1 mb-5 pt-5">
     <h1 class="d-flex justify-content-center">Profile Deletion</h1>
@@ -18,4 +21,9 @@
     </form>  
   </div>
 </div>
+{% else %}
+<div class="container public-privacy-message">
+    <h1 class="text-center">This feature is not open for public.</h1>
+</div>   
+{% endif %}
 {% endblock content %}

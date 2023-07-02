@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <!-- PROFILE NAVIGATION SUPPORT -->
 <div class="fixed-button-expander pb-1">
   <button class="btn btn-dark text-warning border rounded border-info border-2 me-1 shadow-lg p-1 ps-2 pe-2" onclick="expandAllProfileColapses()" type="button">
@@ -503,5 +505,11 @@
     </div>
   </div>
 </div>
+
+{% else %}
+<div class="container public-privacy-message">
+    <h1 class="text-center">This feature is not open for public.</h1>
+</div>   
+{% endif %}
 
 {% endblock content %}

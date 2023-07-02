@@ -3,6 +3,9 @@
 {% load static %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
+
     <div>
         <div>
             <h1>
@@ -37,17 +40,11 @@
     <hr>
 
 
-
-
-
-
-
-
-
-
-
-
-
+{% else %}
+<div class="container public-privacy-message">
+  <h1 class="text-center">This feature is not open for public.</h1>
+</div>  
+{% endif %} 
 
 
 {% endblock content %}

@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
-
-
 {% block content %}
 
 {% load crispy_forms_tags %}
+
+{% if user.is_authenticated %}
+
 <!-- HEADING -->
 <div class="container-fluid mt-3">
   <div class="row-fluid">
@@ -505,5 +506,11 @@
     </div>
   </div>
 </div>
+
+{% else %}
+<div class="container public-privacy-message">
+    <h1 class="text-center">This feature is not open for public.</h1>
+</div>   
+{% endif %}
 
 {% endblock content %}

@@ -3,6 +3,9 @@
 {% load static %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
+
 {% if page_obj.has_previous == False %}
 <section class="py-5 pt-0 mt-0 pb-5 text-center container">
   <div class="row py-lg-4">
@@ -231,4 +234,11 @@
       </nav>
         {% endif %}
   </div>
+
+{% else %}
+<div class="container public-privacy-message">
+  <h1 class="text-center">This page is not open for public.</h1>
+</div>  
+{% endif %} 
+
 {%endblock%}

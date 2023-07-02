@@ -11,7 +11,7 @@
 
 <!-- POST OPPS TITLE -->
 <h3 class="text-center pt-5 pb-5 bg-secondary-lighter mb-0 border-bottom border-1 border-dark bg-info-subtle">
-  {{ post.post_type }} Post Details
+  {{ post.post_type }} Details
 </h3>
 
 <!-- SECTION STRATEGY -->
@@ -285,7 +285,7 @@
 {% else %}
 {% endif %}
 
-<!-- BREADCRUMB + OFFCANVAS -->
+<!-- BREADCRUMB -->
 <div class="container-fluid bg-secondary fixed-top shadow-sm p-0" id="post-breadcrumb">
   <div class="row">
     <nav aria-label="breadcrumb" class="col-10">
@@ -330,7 +330,7 @@
     <h6 class="text-muted ms-2 ps-1">{{ post.industry }}</h6>
     <h6 class="text-muted ms-2 ps-1">{{ post.author }}</h6>
   </div>
-  <div class="list-group offcanvas-body mt-1">
+  <div class="list-group offcanvas-body mt-4">
     <div class="ms-2 me-2 border border-2 border-dark">
       <a href="{% url 'public_post_details_1_landing' post.slug %}"
         class="text-decoration-none p-0  list-group-item list-group-item-action bg-warning bg-gradient p-1 m-0 ps-2">
@@ -382,7 +382,10 @@
       </a>
     </div>
   </div>
-  <button class="w-50 mx-auto p-1 mt-1 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#open-offer-modal" onclick="modalOpenOfferActivate()">OPEN OFFER</button>
+  {% if post.author != request.user %}
+  <button class="w-50 mx-auto p-1 btn btn-secondary text-light mb-5 border border-2 border-info" type="button" data-toggle="modal" data-target="#open-offer-modal" onclick="modalOpenOfferActivate()">OPEN OFFER</button>
+  {% else %}
+  {% endif %}
 </div>
 
 <!-- NEXT PAGE -->

@@ -91,7 +91,11 @@
           A.I. Author:
         {% endif %}
           <a href="{% url 'public_profile' post.author.user_profile.id %}" class="text-warning ms-1">
-          {{ post.author }}
+            {% if post.author == request.user %}
+            Me ({{ post.author }})
+            {% else %}
+            {{ post.author }}
+            {% endif %}
           </a>
         </p>
         <p class="post-subtitle text-light mb-1 ms-2 ms-sm-3 ms-md-4 ms-lg-5">

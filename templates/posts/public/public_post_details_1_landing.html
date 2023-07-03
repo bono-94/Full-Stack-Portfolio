@@ -140,24 +140,39 @@
     </div>
 </section>
 
+<!-- POST WELCOME TITLE -->
+<h3 class="text-center pt-5 pb-5 bg-secondary-lighter mb-0 border-bottom border-1 border-dark bg-info-subtle">
+  Welcome!
+</h3>
+
+<!-- INTRODUCTION -->
+{% if post.introduction_privacy == False and post.introduction %}
+<section class="bg-secondary-lighter pt-3 pb-5">
+  <h3 class="ms-3 mt-5 mb-4 pb-3 mt-md-5 mb-md-5 text-start text-sm-center">Introduction</h3>
+  <p class="text-break w-75 text-center mx-auto mt-4">{{ post.introduction }}</p>
+</section>
+{% else %}
+{% endif %}
+
 <!-- ABOUT CARD -->
+<hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-5 pb-5">
-  <h3 class="ms-3 mt-4 mb-4 pb-4 mt-md-5 mb-md-5 text-start text-sm-center">General information</h3>
+  <h3 class="ms-3 mt-4 mb-4 pb-4 mt-md-5 mb-md-5 text-start text-sm-center"></h3>
   <ul class="list-group mt-4 mb-0 col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 border border-1 border-dark mb-4 shadow">
-    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-bottom border-1 border-light">
+    <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-bottom border-1 border-secondary-subtle">
       <strong>Post Type:</strong>
       <span class="ms-1">
         {{ post.post_type }}
       </span>
     </li>
-    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+    <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-top border-1 border-secondary-subtle">
       <strong>Industry:</strong>
       <span class="ms-1">
         {{ post.industry }}
       </span>
     </li>
     {% if post.organization %}
-    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+    <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-top border-1 border-secondary-subtle">
       <strong>Organization:</strong>
       <span class="ms-1">
         {{ post.organization }}
@@ -166,7 +181,7 @@
     {% else %}
     {% endif %}
     {% if post.project %}
-    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+    <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-top border-1 border-secondary-subtle">
       <strong>Project:</strong>
       <span class="ms-1">
         {{ post.project }}
@@ -175,7 +190,7 @@
     {% else %}
     {% endif %}
     {% if post.product %}
-    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+    <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-top border-1 border-secondary-subtle">
       <strong>Product:</strong>
       <span class="ms-1">
         {{ post.product }}
@@ -184,7 +199,7 @@
     {% else %}
     {% endif %}
     {% if post.service %}
-    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+    <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-top border-1 border-secondary-subtle">
       <strong>Service:</strong>
       <span class="ms-1">
         {{ post.service }}
@@ -192,25 +207,25 @@
     </li>
     {% else %}
     {% endif %}
-    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+    <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-top border-1 border-secondary-subtle">
       <strong>City:</strong>
       <span class="ms-1">
         {{ post.post_location_city }}
       </span>
     </li>
-    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+    <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-top border-1 border-secondary-subtle">
       <strong>Country:</strong>
       <span class="ms-1">
         {{ post.post_location_country }}
       </span>
     </li>
-    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-top border-1 border-light">
+    <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-top border-1 border-secondary-subtle">
       <strong>Continent:</strong>
       <span class="ms-1">
         {{ post.post_location_continent }}
       </span>
     </li>
-    <li class="list-group-item bg-as-nav text-dark p-1 ps-3 border-bottom border-1 border-light">
+    <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-bottom border-1 border-secondary-subtle">
       <strong>Planet:</strong>
       <span class="ms-">
         {{ post.post_location_planet }}
@@ -218,16 +233,6 @@
     </li>
   </ul>
 </section>
-
-<!-- INTRODUCTION -->
-{% if post.introduction_privacy == False and post.introduction %}
-<hr class="bg-secondary-lighter p-0 m-0">
-<section class="bg-secondary-lighter pt-3 pb-5">
-  <h3 class="ms-3 mt-5 mb-4 pb-3 mt-md-5 mb-md-5 text-start text-sm-center">Introduction</h3>
-  <p class="text-break w-75 text-center mx-auto mt-4">{{ post.introduction }}</p>
-</section>
-{% else %}
-{% endif %}
 
 <!-- POST VIDEO -->
 {% if post.post_video_privacy == False and post.video %}
@@ -242,8 +247,8 @@
 <!-- LAUNCH DATE -->
 {% if post.launch_date_privacy == False and post.launch_date %}
 <hr class="bg-secondary-lighter p-0 m-0">
-<section class="bg-secondary-lighter pt-2 pb-4">
-  <h3 class="ms-3 mt-5 mb-2 pb-3 mt-md-5 mb-md-5 text-start text-sm-center">Remember the Date</h3>
+<section class="bg-secondary-lighter pt-2 pb-5">
+  <h3 class="ms-3 mt-5 mb-1 pb-3 mt-md-5 mb-md-5 text-start text-sm-center">Remember the Date</h3>
   <div class="container-fluid">
     <div class="row-fluid pt-3 pb-2">
       <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mt-4 mb-sm-2 mb-lg-4 pt-4 pb-3 text-center position-relative shadow-sm">
@@ -255,7 +260,7 @@
     <div class="row pb-3">
       <div class="col-11 col-sm-8 col-md-6 mx-auto bg-dark rounded text-light mt-4 mb-2 mb-lg-4 pt-3 pb-4 text-center shadow-sm position-relative shadow-sm">
         <i class="fa-solid fa-stopwatch position-absolute top-0 end-0 mt-3 me-3" style="font-size: 18px;"></i>
-        <h5 class="mb-4 pb-3 mt-2">Launch Date Countdowns</h5>
+        <h5 class="mb-4 pb-3 mt-2">Launch Countdowns</h5>
         <div class="row justify-content-between text-dark mt-1">
           <div class="col bg-info rounded ms-2 me-1 pt-2">
             <p class="mb-2 mb-1 shadow-sm"><strong>DAYS</strong></p>

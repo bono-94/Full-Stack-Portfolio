@@ -225,40 +225,40 @@
         </div>
       </div>
       {% if post.website_link or post.facebook_link or post.twitter_link or post.instagram_link or post.linkedin_link or post.youtube_link %}
-      <div id="post-contact-icons" class="bg-light social-links rounded border border-1 border-dark d-flex justify-content-center mt-4 pt-2 pb-2 mb-4 shadow-sm ms-1 me-1">
+      <div id="post-contact-icons" class="social-links d-flex justify-content-center mt-4 pt-2 pb-2 mb-4 ms-1 me-1">
         {% if post.website_link %}
         <a href="{{ post.website_link }}" target="_blank" class="btn btn-dark ms-2 me-2">
-          <i class="fa-solid fa-globe text-warning"></i>
+          <i class="fa-solid fa-globe text-light"></i>
         </a>
         {% else %}
         {% endif %}
         {% if post.facebook_link %}
         <a href="{{ post.facebook_link }}" target="_blank" class="btn btn-dark me-2">
-          <i class="fa-brands fa-facebook text-warning"></i>
+          <i class="fa-brands fa-facebook text-light"></i>
         </a>
         {% else %}
         {% endif %}
         {% if post.twitter_link %}
         <a href="{{ post.twitter_link }}" target="_blank" class="btn btn-dark me-2">
-          <i class="fa-brands fa-twitter text-warning"></i>
+          <i class="fa-brands fa-twitter text-light"></i>
         </a>
         {% else %}
         {% endif %}
         {% if post.instagram_link %}
         <a href="{{ post.instagram_link }}" target="_blank" class="btn btn-dark me-2">
-          <i class="fa-brands fa-instagram text-warning"></i>
+          <i class="fa-brands fa-instagram text-light"></i>
         </a>
         {% else %}
         {% endif %}
         {% if post.linkedin_link %}
         <a href="{{ post.linkedin_link }}" target="_blank" class="btn btn-dark me-2">
-          <i class="fa-brands fa-linkedin text-warning"></i>
+          <i class="fa-brands fa-linkedin text-light"></i>
         </a>
         {% else %}
         {% endif %}
         {% if post.youtube_link %}
         <a href="{{ post.youtube_link }}" target="_blank" class="btn btn-dark me-2">
-          <i class="fa-brands fa-youtube text-warning"></i>
+          <i class="fa-brands fa-youtube text-light"></i>
         </a>
         {% else %}
         {% endif %}

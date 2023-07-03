@@ -34,12 +34,12 @@
       {% endif %}
       <a class="pe-1 shadow">
         <button type="button" class="btn p-0 m-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-          <i class="fa-solid fa-angles-down text-info p-1 breadcrumb-bttn-padding btn-white-lit" style="font-size: 17px; padding-top: 15px;"></i>
+          <i class="fa-solid fa-angles-down text-shdw-sharp text-info p-1 breadcrumb-bttn-padding btn-white-lit" style="font-size: 17px; padding-top: 15px;"></i>
         </button>
       </a>
       <a href="{% url 'public_posts_list' %}" class="pe-1 shadow">
         <button type="button" class="btn p-0 m-0 me-3 me-md-4" aria-label="Close">
-          <i class="fa-solid fa-xmark text-info p-1 breadcrumb-bttn-padding shadow-sm btn-white-lit" style="font-size: 18px;"></i> 
+          <i class="fa-solid fa-xmark text-info p-1 text-shdw-sharp breadcrumb-bttn-padding shadow-sm btn-white-lit" style="font-size: 18px;"></i> 
         </button>
       </a>
     </div>
@@ -49,16 +49,18 @@
 <!-- OFFCANVAS -->
 <div class="offcanvas offcanvas-end ms-5 bg-light" tabindex="-1" id="offcanvasRight"
   aria-labelledby="offcanvasRightLabel">
-  <div class="text-end">
-    <button type="button" class="btn-close text-reset m-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <div class="bg-info-subtle">
+    <div class="text-end">
+      <button type="button" class="btn-close text-reset m-1" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="mt-1 mb-4">
+      <h4 id="offcanvasRightLabel" class="mt-4 pt-2 pb-3 text-center">
+        {{ post.post_type }} Post
+      </h4>
+    </div>
   </div>
-  <div class="mt-1 mb-4">
-    <h4 id="offcanvasRightLabel" class="mt-4 pt-2 text-center">
-      {{ post.post_type }} Post
-    </h4>
-  </div>
-  <hr>
-  <div class="mb-4">
+  <hr class="p-0 m-0">
+  <div class="mb-4 mt-4 pt-2">
     <h6 class="ms-2 ps-1">{{ post.title }}</h6>
     <h6 class="text-muted ms-2 ps-1">{{ post.industry }}</h6>
     <h6 class="text-muted ms-2 ps-1">{{ post.author }}</h6>

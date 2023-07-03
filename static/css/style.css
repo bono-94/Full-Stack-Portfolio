@@ -676,6 +676,16 @@ max-width: 700px;
   margin-left: 50px;
 }
 
+.mb-05 {
+
+  margin-bottom: 3px;
+
+}
+
+.text-shdw-sharp-1 {
+  text-shadow: 0px 0px 1px black;
+}
+
 .text-shdw-sharp {
   text-shadow: 0px 0px 2px black;
 }

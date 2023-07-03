@@ -10,15 +10,15 @@
 <div class="container-fluid bg-secondary fixed-top shadow-sm p-0" id="post-breadcrumb">
   <div class="row">
     <nav aria-label="breadcrumb" class="col-10">
-      <ol class="breadcrumb m-0 p-0">
-        <li class="breadcrumb-item d-flex align-items-center">
-          <a href="{% url 'public_post_details_1_landing' post.slug %}" class="text-info text-smaller ms-2 ms-md-3">Home</a>
-        </li>
-        <li class="breadcrumb-item d-flex align-items-center">
-          <a href="#" class="text-smaller text-light text-decoration-none pt-1">Welcome</a>
-        </li>
+      <ol class="breadcrumb m-0 p-0 d-flex align-items-center">
+          <li class="breadcrumb-item d-flex align-items-center">
+              <a href="{% url 'public_post_details_1_landing' post.slug %}" class="text-info text-smaller ms-2 ms-md-3 text-shdw-sharp">Home</a>
+          </li>
+          <li class="breadcrumb-item d-flex align-items-center">
+              <a href="#" class="text-smaller text-light text-decoration-none pt-1 text-shdw-sharp mb-05">Welcome</a>
+          </li>
       </ol>
-    </nav>  
+  </nav>
     <div class="col-2 d-flex align-items-center justify-content-end align-items-stretch pe-0" id="breadcrumb-bttn-padding">
       {% if post.post_background_audio %}
       <a class="pe-1 shadow">
@@ -157,7 +157,7 @@
 <!-- ABOUT CARD -->
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-5 pb-5">
-  <h3 class="ms-3 mt-4 mb-4 pb-4 mt-md-5 mb-md-5 text-start text-sm-center"></h3>
+  <h3 class="ms-3 mt-4 mb-4 pb-4 mt-md-5 mb-md-5 text-start text-sm-center">General Information</h3>
   <ul class="list-group mt-4 mb-0 col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 border border-1 border-dark mb-4 shadow">
     <li class="list-group-item bg-info-subtle text-dark p-1 ps-3 border-bottom border-1 border-secondary-subtle">
       <strong>Post Type:</strong>
@@ -248,7 +248,7 @@
 {% if post.launch_date_privacy == False and post.launch_date %}
 <hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-5">
-  <h3 class="ms-3 mt-5 mb-1 pb-3 mt-md-5 mb-md-5 text-start text-sm-center">Remember the Date</h3>
+  <h3 class="ms-3 mt-5 mb-1 pb-3 mt-md-5 mb-md-5 text-start text-sm-center">Important Date</h3>
   <div class="container-fluid">
     <div class="row-fluid pt-3 pb-2">
       <div class="col-8 col-sm-6 col-md-4 col-lg-3 mx-auto bg-dark rounded text-light mt-4 mb-sm-2 mb-lg-4 pt-4 pb-3 text-center position-relative shadow-sm">

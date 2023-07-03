@@ -299,14 +299,26 @@
       </ol>
     </nav>
     <div class="col-2 d-flex align-items-center justify-content-end align-items-stretch pe-0" id="breadcrumb-bttn-padding">
-      <a class="">
-        <button type="button" class="btn p-0 m-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-          <i class="fa-solid fa-angles-down text-info p-1 breadcrumb-bttn-padding shadow-sm btn-white-lit" style="font-size: 17px; padding-top: 15px;"></i> <!-- Add your desired icon class here -->
+      {% if post.post_background_audio %}
+      <a class="pe-1 shadow">
+        <button id="play-post-background" type="button" onclick="playPostAudio()" class="btn p-0 m-0 " aria-controls="offcanvasRight">
+          <i class="fa-solid fa-circle-play text-info p-1 breadcrumb-bttn-padding btn-white-lit" style="font-size: 17px; padding-top: 15px;"></i>
+        </button>
+        <button type="button" id="stop-post-background" onclick="stopPostAudio()" class="btn p-0 m-0" aria-controls="offcanvasRight" style="display:none">
+          <i class="fa-solid fa-circle-stop text-info p-1 breadcrumb-bttn-padding btn-white-lit" style="font-size: 17px; padding-top: 15px;"></i>
         </button>
       </a>
-      <a href="{% url 'public_posts_list' %}" class="pe-1">
-        <button type="button" class="btn p-0 m-0 ms-2 me-3 me-md-4" aria-label="Close">
-          <i class="fa-solid fa-xmark text-info p-1 breadcrumb-bttn-padding shadow-sm btn-white-lit" style="font-size: 18px;"></i> <!-- Add your desired icon class here -->
+      <audio src="{{ post.post_background_audio.url }}" id="post-audio" loop></audio>
+      {% else %}
+      {% endif %}
+      <a class="pe-1 shadow">
+        <button type="button" class="btn p-0 m-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          <i class="fa-solid fa-angles-down text-info p-1 breadcrumb-bttn-padding btn-white-lit" style="font-size: 17px; padding-top: 15px;"></i>
+        </button>
+      </a>
+      <a href="{% url 'public_posts_list' %}" class="pe-1 shadow">
+        <button type="button" class="btn p-0 m-0 me-3 me-md-4" aria-label="Close">
+          <i class="fa-solid fa-xmark text-info p-1 breadcrumb-bttn-padding shadow-sm btn-white-lit" style="font-size: 18px;"></i> 
         </button>
       </a>
     </div>

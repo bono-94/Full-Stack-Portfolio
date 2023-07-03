@@ -164,6 +164,40 @@ window.addEventListener('load', function () {
   stopButton.addEventListener('click', stopAudio);
 });
 
+
+// POST BACKGROUND AUDIO
+// Define the functions outside the addEventListener block
+function playPostAudio() {
+  const audioElement = document.getElementById('post-audio');
+  audioElement.play();
+  audioElement.volume = 0.4
+  const playButton = document.getElementById('play-post-background');
+  const stopButton = document.getElementById('stop-post-background');
+  playButton.style.display = 'none';
+  stopButton.style.display = 'inline';
+  audioElement.style.display = 'none';
+}
+
+function stopPostAudio() {
+  const audioElement = document.getElementById('post-audio');
+  audioElement.pause();
+  audioElement.currentTime = 0;
+  const stopButton = document.getElementById('stop-post-background');
+  const playButton = document.getElementById('play-post-background');
+  audioElement.style.display = 'none';
+  stopButton.style.display = 'none';
+  playButton.style.display = 'inline';
+}
+
+window.addEventListener('load', function () {
+  const playPostButton = document.getElementById('play-post-background');
+  const stopPostButton = document.getElementById('stop-post-background');
+
+  playPostButton.addEventListener('click', playPostAudio);
+  stopPostButton.addEventListener('click', stopPostAudio);
+});
+
+
 // Nav-margin
 
 // Closing profile navigation on clicking on <a> elements

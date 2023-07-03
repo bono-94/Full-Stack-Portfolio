@@ -228,37 +228,37 @@
       <div id="post-contact-icons" class="bg-light social-links rounded border border-1 border-dark d-flex justify-content-center mt-4 pt-2 pb-2 mb-4 shadow-sm ms-1 me-1">
         {% if post.website_link %}
         <a href="{{ post.website_link }}" target="_blank" class="btn btn-dark ms-2 me-2">
-          <i class="fa-solid fa-globe"></i>
+          <i class="fa-solid fa-globe text-warning"></i>
         </a>
         {% else %}
         {% endif %}
         {% if post.facebook_link %}
         <a href="{{ post.facebook_link }}" target="_blank" class="btn btn-dark me-2">
-          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-facebook text-warning"></i>
         </a>
         {% else %}
         {% endif %}
         {% if post.twitter_link %}
         <a href="{{ post.twitter_link }}" target="_blank" class="btn btn-dark me-2">
-          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-twitter text-warning"></i>
         </a>
         {% else %}
         {% endif %}
         {% if post.instagram_link %}
         <a href="{{ post.instagram_link }}" target="_blank" class="btn btn-dark me-2">
-          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-instagram text-warning"></i>
         </a>
         {% else %}
         {% endif %}
         {% if post.linkedin_link %}
         <a href="{{ post.linkedin_link }}" target="_blank" class="btn btn-dark me-2">
-          <i class="fa-brands fa-linkedin"></i>
+          <i class="fa-brands fa-linkedin text-warning"></i>
         </a>
         {% else %}
         {% endif %}
         {% if post.youtube_link %}
         <a href="{{ post.youtube_link }}" target="_blank" class="btn btn-dark me-2">
-          <i class="fa-brands fa-youtube"></i>
+          <i class="fa-brands fa-youtube text-warning"></i>
         </a>
         {% else %}
         {% endif %}
@@ -331,7 +331,7 @@
             
             {% csrf_token %}
             <p class="mt-2 mb-4">By: {{ user.username }}</p>
-            <button type="submit" class="btn btn-dark text-warning mt-4 mb-4 w-100 mx-auto shadow">Send</button>
+            <button type="submit" class="btn btn-dark text-warning mt-4 mb-4 w-100 mx-auto shadow-sm">Send</button>
           </form>
           {% endif %}
           {% endif %}

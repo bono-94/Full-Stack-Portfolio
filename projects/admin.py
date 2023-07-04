@@ -86,9 +86,9 @@ class PostAdmin(SummernoteModelAdmin):
 @admin.register(Note)
 class NotesAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'note', 'created_on_note', 'approved')
-    list_filter = ('name', 'note', 'approved', 'created_on_note')
-    search_fields = ('name', 'email', 'username', 'content_note')
+    list_display = ('content_note', 'note', 'created_on_note', 'approved')
+    list_filter = ('content_note', 'note', 'approved', 'created_on_note')
+    search_fields = ('content_note', 'email', 'content_note')
     actions = ['approved_note']
 
     def approved_note(self, request, queryset):

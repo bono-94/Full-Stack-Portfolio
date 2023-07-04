@@ -1324,33 +1324,11 @@ class Post(models.Model):
 # POST PAGE 11
 class Note(models.Model):
 
-    NOTE_CHOICES = (
-        ('Comment', 'Comment'),
-        ('Offer', 'Offer'),
-        ('Feedback', 'Feedback'),
-        ('Compliment', 'Compliment'),
-        ('Critique', 'Critique'),
-        ('Advice', 'Advice'),
-        ('Features Request', 'Features Request'),
-        ('Collaboration Request', 'Collaboration Request'),
-        ('Partnership Request', 'Partnership Request'),
-        ('Sponsorship Request', 'Sponsorship Request'),
-        ('Fresh Ideas', 'Fresh Ideas'),
-        ('Community Access', 'Community Access'),
-        ('End-user Request', 'End-user Request'),
-        ('Stakeholder Request', 'Stakeholder Request'),
-        ('Other', 'Other'),
-    )
-
-    note_privacy = models.BooleanField(default=False)
-
-    note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='note')
-    name = models.CharField(max_length=50)
-    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_note")
-    email = models.EmailField(max_length=100, blank=True)
-    content_note = models.TextField(max_length=500)
-    created_on_note = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     approved = models.BooleanField(default=False)
+    note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='note')
+    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_note")
+    content_note = models.TextField(max_length=630)
+    created_on_note = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     class Meta:
         ordering = ['-created_on_note']

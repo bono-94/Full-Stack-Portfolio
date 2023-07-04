@@ -740,3 +740,24 @@ class CustomSignupForm(SignupForm):
 
         if stocks_offering and stocks_supply and stocks_offering > stocks_supply:
             raise ValidationError("Stocks offering cannot be higher than stocks supply.")
+
+
+
+
+NOTE_CHOICES = (
+        ('Comment', 'Comment'),
+        ('Offer', 'Offer'),
+        ('Feedback', 'Feedback'),
+        ('Compliment', 'Compliment'),
+        ('Critique', 'Critique'),
+        ('Advice', 'Advice'),
+        ('Features Request', 'Features Request'),
+        ('Collaboration Request', 'Collaboration Request'),
+        ('Partnership Request', 'Partnership Request'),
+        ('Sponsorship Request', 'Sponsorship Request'),
+        ('Fresh Ideas', 'Fresh Ideas'),
+        ('Community Access', 'Community Access'),
+        ('End-user Request', 'End-user Request'),
+        ('Stakeholder Request', 'Stakeholder Request'),
+        ('Other', 'Other'),
+    )

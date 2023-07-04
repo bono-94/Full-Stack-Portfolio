@@ -24,7 +24,7 @@
     </div>
     <div class="collapse navbar-collapse text-center col-md-10" id="navbar-collapse-profile">
       <div class="d-flex flex-wrap me-5 justify-content-end">
-        <a href="#public-profile-hook" id="profile-general-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mt-1 border border-1 border-info bg-dark shadow-lg col-10 offset-2 w-75" onclick="closeNavbarProfile()">
+        <a href="#general-profile-card" id="profile-general-anchor" class="rounded text-decoration-none text-warning p-2 pt-2 pb-2 mt-1 border border-1 border-info bg-dark shadow-lg col-10 offset-2 w-75" onclick="closeNavbarProfile()">
           <strong><i class="fa-solid fa-circle-info me-3"></i>General</strong>
         </a>
         {% if profile.user_video %}
@@ -139,7 +139,7 @@
       <audio src="{% if profile.profile_audio %}{{ profile.profile_audio.url }}{% else %}{% endif %}" id="user-profile-audio" loop></audio>
     </div>
     <hr class="border border-2 border-dark d-md-none mt-5">
-    <div class="col-10 col-md-7 offset-1">
+    <div class="col-10 col-md-7 offset-1"  id="general-profile-card">
       <div class="card"></div>
         <div class="card-body rounded border border-1 border-dark bg-light mt-5 mt-md-0 ps-3 pe-3 mb-3 mb-sm-5 shadow-lg">
           <h4 class="card-title ps-0 mb-4 mt-3 mb-2 mb-md-0 pt-1 pb-2 text-center">{{ user.username }}</h4>

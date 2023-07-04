@@ -896,6 +896,7 @@ def post_delete(request, post_id):
 
     if request.method == 'POST':
         post.delete()
+        messages.success(request, 'Your post has been deleted successfully.')
         return redirect('user_posts_list')
 
     else:

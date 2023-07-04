@@ -69,7 +69,7 @@
               <a class="nav-link" aria-current="page" href="{% url 'about' %}"><strong>About</strong></a>
             </li>
             {% if user.is_authenticated %}
-            <li class="nav-item dropdown bg-gradient bg-info">
+            <li class="nav-item dropdown bg-gradient bg-info" style="position: relative; z-index: 3;">
               <a class="nav-link bg-gradient bg-warning dropdown-toggle border border-secondary border-1"
                 href="#" id="navbar-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <strong>Posts</strong>

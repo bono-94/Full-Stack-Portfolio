@@ -531,15 +531,16 @@ class Post(models.Model):
     )
 
     post_colors_list = models.BooleanField(default=False)
+    post_colors_details = models.BooleanField(default=False)
 
     post_color_primary = models.CharField(
         max_length=7,
-        default='#292b2c',
+        default='#CFF4FC',
     )
 
     post_color_secondary = models.CharField(
         max_length=7,
-        default='#ffc107',
+        default='#F2F3F5',
     )
 
     post_color_text = models.CharField(

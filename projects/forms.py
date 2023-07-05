@@ -160,6 +160,7 @@ class PostForm(forms.ModelForm):
             'public_privacy',
             'post_background_audio',
             'post_colors_list',
+            'post_colors_details',
             'post_color_primary',
             'post_color_secondary',
             'post_color_text',

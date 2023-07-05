@@ -69,7 +69,7 @@
 <section class="bg-secondary-lighter pt-2 pb-2">
   <div class="container">
     <div class="row-fluid">
-      <h5 class="text-center mt-5 mb-5">What are we doing?</h5>
+      <h5 class="text-center mt-5 mb-4 pb-4">What are we doing?</h5>
       {% if post.products_provided %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Products we provide</h6>
@@ -100,7 +100,7 @@
 <section class="bg-secondary-lighter pt-2 pb-2">
   <div class="container">
     <div class="row-fluid">
-      <h5 class="text-center mt-5 mb-5">S.W.O.T.</h5>
+      <h5 class="text-center mt-5 mb-4 pb-2">S.W.O.T.</h5>
       {% if post.strengths %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Strengths </h6>
@@ -146,11 +146,11 @@
 <!-- POST SWOT -->
 {% if post.focus_privacy == False %}
 {% if post.focus_innovation or post.focus_financials or post.focus_planning or post.focus_monitoring or post.focus_quality or post.focus_quantity or post.focus_collaboration or post.focus_leadership %}
-<hr class="bg-secondary-lighter p-0 m-0">
 <section class="bg-secondary-lighter pt-2 pb-2">
+  <hr class="bg-secondary-lighter p-0 m-0">
   <div class="container">
     <div class="row-fluid">
-      <h5 class="text-center mt-4 pt-4 mb-5">Business Focus</h5>
+      <h5 class="text-center mt-5 mb-5">Business Focus</h5>
       <div class="col-12 col-md-10 offset-md-1 shadow-sm pt-4 rounded border border-2 border-dark mb-5 mt-4 ps-2 pe-2">
         <h6 class="rounded border border-3 border-dark bg-light p-1 mb-2 d-inline">INNOVATION</h6>
         <div class="progress border border-4 border-dark mb-3 mt-2" style="height: 24px">
@@ -199,11 +199,11 @@
 <!-- POST BUSINESS SPECIALTIES -->
 {% if post.specialty_privacy == False %}
 {% if post.special_ops or post.special_ops_two or post.special_supply_chain or post.special_supply_chain_two or post.special_tech or post.special_tech_two or post.special_hr or post.special_hr_two or post.special_finance or post.special_finance_two or post.special_marketing or post.special_marketing_two or post.special_research or post.special_research_two or post.special_sustainability or post.special_ops_two %}
-<hr class="bg-secondary-lighter p-0 m-0">
-<section class="bg-secondary-lighter pt-2 pb-2">
+<section class="bg-secondary-lighter pt-2 pb-4">
+  <hr class="bg-secondary-lighter p-0 m-0">
   <div class="container">
     <div class="row-fluid">
-      <h5 class="text-center mt-4 pt-4 mb-5">Business Departments</h5>
+      <h5 class="text-center mt-5 mb-5">Business Departments</h5>
       {% if post.specialty_privacy == False and post.special_ops %}
       <div class="card text-white bg-dark mb-3 mt-4 shadow-sm" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">

@@ -6,9 +6,16 @@
 
 {% load static %}
 
+<!-- PAGE CUSTOM COLORING -->
+{% if post.post_colors_list == False %}
+<main>
+{% else %}
+<main style="background-color: {{ post.post_color_secondary }};">
+{% endif %}
+
 <!-- POST IMAGE -->
 <section id="post-main-image">
-    <div class="container-fluid p-0 overflow-hidden border-bottom border-2 border-info">
+    <div class="container-fluid p-0 overflow-hidden border-bottom border-2 border-info bg-secondary-lighter">
       <div class="row-fluid">
         <div class="image-container bg-secondary-lighter d-flex align-items-center justify-content-center">
           {% if post.post_list_image %}
@@ -26,7 +33,11 @@
 </section>
 
 <!-- POST WELCOME TITLE -->
-<h3 class="text-center pt-5 pb-5 bg-secondary-lighter mb-0 border-bottom border-1 border-dark bg-info-subtle">
+{% if post.post_colors_list == False %}
+<h3 class="text-center pt-5 pb-5 mb-0 border-bottom border-1 border-dark bg-info-subtle text-dark">
+{% else %}
+<h3 class="text-center pt-5 pb-5 mb-0 border-bottom border-1 border-secondary" style="background-color: {{ post.post_color_primary }};  color: {{ post.post_color_text }};">
+{% endif %}
   Welcome!
 </h3>
 
@@ -325,5 +336,6 @@
   {% else %}
   {% endif %}
 </div>
+</main>
 
 {% endblock posts_base_content %}

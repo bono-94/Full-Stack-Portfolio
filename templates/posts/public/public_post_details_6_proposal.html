@@ -9,8 +9,15 @@
 <!-- POST PROPOSAL PRIVACY -->
 {% if post.post_proposal_model_privacy == False %}
 
-<!-- POST PROPOSAL TITLE -->
+<!-- PAGE CUSTOM COLORING -->
+{% if post.post_colors_list == False %}
+<main>
+{% else %}
+<main style="background-color: {{ post.post_color_secondary }};">
+{% endif %}
 
+<!-- POST PROPOSAL TITLE -->
+{% if post.post_colors_list == False %}
 <h3 class="text-center mb-0 pt-5 pb-3 border-bottom border-1 border-dark bg-info-subtle">
   {{ post.post_type }} Proposal
   {% if post.author == request.user %}
@@ -25,9 +32,9 @@
   {% endif %}
   {% if post.proposal_fee_type == 'Commision' %}
   <span>
-    <h6 class="text-center p-1 mt-3 mb-2">
+    <p class="text-center p-1 mt-3 mb-2 text-smaller">
       Fee: (Percentage Commision)
-    </h6>
+    </p>
   </span>
   {% else %}
   <div class="mt-4"></div>
@@ -36,6 +43,34 @@
   <div class="mt-4"></div>
   {% endif %}
 </h3>
+{% else %}
+<h3 class="text-center mb-0 pt-5 pb-3 border-bottom border-1 border-dark" style="background-color: {{ post.post_color_primary }};  color: {{ post.post_color_text }};">
+  {{ post.post_type }} Proposal
+  <hr class="w-25 mx-auto pb-1 mt-4">
+  {% if post.author == request.user %}
+  {% if post.proposal_fee_type == 'One-time Fee' %}
+  <span>
+    <h6 class="text-center p-1 mt-3 mb-2">
+      Fee: (One-time Fixed Amount)
+    </h6>
+  </span>
+  {% else %}
+  <div class="mt-4"></div>
+  {% endif %}
+  {% if post.proposal_fee_type == 'Commision' %}
+  <span>
+    <p class="text-center p-1 mt-3 mb-2 text-smaller">
+      Fee: (Percentage Commision)
+    </p>
+  </span>
+  {% else %}
+  <div class="mt-4"></div>
+  {% endif %}
+  {% else %}
+  <div class="mt-4"></div>
+  {% endif %}
+</h3>
+{% endif %}
 
 {% if post.same_start_launch_date or post.funding_start_date or post.funding_end_date or post.funding_infinite_end_date %}
 <!-- FUNDING DATE -->
@@ -979,5 +1014,6 @@
 {% else %}
 {% endif %}
 
+</main>
 
 {% endblock posts_base_content %}

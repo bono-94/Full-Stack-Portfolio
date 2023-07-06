@@ -6,8 +6,19 @@
 
 {% load static %}
 
+<!-- PAGE CUSTOM COLORING -->
+{% if post.post_colors_list == False %}
+<main>
+{% else %}
+<main style="background-color: {{ post.post_color_secondary }};">
+{% endif %}
+
 <!-- POST DOCUMENTATION TITLE -->
-<h3 class="text-center mb-0 pt-5 pb-5 border-bottom border-1 border-dark bg-info-subtle">
+{% if post.post_colors_list == False %}
+<h3 class="text-center pt-5 pb-5 mb-0 border-bottom border-1 border-dark bg-info-subtle text-dark">
+{% else %}
+<h3 class="text-center pt-5 pb-5 mb-0 border-bottom border-1 border-secondary" style="background-color: {{ post.post_color_primary }};  color: {{ post.post_color_text }};">
+{% endif %}
   {{ post.post_type }} Documentation
 </h3>
 
@@ -482,5 +493,7 @@
     </div>
   </div>
 </section>
+
+</main>
 
 {% endblock posts_base_content %}

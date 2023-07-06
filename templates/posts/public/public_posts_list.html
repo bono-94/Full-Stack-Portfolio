@@ -190,24 +190,16 @@
               {% else %}
               <div class="card-footer border border-1 border-secondary" style="background-color: {{ post.post_color_secondary }};">
               {% endif %}
-                <p class="card-text text-muted h6">
-                  {% if post.post_colors_list == False %}
-                    <span>
-                  {% else %}
-                    <span style="color: {{ post.post_color_text }};">
-                  {% endif %}
-                      <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
-                      <i class="fa-solid fa-eye ms-2"></i> {{ post.views }}
-                    </span>
+                <p class="card-text text-muted h6 text-dark">
+                  <span>
+                    <i class="fa-solid fa-heart"></i> {{ post.number_of_votes }}
+                    <i class="fa-solid fa-eye ms-2"></i> {{ post.views }}
+                  </span>
                 </p>
-                <p class="card-text text-muted h6">
-                  {% if post.post_colors_list == False %}
-                    <span>
-                  {% else %}
-                    <span style="color: {{ post.post_color_text }};">
-                  {% endif %}
-                      {{ post.created_on }}
-                    </span>
+                <p class="card-text text-muted h6 text-dark">
+                  <span>
+                    {{ post.created_on }}
+                  </span>
                 </p>
               </div>
             </div>

@@ -6,12 +6,23 @@
 
 {% load static %}
 
+<!-- PAGE CUSTOM COLORING -->
+{% if post.post_colors_list == False %}
+<main>
+{% else %}
+<main style="background-color: {{ post.post_color_secondary }};">
+{% endif %}
+
 <!-- POST ABOUT CREATORS PRIVACY -->
 {% if post.post_about_privacy == False %}
 
 <!-- POST ABOUT CREATORS TITLE -->
-<h3 class="text-center mb-0 pt-5 pb-5 border-bottom border-1 border-dark bg-info-subtle">
-  About Creators of {{ post.post_type }}
+{% if post.post_colors_list == False %}
+<h3 class="text-center pt-5 pb-5 mb-0 border-bottom border-1 border-dark bg-info-subtle text-dark">
+{% else %}
+<h3 class="text-center pt-5 pb-5 mb-0 border-bottom border-1 border-secondary" style="background-color: {{ post.post_color_primary }};  color: {{ post.post_color_text }};">
+{% endif %}
+  About Creators & Team
 </h3>
 
 <!-- POST ABOUT CREATORS -->
@@ -196,10 +207,12 @@
 {% else %}
 {% endif %}
 
+</main>
+
 <!-- POST BUSINESS SPECIALTIES -->
 {% if post.specialty_privacy == False %}
 {% if post.special_ops or post.special_ops_two or post.special_supply_chain or post.special_supply_chain_two or post.special_tech or post.special_tech_two or post.special_hr or post.special_hr_two or post.special_finance or post.special_finance_two or post.special_marketing or post.special_marketing_two or post.special_research or post.special_research_two or post.special_sustainability or post.special_ops_two %}
-<section class="bg-secondary-lighter pt-2 pb-4">
+<section class="bg-secondary-lighter pt-0 pb-4">
   <hr class="bg-secondary-lighter p-0 m-0">
   <div class="container">
     <div class="row-fluid">
@@ -701,4 +714,5 @@
     </div>
   </div>
 </section>
+
 {% endblock posts_base_content %}

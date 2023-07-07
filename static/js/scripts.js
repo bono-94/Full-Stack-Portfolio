@@ -71,8 +71,6 @@ function toggleNavbar() {
 
   } else {
       navbarCollapse.classList.add("show")
-      navMarginMob.classList.remove('nav-margin-mobile-short')
-      navMarginTab.classList.remove('nav-margin-tablet-short')
       navMarginMob.classList.add('nav-margin-mobile')
       navMarginTab.classList.add('nav-margin-tablet');
       breadcrumbMargin.classList.add('d-none');

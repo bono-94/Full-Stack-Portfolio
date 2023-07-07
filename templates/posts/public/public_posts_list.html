@@ -9,21 +9,21 @@
 {% if page_obj.has_previous == False %}
 <section class="py-5 pt-0 mt-0 pb-5 text-center container">
   <div class="row py-lg-4">
-    <div class="col-lg-10 col-md-10 col-xxl-8 mx-auto">
-      <h1 class="fw-light mt-2 mb-md-4 mb-lg-5">Public Selection</h1>
+    <div class="col-lg-10 col-md-10 col-xxl-8 mx-auto mb-2">
+      <h1 class="fw-light mt-4 pt-2 pb-3 mb-2 mb-md-4 mb-lg-5">Public Selection</h1>
       <p class="lead text-muted mt-4 mb-4 mb-md-5">
         Explore our captivating assortment of unique offerings from companies, organizations, projects, products, and services. This approved collection presents a diverse range of options and invites you to unlock the gateway to infinite universe of business opportunities.
       </p>
-      <div class="mt-4">
+      <div class="mt-4 pt-4 pb-2">
         <a href="{% url 'user_posts_list' %}" class="btn btn-dark text-warning my-2 mx-1 shadow-sm rounded-pill">VIEW PRIVATE</a>
-        <a href="{% url 'user_post_create' %}" class="btn btn-warning text-dark my-2 mx-1 shadow-sm rounded-pill ms-md-3">CREATE NEW</a>
+        <a href="{% url 'user_post_create' %}" class="btn btn-dark text-warning my-2 mx-1 shadow-sm rounded-pill ms-md-3">CREATE NEW</a>
       </div>
     </div>
   </div>
 </section>
 {% endif %}
 {% if page_obj.has_previous %}
-<section class="pt-0 mt-0 pb-3 text-center container">
+<section class=" pt-4 mt-0 pb-3 text-center container bg-info-subtle">
   <div class="row">
     <div class="col-lg-10 col-md-10 col-xxl-8 mx-auto mt-sm-0">
       <h2 class="fw-light mt-1">Public Selection</h2>
@@ -77,7 +77,7 @@
               {% endif %} 
               {% endif %} 
               {% if post.post_verification == True %}
-              <i class="fa-solid fa-shield-halved fa-beat-fade text-info top-right-icon me-2 mt-2"></i>
+              <i class="fa-solid fa-shield-halved text-info top-right-icon me-2 mt-2"></i>
               {% else %}
               <i class="fa-solid fa-triangle-exclamation text-danger fa-beat-fade top-right-icon me-2 mt-2"></i>
               {% endif %} 

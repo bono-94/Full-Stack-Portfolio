@@ -31,13 +31,14 @@
 <section class="bg-secondary-lighter pt-4 pb-2">
   <div class="container">
     <div class="row-fluid">
-      <h5 class="text-center mt-4 mb-4">Story</h5>
+      <h5 class="text-center mt-4 mb-4 pb-2">Story</h5>
       {% if post.business_knowledge %}
       <div class="col-12 ms-1 me-1 mb-1">
         <h6 class="mt-2">Knowledge </h6>
         <p>
           {{ post.business_knowledge }}
         </p>
+        <hr class="pb-3">
       </div>
       {% else %}
       {% endif %}
@@ -47,6 +48,7 @@
         <p>
           {{ post.journey }}
         </p>
+        <hr class="pb-3">
       </div>
       {% else %}
       {% endif %}
@@ -56,6 +58,7 @@
         <p>
           {{ post.future }}
         </p>
+        <hr class="pb-3">
       </div>
       {% else %}
       {% endif %}

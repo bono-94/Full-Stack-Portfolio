@@ -214,11 +214,11 @@
 {% if post.special_ops or post.special_ops_two or post.special_supply_chain or post.special_supply_chain_two or post.special_tech or post.special_tech_two or post.special_hr or post.special_hr_two or post.special_finance or post.special_finance_two or post.special_marketing or post.special_marketing_two or post.special_research or post.special_research_two or post.special_sustainability or post.special_ops_two %}
 <section class="bg-secondary-lighter pt-0 pb-4">
   <hr class="bg-secondary-lighter p-0 m-0">
-  <div class="container">
-    <div class="row-fluid">
-      <h5 class="text-center mt-5 mb-5">Business Departments</h5>
+  <div class="container-fluid">
+    <div class="row-fluid text-center justify-content-center">
+      <h5 class="text-center mt-5 mb-5 pb-2">Business Departments</h5>
       {% if post.specialty_privacy == False and post.special_ops %}
-      <div class="card text-white bg-dark mb-3 mt-4 shadow-sm" style="max-width: 18rem;">
+      <div class="card text-white bg-dark mb-3 mt-4 shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">
           Current
           {% if post.percentage_special_privacy == False and post.percentage_special_ops %}
@@ -238,7 +238,7 @@
       {% else %}
       {% endif %}
       {% if post.specialty_privacy_two == False and post.special_ops_two %}
-      <div class="card border-dark mb-3 border border-1 border-dark shadow-sm" style="max-width: 18rem;">
+      <div class="card border-dark mb-3 border border-1 border-dark shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-dark d-flex justify-content-between align-items-center text-dark shadow-sm">
           Future
           {% if post.percentage_special_privacy == False and post.percentage_special_ops_two %}
@@ -255,11 +255,11 @@
           </p>
         </div>
       </div> 
-      <hr>
+      <hr class="mt-4 pb-2">
       {% else %}
       {% endif %}
       {% if post.specialty_privacy == False and post.special_supply_chain %}
-      <div class="card text-white bg-secondary mb-3 shadow-sm" style="max-width: 18rem;">
+      <div class="card text-white bg-secondary mb-3 shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">
           Current
           {% if post.percentage_special_privacy == False and post.percentage_special_supply_chain %}
@@ -279,7 +279,7 @@
       {% else %}
       {% endif %}
       {% if post.specialty_privacy_two == False and post.special_supply_chain_two %}
-      <div class="card border-secondary mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+      <div class="card border-secondary mb-3 border border-1 border-secondary shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-secondary d-flex justify-content-between align-items-center text-secondary shadow-sm">
           Future
           {% if post.percentage_special_privacy == False and post.percentage_special_supply_chain_two %}
@@ -296,11 +296,11 @@
           </p>
         </div>
       </div>
-      <hr>
+      <hr class="mt-4 pb-2">
       {% else %}
       {% endif %}
       {% if post.specialty_privacy == False and post.special_tech %}
-      <div class="card text-white bg-primary mb-3 shadow-sm" style="max-width: 18rem;">
+      <div class="card text-white bg-primary mb-3 shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">
           Current
           {% if post.percentage_special_privacy == False and post.percentage_special_tech %}
@@ -320,7 +320,7 @@
       {% else %}
       {% endif %}
       {% if post.specialty_privacy_two == False and post.special_tech_two %}
-      <div class="card border-primary mb-3 border border-1 border-primary shadow-sm" style="max-width: 18rem;">
+      <div class="card border-primary mb-3 border border-1 border-primary shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-primary d-flex justify-content-between align-items-center text-primary shadow-sm">
           Future
           {% if post.percentage_special_privacy == False and post.percentage_special_tech_two %}
@@ -337,11 +337,11 @@
           </p>
         </div>
       </div>
-      <hr>
+      <hr class="mt-4 pb-2">
       {% else %}
       {% endif %}
       {% if post.specialty_privacy == False and post.special_hr %}
-      <div class="card text-dark bg-info mb-3 shadow-sm" style="max-width: 18rem;">
+      <div class="card text-dark bg-info mb-3 shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-dark d-flex justify-content-between align-items-center shadow-sm">
           Current
           {% if post.percentage_special_privacy == False and post.percentage_special_hr %}
@@ -361,7 +361,7 @@
       {% else %}
       {% endif %}
       {% if post.specialty_privacy_two == False and post.special_hr_two %}
-      <div class="card border-info mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+      <div class="card border-info mb-3 border border-1 border-secondary shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-info d-flex justify-content-between align-items-center text-info shadow-sm">
           Future
           {% if post.percentage_special_privacy == False and post.percentage_special_hr_two %}
@@ -378,11 +378,11 @@
           </p>
         </div>
       </div>
-      <hr>
+      <hr class="mt-4 pb-2">
       {% else %}
       {% endif %}
       {% if post.specialty_privacy == False and post.special_finance %}
-      <div class="card text-white bg-success mb-3 shadow-sm" style="max-width: 18rem;">
+      <div class="card text-white bg-success mb-3 shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">
           Current
           {% if post.percentage_special_privacy == False and post.percentage_special_finance %}
@@ -402,7 +402,7 @@
       {% else %}
       {% endif %}
       {% if post.specialty_privacy_two == False and post.special_finance_two %}
-      <div class="card border-success mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+      <div class="card border-success mb-3 border border-1 border-secondary shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-success text-success d-flex justify-content-between align-items-center shadow-sm">
           Future
           {% if post.percentage_special_privacy == False and post.percentage_special_finance_two %}
@@ -419,11 +419,11 @@
           </p>
         </div>
       </div>
-      <hr>
+      <hr class="mt-4 pb-2">
       {% else %}
       {% endif %}
       {% if post.specialty_privacy == False and post.special_marketing %}
-      <div class="card text-dark bg-warning mb-3 shadow-sm" style="max-width: 18rem;">
+      <div class="card text-dark bg-warning mb-3 shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-dark d-flex justify-content-between align-items-center shadow-sm">
           Current
           {% if post.percentage_special_privacy == False and post.percentage_special_marketing %}
@@ -443,7 +443,7 @@
       {% else %}
       {% endif %}
       {% if post.specialty_privacy_two == False and post.special_marketing_two %}
-      <div class="card border-warning mb-3 border border-1 border-warning shadow-sm" style="max-width: 18rem;">
+      <div class="card border-warning mb-3 border border-1 border-warning shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-warning d-flex justify-content-between align-items-center text-warning shadow-sm">
           Future
           {% if post.percentage_special_privacy == False and post.percentage_special_marketing_two %}
@@ -460,11 +460,11 @@
           </p>
         </div>
       </div>
-      <hr>
+      <hr class="mt-4 pb-2">
       {% else %}
       {% endif %}
       {% if post.specialty_privacy == False and post.special_research %}
-      <div class="card text-white bg-danger mb-3 shadow-sm" style="max-width: 18rem;">
+      <div class="card text-white bg-danger mb-3 shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-light d-flex justify-content-between align-items-center shadow-sm">
           Current
           {% if post.percentage_special_privacy == False and post.percentage_special_research %}
@@ -484,7 +484,7 @@
       {% else %}
       {% endif %}
       {% if post.specialty_privacy_two == False and post.special_research_two %}
-      <div class="card border-danger mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+      <div class="card border-danger mb-3 border border-1 border-secondary shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-danger d-flex justify-content-between align-items-center text-danger shadow-sm">
           Future
           {% if post.percentage_special_privacy == False and post.percentage_special_research_two %}
@@ -501,11 +501,11 @@
           </p>
         </div>
       </div>
-      <hr>
+      <hr class="mt-4 pb-2">
       {% else %}
       {% endif %}
       {% if post.specialty_privacy == False and post.special_sustainability %}
-      <div class="card text-dark bg-light mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+      <div class="card text-dark bg-light mb-3 border border-1 border-secondary shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-secondary d-flex justify-content-between align-items-center bg-light text-secondary shadow-sm">
           Current
           {% if post.percentage_special_privacy == False and post.percentage_special_sustainability %}
@@ -525,7 +525,7 @@
       {% else %}
       {% endif %}
       {% if post.specialty_privacy_two == False and post.special_sustainability_two %}
-      <div class="card mb-3 border border-1 border-secondary shadow-sm" style="max-width: 18rem;">
+      <div class="card mb-3 mb-sm-5 border border-1 border-secondary shadow-sm mx-auto" style="max-width: 18rem;">
         <div class="card-header border-bottom border-1 border-secondary d-flex justify-content-between align-items-center text-secondary shadow-sm">
           Future
           {% if post.percentage_special_privacy == False and post.percentage_special_sustainability_two %}

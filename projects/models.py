@@ -615,7 +615,7 @@ class Post(models.Model):
     # POST LAUNCH
     launch_date_privacy = models.BooleanField(default=False)
 
-    launch_date = models.DateField( blank=True, null=True)
+    launch_date = models.DateField(blank=True, null=True)
 
     # PAGE 2
     # POST DETAILS O/P/P/S

@@ -341,22 +341,22 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    standard_operational_procedures = forms.CharField(
+    standard_operational_procedures = forms.FileField(
         label='S.O.P.',
         required=False
     )
 
-    hr_handbook = forms.CharField(
+    hr_handbook = forms.FileField(
         label='HR Handbook',
         required=False
     )
 
-    research_and_development_agenda = forms.CharField(
+    research_and_development_agenda = forms.FileField(
         label='Research Agenda',
         required=False
     )
 
-    pestle_report = forms.CharField(
+    pestle_report = forms.FileField(
         label='PESTLE Report',
         required=False
     )

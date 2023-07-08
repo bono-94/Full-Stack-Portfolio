@@ -151,8 +151,6 @@ class ProfileForm(forms.ModelForm):
 
 class PostForm(forms.ModelForm):
 
-    public_privacy = forms.BooleanField(label=False)
-
     class Meta:
         model = Post
         fields = [

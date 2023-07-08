@@ -275,6 +275,16 @@ function modalEditProfileClose() {
   $('#edit-profile-save').modal('hide');
 }
 
+// CREATE & EDIT POST SAVE MODAL
+function modalEditPostActivate() {
+  $('#edit-post-save').modal('toggle');
+}
+
+function modalEditPostClose() {
+  $('#edit-post-save').modal('hide');
+}
+
+
 // STOCKS OFFER MODAL
 function modalStocksActivate() {
   $('#stocks-modal').modal('toggle');
@@ -631,8 +641,12 @@ function personalWallCollapse() {
   let isExpanded = profilePopover.classList.contains("collapse");
   if (isExpanded) {
     profilePopover.classList.remove("collapse");
+    profilePopoverIcon.classList.remove("fa-square-plus");
+    profilePopoverIcon.classList.add("fa-square-minus");
   } else {
     profilePopover.classList.add("collapse");
+    profilePopoverIcon.classList.remove("fa-square-minus");
+    profilePopoverIcon.classList.add("fa-square-plus");
   }
 }
 
@@ -834,6 +848,218 @@ function editProfileWall() {
   }
 }
 
+// CREATE & EDIT POST COLLAPSES
+
+// POST POSTLIST VIEW COLLAPSE
+function editPostListView() {
+  let editPopover = document.getElementById('post-list-view');
+  let editPopoverButton = document.getElementById('post-list-view-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST STRUCTURE COLLAPSE
+function editPostStructure() {
+  let editPopover = document.getElementById('post-structure');
+  let editPopoverButton = document.getElementById('post-structure-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST KEY INFO COLLAPSE
+function editPostKeyInfo() {
+  let editPopover = document.getElementById('post-key-info');
+  let editPopoverButton = document.getElementById('post-key-info-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST GENERAL INFO COLLAPSE
+function editPostGeneral() {
+  let editPopover = document.getElementById('post-general');
+  let editPopoverButton = document.getElementById('post-general-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST INTRODUCTION COLLAPSE
+function editPostIntroduction() {
+  let editPopover = document.getElementById('post-intro');
+  let editPopoverButton = document.getElementById('post-intro-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST VIDEO COLLAPSE
+function editPostVideo() {
+  let editPopover = document.getElementById('post-video');
+  let editPopoverButton = document.getElementById('post-video-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST LAUNCH COLLAPSE
+function editPostLaunch() {
+  let editPopover = document.getElementById('post-launch');
+  let editPopoverButton = document.getElementById('post-launch-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST DETAILS COLLAPSE
+function editPostDetails() {
+  let editPopover = document.getElementById('post-details');
+  let editPopoverButton = document.getElementById('post-details-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST ABOUT CREATORS COLLAPSE
+function editPostAboutCreators() {
+  let editPopover = document.getElementById('post-about-creators');
+  let editPopoverButton = document.getElementById('post-about-creators-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST MAIN CONTENT COLLAPSE
+function editPostBody() {
+  let editPopover = document.getElementById('post-body');
+  let editPopoverButton = document.getElementById('post-body-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST LIBRARY COLLAPSE
+function editPostLibrary() {
+  let editPopover = document.getElementById('post-library');
+  let editPopoverButton = document.getElementById('post-library-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST DOCUMENTS COLLAPSE
+function editPostDocuments() {
+  let editPopover = document.getElementById('post-documents');
+  let editPopoverButton = document.getElementById('post-documents-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST PROPOSAL COLLAPSE
+function editPostProposal() {
+  let editPopover = document.getElementById('post-proposal');
+  let editPopoverButton = document.getElementById('post-proposal-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
+
+// POST CONTACT COLLAPSE
+function editPostContact() {
+  let editPopover = document.getElementById('post-contact');
+  let editPopoverButton = document.getElementById('post-contact-bttn');
+  let isExpanded = editPopover.classList.contains("collapse");
+  if (isExpanded) {
+    editPopover.classList.remove("collapse");
+    editPopoverButton.classList.add("bg-warning");
+  } else {
+    editPopover.classList.add("collapse");
+    editPopoverButton.classList.remove("bg-warning");
+     // Set the desired background color with important
+  }
+}
 
 
 

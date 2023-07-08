@@ -179,17 +179,17 @@ body {
 
 /* PROFILE EDIT FORM */
 
-#edit-form > form input{
+#edit-form, #edit-post-form > form input{
 
   width: 100%;
 }
 
-#edit-form > form textarea{
+#edit-form, #edit-post-form > form textarea{
 
   width: 100%;
 }
 
-#edit-form > form label{
+#edit-form, #edit-post-form > form label{
 
   background-color: #343a40;
   color: #ffc107;
@@ -200,45 +200,45 @@ body {
   width: fit-content;
 }
 
-#edit-form > form hr{
+#edit-form, #edit-post-form > form hr{
 
   margin-bottom: 21px;
   margin-top: 21px;
 }
 
-#edit-form > form input[type="text"]{
+#edit-form, #edit-post-form > form input[type="text"]{
 
     padding-left: 5px;
     padding-right: 5px;
 }
 
-#edit-form > form input[type="email"]{
+#edit-form, #edit-post-form > form input[type="email"]{
 
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#edit-form > form input[type="number"]{
+#edit-form, #edit-post-form > form input[type="number"]{
 
   padding-left: 5px;
   padding-right: 5px;
   width: 21%;
 }
 
-#edit-form > form input[type="url"]{
+#edit-form, #edit-post-form > form input[type="url"]{
 
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#edit-form > form input[type="color"]{
+#edit-form, #edit-post-form > form input[type="color"]{
 
   width: 15%;
   margin-top: 10px;
   padding: 3px;
 }
 
-#edit-form > form input[type="checkbox"]{
+#edit-form, #edit-post-form > form input[type="checkbox"]{
 
   width: 24px;
   margin-top: 10px;
@@ -248,13 +248,13 @@ body {
   display: inline-flexbox;
 }
 
-#edit-form > form .form-check-label {
+#edit-form, #edit-post-form > form .form-check-label {
   display: inline-flex;
   align-items: center;
   margin-left: 8px;
 }
 
-#edit-form > form input[type="date"]{
+#edit-form, #edit-post-form > form input[type="date"]{
 
   width: fit-content;
   margin-top: 10px;
@@ -263,13 +263,13 @@ body {
   padding-left: 8px;
 }
 
-#edit-form > form textarea{
+#edit-form, #edit-post-form > form textarea{
 
   padding-left: 5px;
   padding-right: 3px;
 }
 
-#edit-form > form p a {
+#edit-form, #edit-post-form > form p a {
 
   margin-top: 10px;
   margin-bottom: 10px;
@@ -281,7 +281,7 @@ body {
   border-radius: 5px;
 }
 
-#edit-form > form p label:nth-of-type(2) {
+#edit-form, #edit-post-form > form p label:nth-of-type(2) {
   background-color: rgba(211, 211, 211, 0.66);
   color: black;
   border: 1px solid gray;
@@ -293,7 +293,7 @@ body {
   border-radius: 3px;
 }
 
-#edit-form > form p input:nth-of-type(2) {
+#edit-form, #edit-post-form > form p input:nth-of-type(2) {
   margin-top: 10px;
   display: block;
 
@@ -876,6 +876,4 @@ max-width: 700px;
 
     width: 5%;
   }
-}
-
 }

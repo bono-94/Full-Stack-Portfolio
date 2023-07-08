@@ -506,6 +506,7 @@ class PostCreate(CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        messages.success(self.request, 'Your post is created successfully.')
         return super().form_valid(form)
 
 

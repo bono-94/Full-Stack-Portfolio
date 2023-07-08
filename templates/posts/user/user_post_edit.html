@@ -11,7 +11,7 @@
   <div class="row-fluid">
     <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-xxl-4 offset-xxl-4 rounded bg-dark bg-gradient mt-0 border border-2 border-info shadow mb-5">
       <h1 class="d-flex justify-content-center mt-5 text-warning"><strong>Editing post:</strong></h1>
-      <h2 class="d-flex justify-content-center mt-4 pt-1 pb-4 mb-4 mb-sm-5 text-warning text-smaller text-center">{{ post.title }}</h2>
+      <h5 class="d-flex justify-content-center mt-4 pt-1 pb-4 mb-4 mb-sm-5 text-warning text-center">{{ post.title }}</h5>
     </div>
   </div> 
 </div>
@@ -47,11 +47,11 @@
                 {{ form.post_background_audio | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="form-check form-switch text-smaller">
                 {{ form.post_colors_list | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="form-check form-switch text-smaller">
                 {{ form.post_colors_details | as_crispy_field }}
               </div>
               <hr>
@@ -677,18 +677,18 @@
               </div>
               <hr>
               <div class="">
-                {{ form.same_start_launch_date | as_crispy_field }}
+                {{ form.funding_start_date | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
-                {{ form.funding_start_date | as_crispy_field }}
+              <div class="form-check form-switch text-smaller">
+                {{ form.same_start_launch_date | as_crispy_field }}
               </div>
               <hr>
               <div class="">
                 {{ form.funding_end_date | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="form-check form-switch text-smaller">
                 {{ form.funding_infinite_end_date | as_crispy_field }}
               </div>
               <hr>
@@ -892,7 +892,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-dark text-warning" data-dismiss="modal" onclick="modalEditPostClose()">Close</button>
-                <button type="button" class="btn btn-dark text-warning" form="edit-post-form-form">Submit</button>
+                <button type="submit" class="btn btn-dark text-warning" form="edit-post-form-form">Submit</button>
               </div>
             </div>
           </div>

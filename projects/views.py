@@ -518,11 +518,12 @@ def post_edit(request, post_id):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
+            post.status = 0
             form.save()
             messages.success(request, 'Your post is updated successfully.')
             return redirect('user_posts_list')
         else:
-            messages.error(request, 'Please check all input fields for errors.')
+            messages.error(request, 'Please check all fields for errors.')
     else:
         form = PostForm(instance=post)
 

@@ -69,9 +69,9 @@
 
 <!-- PROFILE CARD -->
 <div id="public-profile-hook"></div>
-<div class="container pt-3 pb-3 ps-3 pe-3 mb-5 mt-3 mt-md-3 rounded border border-2 border-dark" style="background-color: {{ profile.profile_color }};">
+<div class="container pt-3 pb-3 ps-3 pe-3 mb-5 mt-md-4 rounded border border-2 border-dark" style="background-color: {{ profile.profile_color }};">
   <div class="row pt-2">
-    <div class="col-11 col-sm-6 col-md-4 col-lg-3 ms-2 mt-3 mb-2 mb-md-3 text-center" id="profile-general">
+    <div class="col-11 col-sm-6 col-md-4 col-lg-3 ms-2 mt-3 mb-2 mb-md-4 text-center" id="profile-general">
       <h3 class="rounded border border-2 border-dark mb- bg-light p-1 shadow-sm profile-titles ps-2 pe-2">My Profile</h3>
     </div>
   </div>
@@ -114,7 +114,7 @@
       {% else %}
       <img src="{% static 'images/21104.png' %}" alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2">
       {% endif %}
-      <p class="card-text ms-4 me-4 me-md-0 mt-4 text-break ms-md-5 mt-2 p-2 border border-1 border-dark shadow-sm rounded bg-light"><strong></strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
+      <p class="card-text ms-4 me-4 me-md-0 mt-4 text-break ms-md-5 mt-5 mb-4 p-2 border border-1 border-dark shadow-sm rounded bg-light"><strong></strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
       {% if profile.profile_audio %}
       <div class ="d-flex d-md-block justify-content-center">
         <button class="btn bg-dark shadow-lg w-42 rounded-pill ms-md-5 mt-2 shadow-lg" id="play-user-profile" onclick="playAudio()">
@@ -276,8 +276,8 @@
   <div class="row collapse" id="profile-career-collapse">
     <div class="col-12 col-sm-10 offset-sm-1 mb-4 pb-3">
       <ul class="list-group mt-4 border border-1 border-dark shadow-lg">
-        <li class="list-group-item bg-light"><strong class="me-1">CV:</strong> {% if profile.cv %}<a href="{{ profile.cv.url }}" target="_blank" class="hvr-sweep-to-bottom"><i class="fa fa-download ms-1" aria-hidden="true"></i><span class="ms-2"></span></a>{% else %}(blank){% endif %}</li>
-        <li class="list-group-item bg-light"><strong class="me-1">POSTS PORTFOLIO:</strong> {% if profile.projects_portfolio %}<a href="{{ profile.projects_portfolio.url }}" target="_blank"><i class="fa-solid fa-book ms-1"></i><span class="ms-2"></span></a>{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong class="me-1">CV:</strong> {% if profile.cover_letter %}<a href="{{ profile.cover_letter.url }}" target="_blank" class="hvr-sweep-to-bottom"><i class="fa fa-download ms-1" aria-hidden="true"></i><span class="ms-2"></span></a>{% else %}(blank){% endif %}</li>
+        <li class="list-group-item bg-light"><strong class="me-1">POSTS PORTFOLIO:</strong> {% if profile.full_resume %}<a href="{{ profile.full_resume.url }}" target="_blank"><i class="fa-solid fa-book ms-1"></i><span class="ms-2"></span></a>{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">EDUCATION:</strong> {% if profile.education %}{{ profile.education }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">WORK HISTORY:</strong> {% if profile.work_history %}{{ profile.work_history }}{% else %}(blank){% endif %}</li>
         <li class="list-group-item bg-light text-break"><strong class="me-1">REFERENCES:</strong> {% if profile.references %}{{ profile.references }}{% else %}(blank){% endif %}</li>

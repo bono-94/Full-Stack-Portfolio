@@ -4,13 +4,86 @@
 
 {% block content %}
 
-<div class="container-fluid p-0">
-    <div class="row">
-        <div class="col-12 img-fluid" id="nav-logo">
-            <img src="{% static 'images/3D-logo.png' %}" class="img-fluid" id="nav-logo" alt="Innovation Land Logo">
-        </div>
+<div id="carouselExampleCaptions" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/3D-logo.png' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
     </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/3D-logo.png' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/3D-logo.png' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
+<hr>
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>A well-known quote, contained in a blockquote element.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Someone famous in <cite title="Source Title">Source Title</cite>
+  </figcaption>
+</figure>
+<hr>
+
+
+TODAY: {{ first_day }}
+
+<p>Number of registered users: {{ total_users }}</p>
+<p>Number of submitted posts: {{ total_posts }}</p>
+<p>Number of approved posts: {{ total_posts }}</p>
+
+<ul>
+  {% for user in users %}
+    <li>{{ user.username }}</li>
+  {% endfor %}
+</ul>
+
+<h1>Total User Profiles: {{ total_profiles }}</h1>
+
+
+<h2>List of industries:</h2>
+
+
+<ul>
+  {% for industry in industry_values %}
+    <li>{{ industry }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Total {{ total_industries }} industries</h2>
+
+
+<p>a</p>
+
+
 
 
 
@@ -43,77 +116,7 @@ TODAY: {{ first_day }}
     <li>{{ user.username }}</li>
   {% endfor %}
 </ul>
-<div class="table-responsive">
-    <table class="table table-primary table-hover caption-top">
-        <caption>List of users</caption>
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Laeeerry the brd </td>
-            <td class="align-bottom">@twitter</td>
-          </tr>
-        </tbody>
-        <tfoot>
-            <tr class="table-active">
-                <th scope="row">NAN</th>
-                <td>NAN</td>
-                <td>NAN</td>
-                <td>@NAN</td>
-              </tr>
-        </tfoot>
-    </table>
-</div>
-<div>
-    <table class="table table-primary table-hover table-bordered border-dark">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-    </table>
-</div>
+
 <div>
     <table class="table table-primary table-sm table-striped">
         <thead>
@@ -145,465 +148,11 @@ TODAY: {{ first_day }}
         </tbody>
       </table>
 </div>
-<div>
-    <h5>
-        Leaderboard:
-    </h5>
-    <table class="table table-success table-borderless">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
-</div>
-<div>
-    <table class="table table-primary">
-        <thead>
-          <tr class="table-secondary">
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table-warning">
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr class="table-danger">
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr class="table-info">
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
-</div>
-<div>
-    <table class="table table-primary">
-        <thead>
-          <tr class="table-secondary">
-            <th scope="col" class="table-dark">#</th>
-            <th scope="col">First</th>
-            <th scope="col" class="table-dark">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table-warning">
-            <th scope="row">1</th>
-            <td class="table-light">Mark</td>
-            <td>Otto</td>
-            <td class="table-light">@mdo</td>
-          </tr>
-          <tr class="table-danger">
-            <th scope="row" class="table-success">2</th>
-            <td>Jacob</td>
-            <td class="table-success table-active">Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr class="table-info">
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
-</div>
-<div>
-    <!-- On tables
-    <table class="table-primary">...</table>
-    <table class="table-secondary">...</table>
-    <table class="table-success">...</table>
-    <table class="table-danger">...</table>
-    <table class="table-warning">...</table>
-    <table class="table-info">...</table>
-    <table class="table-light">...</table>
-    <table class="table-dark">...</table>
 
-    On rows
-    <tr class="table-primary">...</tr>
-    <tr class="table-secondary">...</tr>
-    <tr class="table-success">...</tr>
-    <tr class="table-danger">...</tr>
-    <tr class="table-warning">...</tr>
-    <tr class="table-info">...</tr>
-    <tr class="table-light">...</tr>
-    <tr class="table-dark">...</tr>
-
-    On cells (`td` or `th`) 
-    <tr>
-        <td class="table-primary">...</td>
-        <td class="table-secondary">...</td>
-        <td class="table-success">...</td>
-        <td class="table-danger">...</td>
-        <td class="table-warning">...</td>
-        <td class="table-info">...</td>
-        <td class="table-light">...</td>
-        <td class="table-dark">...</td>
-    </tr> -->
-
-</div>
-
-
-  
-  <div class="progress">
-    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
-  <div class="progress">
-    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
-  <div class="progress">
-    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
-  <div class="progress">
-    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
-  <div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-  </div>
-
-<hr>
-<div class="p-3 mb-2 bg-primary text-white">.bg-primary</div>
-<div class="p-3 mb-2 bg-secondary text-white">.bg-secondary</div>
-<div class="p-3 mb-2 bg-success text-white">.bg-success</div>
-<div class="p-3 mb-2 bg-danger text-white">.bg-danger</div>
-<div class="p-3 mb-2 bg-warning text-dark">.bg-warning</div>
-<div class="p-3 mb-2 bg-info text-dark">.bg-info</div>
-<div class="p-3 mb-2 bg-light text-dark">.bg-light</div>
-<div class="p-3 mb-2 bg-dark text-white">.bg-dark</div>
-<div class="p-3 mb-2 bg-body text-dark">.bg-body</div>
-<div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
-<div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div>
-<hr>
-<hr>
-<div class="col-6 offset-3 p-3 mb-2 bg-primary bg-gradient text-white">.bg-primary</div>
-<div class="p-3 mb-2 bg-gradient bg-secondary text-white">.bg-secondary</div>
-<div class="p-3 mb-2 bg-gradient bg-success text-white">.bg-success</div>
-<div class="p-3 mb-2 bg-gradient bg-danger text-white">.bg-danger</div>
-<div class="p-3 mb-2 bg-gradient bg-warning text-dark">.bg-warning</div>
-<div class="p-3 mb-2 bg-gradient bg-info text-dark">.bg-info</div>
-<div class="p-3 mb-2 bg-gradient bg-light text-dark">.bg-light</div>
-<div class="p-3 mb-2 bg-gradient bg-dark text-white">.bg-dark</div>
-<div class="p-3 mb-2 bg-gradient bg-body text-dark">.bg-body</div>
-<div class="p-3 mb-2 bg-gradient bg-white text-dark">.bg-white</div>
-<div class="p-3 mb-2 bg-gradient bg-transparent text-dark">.bg-transparent</div>
-
-<hr>
-<div class="d-inline p-2 bg-primary text-white">d-inline</div>
-<div class="d-inline p-2 bg-dark text-white">d-inline</div>
-<hr>
-<span class="d-block p-2 bg-primary text-white">d-block</span>
-<span class="d-block p-2 bg-dark text-white">d-block</span>
-
-<span class="d-block p-2 bg-primary text-white">d-block</span>
-<span class="d-block p-2 bg-dark text-white">d-block</span>
-<span class="d-block p-2 bg-primary text-white">d-block</span>
-<span class="d-block p-2 bg-dark text-white footer-margin">d-block</span>
-<hr>
-<hr>
-<ul>
-    {% for value in column_values %}
-        <li>
-            {{ value.username }}
-        </li>
-    {% endfor %}  
-</ul>
-<div class="container">
-  <header class="blog-header py-3">
-    <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-4 pt-1">
-        <a class="link-secondary" href="#">Subscribe</a>
-      </div>
-      <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Large</a>
-      </div>
-      <div class="col-4 d-flex justify-content-end align-items-center">
-        <a class="link-secondary" href="#" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-        </a>
-        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
-      </div>
-    </div>
-  </header>
-
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 link-secondary" href="#">World</a>
-      <a class="p-2 link-secondary" href="#">U.S.</a>
-      <a class="p-2 link-secondary" href="#">Technology</a>
-      <a class="p-2 link-secondary" href="#">Design</a>
-      <a class="p-2 link-secondary" href="#">Culture</a>
-      <a class="p-2 link-secondary" href="#">Business</a>
-      <a class="p-2 link-secondary" href="#">Politics</a>
-      <a class="p-2 link-secondary" href="#">Opinion</a>
-      <a class="p-2 link-secondary" href="#">Science</a>
-      <a class="p-2 link-secondary" href="#">Health</a>
-      <a class="p-2 link-secondary" href="#">Style</a>
-      <a class="p-2 link-secondary" href="#">Travel</a>
-    </nav>
-  </div>
-</div>
-
-<main class="container">
-  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
-    </div>
-  </div>
-
-  <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
-          <h3 class="mb-0">Featured post</h3>
-          <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Design</strong>
-          <h3 class="mb-0">Post title</h3>
-          <div class="mb-1 text-muted">Nov 11</div>
-          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row g-5">
-    <div class="col-md-8">
-      <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        From the Firehose
-      </h3>
-
-      <article class="blog-post">
-        <h2 class="blog-post-title">Sample blog post</h2>
-        <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
-
-        <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
-        <hr>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h2>Blockquotes</h2>
-        <p>This is an example blockquote in action:</p>
-        <blockquote class="blockquote">
-          <p>Quoted text goes here.</p>
-        </blockquote>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h3>Example lists</h3>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
-        <ul>
-          <li>First list item</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
-        </ul>
-        <p>And this is an ordered list:</p>
-        <ol>
-          <li>First list item</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
-        </ol>
-        <p>And this is a definiton list:</p>
-        <dl>
-          <dt>HyperText Markup Language (HTML)</dt>
-          <dd>The language used to describe and define the content of a Web page</dd>
-          <dt>Cascading Style Sheets (CSS)</dt>
-          <dd>Used to describe the appearance of Web content</dd>
-          <dt>JavaScript (JS)</dt>
-          <dd>The programming language used to build advanced Web sites and applications</dd>
-        </dl>
-        <h2>Inline HTML elements</h2>
-        <p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
-        <ul>
-          <li><strong>To bold text</strong>, use <code class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>.</li>
-          <li><em>To italicize text</em>, use <code class="language-plaintext highlighter-rouge">&lt;em&gt;</code>.</li>
-          <li>Abbreviations, like <abbr title="HyperText Markup Langage">HTML</abbr> should use <code class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code class="language-plaintext highlighter-rouge">title</code> attribute for the full phrase.</li>
-          <li>Citations, like <cite>— Mark Otto</cite>, should use <code class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</li>
-          <li><del>Deleted</del> text should use <code class="language-plaintext highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins> text should use <code class="language-plaintext highlighter-rouge">&lt;ins&gt;</code>.</li>
-          <li>Superscript <sup>text</sup> uses <code class="language-plaintext highlighter-rouge">&lt;sup&gt;</code> and subscript <sub>text</sub> uses <code class="language-plaintext highlighter-rouge">&lt;sub&gt;</code>.</li>
-        </ul>
-        <p>Most of these elements are styled by browsers with few modifications on our part.</p>
-        <h2>Heading</h2>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h3>Sub-heading</h3>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <pre><code>Example code block</code></pre>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-      </article>
-
-      <article class="blog-post">
-        <h2 class="blog-post-title">Another blog post</h2>
-        <p class="blog-post-meta">December 23, 2020 by <a href="#">Jacob</a></p>
-
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <blockquote>
-          <p>Longer quote goes here, maybe with some <strong>emphasized text</strong> in the middle of it.</p>
-        </blockquote>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h3>Example table</h3>
-        <p>And don't forget about tables in these posts:</p>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Upvotes</th>
-              <th>Downvotes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Alice</td>
-              <td>10</td>
-              <td>11</td>
-            </tr>
-            <tr>
-              <td>Bob</td>
-              <td>4</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>Charlie</td>
-              <td>7</td>
-              <td>9</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Totals</td>
-              <td>21</td>
-              <td>23</td>
-            </tr>
-          </tfoot>
-        </table>
-
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-      </article>
-
-      <article class="blog-post">
-        <h2 class="blog-post-title">New feature</h2>
-        <p class="blog-post-meta">December 14, 2020 by <a href="#">Chris</a></p>
-
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <ul>
-          <li>First list item</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
-        </ul>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-      </article>
-
-      <nav class="blog-pagination" aria-label="Pagination">
-        <a class="btn btn-outline-primary" href="#">Older</a>
-        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-      </nav>
-
-    </div>
-
-    <div class="col-md-4">
-      <div class="position-sticky" style="top: 2rem;">
-        <div class="p-4 mb-3 bg-light rounded">
-          <h4 class="fst-italic">About</h4>
-          <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
-        </div>
-
-        <div class="p-4">
-          <h4 class="fst-italic">Archives</h4>
-          <ol class="list-unstyled mb-0">
-            <li><a href="#">March 2021</a></li>
-            <li><a href="#">February 2021</a></li>
-            <li><a href="#">January 2021</a></li>
-            <li><a href="#">December 2020</a></li>
-            <li><a href="#">November 2020</a></li>
-            <li><a href="#">October 2020</a></li>
-            <li><a href="#">September 2020</a></li>
-            <li><a href="#">August 2020</a></li>
-            <li><a href="#">July 2020</a></li>
-            <li><a href="#">June 2020</a></li>
-            <li><a href="#">May 2020</a></li>
-            <li><a href="#">April 2020</a></li>
-          </ol>
-        </div>
-
-        <div class="p-4">
-          <h4 class="fst-italic">Elsewhere</h4>
-          <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="example-two">  
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-      <symbol id="check" viewBox="0 0 16 16">
-        <title>Check</title>
-        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-      </symbol>
-    </svg>
-  
+<div>  
     <div class="container container-dos py-3">
       <header>
         <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-          <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
-            <span class="fs-4">Pricing example</span>
-          </a>
-  
-          <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-            <a class="me-3 py-2 text-dark text-decoration-none" href="#">Features</a>
-            <a class="me-3 py-2 text-dark text-decoration-none" href="#">Enterprise</a>
-            <a class="me-3 py-2 text-dark text-decoration-none" href="#">Support</a>
-            <a class="py-2 text-dark text-decoration-none" href="#">Pricing</a>
-          </nav>
         </div>
   
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
@@ -723,56 +272,8 @@ TODAY: {{ first_day }}
           </table>
         </div>
       </main>
-  
-      <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-          <div class="col-12 col-md">
-            <img class="mb-2" src="../assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
-            <small class="d-block mb-3 text-muted">&copy; 2017–2021</small>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Features</h5>
-            <ul class="list-unstyled text-small">
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>About</h5>
-            <ul class="list-unstyled text-small">
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
     </div>
   </div>       
-  <div class="card bg-dark text-white">
-    <img src="{% static 'images/logo.png' %}" class="card-img" alt="...">
-    <div class="card-img-overlay">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-        This content is a little bit longer.</p>
-      <p class="card-text">Last updated 3 mins ago</p>
-    </div>
-  </div>
-  <hr>
 
 
 

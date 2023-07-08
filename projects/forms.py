@@ -191,12 +191,12 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    percentage_special_ops = forms.CharField(
+    percentage_special_ops = forms.IntegerField(
         label='Percentage Current Operations',
         required=False
     )
 
-    percentage_special_ops_two = forms.CharField(
+    percentage_special_ops_two = forms.IntegerField(
         label='Percentage Future Operations',
         required=False
     )
@@ -211,12 +211,12 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    percentage_special_supply_chain = forms.CharField(
+    percentage_special_supply_chain = forms.IntegerField(
         label='Percentage Current Supply Chain',
         required=False
     )
 
-    percentage_special_supply_chain_two = forms.CharField(
+    percentage_special_supply_chain_two = forms.IntegerField(
         label='Percentage Future Supply Chain',
         required=False
     )
@@ -231,12 +231,12 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    percentage_special_tech = forms.CharField(
+    percentage_special_tech = forms.IntegerField(
         label='Percentage Current Tech',
         required=False
     )
 
-    percentage_special_tech_two = forms.CharField(
+    percentage_special_tech_two = forms.IntegerField(
         label='Percentage Future Tech',
         required=False
     )
@@ -251,12 +251,12 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    percentage_special_hr = forms.CharField(
+    percentage_special_hr = forms.IntegerField(
         label='Percentage Current HR',
         required=False
     )
 
-    percentage_special_hr_two = forms.CharField(
+    percentage_special_hr_two = forms.IntegerField(
         label='Percentage Future HR',
         required=False
     )
@@ -271,12 +271,12 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    percentage_special_finance = forms.CharField(
+    percentage_special_finance = forms.IntegerField(
         label='Percentage Current Financial',
         required=False
     )
 
-    percentage_special_finance_two = forms.CharField(
+    percentage_special_finance_two = forms.IntegerField(
         label='Percentage Future Financial',
         required=False
     )
@@ -291,12 +291,12 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    percentage_special_marketing = forms.CharField(
+    percentage_special_marketing = forms.IntegerField(
         label='Percentage Current Marketing',
         required=False
     )
 
-    percentage_special_marketing_two = forms.CharField(
+    percentage_special_marketing_two = forms.IntegerField(
         label='Percentage Future Marketing',
         required=False
     )
@@ -311,12 +311,12 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    percentage_special_research = forms.CharField(
+    percentage_special_research = forms.IntegerField(
         label='Percentage Current Research',
         required=False
     )
 
-    percentage_special_research_two = forms.CharField(
+    percentage_special_research_two = forms.IntegerField(
         label='Percentage Future Research',
         required=False
     )
@@ -331,12 +331,12 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    percentage_special_sustainability = forms.CharField(
+    percentage_special_sustainability = forms.IntegerField(
         label='Percentage Current Sustainability',
         required=False
     )
 
-    percentage_special_sustainability_two = forms.CharField(
+    percentage_special_sustainability_two = forms.IntegerField(
         label='Percentage Future Sustainability',
         required=False
     )
@@ -366,7 +366,7 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    ownership_percentage_opps_quantity_proposal = forms.CharField(
+    ownership_percentage_opps_quantity_proposal = forms.IntegerField(
         label='Ownership percentage proposal',
         required=False
     )

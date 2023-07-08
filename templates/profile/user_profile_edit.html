@@ -7,19 +7,16 @@
 {% if user.is_authenticated %}
 
 <!-- HEADING -->
-<div class="container-fluid mt-3">
+<div class="container-fluid mt-5">
   <div class="row-fluid">
-    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xxl-4 offset-xxl-4 rounded bg-dark bg-gradient mt-0 border border-2 border-info shadow-lg mb-5">
-      <a class="text-white text-decoration-none d-flex justify-content-end">
-        <i class="fa-solid fa-circle-question mt-2 me-1 me-2 rounded-circle shadow-lg text-warning" role="button" id="profile-example" tabindex="0" onclick="showPopover()" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" title="Profile Example" data-bs-html="true" data-bs-content="&lt;div class='bg-dark rounded text-warning p-2 mt-0'&gt;If you need inspiration on how to complete any fields, you can: &lt;a href=&quot;https://example.com&quot; target=&quot;_blank&quot; class=&quot; text-info text-decoration-none d-block&quot;&gt;&lt;strong&gt;CLICK HERE!&lt;/strong&gt;&lt;/a&gt;&lt;/div&gt;"></i>
-      </a>
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xxl-4 offset-xxl-4 rounded bg-dark bg-gradient mt-0 border border-2 border-info shadow mb-5">
       <h1 class="d-flex justify-content-center mt-4 text-warning"><strong>Editing profile:</strong></h1>
       <h2 class="d-flex justify-content-center mt-4 pt-1 pb-2 mb-4 mb-sm-5 text-warning">{{ user.username }}</h2>
     </div>
   </div> 
 </div>
 <!-- EDIT FORM -->
-<div class="container-fluid mt-3 mt-md-5 mb-4" id="edit-form-div">
+<div class="container-fluid pt-3 mb-4" id="edit-form-div">
   <div class="row">
     <div class="col-12 col-md-10 offset-md-1 text-break" id="edit-form">
       <form method="post" enctype="multipart/form-data" id="edit-form-form" class="rounded p-3 shadow-lg bg-light bg-gradient border border-1 border-info">
@@ -42,6 +39,12 @@
                 {{ form.profile_card_privacy | as_crispy_field }}
               </div>
               <hr>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Default checkbox
+                </label>
+              </div>
               <div class="">
                 {{ form.profile_color | as_crispy_field }}
               </div>
@@ -113,7 +116,7 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-general-bttn" onclick="editProfileGeneral()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>4. General Information</strong></button>
           <div class="bg-light collapse" id="edit-general">
-            div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
               <div class="">
                 {{ form.general_info_privacy | as_crispy_field }}
               </div>
@@ -478,8 +481,8 @@
           </div>
         </div>
         <div class="d-flex justify-content-between mt-5">
-          <button class="btn btn-secondary" type="submit" onclick="javascript:history.back()">Back</button>
-          <button class="btn btn-secondary ml-auto" type="button" data-toggle="modal" data-target="#edit-profile-save" onclick="modalEditProfileActivate()">Save</button>
+          <button class="btn btn-dark text-warning" type="submit" onclick="javascript:history.back()">Back</button>
+          <button class="btn btn-dark text-warning ml-auto" type="button" data-toggle="modal" data-target="#edit-profile-save" onclick="modalEditProfileActivate()">Save</button>
         </div>
         <!-- SAVE BUTTON MODAL -->
         <div class="modal fade" id="edit-profile-save" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
@@ -493,11 +496,11 @@
                 <br>
                 <span class="block"></span>
                 <br>
-                <span class="block">Do you wish to save changes?</span>
+                <span class="block">Do you want to save changes?</span>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalEditProfileClose()">Close</button>
-                <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+                <button type="button" class="btn btn-dark text-warning" data-dismiss="modal" onclick="modalEditProfileClose()">Close</button>
+                <button type="submit" class="btn btn-dark text-warning" form="edit-form-form">Submit</button>
               </div>
             </div>
           </div>

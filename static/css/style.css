@@ -110,7 +110,6 @@ body {
     height: 100%; 
 }
 
-
 #logo-quote {
 
   color: white;
@@ -240,9 +239,10 @@ body {
 
 #edit-form > form input[type="checkbox"]{
 
-  width: fit-content;
+  width: 14px;
   margin-top: 10px;
-  margin-left: 2px;
+  margin-left: 8px;
+  margin-right: 10px;
   transform: scale(1.2);
 }
 
@@ -289,6 +289,11 @@ body {
   margin-top: 10px;
   display: block;
 
+}
+
+.form-check {
+
+  padding-left: 0px;
 }
 
 /* popovers */

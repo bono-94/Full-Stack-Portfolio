@@ -151,6 +151,236 @@ class ProfileForm(forms.ModelForm):
 
 class PostForm(forms.ModelForm):
 
+    pps_vision = forms.CharField(
+        label='Post vision',
+        required=False
+    )
+
+    pps_missions = forms.CharField(
+        label='Post missions',
+        required=False
+    )
+
+    pps_goals = forms.CharField(
+        label='Post goals',
+        required=False
+    )
+
+    pps_planner = forms.CharField(
+        label='Post planner',
+        required=False
+    )
+
+    sdg_goals = forms.CharField(
+        label='SDG goals',
+        required=False
+    )
+
+    pps_planner = forms.CharField(
+        label='Post planner',
+        required=False
+    )
+
+    special_ops = forms.CharField(
+        label='Current Operations',
+        required=False
+    )
+
+    special_ops_two = forms.CharField(
+        label='Future Operations',
+        required=False
+    )
+
+    percentage_special_ops = forms.CharField(
+        label='Percentage Current Operations',
+        required=False
+    )
+
+    percentage_special_ops_two = forms.CharField(
+        label='Percentage Future Operations',
+        required=False
+    )
+
+    special_supply_chain = forms.CharField(
+        label='Current Supply Chain',
+        required=False
+    )
+
+    special_supply_chain_two = forms.CharField(
+        label='Future Supply Chain',
+        required=False
+    )
+
+    percentage_special_supply_chain = forms.CharField(
+        label='Percentage Current Supply Chain',
+        required=False
+    )
+
+    percentage_special_supply_chain_two = forms.CharField(
+        label='Percentage Future Supply Chain',
+        required=False
+    )
+
+    special_tech = forms.CharField(
+        label='Current Tech',
+        required=False
+    )
+
+    special_tech_two = forms.CharField(
+        label='Future Tech',
+        required=False
+    )
+
+    percentage_special_tech = forms.CharField(
+        label='Percentage Current Tech',
+        required=False
+    )
+
+    percentage_special_tech_two = forms.CharField(
+        label='Percentage Future Tech',
+        required=False
+    )
+
+    special_hr = forms.CharField(
+        label='Current HR',
+        required=False
+    )
+
+    special_hr_two = forms.CharField(
+        label='Future HR',
+        required=False
+    )
+
+    percentage_special_hr = forms.CharField(
+        label='Percentage Current HR',
+        required=False
+    )
+
+    percentage_special_hr_two = forms.CharField(
+        label='Percentage Future HR',
+        required=False
+    )
+
+    special_finance = forms.CharField(
+        label='Current Financial',
+        required=False
+    )
+
+    special_finance_two = forms.CharField(
+        label='Future Financial',
+        required=False
+    )
+
+    percentage_special_finance = forms.CharField(
+        label='Percentage Current Financial',
+        required=False
+    )
+
+    percentage_special_finance_two = forms.CharField(
+        label='Percentage Future Financial',
+        required=False
+    )
+
+    special_marketing = forms.CharField(
+        label='Current Marketing',
+        required=False
+    )
+
+    special_marketing_two = forms.CharField(
+        label='Future Marketing',
+        required=False
+    )
+
+    percentage_special_marketing = forms.CharField(
+        label='Percentage Current Marketing',
+        required=False
+    )
+
+    percentage_special_marketing_two = forms.CharField(
+        label='Percentage Future Marketing',
+        required=False
+    )
+
+    special_research = forms.CharField(
+        label='Current Research',
+        required=False
+    )
+
+    special_research_two = forms.CharField(
+        label='Future Research',
+        required=False
+    )
+
+    percentage_special_research = forms.CharField(
+        label='Percentage Current Research',
+        required=False
+    )
+
+    percentage_special_research_two = forms.CharField(
+        label='Percentage Future Research',
+        required=False
+    )
+
+    special_sustainability = forms.CharField(
+        label='Current Sustainability',
+        required=False
+    )
+
+    special_sustainability_two = forms.CharField(
+        label='Future Sustainability',
+        required=False
+    )
+
+    percentage_special_sustainability = forms.CharField(
+        label='Percentage Current Sustainability',
+        required=False
+    )
+
+    percentage_special_sustainability_two = forms.CharField(
+        label='Percentage Future Sustainability',
+        required=False
+    )
+
+    standard_operational_procedures = forms.CharField(
+        label='S.O.P.',
+        required=False
+    )
+
+    hr_handbook = forms.CharField(
+        label='HR Handbook',
+        required=False
+    )
+
+    research_and_development_agenda = forms.CharField(
+        label='Research Agenda',
+        required=False
+    )
+
+    pestle_report = forms.CharField(
+        label='PESTLE Report',
+        required=False
+    )
+
+    ownership_percentage_opps_type = forms.CharField(
+        label='Ownership percentage type',
+        required=False
+    )
+
+    ownership_percentage_opps_quantity_proposal = forms.CharField(
+        label='Ownership percentage proposal',
+        required=False
+    )
+
+    ownership_percentage_opps_proposal_return = forms.CharField(
+        label='Ownership percentage return',
+        required=False
+    )
+
+    ownership_percentage_opps_proposal_costs = forms.CharField(
+        label='Ownership percentage costs',
+        required=False
+    )
+
     class Meta:
         model = Post
         fields = [

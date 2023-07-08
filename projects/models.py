@@ -53,7 +53,7 @@ class Profile(models.Model):
 
     # PROFILE CARD
     slug = models.SlugField(max_length=210, unique=True, null=True)
-    privacy = models.BooleanField(default=False)
+    global_privacy = models.BooleanField(default=False)
     profile_card_privacy = models.BooleanField(default=False)
 
     profile_audio = models.FileField(
@@ -173,7 +173,7 @@ class Profile(models.Model):
     weight_kg = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)], null=True, blank=True)
 
     # OCCUPATION
-    current_employment_privacy = models.BooleanField(default=False)
+    occupation_privacy = models.BooleanField(default=False)
 
     industry = models.CharField(max_length=42, blank=True, null=True)
     organization = models.CharField(max_length=42, blank=True, null=True)
@@ -183,10 +183,10 @@ class Profile(models.Model):
     hours_per_week = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(168)], null=True, blank=True)
 
     # PREVIOUS EMPLOYMENT
-    history_employment_privacy = models.BooleanField(default=False)
+    career_privacy = models.BooleanField(default=False)
 
-    cv = models.FileField(
-        upload_to='cv/',
+    cover_letter = models.FileField(
+        upload_to='cover-letters/',
         blank=True,
         null=True,
         storage=RawMediaCloudinaryStorage(),
@@ -200,8 +200,8 @@ class Profile(models.Model):
     education = models.TextField(max_length=840, blank=True, null=True)
     work_history = models.TextField(max_length=2100, blank=True, null=True)
 
-    projects_portfolio = models.FileField(
-        upload_to='portfolios/',
+    full_resume = models.FileField(
+        upload_to='resumes/',
         blank=True,
         null=True,
         storage=RawMediaCloudinaryStorage(),

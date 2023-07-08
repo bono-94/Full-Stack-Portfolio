@@ -8,7 +8,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = [
             # PUBLIC VISIBILITY
-            'privacy',
+            'global_privacy',
             # PROFILE CARD
             'profile_card_privacy',
             'profile_color',
@@ -39,7 +39,7 @@ class ProfileForm(forms.ModelForm):
             'height_cm',
             'weight_kg',
             # OCCUPATION
-            'current_employment_privacy',
+            'occupation_privacy',
             'industry',
             'organization',
             'department',
@@ -47,11 +47,11 @@ class ProfileForm(forms.ModelForm):
             'start_date',
             'hours_per_week',
             # CAREER
-            'history_employment_privacy',
-            'cv',
+            'career_privacy',
+            'cover_letter',
             'education',
             'work_history',
-            'projects_portfolio',
+            'full_resume',
             'references',
             'recommendations',
             # ACHIEVEMENTS
@@ -152,7 +152,6 @@ class ProfileForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
 
     public_privacy = forms.BooleanField(label=False)
-
 
     class Meta:
         model = Post

@@ -24,9 +24,9 @@
         <div class="list-group border border-1 border-dark rounded-0 mt-0">
           <button type="button" id="edit-privacy-bttn" onclick="editProfilePrivacy()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>1. Profile Privacy</strong></button>
           <div class="bg-light collapse" id="edit-privacy">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
-                {{ form.privacy | as_crispy_field }}
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
+                {{ form.global_privacy | as_crispy_field }}
               </div>
             </div>
           </div>
@@ -34,17 +34,11 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-card-bttn" onclick="editProfileCard()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>2. Profile Card</strong></button>
           <div class="bg-light collapse" id="edit-card">
-            <div class="mt-4 mb-4 pb-2 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
+            <div class="mt-4 mb-2 pb-2 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
                 {{ form.profile_card_privacy | as_crispy_field }}
               </div>
               <hr>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                  Default checkbox
-                </label>
-              </div>
               <div class="">
                 {{ form.profile_color | as_crispy_field }}
               </div>
@@ -93,7 +87,7 @@
                 {{ form.linkedin_link | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-2">
                 {{ form.youtube_link | as_crispy_field }}
               </div>
             </div>
@@ -102,12 +96,12 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-video-bttn" onclick="editProfileVideo()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>3. Profile Video</strong></button>
           <div class="bg-light collapse" id="edit-video">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
                 {{ form.user_video_privacy | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-2">
                 {{ form.user_video | as_crispy_field }}
               </div>
             </div>
@@ -116,8 +110,8 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-general-bttn" onclick="editProfileGeneral()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>4. General Information</strong></button>
           <div class="bg-light collapse" id="edit-general">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
                 {{ form.general_info_privacy | as_crispy_field }}
               </div>
               <hr>
@@ -153,7 +147,7 @@
                 {{ form.height_cm | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-2">
                 {{ form.weight_kg | as_crispy_field }}
               </div>
             </div>
@@ -162,9 +156,9 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-occupation-bttn" onclick="editProfileOccupation()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>5. Occupation</strong></button>
           <div class="bg-light collapse" id="edit-occupation">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
-                {{ form.current_employment_privacy | as_crispy_field }}
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
+                {{ form.occupation_privacy | as_crispy_field }}
               </div>
               <hr>
               <div class="">
@@ -187,7 +181,7 @@
                 {{ form.start_date | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-2">
                 {{ form.hours_per_week | as_crispy_field }}
               </div>
             </div>
@@ -196,13 +190,13 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-career-bttn" onclick="editProfileCareer()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>6. Career</strong></button>
           <div class="bg-light collapse" id="edit-career">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
-                {{ form.history_employment_privacy | as_crispy_field }}
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
+                {{ form.career_privacy | as_crispy_field }}
               </div>
               <hr>
               <div class="">
-                {{ form.cv | as_crispy_field }}
+                {{ form.cover_letter | as_crispy_field }}
               </div>
               <hr>
               <div class="">
@@ -214,14 +208,14 @@
               </div>
               <hr>
               <div class="">
-                {{ form.projects_portfolio | as_crispy_field }}
+                {{ form.full_resume | as_crispy_field }}
               </div>
               <hr>
               <div class="">
                 {{ form.references | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-2">
                 {{ form.recommendations | as_crispy_field }}
               </div>
             </div>
@@ -230,8 +224,8 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-achievements-bttn" onclick="editProfileAchievements()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>7. Achievements</strong></button>
           <div class="bg-light collapse" id="edit-achievements">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
                 {{ form.achievements_privacy | as_crispy_field }}
               </div>
               <hr>
@@ -255,7 +249,7 @@
                 {{ form.tasks_completed | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-2">
                 {{ form.contribution | as_crispy_field }}
               </div>
             </div>
@@ -264,8 +258,8 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-attributes-bttn" onclick="editProfileAttributes()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>8. Attributes</strong></button>
           <div class="bg-light collapse" id="edit-attributes">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
                 {{ form.attributes_privacy | as_crispy_field }}
               </div>
               <hr>
@@ -281,7 +275,7 @@
                 {{ form.strengths | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-2">
                 {{ form.weaknesses | as_crispy_field }}
               </div>
             </div>
@@ -290,8 +284,8 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-focus-bttn" onclick="editProfileFocus()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>9. Business Focus</strong></button>
           <div class="bg-light collapse" id="edit-focus">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
                 {{ form.focus_privacy | as_crispy_field }}
               </div>
               <hr>
@@ -323,7 +317,7 @@
                 {{ form.focus_collaboration | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-2">
                 {{ form.focus_leadership | as_crispy_field }}
               </div>
             </div>
@@ -332,8 +326,8 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-specializations-bttn" onclick="editProfileSpecialization()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>10. Business Specializations</strong></button>
           <div class="bg-light collapse" id="edit-specializations">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
                 {{ form.specialty_privacy | as_crispy_field }}
               </div>
               <hr>
@@ -364,7 +358,8 @@
               <div class="">
                 {{ form.special_sustainability | as_crispy_field }}
               </div>
-              <div class="">
+              <hr>
+              <div class="mb-2">
                 {{ form.special_research | as_crispy_field }}
               </div>
             </div>
@@ -373,8 +368,8 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-accomplishments-bttn" onclick="editProfileAccomplishments()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>11. Accomplishments</strong></button>
           <div class="bg-light collapse" id="edit-accomplishments">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
                 {{ form.accomplishments_privacy | as_crispy_field }}
               </div>
               <hr>
@@ -398,7 +393,7 @@
                 {{ form.recognition | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-2">
                 {{ form.bigger_fish_results | as_crispy_field }}
               </div>
             </div>
@@ -407,8 +402,8 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-rewards-bttn" onclick="editProfileRewards()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>12. Rewards</strong></button>
           <div class="bg-light collapse" id="edit-rewards">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
                 {{ form.rewards_privacy | as_crispy_field }}
               </div>
               <hr>
@@ -420,7 +415,7 @@
                 {{ form.business_rewards | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-2">
                 {{ form.innovation_land_rewards | as_crispy_field }}
               </div>
             </div>
@@ -429,8 +424,8 @@
         <div class="list-group border border-1 border-dark rounded-0">
           <button type="button" id="edit-wall-bttn" onclick="editProfileWall()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>13. Personal Wall</strong></button>
           <div class="bg-light collapse" id="edit-wall">
-            <div class="mt-4 mb-4 pb-1 ms-2 me-2 ms-md-3 me-md-3">
-              <div class="">
+            <div class="mt-4 mb-2 pb-1 ms-2 me-2 ms-md-3 me-md-3">
+              <div class="form-check form-switch text-smaller">
                 {{ form.user_wall_privacy | as_crispy_field }}
               </div>
               <hr>
@@ -474,7 +469,7 @@
                 {{ form.interests_hobbies_wall | as_crispy_field }}
               </div>
               <hr>
-              <div class="">
+              <div class="mb-4">
                 {{ form.daily_routine | as_crispy_field }}
               </div>
             </div>

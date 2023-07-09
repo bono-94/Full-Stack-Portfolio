@@ -638,7 +638,7 @@ class PostForm(forms.ModelForm):
 class NoteForm(forms.ModelForm):
     content_note = forms.CharField(
         label=False,
-        widget=forms.Textarea(attrs={'placeholder': 'Share your thoughts here...'})
+        widget=forms.Textarea(attrs={'placeholder': 'Share your opinion or place a public offer'})
     )
 
     class Meta:

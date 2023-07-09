@@ -699,8 +699,105 @@ if post_results_privacy:
 
 
 
+<button class="col-12 col-lg-8 offset-lg-2 mt-2 btn btn-secondary text-light mb-2 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalStocksActivate()">ACCEPT</button>
+<button class="col-12 col-lg-8 offset-lg-2 btn btn-secondary text-light mb-4 border border-2 border-info" type="button" data-toggle="modal" data-target="#stocks-modal" onclick="modalStocksActivate()">CUSTOM OFFER</button>
 
-
+<!-- END PRODUCT OR SERVICE PROPOSAL -->
+{% if post.end_product_or_service_type and post.end_product_or_service_quantity_proposal and post.end_product_or_service_proposal_return and post.end_product_or_service_proposal_costs %}
+<hr class="bg-secondary-lighter p-0 m-0">
+<section class="bg-secondary-lighter pt-2 pb-1">
+  <div class="container">
+    <div class="row-fluid">
+      <h5 class="text-center mb-4 pb-3 mt-5">Product or Service</h5>
+      {% if post.end_product_or_service_type %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Compensation Type</h6>
+        <p>
+          {{ post.end_product_or_service_type }} 
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.end_product_or_service_total_supply %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Total Supply </h6>
+        <p>
+          {{ post.end_product_or_service_total_supply }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.end_product_or_service_quantity_proposal %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Proposal Quantity</h6>
+        <p>
+          {{ post.end_product_or_service_quantity_proposal }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.end_product_or_service_proposal_return %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Proposal Return</h6>
+        <p>
+          {{ post.end_product_or_service_proposal_return }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.end_product_or_service_merch_proposal %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Merchandise</h6>
+        <p>
+          {{ post.end_product_or_service_merch_proposal }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.end_product_or_service_membership_proposal %}
+      <div class="col-12 ms-1 me-1 mb-1">
+        <h6 class="mt-2">Membership</h6>
+        <p>
+          {{ post.end_product_or_service_membership_proposal }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+      {% if post.end_product_or_service_proposal_costs %}
+      <div class="col-12 ms-1 me-1 mb-5">
+        <h6 class="mt-2">Proposal Costs</h6>
+        <p>
+          {{ post.end_product_or_service_proposal_costs }}
+        </p>
+      </div>
+      {% else %}
+      {% endif %}
+{% else %}
+{% endif %}
+      <!-- PRODUCT OR SERVICE OFFER MODAL -->
+      <div class="modal fade" id="products-services-modal" tabindex="-1" role="dialog" aria-labelledby="edit-profile-label" aria-hidden="true">
+        <div class="modal-dialog mt-3 mt-md-5" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="edit-profile-label">Products or Services Offer</h5>
+            </div>
+            <div class="modal-body">
+              <span class="block">Warning! You are about to update your profile and lose previous progress.</span>
+              <br>
+              <span class="block"></span>
+              <br>
+              <span class="block">Do you wish to save changes?</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="modalProductsServicesClose()">Close</button>
+              <button type="submit" class="btn btn-primary" form="edit-form-form">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 

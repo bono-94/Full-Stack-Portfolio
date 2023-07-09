@@ -4,12 +4,12 @@
 
 {% block content %}
 
-<!-- HOME LANDING MEDIA -->
-<section id="home-landing">
-  <div class="container-fluid p-0">
-    <div class="row">
+<!-- INDEX LANDING MEDIA -->
+<section id="home-landing" class="w-100">
+  <div class="container-fluid p-0"> 
+    <div class="row-fluid">
       <div class="col-12 img-fluid" id="nav-logo">
-        <img src="{% static 'images/3D-logo.png' %}" class="img-fluid" id="nav-logo" alt="Innovation Land Logo" width="100">
+        <img src="{% static 'images/3D-logo.png' %}" class="img-fluid w-100" id="nav-logo" alt="Innovation Land Logo" style="max-height: 800px;" width="100">
       </div>
     </div>
   </div>  
@@ -24,7 +24,7 @@
       <button class="btn btn-dark text-warning btn-lg mt-2" type="button">Read more</button>
     </div>
   </div>
-  <div class="row align-items-md-stretch mb-">
+  <div class="row align-items-md-stretch mb-4">
     <div class="col-md-6 mb-4">
       <div class="h-100 p-4 text-warning bg-dark rounded-3">
         <h2 class="mb-4">Posts</h2>
@@ -69,11 +69,11 @@
 </section>
 
 <!-- BUSINESS WEBSITE ECOSYSTEM -->
-<div class="page-divider"></div>
+<div class="page-divider mt-5"></div>
 <section id="ecosystem">
   <div class="container py-5" id="icon-grid">
-    <h2 class="pb-2 mt-4 border-bottom">Business Ecosystem</h2>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+    <h2 class="pb-2 mt-4 border-bottom text-center text-sm-start">Business Ecosystem</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5 py-5">
       <div class="col">
         <div class="card shadow">
           <div class="card-header bg-dark text-info">

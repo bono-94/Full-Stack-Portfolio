@@ -5,11 +5,11 @@
 {% block content %}
 
 <!-- ABOUT LANDING MEDIA -->
-<section id="home-landing">
+<section id="home-landing" class="w-100">
   <div class="container-fluid p-0">
-    <div class="row">
+    <div class="row-fluid">
         <div class="col-12 img-fluid" id="nav-logo">
-            <img src="{% static 'images/orca.jpg' %}" class="img-fluid" id="nav-logo" alt="Innovation Land Logo" width="100">
+            <img src="{% static 'images/orca.jpg' %}" class="img-fluid" id="nav-logo" alt="Innovation Land Logo" width="100" style="max-height: 700px;"> 
         </div>
     </div>
   </div>  
@@ -17,20 +17,21 @@
 
 <!-- QUOTE - ABOUT -->
 <figure class="text-center m-2">
-  <blockquote class="blockquote mt-4">
+  <blockquote class="blockquote mt-5">
     <p>"Innovation is the catalyst for change, the driving force behind projects that shape our better tomorrow."</p>
   </blockquote>
   <figcaption class="blockquote-footer mt-2 pb-2">
     <cite title="Quote Title">Innovation Land</cite>
   </figcaption>
 </figure>
-<hr class="p-0 m-0">
+<div class="page-divider-sm d-sm-none mt-5"></div>
+<div class="page-divider d-none d-sm-block mt-5"></div>
 
 <!-- ABOUT BLOCK OF VARIOUS INFORMATION -->
 <section class="about-section">
-  <div class="container-fluid">
-    <h1 class="section-title text-center pt-5 mb-5 pb-lg-4">About Us</h1>
-    <div class="row">
+  <div class="container-fluid ps-3">
+    <h1 class="section-title text-center pt-5 mt-4 mb-5 pb-lg-4 ">About Us</h1>
+    <div class="row ps-md-5">
       <div class="col-md-6">
         <h2 class="about-subtitle mb-3">Our Story</h2>
         <p class="about-description ms-2">
@@ -38,8 +39,8 @@
         </p>
       </div>
     </div>
-    <hr>
-    <div class="row mt-4">
+    <div class="page-divider-mini mt-4"></div>
+    <div class="row mt-4 ps-md-5">
       <div class="col-md-6">
         <h2 class="about-subtitle mb-3">Our Mission</h2>
         <p class="about-description ms-2">
@@ -50,8 +51,8 @@
         </p>
       </div>
     </div>
-    <hr>
-    <div class="row mt-4">
+    <div class="page-divider-mini mt-4"></div>
+    <div class="row mt-4 ps-md-5">
       <div class="col-md-6">
         <h2 class="about-subtitle mb-3">Our Vision</h2>
         <p class="about-description ms-2">
@@ -61,8 +62,8 @@
           Our vision extends beyond just individual success stories. We strive to build a thriving ecosystem of innovation, where ideas can flourish and intersect, leading to exponential growth and progress. By connecting entrepreneurs, investors, mentors, and industry experts, we create a vibrant community that fosters collaboration and unlocks new opportunities. Our vision is to break down barriers and provide equal access to resources and support, ensuring that innovators from diverse backgrounds have a platform to showcase their ideas. Through this ecosystem, we aim to drive economic growth, create sustainable solutions, and shape industries that positively impact society. Together, we are building a future where innovation is the driving force behind positive change and where ideas have the power to transform the world.
       </div>
     </div>
-    <hr>
-    <div class="row mt-4">
+    <div class="page-divider-mini mt-4"></div>
+    <div class="row mt-4 ps-md-5">
       <div class="col-md-6">
         <h2 class="about-subtitle mb-4">Stats</h2>
         <ul>
@@ -72,8 +73,8 @@
         </ul>
       </div>
     </div>
-    <hr>
-    <div class="row mt-4">
+    <div class="page-divider-mini mt-4"></div>
+    <div class="row mt-4 ps-md-5 mb-4">
       <div class="col-md-6">
         <h2 class="about-subtitle mb-4">How it works?</h2>
         <ol>
@@ -92,7 +93,7 @@
           <li>Email us for memberships quotations, instructions and full details</li>
         </ol>
         <hr>
-        <h2 class="about-subtitle mb-4">Rules</h2>
+        <h2 class="about-subtitle mb-4 pt-2">Rules</h2>
         <p class="about-description">
           <ul>
             <li>Respect the community guidelines and code of conduct.</li>
@@ -110,15 +111,16 @@
       </div>
     </div>
   </div>
-  <hr>
 </section>
+<div class="page-divider-sm d-sm-none mt-5"></div>
+<div class="page-divider d-none d-sm-block mt-5"></div>
     
 <!-- ABOUT PRICING -->
 <section class="about-section">
   <div class="container container-dos py-3">
     <div class="d-flex flex-column align-items-center pb-3 mb-4">
       <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal mb-5">Pricing</h1>
+        <h1 class="display-4 fw-normal mb-5 mt-5">Pricing</h1>
         <p class="fs-5 text-muted">Innovation Land is your gateway to unlocking opportunities, connecting with like-minded individuals, and turning your innovative ideas into impactful solutions. Join us today and be part of a vibrant community of innovators, creators, and visionaries. Only registerd users will have access to full functionalities and features. Usually we do not offer free access, so take advantage of this promotion today and join for FREE!</p>
       </div>
       <div class="row row-cols-1 mb-3 text-center mt-4">

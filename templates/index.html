@@ -21,7 +21,9 @@
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold mb-4">We are finally here!</h1>
       <p class="col-md-8 fs-4">Tired of lack of exposure for your brilliant ideas? Not interested in limited pitching such as for Shark Tank, which is limited to only 5 investors at the time? Look no further, we are here to bring your organizations, projects, products, sevices to the global community in every way possible.</p>
-      <button class="btn btn-dark text-warning btn-lg mt-4" type="button">Read more</button>
+      <a class="nav-link" aria-current="page" href="{% url 'about' %}">
+        <button class="btn btn-dark text-warning btn-lg mt-4" type="button">Read more</button>
+      </a>
     </div>
   </div>
   <div class="row d-md-flex mx-auto mb-4">
@@ -42,7 +44,9 @@
             <li>And more...</li>
           </ul>
         </p>
-        <button class="btn btn-outline-warning m-4 mb-5" type="button">Explore opportunities</button>
+        <a class="nav-link" href="{% url 'public_posts_list' %}">
+          <button class="btn btn-outline-warning m-4 mb-5" type="button">Explore opportunities</button>
+        </a>
       </div>
     </div>
     <div class="col-md-5 col-lg-4 mb-4">
@@ -62,17 +66,20 @@
             <li>And more...</li>
           </ul>
         </p>
-        <button class="btn btn-outline-dark m-4 mb-5" type="button">Prepare yourself</button>
+        <a class="nav-link" href="{% url 'user_profile' %}">
+          <button class="btn btn-outline-dark m-4 mb-5" type="button">Prepare yourself</button>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- BUSINESS WEBSITE ECOSYSTEM -->
-<div class="page-divider mt-5"></div>
+<div class="page-divider-sm d-sm-none mt-5"></div>
+<div class="page-divider d-none d-sm-block mt-5"></div>
 <section id="ecosystem">
   <div class="container py-5" id="icon-grid">
-    <h2 class="pb-2 mt-5 border-bottom text-center text-sm-start">Business Ecosystem</h2>
+    <h2 class="pb-2 mt-4 border-bottom text-center text-sm-start">Business Ecosystem</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4 py-5">
       <div class="col mb-3 mb-sm-0">
         <div class="card shadow d-flex flex-column h-100">

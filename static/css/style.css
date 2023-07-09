@@ -998,6 +998,13 @@ max-width: 700px;
   
   }
 
+  #register {
+  
+    margin-top: 200px;
+    margin-bottom: 200px;
+  
+  }
+
 }
 
 @media (min-width: 320px) {

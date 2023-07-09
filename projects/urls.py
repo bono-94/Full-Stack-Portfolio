@@ -27,6 +27,4 @@ urlpatterns = [
     path('create-post', views.PostCreate.as_view(), name='user_post_create'),
     path('my-posts/edit/<int:post_id>/', views.post_edit, name='post_edit'),
     path('my-posts/delete/<int:post_id>/', views.post_delete, name='post_delete'),
-    # REQUEST
-    path('request', views.SupportRequest.as_view(), name='request'),
 ]

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile, Post, Note, Request
+from .models import Profile, Post, Note
 from django.core.exceptions import ValidationError
 
 
@@ -645,14 +645,4 @@ class NoteForm(forms.ModelForm):
         model = Note
         fields = [
             'content_note',
-        ]
-
-
-class RequestForm(forms.ModelForm):
-    class Meta:
-        model = Request
-        fields = [
-            'name',
-            'email',
-            'request',
         ]

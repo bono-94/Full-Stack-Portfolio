@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Note, Profile, Request
-from .forms import NoteForm, PostForm, RequestForm, ProfileForm
+from .models import Post, Note, Profile
+from .forms import NoteForm, PostForm, ProfileForm
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
@@ -531,20 +531,3 @@ def post_delete(request, post_id):
 
     else:
         return render(request, 'posts/user/user_post_delete.html', {'post': post})
-
-
-# REQUEST
-class SupportRequest(CreateView):
-
-    model = Request
-    template_name = 'request/request.html'
-    success_url = 'about'
-    fields = [
-        'name',
-        'email',
-        'request',
-        ]
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)

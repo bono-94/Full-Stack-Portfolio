@@ -4,301 +4,190 @@
 
 {% block content %}
 
-<section id="about-landing">
-  <div id="carouselExampleCaptions" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<!-- ABOUT LANDING MEDIA -->
+<section id="home-landing">
+  <div class="container-fluid p-0">
+    <div class="row">
+        <div class="col-12 img-fluid" id="nav-logo">
+            <img src="{% static 'images/orca.jpg' %}" class="img-fluid" id="nav-logo" alt="Innovation Land Logo" width="100">
+        </div>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{% static 'images/3D-logo.png' %}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'images/3D-logo.png' %}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'images/3D-logo.png' %}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  <hr>
-  <figure class="text-center">
-    <blockquote class="blockquote">
-      <p>A well-known quote, contained in a blockquote element.</p>
-    </blockquote>
-    <figcaption class="blockquote-footer">
-      Someone famous in <cite title="Source Title">Source Title</cite>
-    </figcaption>
-  </figure>
-  <hr>
+  </div>  
 </section>
 
+<!-- QUOTE - ABOUT -->
+<figure class="text-center m-2">
+  <blockquote class="blockquote mt-4">
+    <p>"Innovation is the catalyst for change, the driving force behind projects that shape our better tomorrow."</p>
+  </blockquote>
+  <figcaption class="blockquote-footer mt-2 pb-2">
+    <cite title="Quote Title">Innovation Land</cite>
+  </figcaption>
+</figure>
+<hr class="p-0 m-0">
 
-
-TODAY: {{ first_day }}
-
-<p>Number of registered users: {{ total_users }}</p>
-<p>Number of submitted posts: {{ total_posts }}</p>
-<p>Number of approved posts: {{ total_posts }}</p>
-
-<ul>
-  {% for user in users %}
-    <li>{{ user.username }}</li>
-  {% endfor %}
-</ul>
-
-<h1>Total User Profiles: {{ total_profiles }}</h1>
-
-
-<h2>List of industries:</h2>
-
-
-<ul>
-  {% for industry in industry_values %}
-    <li>{{ industry }}</li>
-  {% endfor %}
-</ul>
-
-<h2>Total {{ total_industries }} industries</h2>
-
-
-<p>a</p>
-
-
-
-
-
-<h1>Contact</h1>    
-<div>
-    <div>
-        <h1>
-            Send us a request:
-        </h1>
-        <p>
-            help?
-            dont know where to start?
-            problems with account?
-            send us a reqest with your contact iformation or send us an email at:_______
+<!-- ABOUT BLOCK OF VARIOUS INFORMATION -->
+<section class="about-section">
+  <div class="container-fluid">
+    <h1 class="section-title text-center pt-5 mb-5 pb-lg-4">About Us</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="about-subtitle mb-3">Our Story</h2>
+        <p class="about-description ms-2">
+          Welcome to Innovation Land, where groundbreaking ideas come to life! Our story is one fueled by the passion for innovation, the drive for change, and the belief in creating a better tomorrow. Innovation Land was born out of a shared vision to provide a platform that celebrates and nurtures the spirit of innovation. We wanted to create a space where aspiring entrepreneurs, inventors, and visionaries could showcase their ideas, connect with like-minded individuals, and gain the support they need to turn their dreams into reality.
         </p>
+      </div>
     </div>
-    <p>Testimonials - as Quotes</p>
-    <p>Features as features</p>
-</div>
-
-
-
-TODAY: {{ first_day }}
-
-<p>Number of registered users: {{ num_users }}</p>
-
-
-<ul>
-  {% for user in users %}
-    <li>{{ user.username }}</li>
-  {% endfor %}
-</ul>
-
-<div>
-    <table class="table table-primary table-sm table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
-</div>
-
-<div>  
-    <div class="container container-dos py-3">
-      <header>
-        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-        </div>
-  
-        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-          <h1 class="display-4 fw-normal">Pricing</h1>
-          <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
-        </div>
-      </header>
-  
-      <main>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-          <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
-              <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">Free</h4>
-              </div>
-              <div class="card-body">
-                <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                  <li>10 users included</li>
-                  <li>2 GB of storage</li>
-                  <li>Email support</li>
-                  <li>Help center access</li>
-                </ul>
-                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
-              <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">Pro</h4>
-              </div>
-              <div class="card-body">
-                <h1 class="card-title pricing-card-title">$15<small class="text-muted fw-light">/mo</small></h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                  <li>20 users included</li>
-                  <li>10 GB of storage</li>
-                  <li>Priority email support</li>
-                  <li>Help center access</li>
-                </ul>
-                <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm border-primary">
-              <div class="card-header py-3 text-white bg-primary border-primary">
-                <h4 class="my-0 fw-normal">Enterprise</h4>
-              </div>
-              <div class="card-body">
-                <h1 class="card-title pricing-card-title">$29<small class="text-muted fw-light">/mo</small></h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                  <li>30 users included</li>
-                  <li>15 GB of storage</li>
-                  <li>Phone and email support</li>
-                  <li>Help center access</li>
-                </ul>
-                <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <h2 class="display-6 text-center mb-4">Compare plans</h2>
-  
-        <div class="table-responsive">
-          <table class="table text-center">
-            <thead>
-              <tr>
-                <th style="width: 34%;"></th>
-                <th style="width: 22%;">Free</th>
-                <th style="width: 22%;">Pro</th>
-                <th style="width: 22%;">Enterprise</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" class="text-start">Public</th>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-start">Private</th>
-                <td></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-              </tr>
-            </tbody>
-  
-            <tbody>
-              <tr>
-                <th scope="row" class="text-start">Permissions</th>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-start">Sharing</th>
-                <td></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-start">Unlimited members</th>
-                <td></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-start">Extra security</th>
-                <td></td>
-                <td></td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </main>
+    <hr>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h2 class="about-subtitle mb-3">Our Mission</h2>
+        <p class="about-description ms-2">
+          At Innovation Land, we believe that innovation is the driving force behind progress and positive change. We are dedicated to fostering a community where creativity thrives, where game-changing ideas are celebrated, and where collaboration takes center stage. Our goal is to provide a platform that empowers individuals and organizations to make a difference in the world.
+        </p>
+        <p class="about-description ms-2">
+          We understand that the journey of innovation is not always easy. That's why we have assembled a team of industry experts, mentors, and investors who are passionate about supporting and guiding innovators. Through our platform, entrepreneurs can access invaluable resources, receive mentorship, and connect with potential partners and investors who share their vision.
+        </p>
+      </div>
     </div>
-  </div>       
-
-
-  <p>Signup today</p>
-<p>
-    Since it is test mode, monthly fee of 21.04$ is striked, FREE NOW !
-</p>
-
-<p>
-    If you want to see the entire content of our website make sure you sign up or sign in
-</p>
-
-<h2>
-  How it works:
-  <p> 
-    if succesfull we will contaact you
+    <hr>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h2 class="about-subtitle mb-3">Our Vision</h2>
+        <p class="about-description ms-2">
+          At Innovation Land, our vision is to empower innovators and change-makers from all walks of life. We believe that everyone has the potential to make a significant impact and contribute to a better future. Our platform serves as a catalyst for their success, providing the resources, support, and connections needed to bring their ideas to life. We envision a world where innovation is celebrated, where groundbreaking solutions are embraced, and where individuals are inspired to pursue their entrepreneurial dreams. Through our community, we aim to foster a culture of creativity, collaboration, and positive change, enabling innovators to leave a lasting legacy.
+        </p>
+        <p class="about-description ms-2">
+          Our vision extends beyond just individual success stories. We strive to build a thriving ecosystem of innovation, where ideas can flourish and intersect, leading to exponential growth and progress. By connecting entrepreneurs, investors, mentors, and industry experts, we create a vibrant community that fosters collaboration and unlocks new opportunities. Our vision is to break down barriers and provide equal access to resources and support, ensuring that innovators from diverse backgrounds have a platform to showcase their ideas. Through this ecosystem, we aim to drive economic growth, create sustainable solutions, and shape industries that positively impact society. Together, we are building a future where innovation is the driving force behind positive change and where ideas have the power to transform the world.
+      </div>
+    </div>
+    <hr>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h2 class="about-subtitle mb-4">Stats</h2>
+        <ul>
+          <li>Number of registered users: {{ total_users }}</li>
+          <li>Number of posts: {{ total_posts }}</li>
+          <li>Total industries: {{ total_industries }}</li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h2 class="about-subtitle mb-4">How it works?</h2>
+        <ol>
+          <li>Create user profile</li>
+          <li>Edit your profile</li>
+          <li>Check public posts and profiles for inspiration</li>
+          <li>Interact with your community</li>
+          <li>Create your own posts</li>
+          <li>Choose platform commision model</li>
+          <li>Create proposals for public</li>
+          <li>Receive accepted offers directly to your email</li>
+          <li>Receive requested resources</li>
+          <li>Give promised value</li>
+          <li>Keep expanding your post and your post selection</li>
+          <li>Wait for next releases full of new features</li>
+          <li>Email us for memberships quotations, instructions and full details</li>
+        </ol>
+        <hr>
+        <h2 class="about-subtitle mb-4">Rules</h2>
+        <p class="about-description">
+          <ul>
+            <li>Respect the community guidelines and code of conduct.</li>
+            <li>Do not engage in any form of harassment, discrimination, or offensive behavior.</li>
+            <li>Provide accurate and truthful information in your posts and interactions.</li>
+            <li>Do not spam or engage in excessive self-promotion.</li>
+            <li>Respect the intellectual property rights of others.</li>
+            <li>Keep discussions and interactions constructive and respectful.</li>
+            <li>Do not share sensitive personal information of yourself or others.</li>
+            <li>Report any violations or inappropriate behavior to the platform administrators.</li>
+            <li>Use the platform for its intended purpose and refrain from any illegal activities.</li>
+            <li>Comply with all applicable laws and regulations.</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+  <hr>
+</section>
     
-    later:
-    you can update your public version of annual financial sheet and it gets automatically rendered
-  </p>
+<!-- ABOUT PRICING -->
+<section class="about-section">
+  <div class="container container-dos py-3">
+    <div class="d-flex flex-column align-items-center pb-3 mb-4">
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal mb-5">Pricing</h1>
+        <p class="fs-5 text-muted">Innovation Land is your gateway to unlocking opportunities, connecting with like-minded individuals, and turning your innovative ideas into impactful solutions. Join us today and be part of a vibrant community of innovators, creators, and visionaries. Only registerd users will have access to full functionalities and features. Usually we do not offer free access, so take advantage of this promotion today and join for FREE!</p>
+      </div>
+      <div class="row row-cols-1 mb-3 text-center mt-4">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3 bg-secondary-subtle">
+              <h4 class="my-0 fw-normal">Silver</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title mb-2 mt-1">$0<small class="text-muted fw-light">/mo</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Basic access to the platform</li>
+                <li>Ability to create and share posts</li>
+                <li>Limited storage space</li>
+                <li>Email support</li>
+              </ul>
+              <a href="{% url 'account_signup' %}">
+                <button type="button" class="w-100 btn btn-lg btn-outline-dark mt-3">Sign up for free</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col mt-4">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3 bg-warning">
+              <h4 class="my-0 fw-normal">Gold</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title mb-2 mt-1">$21<small class="text-muted fw-light">/mo</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Advanced access to the platform</li>
+                <li>Enhanced storage space</li>
+                <li>Priority email support</li>
+                <li>Access to all current and upcoming premium features</li>
+              </ul>
+              <a href="{% url 'account_signup' %}">
+                <button type="button" class="w-100 btn btn-lg btn-outline-dark mt-3">Get started</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col mt-4">
+          <div class="card mb-3 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-white bg-info">
+              <h4 class="my-0 fw-normal text-dark">Crystal</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title mb-2 mt-1">$42<small class="text-muted fw-light">/mo</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Full access to the platform</li>
+                <li>Infinite storage space</li>
+                <li>Instant phone, chat and email support</li>
+                <li>Priority access to new features</li>
+              </ul>
+              <a href="{% url 'account_signup' %}">
+                <button type="button" class="w-100 btn btn-lg btn-outline-dark mt-3">Get started</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <p>Rules</p>
-</h2>
+      
+
+
+
 
 
 

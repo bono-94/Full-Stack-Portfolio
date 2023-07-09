@@ -15,27 +15,6 @@ from django.template.loader import render_to_string
 from django.http import HttpResponse
 
 
-# ABOUT PAGE INFO
-def final(request):
-    users = User.objects.all()
-    total_users = User.objects.count()
-    total_posts = Post.objects.count()
-    total_profiles = Profile.objects.count()
-    first_day = 'Monday'
-    industry_values = Profile.objects.values_list('industry', flat=True).distinct()
-    total_industries = len(industry_values)
-    context = {
-        'total_users': total_users,
-        'users': users,
-        'first_day': first_day,
-        'total_posts': total_posts,
-        'total_profiles': total_profiles,
-        'industry_values': industry_values,
-        'total_industries': total_industries
-        }
-    return render(request, 'index.html', context)
-
-
 # MAIN
 def home_page(request):
 
@@ -48,7 +27,17 @@ def about_page(request):
 
     if request.method == 'GET':
 
-        return render(request, 'about.html')
+        total_users = User.objects.count()
+        total_posts = Post.objects.count()
+        industry_values = Profile.objects.values_list('industry', flat=True).distinct()
+        total_industries = len(industry_values)
+        context = {
+            'total_users': total_users,
+            'total_posts': total_posts,
+            'total_industries': total_industries
+            }
+
+        return render(request, 'about.html', context)
 
 
 # PROFILE

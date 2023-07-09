@@ -97,6 +97,14 @@ body {
     border: none;
 }
 
+#home-landing {
+  margin-top: -35px;
+}
+
+#about-landing {
+  margin-top: -35px;
+}
+
 
 /* NAVIGATION BAR */
 
@@ -801,8 +809,8 @@ max-width: 700px;
 }
 
 .public-privacy-message {
-  margin-top: 200px;
-  margin-bottom: 200px;
+  margin-top: 300px;
+  margin-bottom: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -845,6 +853,9 @@ max-width: 700px;
     border-style: solid;
     /* Add any other desired button styles */
 }
+
+/* LOGOUT PAGE */
+
 
 
 /* OVERLAY */
@@ -971,6 +982,20 @@ max-width: 700px;
 
   #offcanvasRight {
     max-width: 30%;
+  }
+
+  #logout {
+
+    margin-top: 200px;
+    margin-bottom: 200px;
+  
+  }
+  
+  #login {
+  
+    margin-top: 200px;
+    margin-bottom: 200px;
+  
   }
 
 }

@@ -53,59 +53,66 @@
           </a>
         </div>
         <div class="col-auto me-0 justify-content-end border-0">
-          <button class="navbar-toggler btn btn-warning mb-2 dark mt-3 me-2 border-warning border-2" id="navbar-dropdown" type="button"
-            data-bs-toggle="navbar-collapse" data-bs-target="#navbar-collapse" aria-controls="navbarCollapse"
-            aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNavbar()" style="font-size: 0.8rem;">
+          <button class="navbar-toggler btn btn-warning mb-2 dark mt-3 me-2 border-warning border-2"
+            id="navbar-dropdown" type="button" data-bs-toggle="navbar-collapse" data-bs-target="#navbar-collapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNavbar()"
+            style="font-size: 0.8rem;">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
         <div class="collapse navbar-collapse text-center col-md-6 shadow-sm" id="navbar-collapse">
           <ul class="navbar-nav mb-md-4 ms-md-auto mt-2 mt-md-0 d-flex col-12 col-md-auto">
             <li class="nav-item">
-              <a class="nav-link bg-gradient bg-warning border border-secondary border-1 rounded-md-1 shadow-sm"
+              <a class="nav-link bg-gradient {% if request.path == '/' %}bg-dark text-warning{% else %}bg-warning{% endif %} border border-secondary border-1 rounded-md-1 shadow-sm"
                 aria-current="page" href="{% url 'home' %}"><strong>Home</strong></a>
             </li>
-            <li class="nav-item bg-gradient bg-warning border border-secondary border-1">
-              <a class="nav-link" aria-current="page" href="{% url 'about' %}"><strong>About</strong></a>
+            <li
+              class="nav-item bg-gradient {% if request.path == '/about' %}bg-dark text-warning{% else %}bg-warning{% endif %} border border-secondary border-1">
+              <a class="nav-link {% if request.path == '/about' %}text-warning{% endif %}" aria-current="page"
+                href="{% url 'about' %}"><strong>About</strong></a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item dropdown bg-gradient bg-info" style="position: relative; z-index: 3;">
-              <a class="nav-link bg-gradient bg-warning dropdown-toggle border border-secondary border-1"
-                href="#" id="navbar-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a id="post-nav-button" class="nav-link bg-gradient {% if request.resolver_match.view_name == 'public_posts_list' or request.resolver_match.view_name == 'user_posts_list' or request.resolver_match.view_name == 'user_post_create' or request.resolver_match.view_name == 'post_edit' or request.resolver_match.view_name == 'post_delete' or request.resolver_match.view_name == 'public_post_details_1_landing' or request.resolver_match.view_name == 'public_post_details_2_opps' or request.resolver_match.view_name == 'public_post_details_3_about_us' or request.resolver_match.view_name == 'public_post_details_4_body' or request.resolver_match.view_name == 'public_post_details_5_files' or request.resolver_match.view_name == 'public_post_details_6_proposal'%}bg-dark{% endif %} bg-warning dropdown-toggle border border-secondary border-1" href="#" id="navbar-dropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
                 <strong>Posts</strong>
               </a>
-              <ul class="dropdown-menu text-center bg-gradient bg-dark mt-0 mb-0 padding-mini rounded-0 border border-2 border-secondary shadow-lg"
+              <ul
+                class="dropdown-menu text-center bg-gradient bg-dark mt-0 mb-0 padding-mini rounded-0 border border-2 border-secondary shadow-lg"
                 aria-labelledby="navbarDropdown" id="navbar-dropdown-subs">
-                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2" href="{% url 'public_posts_list' %}">Public
-                  Posts</a></li>
+                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2"
+                    href="{% url 'public_posts_list' %}">Public
+                    Posts</a></li>
                 <li>
                   <hr class="dropdown-divider bg-warning my-0">
                 </li>
-                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow py-2" href="{% url 'user_posts_list' %}">My
+                <li><a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow py-2"
+                    href="{% url 'user_posts_list' %}">My
                     Posts</a>
                 </li>
                 <li>
                   <hr class="dropdown-divider bg-warning my-0">
                 </li>
                 <li>
-                  <a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2" href="{% url 'user_post_create' %}">
+                  <a class="dropdown-item bg-gradient bg-dark text-warning nav-button-shadow  py-2"
+                    href="{% url 'user_post_create' %}">
                     Create Post
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow">
-              <a class="nav-link" href="{% url 'user_profile' %}"><strong>My Profile</strong></a>
+            <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow {% if request.resolver_match.view_name == 'user_profile' or request.resolver_match.view_name == 'edit_profile' or request.resolver_match.view_name == 'delete_profile' %}bg-dark{% endif %}">
+              <a class="nav-link" href="{% url 'user_profile' %}"><strong class="{% if request.resolver_match.view_name == 'user_profile' or request.resolver_match.view_name == 'edit_profile' or request.resolver_match.view_name == 'delete_profile' %}text-warning{% endif %}">My Profile</strong></a>
             </li>
-            <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow">
-              <a class="nav-link" href="{% url 'account_logout' %}"><strong>Logout</strong></a>
+            <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow {% if request.path == '/accounts/logout/' %}bg-dark{% endif %}">
+              <a class="nav-link" href="{% url 'account_logout' %}"><strong class="{% if request.path == '/accounts/logout/' %}text-warning{% endif %}">Logout</strong></a>
             </li>
             {% else %}
-            <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow">
-              <a class="nav-link" href="{% url 'account_signup' %}"><strong>Register</strong></a>
+            <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow {% if request.path == '/accounts/signup/' %}bg-dark{% endif %}">
+              <a class="nav-link" href="{% url 'account_signup' %}"><strong class="{% if request.path == '/accounts/signup/' %}text-warning{% endif %}">Register</strong></a>
             </li>
-            <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow">
-              <a class="nav-link" href="{% url 'account_login' %}"><strong>Login</strong></a>
+            <li class="nav-item bg-gradient bg-warning border border-secondary border-1 nav-button-shadow {% if request.path == '/accounts/login/' %}bg-dark{% endif %}">
+              <a class="nav-link" href="{% url 'account_login' %}"><strong class="{% if request.path == '/accounts/login/' %}text-warning{% endif %}">Login</strong></a>
             </li>
             {% endif %}
           </ul>
@@ -184,55 +191,65 @@
     {% endblock content %}
   </main>
 
-<footer class="footer dark-bg text-warning mt-3 mb-2 mt-md-5" id="footer">
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="mt-4 mb-4 mt-md-5">
-        <h5>Innovation Land HQ</h5>
-        <address>
-          4444 Imaginary St,
-          <br>
-          Los Angeles,
-          <br>
-          CA 90000
-          <br>
-        </address>
-      </div>
-      <div>
-        <i class="fa-solid fa-phone-volume text-light me-1" style="transform: scale(0.8);"></i>
+  <footer class="footer dark-bg text-warning mt-3 mb-2 mt-md-5" id="footer">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="mt-4 mb-4 mt-md-5">
+          <h5>Innovation Land HQ</h5>
+          <address>
+            4444 Imaginary St,
+            <br>
+            Los Angeles,
+            <br>
+            CA 90000
+            <br>
+          </address>
+        </div>
+        <div>
+          <i class="fa-solid fa-phone-volume text-light me-1" style="transform: scale(0.8);"></i>
           +1(424) 212-848
-      </div>
-      <div>
-        <i class="fa-solid fa-at mb-4 text-light me-1" style="transform: scale(0.8);"></i>
+        </div>
+        <div>
+          <i class="fa-solid fa-at mb-4 text-light me-1" style="transform: scale(0.8);"></i>
           innovation-land@outlook.com
-      </div>
-      <div class="mt-3 mb-5 ms-1">
-        <div class="d-flex justify-content-start">
-          <a href="https://www.facebook.com/" class="me-3 text-decoration-none">
-            <i class="fab fa-facebook-square text-light m-2" style="transform: scale(1.6);"></i>
-          </a>
-          <a href="https://twitter.com/" class="me-3 text-decoration-none">
-            <i class="fab fa-twitter-square text-light m-2" style="transform: scale(1.6);"></i>
-          </a>
-          <a href="https://www.instagram.com/" class="me-3 text-decoration-none">
-            <i class="fab fa-instagram-square text-light m-2" style="transform: scale(1.6);"></i>
-          </a>
-          <a href="https://www.youtube.com/" class="me-3 text-decoration-none">
-            <i class="fab fa-youtube-square text-light m-2" style="transform: scale(1.6);"></i>
-          </a>
+        </div>
+        <div class="mt-3 mb-5 ms-1">
+          <div class="d-flex justify-content-start">
+            <a href="https://www.facebook.com/" class="me-3 text-decoration-none">
+              <i class="fab fa-facebook-square text-light m-2" style="transform: scale(1.6);"></i>
+            </a>
+            <a href="https://twitter.com/" class="me-3 text-decoration-none">
+              <i class="fab fa-twitter-square text-light m-2" style="transform: scale(1.6);"></i>
+            </a>
+            <a href="https://www.instagram.com/" class="me-3 text-decoration-none">
+              <i class="fab fa-instagram-square text-light m-2" style="transform: scale(1.6);"></i>
+            </a>
+            <a href="https://www.youtube.com/" class="me-3 text-decoration-none">
+              <i class="fab fa-youtube-square text-light m-2" style="transform: scale(1.6);"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <p class="text-center mt-3 mb-3 mb-md-5">2023 &copy; Innovation Land</p>
-  </div>
-</footer>
-  
+    <div class="container">
+      <p class="text-center mt-3 mb-3 mb-md-5">2023 &copy; Innovation Land</p>
+    </div>
+  </footer>
+
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+  </script>
+  <script>
+    var postNavButton = document.getElementById("post-nav-button");
+    if (postNavButton.classList.contains("bg-dark")) {
+      postNavButton.classList.add("text-warning");
+      postNavButton.classList.remove("text-dark");
+    } else {
+      postNavButton.classList.add("text-dark");
+      postNavButton.classList.remove("text-warning");
+    }
   </script>
   <script>
     setTimeout(function () {

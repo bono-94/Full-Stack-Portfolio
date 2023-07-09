@@ -1125,5 +1125,14 @@ function addBeatClass(elementId) {
   }
 }
 
-
+var postNavButton = document.getElementById("post-nav-button");
+  if (postNavButton.classList.contains("bg-dark")) {
+    postNavButton.classList.add("text-warning");
+    postNavButton.classList.remove("text-dark");
+    postNavButton.classList.remove("text-muted");
+  } else {
+    postNavButton.classList.add("text-dark");
+    postNavButton.classList.add("text-muted");
+    postNavButton.classList.remove("text-warning");
+  }
 

@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+
 body {
     background-color: #F9FAFC;
+    font-family: 'Open Sans', sans-serif;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
 }
 
 .brand {

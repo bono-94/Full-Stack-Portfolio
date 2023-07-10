@@ -1,6 +1,7 @@
 from django import forms
 from .models import Profile, Post, Note
 from django.core.exceptions import ValidationError
+from django.core.validators import MaxLengthValidator
 
 
 class ProfileForm(forms.ModelForm):
@@ -153,42 +154,45 @@ class PostForm(forms.ModelForm):
 
     pps_vision = forms.CharField(
         label='Post vision',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(168)]
     )
 
     pps_missions = forms.CharField(
         label='Post missions',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(168)]
     )
 
     pps_goals = forms.CharField(
         label='Post goals',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(168)]
     )
 
     pps_planner = forms.CharField(
         label='Post planner',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(168)]
     )
 
     sdg_goals = forms.CharField(
         label='SDG goals',
-        required=False
-    )
-
-    pps_planner = forms.CharField(
-        label='Post planner',
-        required=False
+        required=False,
+        widget=forms.Textarea(attrs={'class': 'form-control'}),
+        validators=[MaxLengthValidator(525)]
     )
 
     special_ops = forms.CharField(
         label='Current Operations',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     special_ops_two = forms.CharField(
         label='Future Operations',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     percentage_special_ops = forms.IntegerField(
@@ -203,12 +207,14 @@ class PostForm(forms.ModelForm):
 
     special_supply_chain = forms.CharField(
         label='Current Supply Chain',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     special_supply_chain_two = forms.CharField(
         label='Future Supply Chain',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     percentage_special_supply_chain = forms.IntegerField(
@@ -223,12 +229,14 @@ class PostForm(forms.ModelForm):
 
     special_tech = forms.CharField(
         label='Current Tech',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     special_tech_two = forms.CharField(
         label='Future Tech',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     percentage_special_tech = forms.IntegerField(
@@ -243,12 +251,14 @@ class PostForm(forms.ModelForm):
 
     special_hr = forms.CharField(
         label='Current HR',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     special_hr_two = forms.CharField(
         label='Future HR',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     percentage_special_hr = forms.IntegerField(
@@ -263,12 +273,14 @@ class PostForm(forms.ModelForm):
 
     special_finance = forms.CharField(
         label='Current Financial',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     special_finance_two = forms.CharField(
         label='Future Financial',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     percentage_special_finance = forms.IntegerField(
@@ -283,12 +295,14 @@ class PostForm(forms.ModelForm):
 
     special_marketing = forms.CharField(
         label='Current Marketing',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     special_marketing_two = forms.CharField(
         label='Future Marketing',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     percentage_special_marketing = forms.IntegerField(
@@ -303,12 +317,14 @@ class PostForm(forms.ModelForm):
 
     special_research = forms.CharField(
         label='Current Research',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     special_research_two = forms.CharField(
         label='Future Research',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     percentage_special_research = forms.IntegerField(
@@ -323,12 +339,14 @@ class PostForm(forms.ModelForm):
 
     special_sustainability = forms.CharField(
         label='Current Sustainability',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     special_sustainability_two = forms.CharField(
         label='Future Sustainability',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     percentage_special_sustainability = forms.IntegerField(
@@ -361,24 +379,22 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    ownership_percentage_opps_type = forms.CharField(
-        label='Ownership percentage type',
-        required=False
-    )
-
     ownership_percentage_opps_quantity_proposal = forms.IntegerField(
         label='Ownership percentage proposal',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     ownership_percentage_opps_proposal_return = forms.CharField(
         label='Ownership percentage return',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     ownership_percentage_opps_proposal_costs = forms.CharField(
         label='Ownership percentage costs',
-        required=False
+        required=False,
+        validators=[MaxLengthValidator(210)]
     )
 
     class Meta:

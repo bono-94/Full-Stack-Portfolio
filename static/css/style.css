@@ -132,7 +132,7 @@ p {
 
 .nav-margin-mobile {
 
-  margin-top: 3935px;
+  margin-top: 395px;
 }
 
 .nav-margin-mobile-short {
@@ -862,7 +862,7 @@ max-width: 700px;
 }
 
 #post-breadcrumb {
-  margin-top:  98px; 
+  margin-top:  95px; 
 }
 
 .text-smaller {
@@ -932,6 +932,23 @@ max-width: 700px;
   }
   /* ... */
 }
+
+@media (max-width: 768px) and (min-width: 329px) {
+  
+  #post-breadcrumb {
+    margin-top:  90px; 
+  }
+
+}
+
+@media (min-width: 768px) {
+  
+  #post-breadcrumb {
+    margin-top:  99px; 
+  }
+
+}
+
 
 @media (max-width: 331px) {
   /* CSS rules for screens under 331px */
@@ -1031,6 +1048,8 @@ max-width: 700px;
   .public-privacy-message {
     margin-top: 300px;
     margin-bottom: 300px;
+
+}
 
 }
 

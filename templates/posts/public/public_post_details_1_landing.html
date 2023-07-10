@@ -38,13 +38,13 @@
 {% else %}
 <h3 class="text-center pt-5 pb-5 mb-0 border-bottom border-1 border-secondary" style="background-color: {{ post.post_color_primary }};  color: {{ post.post_color_text }};">
 {% endif %}
-  Welcome to our {{ post.post_type }}!
+  Welcome!
 </h3>
 
 <!-- INTRODUCTION -->
 {% if post.introduction_privacy == False and post.introduction %}
 <section class="bg-secondary-lighter pt-3 pb-5">
-  <h5 class="text-center mt-4 mb-4 pb-2">Introduction</h5>
+  <h5 class="text-center mt-4 pt-2 mb-4 pb-3">Introduction</h5>
   <p class="text-break w-75 text-center mx-auto mt-4">{{ post.introduction }}</p>
 </section>
 {% else %}
@@ -132,9 +132,12 @@
 
 <!-- POST VIDEO -->
 {% if post.post_video_privacy == False and post.post_video %}
-<div class="row justify-content-center bg-secondary-lighter pb-lg-5">
-  <div class="col-11 offset rounded border border-3 border-dark mt-4 mb-4 pt-3 pb-2 shadow-sm h-100">
-    <video class="bg-info w-100 h-100 shadow-lg align-items-center" controls type="video/mp4" src="{{ post.post_video.url }}"></video>
+<hr class="bg-secondary-lighter p-0 m-0 d-lg-none">
+<div class="container-fluid bg-secondary-lighter justify-content-center pt-5 pb-5">
+  <div class="row-fluid">
+    <div class="col-10 offset-1 rounded border border-3 border-dark pt-4 pt-3 pb-3 shadow-sm h-100">
+      <video class="bg-info w-100 h-100 shadow-lg align-items-center" controls type="video/mp4" src="{{ post.post_video.url }}" style="max-height: 550px;"></video>
+    </div>
   </div>
 </div>
 {% else %}
@@ -251,9 +254,9 @@
           <i class="fa-solid fa-angles-down text-shdw-sharp text-info p-1 breadcrumb-bttn-padding btn-white-lit" style="font-size: 17px; padding-top: 15px;"></i>
         </button>
       </a>
-      <a href="#" class="pe-1 shadow">
-        <button type="button" class="btn p-0 m-0 me-3" aria-label="Close" onclick="javascript:history.back()">
-          <i class="fa-solid fa-xmark text-info p-1 text-shdw-sharp breadcrumb-bttn-padding shadow-sm btn-white-lit" style="font-size: 18px;"></i> 
+      <a href="{% url 'public_posts_list' %}" class="pe-1 shadow">
+        <button type="button" class="btn p-0 m-0 me-3" aria-label="Close">
+          <i class="fa-solid fa-xmark text-info p-1 breadcrumb-bttn-padding shadow-sm btn-white-lit" style="font-size: 18px;"></i> 
         </button>
       </a>
     </div>

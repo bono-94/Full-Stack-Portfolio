@@ -359,26 +359,6 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    standard_operational_procedures = forms.FileField(
-        label='S.O.P.',
-        required=False
-    )
-
-    hr_handbook = forms.FileField(
-        label='HR Handbook',
-        required=False
-    )
-
-    research_and_development_agenda = forms.FileField(
-        label='Research Agenda',
-        required=False
-    )
-
-    pestle_report = forms.FileField(
-        label='PESTLE Report',
-        required=False
-    )
-
     ownership_percentage_opps_quantity_proposal = forms.IntegerField(
         label='Ownership percentage proposal',
         required=False,

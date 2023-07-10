@@ -515,7 +515,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=42, unique=True)
     status = models.IntegerField(choices=STATUS, default=0)
     post_verification = models.BooleanField(default=False)
-    votes = models.ManyToManyField(User, related_name="projects_votes", blank=True, null=True)
+    votes = models.ManyToManyField(User, related_name="projects_votes")
     views = models.IntegerField(default=0)
     public_privacy = models.BooleanField(default=False)
 

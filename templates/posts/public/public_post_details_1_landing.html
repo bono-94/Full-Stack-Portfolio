@@ -19,13 +19,13 @@
       <div class="row-fluid">
         <div class="image-container bg-secondary-lighter d-flex align-items-center justify-content-center">
           {% if post.post_banner_image %}
-          <a>
-            <img src="{{ post.post_banner_image.url }}" class="img-fluid object-fit-contain" alt="Post Image">
-          </a>
+          <div class="col-12 img-fluid">
+            <img src="{{ post.post_banner_image.url }}" class="img-fluid w-100" id="nav-logo" alt="Innovation Land Logo" width="100" style="max-height: 800px;"> 
+          </div>
           {% else %}
-          <a>
-            <img src="{% static 'images/21105.jpg' %}" class="img-fluid object-fit-contain" alt="Post Placeholder">
-          </a>
+          <div class="col-12 img-fluid">
+            <img src="{% static 'images/21105.jpg' %}" class="img-fluid w-100" id="nav-logo" alt="Innovation Land Logo" width="100" style="max-height: 800px;"> 
+          </div>          
           {% endif %}
         </div>
       </div>
@@ -38,7 +38,7 @@
 {% else %}
 <h3 class="text-center pt-5 pb-5 mb-0 border-bottom border-1 border-secondary" style="background-color: {{ post.post_color_primary }};  color: {{ post.post_color_text }};">
 {% endif %}
-  Welcome!
+  Welcome to our {{ post.post_type }}!
 </h3>
 
 <!-- INTRODUCTION -->

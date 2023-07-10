@@ -1063,27 +1063,6 @@ function editPostContact() {
 
 
 
-
-
-
-
-
-// REMOVING EXTRA SPACE UPON CLICKING TOP OF PROFILE
-let targetElement = document.getElementById('public-profile-hook');
-// Listen for hash changes in the URL
-window.addEventListener('hashchange', function() {
-  // Check if the target element is the current target
-  if (window.location.hash === '#' + targetElement.id) {
-    // Remove or modify the styles when the element is the target
-    targetElement.style.paddingTop = '';
-    targetElement.style.marginTop = '';
-  } else {
-    // Restore the default styles when the element is not the target
-    targetElement.style.paddingTop = '120px';
-    targetElement.style.marginTop = '120px';
-  }
-});
-
 // Attach scroll event listener to update the active link on scroll
 window.addEventListener('scroll', updateActiveLink);
 

@@ -72,7 +72,7 @@
 <!-- PROFILE CARD -->
 {% if profile_id.profile_card_privacy == False %}
 <div id="public-profile-hook"></div>
-<div class="container pt-3 pb-3 ps-3 pe-3 mb-5 mt-3 mt-md-3 rounded border border-2 border-dark" style="background-color: {{ profile_id.profile_color }};">
+<div class="container pt-3 pb-3 ps-3 pe-3 mb-sm-4 mt-0 mt-sm-4 mb-md-5 mt-md-5 rounded border border-2 border-dark" style="background-color: {{ profile_id.profile_color }};">
   <div class="row pt-2">
     <div class="col-11 col-sm-6 col-md-4 col-lg-3 ms-2 mt-3 text-center" id="profile-general">
       <h3 class="rounded border border-2 border-dark mb- bg-light p-1 shadow-sm profile-titles ps-2 pe-2 mb-5">Public Profile</h3>
@@ -83,7 +83,7 @@
       {% if profile_id.profile_image %}
       <img src="{{ profile_id.profile_image.url }}" alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2 mb-2">
       {% else %}
-      <img src="{% static 'images/21104.png' %}" alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2 mb-2">
+      <img src="{% static 'images/21104.jpg' %}" alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2 mb-2">
       {% endif %}
       <p class="card-text ms-4 me-4 me-md-0 mt-4 text-break ms-md-5 mt-2 p-2 border border-1 border-dark shadow-sm rounded bg-light"><strong></strong>{% if profile_id.profile_quote %}<em>"{{ profile_id.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
       {% if profile_id.profile_audio %}

@@ -1,59 +1,4 @@
-var exampleTwoElement = document.getElementById("example-three"); // Get the element by ID
-// exampleTwoElement.style.backgroundColor = "pink"; // Change the background color to pink
-
-function exampleOne () {
-
-  var exampleTwoElement = document.getElementById("example-seven"); // Get the element by ID
-  exampleTwoElement.style.backgroundColor = "pink"; // Change the background color to pink
-
-}
-
-var exampleTwoElement = document.getElementById("example-seven"); // Get the element by ID
-// exampleTwoElement.style.backgroundColor = "pink"; // Change the background color to pink
-
-// Dismissal triggers:
-
-var alertList = document.querySelectorAll('.alert')
-alertList.forEach(function (alert) {
-  new bootstrap.Alert(alert)
-})
-
-/* <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> */
-
-
-// var myAlert = document.getElementById('myAlert')
-// myAlert.addEventListener('closed.bs.alert', function () {
-//   // do something, for instance, explicitly move focus to the most appropriate element,
-//   // so it doesn't get lost/reset to the start of the page
-//   // document.getElementById('...').focus()
-// })
-
-// close.bs.alert	Fires immediately when the close instance method is called.
-// closed.bs.alert	Fired when the alert has been closed and CSS transitions have completed.
-
-
-
-var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
-var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
-  return new bootstrap.Dropdown(dropdownToggleEl)
-})
-
-
-// var dropdown = new bootstrap.Dropdown(element, {
-//   popperConfig: function (defaultBsPopperConfig) {
-//     // var newPopperConfig = {...}
-//     // use defaultBsPopperConfig if needed...
-//     // return newPopperConfig
-//   }
-// })
-
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
-
-// myModal.addEventListener('shown.bs.modal', function () {
-//   myInput.focus()
-// })
-
+// DROPDOWN
 // DROPDOWN NAVIGATION
 function toggleNavbar() {
   let navbarCollapse = document.getElementById("navbar-collapse");
@@ -115,12 +60,8 @@ function toggleNavbarProfile() {
   }
 }
 
-function stopVideo() {
-  const videoElement = document.getElementById('user-video');
-  videoElement.pause()
-}
-
-// Define the functions outside the addEventListener block
+// POST & PROFILE AUDIO
+// PLAYING PROFILE AUDIO
 function playAudio() {
   const audioElement = document.getElementById('user-profile-audio');
   audioElement.play();
@@ -133,6 +74,7 @@ function playAudio() {
   stopVideo()
 }
 
+// STOPPING PROFILE AUDIO
 function stopAudio() {
   const audioElement = document.getElementById('user-profile-audio');
   audioElement.pause();
@@ -144,16 +86,7 @@ function stopAudio() {
   playButton.style.display = 'inline';
 }
 
-function pauseAudio() {
-  const audioElement = document.getElementById('user-profile-audio');
-  audioElement.pause();
-  const stopButton = document.getElementById('stop-user-profile');
-  const playButton = document.getElementById('play-user-profile');
-  audioElement.style.display = 'none';
-  stopButton.style.display = 'none';
-  playButton.style.display = 'inline';
-}
-
+// DEFINING PRODFILE AUDIO BUTTONS ON LOAD
 window.addEventListener('load', function () {
   const playButton = document.getElementById('play-user-profile');
   const stopButton = document.getElementById('stop-user-profile');
@@ -162,9 +95,7 @@ window.addEventListener('load', function () {
   stopButton.addEventListener('click', stopAudio);
 });
 
-
-// POST BACKGROUND AUDIO
-// Define the functions outside the addEventListener block
+// POST AUDIO PLAY
 function playPostAudio() {
   const audioElement = document.getElementById('post-audio');
   audioElement.play();
@@ -176,6 +107,7 @@ function playPostAudio() {
   audioElement.style.display = 'none';
 }
 
+// STOPPING POST AUDIO
 function stopPostAudio() {
   const audioElement = document.getElementById('post-audio');
   audioElement.pause();
@@ -195,10 +127,8 @@ window.addEventListener('load', function () {
   stopPostButton.addEventListener('click', stopPostAudio);
 });
 
-
-// Nav-margin
-
-// Closing profile navigation on clicking on <a> elements
+// NAVBARS
+// CLOSING PROFILE NAVIGATION
 
 function closeNavbarProfileTop() {
   let navbarSticky = document.getElementById("sticky-profile");
@@ -235,37 +165,7 @@ function closeNavbarProfile() {
   }
 }
 
-const videoElement = document.getElementById('user-video');
-const audioElement = document.getElementById('user-profile-audio');
-const playButton = document.getElementById('play-user-profile');
-const stopButton = document.getElementById('stop-user-profile');
-
-videoElement.addEventListener("play", (event) => {
-  console.log(
-    "The Boolean paused property is now 'false'. Either the play() method was called or the autoplay attribute was toggled."
-  );
-});
-
-videoElement.addEventListener('play', function() {
-  videoElement.volume = 0.5
-  pauseAudio()
-});
-
-videoElement.addEventListener('pause', function() {
-  playAudio();
-});
-
-// PUBLIC PROFILE CONTACT MODAL
-function modalPublicProfileActivate() {
-  $('#contact-modal').modal('toggle');
-  const audioElement = document.getElementById('modal-audio-fx');
-  audioElement.play();
-}
-
-function modalPublicProfileClose() {
-  $('#contact-modal').modal('hide');
-}
-
+// SAVING MODAL
 // EDIT PROFILE SAVE MODAL
 function modalEditProfileActivate() {
   $('#edit-profile-save').modal('toggle');
@@ -284,154 +184,7 @@ function modalEditPostClose() {
   $('#edit-post-save').modal('hide');
 }
 
-
-// STOCKS OFFER MODAL
-function modalStocksActivate() {
-  $('#stocks-modal').modal('toggle');
-}
-
-function modalStocksClose() {
-  $('#stocks-modal').modal('hide');
-}
-
-// OWNERSHIP PERCENTAGE OFFER MODAL
-function modalOwnershipPctActivate() {
-  $('#ownership-pct-modal').modal('toggle');
-}
-
-function modalOwnershipPctClose() {
-  $('#ownership-pct-modal').modal('hide');
-}
-
-// PRODUCTS OR SERVICES OFFER MODAL
-function modalProductsServicesActivate() {
-  $('#products-services-modal').modal('toggle');
-}
-
-function modalProductsServicesClose() {
-  $('#products-services-modal').modal('hide');
-}
-
-// LIFETIME DISCOUNT OFFER MODAL
-function modalLifetimeDiscountActivate() {
-  $('#lifetime-discount-modal').modal('toggle');
-}
-
-function modalLifetimeDiscountClose() {
-  $('#lifetime-discount-modal').modal('hide');
-}
-
-// GUARANTEED TEAM POSITION OFFER MODAL
-function modalGuaranteedTeamActivate() {
-  $('#team-position-modal').modal('toggle');
-}
-
-function modalGuaranteedTeamClose() {
-  $('#team-position-modal').modal('hide');
-}
-
-// PARTNERSHIPS OFFER MODAL
-function modalPartnershipsActivate() {
-  $('#partnerships-modal').modal('toggle');
-}
-
-function modalPartnershipsClose() {
-  $('#partnerships-modal').modal('hide');
-}
-
-// COLLABORATIONS OFFER MODAL
-function modalCollaborationsActivate() {
-  $('#collaborations-modal').modal('toggle');
-}
-
-function modalCollaborationsClose() {
-  $('#collaborations-modal').modal('hide');
-}
-
-// SPONSORSHIPS OFFER MODAL
-function modalSponsorshipsActivate() {
-  $('#sponsorships-modal').modal('toggle');
-}
-
-function modalSponsorshipsClose() {
-  $('#sponsorships-modal').modal('hide');
-}
-
-// OPEN OFFER MODAL
-function modalOpenOfferActivate() {
-  $('#open-offer-modal').modal('toggle');
-}
-
-function modalOpenOfferClose() {
-  $('#open-offer-modal').modal('hide');
-}
-
-$(document).ready(function() {
-  // Enable tooltip functionality
-  $('[data-toggle="tooltip"]').tooltip();
-
-  // Enable popover functionality
-  $('[data-bs-toggle="popover"]').popover({
-    trigger: 'focus'
-  });
-});
-
-// let popover;
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   const profileExamplePopover = document.getElementById('profile-example');
-//   popover = new bootstrap.Popover(profileExamplePopover);
-
-
-//   })
-
-// function showPopover() {
-
-//   // Destroy previous popover instance
-//   if (popover) {
-//     console.log('profileExamplePopover exists')
-//     popover.hide();
-//     console.log('profileExamplePopover disposed')
-//   }
-  
-//   // Create new popover instance
-//   popover.show();
-//   console.log('popover shown')
-// }
-
-// function closePopover() {
-//   popover.hide();
-// }
-
-
-
-function showPopover() {
-
-  const profileExamplePopover = document.getElementById('profile-example');
-  let popover = new bootstrap.Popover(profileExamplePopover);
-  
-  // Destroy previous popover instance
-  if (popover) {
-    console.log('profileExamplePopover exists')
-    popover.show();
-    console.log('profileExamplePopover disposed')
-  } else {
-    // / Create new popover instance;
-    popover.hide();
-    console.log('popover shown')
-  }
-  
-}
-
-// function closePopover() {
-//   const profileExamplePopover = document.getElementById('profile-example');
-//   const popover = new bootstrap.Popover(profileExamplePopover);
-//   popover.hide();
-// }
-
-
 // PUBLIC PROFILE COLLAPSES
-
 // FULL PAGE COLLAPSE
 function expandAllProfileColapses() {
   personalCollapse();
@@ -445,7 +198,6 @@ function expandAllProfileColapses() {
   rewardsCollapse();
   personalWallCollapse();
 
-  // Check if all elements are collapsed
   if (
     isCollapsed('profile-information-collapse') &&
     isCollapsed('profile-occupation-collapse') &&
@@ -458,7 +210,6 @@ function expandAllProfileColapses() {
     isCollapsed('profile-rewards-collapse') &&
     isCollapsed('profile-profile-wall-collapse')
   ) {
-    // All elements are collapsed, add class 'd-none' to profile-expand-all-icon
     let expandIcon = document.getElementById('profile-expand-all-icon');
     let collapseIcon = document.getElementById('profile-collapse-all-icon');
     expandIcon.classList.remove('d-none');
@@ -482,14 +233,14 @@ function expandAllProfileColapses() {
   }
 }
 
-// Function to check if an element is collapsed
+// IF COLLAPSED CHECKER
 function isCollapsed(elementId) {
   let element = document.getElementById(elementId);
   return element.classList.contains('collapse');
 }
 
 
-
+// PROFILE NAVIGATION COLLAPSE
 // PERSONAL INFO COLLAPSE
 function personalCollapse() {
   let profilePopover = document.getElementById('profile-information-collapse');
@@ -651,7 +402,6 @@ function personalWallCollapse() {
 }
 
 // EDIT PROFILE COLLAPSES
-
 // EDIT PRIVACY COLLAPSE
 function editProfilePrivacy() {
   let editPopover = document.getElementById('edit-privacy');
@@ -664,7 +414,6 @@ function editProfilePrivacy() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -679,7 +428,6 @@ function editProfileCard() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -694,7 +442,6 @@ function editProfileVideo() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -709,7 +456,6 @@ function editProfileGeneral() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -724,7 +470,6 @@ function editProfileOccupation() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -739,7 +484,6 @@ function editProfileCareer() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -754,7 +498,6 @@ function editProfileAchievements() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -769,7 +512,6 @@ function editProfileAttributes() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -784,7 +526,6 @@ function editProfileFocus() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -799,7 +540,6 @@ function editProfileSpecialization() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -814,11 +554,10 @@ function editProfileAccomplishments() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
-// EDIT REWARDSL COLLAPSE
+// EDIT REWARDS COLLAPSE
 function editProfileRewards() {
   let editPopover = document.getElementById('edit-rewards');
   let editPopoverButton = document.getElementById('edit-rewards-bttn');
@@ -829,7 +568,7 @@ function editProfileRewards() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
+
   }
 }
 
@@ -844,7 +583,6 @@ function editProfileWall() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -862,7 +600,6 @@ function editPostListView() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -877,7 +614,7 @@ function editPostStructure() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
+
   }
 }
 
@@ -892,7 +629,6 @@ function editPostKeyInfo() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -907,7 +643,6 @@ function editPostGeneral() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -922,7 +657,6 @@ function editPostIntroduction() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -937,7 +671,6 @@ function editPostVideo() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -952,7 +685,6 @@ function editPostLaunch() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -967,7 +699,6 @@ function editPostDetails() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -982,7 +713,6 @@ function editPostAboutCreators() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -997,7 +727,6 @@ function editPostBody() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -1012,7 +741,6 @@ function editPostLibrary() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -1027,7 +755,6 @@ function editPostDocuments() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
@@ -1042,7 +769,7 @@ function editPostProposal() {
   } else {
     editPopover.classList.add("collapse");
     editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
+
   }
 }
 
@@ -1055,25 +782,11 @@ function editPostContact() {
     editPopover.classList.remove("collapse");
     editPopoverButton.classList.add("bg-warning");
   } else {
-    editPopover.classList.add("collapse");
-    editPopoverButton.classList.remove("bg-warning");
-     // Set the desired background color with important
   }
 }
 
-
-
-// Attach scroll event listener to update the active link on scroll
-window.addEventListener('scroll', updateActiveLink);
-
-$(document).ready(function(){
-  $("body").scrollspy({
-      target: "#profile-occupation"
-  }) 
-  $('#profile-personal-occupation').addClass('bg-warning');
-});
-
-
+// FONT AWESOME ANIMATIONS
+// BOUNCE
 function addBounceClass(elementId) {
   const element = document.getElementById(elementId);
   if (element) {
@@ -1084,6 +797,7 @@ function addBounceClass(elementId) {
   }
 }
 
+// SHAKE
 function addShakeClass(elementId) {
   const element = document.getElementById(elementId);
   if (element) {
@@ -1094,6 +808,7 @@ function addShakeClass(elementId) {
   }
 }
 
+// BEAT
 function addBeatClass(elementId) {
   const element = document.getElementById(elementId);
   if (element) {
@@ -1104,6 +819,7 @@ function addBeatClass(elementId) {
   }
 }
 
+// BASE DOCUMENT STYLING
 var postNavButton = document.getElementById("post-nav-button");
   if (postNavButton.classList.contains("bg-dark")) {
     postNavButton.classList.add("text-warning");

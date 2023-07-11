@@ -1,10 +1,20 @@
+"""
+Creation and configuration of custom forms for the application.
+These forms are used for creating and updating various models.
+Each form provides fields and validation specific to the relevant model.
+"""
+
 from django import forms
 from .models import Profile, Post, Note
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxLengthValidator
 
 
+# PROFILE FORM
 class ProfileForm(forms.ModelForm):
+    """
+    Form used for creating or updating a user profile.
+    """
     class Meta:
         model = Profile
         fields = [
@@ -124,7 +134,15 @@ class ProfileForm(forms.ModelForm):
             'start_date': forms.DateInput(attrs={'type': 'date'}),
         }
 
+    # FORM CLEANING AND VALIDATING
     def clean(self):
+        """
+        Validates the profile form data.
+        Performs additional validation on the form data with emphasis on focus.
+        If the sum of paired focus fields is equal to 100 is correct.
+        Returns: cleaned form data.
+        If sum is not integer 100, it raises an error to inform user.
+        """
 
         cleaned_data = super().clean()
         focus_fields = [
@@ -152,8 +170,13 @@ class ProfileForm(forms.ModelForm):
         return cleaned_data
 
 
+# POST FORM
 class PostForm(forms.ModelForm):
+    """
+    Form used for creating or updating a user's posts.
+    """
 
+    # CUSTOM LABELLING AND VALIDATION
     pps_vision = forms.CharField(
         label='Post vision',
         required=False,
@@ -603,6 +626,15 @@ class PostForm(forms.ModelForm):
         }
 
     def clean(self):
+        """
+        Validates the profile form data.
+        Performs additional validation on the form data with emphasis on focus.
+        If the sum of paired focus fields is equal to 100 is correct.
+        Returns cleaned form data.
+        If sum is not integer 100, it raises an error to inform user.
+        In addition it validates that stock proposal is withing limitations.
+        If stocks quantity offer is larger than supply, it raises error.
+        """
 
         cleaned_data = super().clean()
         focus_fields = [
@@ -639,7 +671,14 @@ class PostForm(forms.ModelForm):
         return cleaned_data
 
 
+# COMMENT FORM
 class NoteForm(forms.ModelForm):
+    """
+    Form for creating or updating a comments on posts.
+    It includes a single field for the content.
+    """
+
+    # CUSTOM INPUT TYPES & PLACEHOLDER
     content_note = forms.CharField(
         label=False,
         widget=forms.Textarea(

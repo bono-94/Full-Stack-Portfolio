@@ -1,3 +1,9 @@
+"""
+URL patterns for the project's application.
+Each path corresponds to a specific view function or class-based view.
+It also allows custom naming to be called upon in views and templates.
+"""
+
 from . import views
 from django.urls import path
 from .views import *
@@ -6,8 +12,10 @@ from .views import *
 urlpatterns = [
     # INFO
     path('', views.home_page, name='home'),
+
     # ABOUT
     path('about', views.about_page, name='about'),
+
     # PROFILE
     path('my-profile/', views.user_profile, name='user_profile'),
     path('my-profile/edit', views.edit_profile, name='edit_profile'),
@@ -52,6 +60,7 @@ urlpatterns = [
     ),
     path(
         'vote/<slug:slug>', views.PostVote.as_view(), name='vote'),
+
     # POST PRIVATE
     path('my-posts', views.UserPosts.as_view(), name='user_posts_list'),
     path('create-post', views.PostCreate.as_view(), name='user_post_create'),

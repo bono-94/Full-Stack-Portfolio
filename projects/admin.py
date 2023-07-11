@@ -1,3 +1,8 @@
+"""
+Admin configuration for managing models in the Django admin site.
+This file registers models and customizes the admin interface.
+"""
+
 from django.contrib import admin
 from .models import Post, Note, Profile
 from django_summernote.admin import SummernoteModelAdmin
@@ -19,6 +24,7 @@ admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 
 
+# PROFILE ADMIN
 @admin.register(Profile)
 class ProfileAdmin(SummernoteModelAdmin):
 
@@ -53,6 +59,7 @@ class ProfileAdmin(SummernoteModelAdmin):
     summernote_fields = ('bio',)
 
 
+# POST ADMIN
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
@@ -108,12 +115,15 @@ class PostAdmin(SummernoteModelAdmin):
         queryset.update(status=0)
 
 
+# NOTES ADMIN
 @admin.register(Note)
 class NotesAdmin(admin.ModelAdmin):
 
     list_display = ('content_note', 'note', 'created_on_note', 'approved')
     list_filter = ('content_note', 'note', 'approved', 'created_on_note')
     search_fields = ('content_note', 'email', 'content_note')
+
+    # ACTIONS
     actions = ['approved_note']
 
     def approved_note(self, request, queryset):

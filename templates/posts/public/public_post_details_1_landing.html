@@ -20,11 +20,11 @@
         <div class="image-container bg-secondary-lighter d-flex align-items-center justify-content-center">
           {% if post.post_banner_image %}
           <div class="col-12 img-fluid">
-            <img src="{{ post.post_banner_image.url }}" class="img-fluid w-100 img-large" alt="Innovation Land Logo" width="100"> 
+            <img src="{{ post.post_banner_image.url }}" class="img-fluid w-100 img-large" alt="Post Uploaded Image" width="100"> 
           </div>
           {% else %}
           <div class="col-12 img-fluid">
-            <img src="{% static 'images/project.jpg' %}" class="img-fluid w-100 img-large" alt="Innovation Land Logo" width="100"> 
+            <img src="{% static 'images/project.jpg' %}" class="img-fluid w-100 img-large" alt="Default Post Image" width="100"> 
           </div>          
           {% endif %}
         </div>
@@ -136,7 +136,7 @@
 <div class="container-fluid bg-secondary-lighter justify-content-center pt-5 pb-5">
   <div class="row-fluid">
     <div class="col-10 offset-1 rounded border border-3 border-dark pt-4 pt-3 pb-3 shadow-sm h-100">
-      <video class="bg-info w-100 h-100 shadow-lg align-items-center video-lg" controls type="video/mp4" src="{{ post.post_video.url }}"></video>
+      <video class="bg-info w-100 h-100 shadow-lg align-items-center video-lg" controls type="video/mp4" src="{{ post.post_video.url }}" alt="Post Video"></video>
     </div>
   </div>
 </div>

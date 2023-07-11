@@ -10,7 +10,7 @@
 
 <!-- PROFILE NAVIGATION SUPPORT -->
 <div class="fixed-button-expander pb-1">
-  <button class="btn btn-dark text-warning border rounded border-info border-2 me-1 shadow-lg p-1 ps-2 pe-2" onclick="expandAllProfileColapses()" type="button">
+  <button class="btn btn-dark text-warning border rounded border-info border-2 me-1 shadow-lg p-1 ps-2 pe-2" onclick="expandAllProfileColapses()" aria-label="Expand or collapse profile cards" type="button">
     <i class="fa-solid fa-repeat text-warning p-0" id="profile-expand-all-icon"></i>
     <i class="fa-solid fa-repeat text-light d-none" id="profile-collapse-all-icon"></i>
   </button>
@@ -131,32 +131,32 @@
           <div class="container-fluid m-0 p-0">
             <div class="row-fluid d-flex justify-content-center" id="profile-links">
               <div class="me-sm-2 ms-sm-2 ms-md-3 me-md-3 me-lg-4 ms-lg-4 me-xxl-5 ms-xxl-1">
-                <a href="{% if profile.website_link %}{{ profile.website_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
+                <a href="{% if profile.website_link %}{{ profile.website_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="Website navigational button">
                   <i class="fa-solid fa-globe bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
-                <a href="{% if profile.facebook_link %}{{ profile.facebook_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
+                <a href="{% if profile.facebook_link %}{{ profile.facebook_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="Facebook navigational button">
                   <i class="fa-brands fa-facebook bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
-                <a href="{% if profile.twitter_link %}{{ profile.twitter_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
+                <a href="{% if profile.twitter_link %}{{ profile.twitter_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="Twitter navigational button">
                   <i class="fa-brands fa-twitter bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
-                <a href="{% if profile.instagram_link %}{{ profile.instagram_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
+                <a href="{% if profile.instagram_link %}{{ profile.instagram_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="Instagram navigational button">
                   <i class="fa-brands fa-instagram bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
-                <a href="{% if profile.linkedin_link %}{{ profile.linkedin_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
+                <a href="{% if profile.linkedin_link %}{{ profile.linkedin_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="LinkedIn navigational button">
                   <i class="fa-brands fa-linkedin bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-1">
-                <a href="{% if profile.youtube_link %}{{ profile.youtube_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank">
+                <a href="{% if profile.youtube_link %}{{ profile.youtube_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="YouTube navigational button">
                   <i class="fa-brands fa-youtube bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
@@ -177,7 +177,7 @@
   {% if profile_id.user_video %}
   <div class="row justify-content-center" id="profile-video">
     <div class="col-11 offset rounded border border-3 border-dark bg-secondary mt-4 mb-4 pt-2 shadow-lg h-100">
-      <video id="user-video" class="bg-info w-100 h-100 shadow-lg align-items-center" controls type="video/mp4" src="{{ profile_id.user_video.url }}"></video>
+      <video id="user-video" class="bg-info w-100 h-100 shadow-lg align-items-center" controls type="video/mp4" src="{{ profile_id.user_video.url }}" alt="User Video"></video>
     </div>
   </div>
   <hr class="border border-2 border-dark">

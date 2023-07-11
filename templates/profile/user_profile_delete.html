@@ -17,8 +17,8 @@
       <form method="post">
         {% csrf_token %}
         <div class=" col-8 offset-2 d-flex justify-content-between">
-          <button type="button" class="btn btn-dark shadow-sm text-warning" onclick="javascript:history.back()">Back</button>
-          <button type="submit" class="btn btn-dark shadow-sm text-warning">Delete</button>
+          <button type="button" class="btn btn-dark shadow-sm text-warning" onclick="javascript:history.back()" aria-label="Previous page">Back</button>
+          <button type="submit" class="btn btn-dark shadow-sm text-warning" aria-label="Submit form">Delete</button>
         </div>
       </form>  
     </div>

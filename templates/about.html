@@ -9,7 +9,7 @@
   <div class="container-fluid p-0">
     <div class="row-fluid">
       <div class="col-12 img-fluid">
-        <img src="{% static 'images/orca.jpg' %}" class="img-fluid w-100 mt-5 pt-2 img-large" alt="Innovation Land Logo" width="100"> 
+        <img src="{% static 'images/orca.jpg' %}" class="img-fluid w-100 mt-5 pt-2 img-large" alt="Black and white image of orca resurfacing" width="100"> 
       </div>
     </div>
   </div>  
@@ -137,9 +137,12 @@
                 <li>Limited storage space</li>
                 <li>Email support</li>
               </ul>
+              {% if user.is_authenticated %}
+              {% else %}
               <a href="{% url 'account_signup' %}">
                 <button type="button" class="w-100 btn btn-lg btn-outline-secondary text-dark mt-3">Sign up for free</button>
               </a>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -156,9 +159,12 @@
                 <li>Priority email support</li>
                 <li>Access to all current and upcoming premium features</li>
               </ul>
+              {% if user.is_authenticated %}
+              {% else %}
               <a href="{% url 'account_signup' %}">
                 <button type="button" class="w-100 btn btn-lg btn-outline-warning text-dark mt-3">Get started</button>
               </a>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -175,9 +181,12 @@
                 <li>Instant phone, chat and email support</li>
                 <li>Priority access to new features</li>
               </ul>
+              {% if user.is_authenticated %}
+              {% else %}
               <a href="{% url 'account_signup' %}">
                 <button type="button" class="w-100 btn btn-lg btn-outline-info text-dark mt-3">Get started</button>
               </a>
+              {% endif %}
             </div>
           </div>
         </div>

@@ -3,27 +3,29 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-
-<div class="bg-light shadow-lg col-10 offset-1 col-lg-6 offset-lg-3 pb-5 pt-2 mt-5 mb-5">
-  <div class="col-10 offset-1 mb-5 pt-5">
-    <h1 class="d-flex justify-content-center">Profile Deletion</h1>
+<section id="profile-delete">
+  <div class="bg-light shadow-lg col-10 offset-1 col-lg-6 offset-lg-3 pb-5 pt-2 mt-5 mb-5">
+    <div class="col-10 offset-1 mb-5 pt-5">
+      <h1 class="d-flex justify-content-center">Profile Deletion</h1>
+    </div>
+    <div class="col-10 offset-1 mt-5 pb-5">
+      <h3 class="d-flex justify-content-center">Are you sure you want to delete your profile?</h3>
+    </div>
+    <div class="col-10 offset-1 mt-5 mb-5">
+      <form method="post">
+        {% csrf_token %}
+        <div class=" col-8 offset-2 d-flex justify-content-between">
+          <button type="button" class="btn btn-dark shadow-sm text-warning" onclick="javascript:history.back()">Back</button>
+          <button type="submit" class="btn btn-dark shadow-sm text-warning">Delete</button>
+        </div>
+      </form>  
+    </div>
   </div>
-  <div class="col-10 offset-1 mt-5 pb-5">
-    <h3 class="d-flex justify-content-center">Are you sure you want to delete your profile?</h3>
-  </div>
-  <div class="col-10 offset-1 mt-5 mb-5">
-    <form method="post">
-      {% csrf_token %}
-      <div class=" col-8 offset-2 d-flex justify-content-between">
-        <button type="button" class="btn btn-dark shadow-sm text-warning" onclick="javascript:history.back()">Back</button>
-        <button type="submit" class="btn btn-dark shadow-sm text-warning">Delete</button>
-      </div>
-    </form>  
-  </div>
-</div>
-{% else %}
-<div class="container public-privacy-message">
-    <h1 class="text-center">This feature is not open for public.</h1>
-</div>   
+  {% else %}
+  <div class="container public-privacy-message">
+      <h1 class="text-center">This feature is not open for public.</h1>
+  </div>  
+</section>
 {% endif %}
+
 {% endblock content %}

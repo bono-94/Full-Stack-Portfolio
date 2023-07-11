@@ -171,8 +171,9 @@
   <hr class="border border-2 border-dark">
 {% else %}
 {% endif %}
+
   <!-- USER VIDEO -->
-{% if profile_id.user_video_privacy == False %}
+  {% if profile_id.user_video_privacy == False %}
   {% if profile_id.user_video %}
   <div class="row justify-content-center" id="profile-video">
     <div class="col-11 offset rounded border border-3 border-dark bg-secondary mt-4 mb-4 pt-2 shadow-lg h-100">
@@ -182,8 +183,9 @@
   <hr class="border border-2 border-dark">
   {% else %}
   {% endif %}
-{% else %}
-{% endif %}
+  {% else %}
+  {% endif %}
+
   <!-- PERSONAL INFORMATION -->
   {% if profile_id.general_info_privacy == False %}
   <div class="row" id="profile-personal">
@@ -213,6 +215,7 @@
   <hr class="border border-2 border-dark">
   {% else %}
   {% endif %}
+
   <!-- OCCUPATION -->
   {% if profile_id.occupation_privacy == False %}
   <div class="row" id="profile-occupation">
@@ -238,6 +241,7 @@
   <hr class="border border-2 border-dark">
   {% else %}
   {% endif %}
+
   <!-- EMPLOYMENT HISTORY -->
   {% if profile_id.career_privacy == False %}
   <div class="row" id="profile-career">
@@ -263,6 +267,7 @@
   <hr class="border border-2 border-dark">
   {% else %}
   {% endif %}
+
   <!-- ACHIEVEMENTS -->
   {% if profile_id.achievements_privacy == False %}
   <div class="row" id="profile-achievements">
@@ -288,6 +293,7 @@
   <hr class="border border-2 border-dark">
   {% else %}
   {% endif %}
+
   <!-- ATTRIBUTES -->
   {% if profile_id.attributes_privacy == False %}
   <div class="row" id="profile-attributes">
@@ -311,6 +317,7 @@
   <hr class="border border-2 border-dark">
   {% else %}
   {% endif %}
+
   <!-- BUSINESS FOCUS -->
   {% if profile_id.focus_privacy == False %}
   <div class="row" id="profile-focus">
@@ -363,6 +370,7 @@
   <hr class="border border-2 border-dark mt-3">
   {% else %}
   {% endif %}
+
   <!-- BUSINESS SPECIALTY -->
   {% if profile_id.specialty_privacy == False %}
   <div class="row" id="profile-specializations">
@@ -419,6 +427,7 @@
   <hr class="border border-2 border-dark mt-3">
   {% else %}
   {% endif %}
+
   <!-- RESULTS -->
   {% if profile_id.accomplishments_privacy == False %}
   <div class="row" id="profile-results">
@@ -444,6 +453,7 @@
   <hr class="border border-2 border-dark mt-3">
   {% else %}
   {% endif %}
+
   <!-- REWARDS -->
   {% if profile_id.rewards_privacy == False %}
   <div class="row" id="profile-rewards">
@@ -466,6 +476,7 @@
   <hr class="border border-2 border-dark mt-3">
   {% else %}
   {% endif %}
+  
   <!-- PERSONAL WALL -->
   {% if profile_id.user_wall_privacy == False %}
   <div class="row" id="profile-wall">

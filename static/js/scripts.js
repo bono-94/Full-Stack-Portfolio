@@ -7,16 +7,16 @@ function toggleNavbar() {
   const breadcrumbMargin = document.getElementById('post-breadcrumb');
   let isExpanded = navbarCollapse.classList.contains("show");
   if (isExpanded) {
-      navbarCollapse.classList.remove("show")
-      navMarginMob.classList.remove('nav-margin-mobile')
-      navMarginTab.classList.remove('nav-margin-tablet')
-      breadcrumbMargin.classList.remove('d-none')
-      navMarginMob.classList.add('nav-margin-mobile-short')
-      navMarginTab.classList.add('nav-margin-tablet-short')
+      navbarCollapse.classList.remove("show");
+      navMarginMob.classList.remove('nav-margin-mobile');
+      navMarginTab.classList.remove('nav-margin-tablet');
+      breadcrumbMargin.classList.remove('d-none');
+      navMarginMob.classList.add('nav-margin-mobile-short');
+      navMarginTab.classList.add('nav-margin-tablet-short');
 
   } else {
-      navbarCollapse.classList.add("show")
-      navMarginMob.classList.add('nav-margin-mobile')
+      navbarCollapse.classList.add("show");
+      navMarginMob.classList.add('nav-margin-mobile');
       navMarginTab.classList.add('nav-margin-tablet');
       breadcrumbMargin.classList.add('d-none');
   }
@@ -30,32 +30,32 @@ function toggleNavbarProfile() {
   let navbarIcon = document.getElementById("profile-nav-icon");
   let isExpanded = navbarCollapse.classList.contains("show");
   if (isExpanded) {
-      navbarCollapse.classList.remove("show")
-      navbarCollapse.classList.remove("mt-1")
-      navbarCollapse.classList.remove("mb-1")
-      navbarButton.classList.remove("mt-2")
-      navbarSticky.classList.remove("bg-secondary")
-      navbarSticky.classList.remove("bg-gradient")
-      navbarSticky.classList.add("bg-transparent")
-      navbarSticky.classList.remove("border")
-      navbarSticky.classList.remove("border-2")
-      navbarSticky.classList.remove("border-dark")
-      navbarIcon.classList.remove("fa-ellipsis-vertical")
-      navbarIcon.classList.add("fa-ellipsis")
+      navbarCollapse.classList.remove("show");
+      navbarCollapse.classList.remove("mt-1");
+      navbarCollapse.classList.remove("mb-1");
+      navbarButton.classList.remove("mt-2");
+      navbarSticky.classList.remove("bg-secondary");
+      navbarSticky.classList.remove("bg-gradient");
+      navbarSticky.classList.add("bg-transparent");
+      navbarSticky.classList.remove("border");
+      navbarSticky.classList.remove("border-2");
+      navbarSticky.classList.remove("border-dark");
+      navbarIcon.classList.remove("fa-ellipsis-vertical");
+      navbarIcon.classList.add("fa-ellipsis");
       navbarIcon.classList.remove("text-light");
   } else {
-      navbarCollapse.classList.add("show")
-      navbarCollapse.classList.add("mt-1")
-      navbarCollapse.classList.add("mb-1")
-      navbarButton.classList.add("mt-2")
-      navbarSticky.classList.remove("bg-transparent")
-      navbarSticky.classList.add("bg-secondary")
-      navbarSticky.classList.add("bg-gradient")
-      navbarSticky.classList.add("border")
-      navbarSticky.classList.add("border-2")
-      navbarSticky.classList.add("border-dark")
-      navbarIcon.classList.remove("fa-ellipsis")
-      navbarIcon.classList.add("fa-ellipsis-vertical")
+      navbarCollapse.classList.add("show");
+      navbarCollapse.classList.add("mt-1");
+      navbarCollapse.classList.add("mb-1");
+      navbarButton.classList.add("mt-2");
+      navbarSticky.classList.remove("bg-transparent");
+      navbarSticky.classList.add("bg-secondary");
+      navbarSticky.classList.add("bg-gradient");
+      navbarSticky.classList.add("border");
+      navbarSticky.classList.add("border-2");
+      navbarSticky.classList.add("border-dark");
+      navbarIcon.classList.remove("fa-ellipsis");
+      navbarIcon.classList.add("fa-ellipsis-vertical");
       navbarIcon.classList.add("text-light");
   }
 }
@@ -65,13 +65,12 @@ function toggleNavbarProfile() {
 function playAudio() {
   const audioElement = document.getElementById('user-profile-audio');
   audioElement.play();
-  audioElement.volume = 0.4
+  audioElement.volume = 0.4;
   const playButton = document.getElementById('play-user-profile');
   const stopButton = document.getElementById('stop-user-profile');
   playButton.style.display = 'none';
   stopButton.style.display = 'inline';
   audioElement.style.display = 'none';
-  stopVideo()
 }
 
 // STOPPING PROFILE AUDIO - Stop the user's profile audio
@@ -99,7 +98,7 @@ window.addEventListener('load', function () {
 function playPostAudio() {
   const audioElement = document.getElementById('post-audio');
   audioElement.play();
-  audioElement.volume = 0.4
+  audioElement.volume = 0.4;
   const playButton = document.getElementById('play-post-background');
   const stopButton = document.getElementById('stop-post-background');
   playButton.style.display = 'none';
@@ -137,13 +136,13 @@ function closeNavbarProfileTop() {
   let targetElement = document.getElementById('public-profile-hook');
   if (navbarCollapse.classList.contains('show')) {
     navbarCollapse.classList.remove('show');
-    navbarToggle.setAttribute('aria-expanded', 'false')
+    navbarToggle.setAttribute('aria-expanded', 'false');
     navbarSticky.classList.remove("bg-secondary");
-    navbarSticky.classList.remove("bg-transparent")
-    navbarSticky.classList.remove("bg-gradient")
-    navbarSticky.classList.remove("border")
-    navbarSticky.classList.remove("border-2")
-    navbarSticky.classList.remove("border-dark")
+    navbarSticky.classList.remove("bg-transparent");
+    navbarSticky.classList.remove("bg-gradient");
+    navbarSticky.classList.remove("border");
+    navbarSticky.classList.remove("border-2");
+    navbarSticky.classList.remove("border-dark");
   }
   targetElement.style.paddingTop = '';
     targetElement.style.marginTop = '';
@@ -156,13 +155,13 @@ function closeNavbarProfile() {
   var navbarToggle = document.getElementById('navbar-dropdown-profile');
   if (navbarCollapse.classList.contains('show')) {
     navbarCollapse.classList.remove('show');
-    navbarToggle.setAttribute('aria-expanded', 'false')
+    navbarToggle.setAttribute('aria-expanded', 'false');
     navbarSticky.classList.remove("bg-secondary");
-    navbarSticky.classList.remove("bg-transparent")
-    navbarSticky.classList.remove("bg-gradient")
-    navbarSticky.classList.remove("border")
-    navbarSticky.classList.remove("border-2")
-    navbarSticky.classList.remove("border-dark")
+    navbarSticky.classList.remove("bg-transparent");
+    navbarSticky.classList.remove("bg-gradient");
+    navbarSticky.classList.remove("border");
+    navbarSticky.classList.remove("border-2");
+    navbarSticky.classList.remove("border-dark");
   }
 }
 

@@ -94,7 +94,6 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   text-align: center;
 }
 
@@ -389,8 +388,8 @@ p {
 }
 
 #edit-form > form input[type="text"]{
-    padding-left: 5px;
-    padding-right: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #edit-post-form > form input[type="text"]{
@@ -448,7 +447,7 @@ p {
   margin-left: 10px;
   margin-right: 16px;
   transform: scale(1.2);
-  display: inline-flexbox;
+  display: inline-flex;
 }
 
 #edit-post-form > form input[type="checkbox"]{
@@ -457,7 +456,7 @@ p {
   margin-left: 10px;
   margin-right: 16px;
   transform: scale(1.2);
-  display: inline-flexbox;
+  display: inline-flex;
 }
 
 #edit-form > form .form-check-label {

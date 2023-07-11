@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Roboto&display=swap');
 
 /* STRUCTURAL ELEMENTS */
 
 body {
   background-color: #F9FAFC;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
-p, span {
-  font-family: 'Open Sans', sans-serif;
+p {
+  font-family: 'Roboto', sans-serif;
 }
 
 /* CUSTOM CLASSES */

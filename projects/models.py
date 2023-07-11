@@ -1,3 +1,7 @@
+"""
+All models used in the application and their input fields.
+"""
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -21,7 +25,6 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Profile(models.Model):
 
     # CHOICES
-
     GENDER_CHOICES = (
         ('Male', 'Male'),
         ('Female', 'Female'),
@@ -491,13 +494,13 @@ class Profile(models.Model):
     def employed_months(self):
         today = timezone.now().date()
         duration = today - self.start_date
-        total_months = duration.days // 30   # Assuming 30 days per month
+        total_months = duration.days // 30
         return total_months
 
     def employed_years(self):
         today = timezone.now().date()
         duration = today - self.start_date
-        total_years = duration.days // 365  # Assuming 365 days per year
+        total_years = duration.days // 365
         return total_years
 
     # PROGRESS BAR 1 - STYLE
@@ -737,7 +740,7 @@ class Post(models.Model):
     post_location_continent = models.CharField(max_length=42, blank=False)
     post_location_planet = models.CharField(max_length=42, blank=False)
 
-    # INTRODUCTION
+    # POST INTRODUCTION
     introduction_privacy = models.BooleanField(default=False)
 
     introduction = models.TextField(max_length=420, blank=True)
@@ -1680,7 +1683,7 @@ class Post(models.Model):
             self.original_title = self.title
         return super().save(*args, **kwargs)
 
-    # COUNTING PUBLIC OPINIONS
+    # COUNTING PUBLIC VOTES
     def number_of_votes(self):
         return self.votes.count()
 
@@ -1799,6 +1802,7 @@ class Note(models.Model):
         null=True
         )
 
+    # NAMING, ORDERING and COMMENT COUNTING
     class Meta:
         ordering = ['-created_on_note']
 

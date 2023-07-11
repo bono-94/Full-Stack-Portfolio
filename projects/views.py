@@ -1,3 +1,12 @@
+"""
+All used views in the application.
+Handles user requests and generates responses.
+It works in collaboration with models and urls.
+It behaves based on users interaction.
+All views are defining logic for rendering templates.
+They also process form submission.
+"""
+
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
@@ -15,7 +24,7 @@ from django.template.loader import render_to_string
 from django.http import HttpResponse
 
 
-# MAIN
+# INDEX & ABOUT
 def home_page(request):
 
     if request.method == 'GET':

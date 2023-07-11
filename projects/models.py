@@ -87,7 +87,12 @@ class Profile(models.Model):
     profile_quote = models.CharField(max_length=84, blank=True, null=True)
     active_days = models.CharField(max_length=63, blank=True, null=True)
     active_hours = models.CharField(max_length=42, blank=True, null=True)
-    user_type = models.CharField(max_length=5, choices=TYPE_OF_USER, blank=True, null=True)
+    user_type = models.CharField(
+        max_length=5,
+        choices=TYPE_OF_USER,
+        blank=True,
+        null=True
+        )
     verified = models.BooleanField(default=False)
     member = models.BooleanField(default=False)
     lifecoin_balance = models.IntegerField(null=True, blank=True)
@@ -161,16 +166,42 @@ class Profile(models.Model):
     # GENERAL INFORMATION
     general_info_privacy = models.BooleanField(default=False)
 
-    username = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
-    public_email = models.EmailField(max_length=42, unique=True, blank=True, null=True)
+    username = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="user_profile"
+        )
+    public_email = models.EmailField(
+        max_length=42,
+        unique=True,
+        blank=True,
+        null=True
+        )
     first_name = models.CharField(max_length=42, blank=True, null=True)
     last_name = models.CharField(max_length=42, blank=True, null=True)
     location = models.CharField(max_length=42, blank=True, null=True)
     languages = models.TextField(max_length=210, blank=True, null=True)
-    gender = models.CharField(max_length=6, choices=GENDER_CHOICES, blank=True, null=True)
+    gender = models.CharField(
+        max_length=6,
+        choices=GENDER_CHOICES,
+        blank=True,
+        null=True
+        )
     date_of_birth = models.DateField(blank=True, null=True)
-    height_cm = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(300)], null=True, blank=True)
-    weight_kg = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(500)], null=True, blank=True)
+    height_cm = models.IntegerField(
+        validators=[
+            MinValueValidator(0),
+            MaxValueValidator(300)],
+        null=True,
+        blank=True
+        )
+    weight_kg = models.IntegerField(
+        validators=[
+            MinValueValidator(0),
+            MaxValueValidator(500)],
+        null=True,
+        blank=True
+        )
 
     # OCCUPATION
     occupation_privacy = models.BooleanField(default=False)
@@ -180,7 +211,13 @@ class Profile(models.Model):
     department = models.CharField(max_length=21, blank=True, null=True)
     occupation = models.CharField(max_length=42, blank=True, null=True)
     start_date = models.DateField(default=timezone.now, blank=True, null=True)
-    hours_per_week = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(168)], null=True, blank=True)
+    hours_per_week = models.PositiveIntegerField(
+        validators=[
+            MinValueValidator(0),
+            MaxValueValidator(168)],
+        null=True,
+        blank=True
+        )
 
     # PREVIOUS EMPLOYMENT
     career_privacy = models.BooleanField(default=False)
@@ -191,7 +228,11 @@ class Profile(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=[
+                    'doc', 'docx', 'pdf', 'zip'
+                ]
+            ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -206,7 +247,11 @@ class Profile(models.Model):
         null=True,
         storage=RawMediaCloudinaryStorage(),
         validators=[
-            FileExtensionValidator(allowed_extensions=['doc', 'docx', 'pdf', 'zip']),
+            FileExtensionValidator(
+                allowed_extensions=[
+                    'doc', 'docx', 'pdf', 'zip'
+                ]
+            ),
             validate_file_name_length,
             max_file_size_ten
         ],
@@ -218,10 +263,22 @@ class Profile(models.Model):
     # ACHIEVEMENTS
     achievements_privacy = models.BooleanField(default=False)
 
-    projects_completed = models.TextField(max_length=840, blank=True, null=True)
+    projects_completed = models.TextField(
+        max_length=840,
+        blank=True,
+        null=True
+        )
     goals_completed = models.TextField(max_length=840, blank=True, null=True)
-    missions_completed = models.TextField(max_length=840, blank=True, null=True)
-    milestones_completed = models.TextField(max_length=840, blank=True, null=True)
+    missions_completed = models.TextField(
+        max_length=840,
+        blank=True,
+        null=True
+        )
+    milestones_completed = models.TextField(
+        max_length=840,
+        blank=True,
+        null=True
+        )
     tasks_completed = models.TextField(max_length=840, blank=True, null=True)
     contribution = models.TextField(max_length=840, blank=True, null=True)
 
@@ -236,26 +293,90 @@ class Profile(models.Model):
     # BUSINESS FOCUS
     focus_privacy = models.BooleanField(default=False)
 
-    focus_innovation = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    focus_financials = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    focus_planning = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    focus_monitoring = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    focus_quality = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    focus_quantity = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    focus_collaboration = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    focus_leadership = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    focus_innovation = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    focus_financials = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    focus_planning = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    focus_monitoring = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    focus_quality = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    focus_quantity = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    focus_collaboration = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    focus_leadership = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
 
     # BUSINESS SPECIALTY
     specialty_privacy = models.BooleanField(default=False)
 
-    special_ops = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    special_finance = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    special_marketing = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    special_supply_chain = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    special_hr = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    special_tech = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    special_sustainability = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
-    special_research = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True)
+    special_ops = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    special_finance = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    special_marketing = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    special_supply_chain = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    special_hr = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    special_tech = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    special_sustainability = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
+    special_research = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        null=True,
+        blank=True
+        )
 
     # ACCOMPLISHMENTS
     accomplishments_privacy = models.BooleanField(default=False)
@@ -283,7 +404,11 @@ class Profile(models.Model):
 
     awards = models.TextField(max_length=840, blank=True, null=True)
     business_rewards = models.TextField(max_length=840, blank=True, null=True)
-    innovation_land_rewards = models.TextField(max_length=840, blank=True, null=True)
+    innovation_land_rewards = models.TextField(
+        max_length=840,
+        blank=True,
+        null=True
+        )
 
     # PERSONAL WALL
     user_wall_privacy = models.BooleanField(default=False)
@@ -297,7 +422,11 @@ class Profile(models.Model):
     ideal_life = models.TextField(max_length=2100, blank=True, null=True)
     goals = models.TextField(max_length=2100, blank=True, null=True)
     motivation_wall = models.TextField(max_length=2100, blank=True, null=True)
-    interests_hobbies_wall = models.TextField(max_length=2100, blank=True, null=True)
+    interests_hobbies_wall = models.TextField(
+        max_length=2100,
+        blank=True,
+        null=True
+        )
 
     daily_routine = models.FileField(
         upload_to='daily_routine/',
@@ -346,7 +475,11 @@ class Profile(models.Model):
     # AGE CALCULATION BY BIRTHDATE
     def age(self):
         today = date.today()
-        age = today.year - self.date_of_birth.year - ((today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
+        x = today.year
+        y = self.date_of_birth.year
+        z = (today.month, today.day)
+        q = (self.date_of_birth.month, self.date_of_birth.day)
+        age = x - y - (z < q)
         return age
 
     # EMPLOYMENT DURATION
@@ -499,7 +632,11 @@ class Post(models.Model):
             raise ValidationError("Please upload a file under 100 MB.")
 
     # POST LIST CARD CONTENT
-    post_list_description = models.CharField(max_length=84, blank=False, null=True)
+    post_list_description = models.CharField(
+        max_length=84,
+        blank=False,
+        null=True
+        )
 
     post_list_image = models.ImageField(
         upload_to='post_list_images/',
@@ -563,7 +700,11 @@ class Post(models.Model):
     title = models.TextField(max_length=42, blank=False, unique=True)
     caption = models.TextField(max_length=84, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
-    author_type = models.CharField(max_length=5, choices=AUTHOR_TYPE, blank=False)
+    author_type = models.CharField(
+        max_length=5,
+        choices=AUTHOR_TYPE,
+        blank=False
+        )
     project_owner = models.CharField(max_length=42,  blank=False, null=True)
     created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_on = models.DateTimeField(auto_now=True, blank=True, null=True)
@@ -581,7 +722,11 @@ class Post(models.Model):
     )
 
     # POST DETAIL GENERAL INFORMATION
-    post_type = models.CharField(max_length=12, choices=TYPE_OF_POST, blank=False)
+    post_type = models.CharField(
+        max_length=12,
+        choices=TYPE_OF_POST,
+        blank=False
+        )
     industry = models.CharField(max_length=42, blank=False)
     organization = models.CharField(max_length=42, blank=True)
     project = models.CharField(max_length=42, blank=True)
@@ -633,16 +778,28 @@ class Post(models.Model):
     community = models.TextField(max_length=525, blank=True, null=True)
     stakeholders = models.TextField(max_length=525, blank=True, null=True)
     shareholders = models.TextField(max_length=525, blank=True, null=True)
-    ecosystem_relationship = models.TextField(max_length=525, blank=True, null=True)
+    ecosystem_relationship = models.TextField(
+        max_length=525,
+        blank=True,
+        null=True
+        )
 
-    resources_requiered = models.TextField(max_length=210, blank=True, null=True)
+    resources_requiered = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
     target_markets = models.TextField(max_length=315, blank=True, null=True)
     target_groups = models.TextField(max_length=315, blank=True, null=True)
     values_provided = models.TextField(max_length=210, blank=True, null=True)
     differentiation = models.TextField(max_length=210, blank=True, null=True)
     sdg_goals = models.TextField(max_length=525, blank=True, null=True)
     legal_protection = models.TextField(max_length=525, blank=True, null=True)
-    franchizing_licencing = models.TextField(max_length=525, blank=True, null=True)
+    franchizing_licencing = models.TextField(
+        max_length=525,
+        blank=True,
+        null=True
+        )
 
     risks = models.TextField(max_length=168, blank=True, null=True)
     challenges = models.TextField(max_length=168, blank=True, null=True)
@@ -654,9 +811,21 @@ class Post(models.Model):
     post_about_privacy = models.BooleanField(default=False)
 
     organization_info = models.TextField(max_length=525, blank=True, null=True)
-    organization_mission = models.TextField(max_length=525, blank=True, null=True)
-    organization_vision = models.TextField(max_length=525, blank=True, null=True)
-    organization_culture = models.TextField(max_length=525, blank=True, null=True)
+    organization_mission = models.TextField(
+        max_length=525,
+        blank=True,
+        null=True
+        )
+    organization_vision = models.TextField(
+        max_length=525,
+        blank=True,
+        null=True
+        )
+    organization_culture = models.TextField(
+        max_length=525,
+        blank=True,
+        null=True
+        )
 
     products_provided = models.CharField(max_length=84, blank=True, null=True)
     services_provided = models.CharField(max_length=84, blank=True, null=True)
@@ -668,68 +837,212 @@ class Post(models.Model):
 
     focus_privacy = models.BooleanField(default=False)
 
-    focus_innovation = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    focus_financials = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    focus_planning = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    focus_monitoring = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    focus_quality = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    focus_quantity = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    focus_collaboration = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    focus_leadership = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
+    focus_innovation = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    focus_financials = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    focus_planning = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    focus_monitoring = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    focus_quality = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    focus_quantity = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    focus_collaboration = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    focus_leadership = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
 
     specialty_privacy = models.BooleanField(default=False)
 
     special_ops = models.TextField(max_length=210, blank=True, null=True)
     special_finance = models.TextField(max_length=210, blank=True, null=True)
     special_marketing = models.TextField(max_length=210, blank=True, null=True)
-    special_supply_chain = models.TextField(max_length=210, blank=True, null=True)
+    special_supply_chain = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
     special_hr = models.TextField(max_length=210, blank=True, null=True)
     special_tech = models.TextField(max_length=210, blank=True, null=True)
-    special_sustainability = models.TextField(max_length=210, blank=True, null=True)
+    special_sustainability = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
     special_research = models.TextField(max_length=210, blank=True, null=True)
 
     specialty_privacy_two = models.BooleanField(default=False)
 
     special_ops_two = models.TextField(max_length=210, blank=True, null=True)
-    special_finance_two = models.TextField(max_length=210, blank=True, null=True)
-    special_marketing_two = models.TextField(max_length=210, blank=True, null=True)
-    special_supply_chain_two = models.TextField(max_length=210, blank=True, null=True)
+    special_finance_two = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    special_marketing_two = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    special_supply_chain_two = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
     special_hr_two = models.TextField(max_length=210, blank=True, null=True)
     special_tech_two = models.TextField(max_length=210, blank=True, null=True)
-    special_sustainability_two = models.TextField(max_length=210, blank=True, null=True)
-    special_research_two = models.TextField(max_length=210, blank=True, null=True)
+    special_sustainability_two = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    special_research_two = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
 
     percentage_special_privacy = models.BooleanField(default=False)
 
-    percentage_special_ops = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    percentage_special_ops_two = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
+    percentage_special_ops = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    percentage_special_ops_two = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
 
-    percentage_special_finance = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    percentage_special_finance_two = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
+    percentage_special_finance = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    percentage_special_finance_two = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
 
-    percentage_special_marketing = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    percentage_special_marketing_two = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
+    percentage_special_marketing = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    percentage_special_marketing_two = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
 
-    percentage_special_supply_chain = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    percentage_special_supply_chain_two = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
+    percentage_special_supply_chain = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    percentage_special_supply_chain_two = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
 
-    percentage_special_hr = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    percentage_special_hr_two = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
+    percentage_special_hr = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    percentage_special_hr_two = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
 
-    percentage_special_tech = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    percentage_special_tech_two = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
+    percentage_special_tech = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    percentage_special_tech_two = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
 
-    percentage_special_sustainability = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    percentage_special_sustainability_two = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
+    percentage_special_sustainability = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    percentage_special_sustainability_two = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
 
-    percentage_special_research = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    percentage_special_research_two = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
+    percentage_special_research = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    percentage_special_research_two = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
 
     # PAGE 4 ARTICLES
     # POST BODY
     post_body_privacy = models.BooleanField(default=False)
 
-    business_knowledge = models.TextField(max_length=2100, blank=True, null=True)
+    business_knowledge = models.TextField(
+        max_length=2100,
+        blank=True,
+        null=True
+        )
     journey = models.TextField(max_length=2100, blank=True, null=True)
     future = models.TextField(max_length=2100, blank=True, null=True)
     legacy = models.TextField(max_length=2100, blank=True, null=True)
@@ -1095,68 +1408,210 @@ class Post(models.Model):
     # PAGE 6
     # POST PROPOSALS & OFFERS
     post_proposal_model_privacy = models.BooleanField(default=False)
-    proposal_fee_type = models.CharField(max_length=12, choices=TYPE_OF_PROPOSAL_COMMISION, blank=True, null=True)
+    proposal_fee_type = models.CharField(
+        max_length=12,
+        choices=TYPE_OF_PROPOSAL_COMMISION,
+        blank=True,
+        null=True
+        )
 
     # FUNDING TIMING
     same_start_launch_date = models.BooleanField(default=False)
-    funding_start_date = models.DateField(default=timezone.now, blank=True, null=True)
-    funding_end_date = models.DateField(default=timezone.now, blank=True, null=True)
+    funding_start_date = models.DateField(
+        default=timezone.now,
+        blank=True,
+        null=True
+        )
+    funding_end_date = models.DateField(
+        default=timezone.now,
+        blank=True,
+        null=True
+        )
     funding_infinite_end_date = models.BooleanField(default=False)
-    funding_payout_date = models.DateField(default=timezone.now, blank=True, null=True)
+    funding_payout_date = models.DateField(
+        default=timezone.now,
+        blank=True,
+        null=True
+        )
 
     # STOCKS PROPOSAL
-    stocks_quantity_total_supply = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
-
-    stocks_quantity_proposal = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
-    stocks_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
-    stocks_proposal_return = models.TextField(max_length=210, blank=True, null=True)
+    stocks_quantity_total_supply = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(999999999999)],
+        blank=True,
+        null=True
+        )
+    stocks_quantity_proposal = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(999999999999)],
+        blank=True,
+        null=True
+        )
+    stocks_proposal_costs = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    stocks_proposal_return = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
 
     # OWNERSHIP PERCENTAGE PER O.P.P.S TYPES PROPOSAL
-    ownership_percentage_opps_type = models.CharField(max_length=12, choices=TYPE_OF_OWNERSHIP_PCT_OFFER, blank=True, null=True)
+    ownership_percentage_opps_type = models.CharField(
+        max_length=12,
+        choices=TYPE_OF_OWNERSHIP_PCT_OFFER,
+        blank=True,
+        null=True
+        )
 
-    ownership_percentage_opps_quantity_proposal = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    ownership_percentage_opps_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
-    ownership_percentage_opps_proposal_return = models.TextField(max_length=210, blank=True, null=True)
+    ownership_percentage_opps_quantity_proposal = models.FloatField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    ownership_percentage_opps_proposal_costs = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    ownership_percentage_opps_proposal_return = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
 
     # END PRODUCT OR SERVICE PROPOSAL
-    end_product_or_service_type = models.CharField(max_length=7, choices=TYPE_OF_END_SERVICE_OR_PRODUCT, blank=True, null=True)
-    end_product_or_service_total_supply = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
+    end_product_or_service_type = models.CharField(
+        max_length=7,
+        choices=TYPE_OF_END_SERVICE_OR_PRODUCT,
+        blank=True,
+        null=True
+        )
+    end_product_or_service_total_supply = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(999999999999)],
+        blank=True,
+        null=True
+        )
 
-    end_product_or_service_quantity_proposal = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(999999999999)], blank=True, null=True)
-    end_product_or_service_merch_proposal = models.TextField(max_length=210, blank=True, null=True)
-    end_product_or_service_membership_proposal = models.TextField(max_length=210, blank=True, null=True)
-    end_product_or_service_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
-    end_product_or_service_proposal_return = models.TextField(max_length=210, blank=True, null=True)
+    end_product_or_service_quantity_proposal = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(999999999999)],
+        blank=True,
+        null=True
+        )
+    end_product_or_service_merch_proposal = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    end_product_or_service_membership_proposal = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    end_product_or_service_proposal_costs = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    end_product_or_service_proposal_return = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
 
     # LIFETIME DISCOUNT PERCENTAGE PROPOSAL
-    lifetime_discount_percentages_quantity_proposal = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(100)], blank=True, null=True)
-    lifetime_discount_percentages_quality_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
-    lifetime_discount_percentages_proposal_return = models.TextField(max_length=210, blank=True, null=True)
+    lifetime_discount_percentages_quantity_proposal = models.FloatField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        blank=True,
+        null=True
+        )
+    lifetime_discount_percentages_quality_proposal_costs = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    lifetime_discount_percentages_proposal_return = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
 
     # GUARANTEEED TEAM POSITION PROPOSAL
-    team_guaranteed_position_title_proposal = models.TextField(max_length=42, blank=True, null=True)
-    team_guaranteed_responsibilities_proposal = models.TextField(max_length=210, blank=True, null=True)
-    team_guaranteed_employment_conditions_proposal = models.TextField(max_length=210, blank=True, null=True)
-    team_guaranteed_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
+    team_guaranteed_position_title_proposal = models.TextField(
+        max_length=42,
+        blank=True,
+        null=True
+        )
+    team_guaranteed_responsibilities_proposal = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    team_guaranteed_employment_conditions_proposal = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    team_guaranteed_proposal_costs = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
 
     # PARTNERSHIP PROPOSAL
-    partnership_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
-    partnership_proposal_return = models.TextField(max_length=210, blank=True, null=True)
-    
+    partnership_proposal_costs = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    partnership_proposal_return = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+
     # COLLABORATION PROPOSAL
-    collaboration_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
-    collaboration_proposal_return = models.TextField(max_length=210, blank=True, null=True)
+    collaboration_proposal_costs = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    collaboration_proposal_return = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
 
     # SPONSORSHIP PROPOSAL
-    sponsorship_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
-    sponsorship_proposal_return = models.TextField(max_length=210, blank=True, null=True)
+    sponsorship_proposal_costs = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    sponsorship_proposal_return = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
 
     # OPEN PROPOSAL
-    open_proposal_costs = models.TextField(max_length=210, blank=True, null=True)
-    open_proposal_proposal_return = models.TextField(max_length=210, blank=True, null=True)
+    open_proposal_costs = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
+    open_proposal_proposal_return = models.TextField(
+        max_length=210,
+        blank=True,
+        null=True
+        )
 
     # PROPOSAL TERMS
-    proposal_terms_and_conditions = models.TextField(max_length=1050, blank=True, null=True)
+    proposal_terms_and_conditions = models.TextField(
+        max_length=1050,
+        blank=True,
+        null=True
+        )
 
     # PROPOSAL CONTACT
     post_contact_privacy = models.BooleanField(default=False)
@@ -1186,7 +1641,7 @@ class Post(models.Model):
         null=True,
         verbose_name='Twitter URL'
     )
-    
+
     instagram_link = models.URLField(
         max_length=210,
         blank=True,
@@ -1258,7 +1713,7 @@ class Post(models.Model):
         duration = (self.launch_date - date.today()).days
         total_years = duration // 365  # Assuming 365 days per year
         return total_years
-    
+
     # POST PROPOSAL DURATION
     def post_duration_days(self):
         duration = self.funding_end_date - self.funding_start_date
@@ -1322,14 +1777,27 @@ class Post(models.Model):
     def focus_leadership_style(self):
         return f"width: {self.focus_leadership}%"
 
+
 # POST PAGE 11
 class Note(models.Model):
 
     approved = models.BooleanField(default=False)
-    note = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='note')
-    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_note")
+    note = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='note'
+        )
+    username = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="user_note"
+        )
     content_note = models.TextField(max_length=630)
-    created_on_note = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    created_on_note = models.DateTimeField(
+        auto_now_add=True,
+        blank=True,
+        null=True
+        )
 
     class Meta:
         ordering = ['-created_on_note']
@@ -1339,5 +1807,3 @@ class Note(models.Model):
 
     def number_of_notes(self):
         return self.content_note.count()
-
-

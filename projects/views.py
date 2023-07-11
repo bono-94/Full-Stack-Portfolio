@@ -29,7 +29,9 @@ def about_page(request):
 
         total_users = User.objects.count()
         total_posts = Post.objects.count()
-        industry_values = Profile.objects.values_list('industry', flat=True).distinct()
+        industry_values = Profile.objects.values_list(
+            'industry',
+            flat=True).distinct()
         total_industries = len(industry_values)
         context = {
             'total_users': total_users,
@@ -45,7 +47,11 @@ def about_page(request):
 def view_public_profiles(request, user_profile):
 
     profile_id = get_object_or_404(Profile, id=user_profile)
-    return render(request, 'profile/public_profile_view.html', {'profile_id': profile_id})
+    return render(
+        request,
+        'profile/public_profile_view.html',
+        {'profile_id': profile_id}
+        )
 
 
 @login_required
@@ -79,7 +85,10 @@ def edit_profile(request):
             messages.success(request, 'Your profile is updated successfully.')
             return redirect('user_profile')
         else:
-            messages.error(request, 'Please check all input fields for errors.')
+            messages.error(
+                request,
+                'Please check all input fields for errors.'
+                )
     else:
         form = ProfileForm(instance=profile)
     return render(request, 'profile/user_profile_edit.html', {'form': form})
@@ -110,7 +119,9 @@ class UserPosts(ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        return Post.objects.filter(author=self.request.user).order_by('-created_on')
+        return Post.objects.filter(
+            author=self.request.user
+            ).order_by('-created_on')
 
 
 # POST DETAILS PUBLISHED
@@ -484,7 +495,11 @@ class PostVote(View):
         else:
             post.votes.add(request.user)
 
-        return HttpResponseRedirect(reverse('public_post_details_1_landing', args=[slug]))
+        return HttpResponseRedirect(
+            reverse(
+                'public_post_details_1_landing',
+                args=[slug])
+            )
 
 
 class PostCreate(CreateView):
@@ -516,7 +531,11 @@ def post_edit(request, post_id):
     else:
         form = PostForm(instance=post)
 
-    return render(request, 'posts/user/user_post_edit.html', {'form': form, 'post': post})
+    return render(
+        request,
+        'posts/user/user_post_edit.html',
+        {'form': form, 'post': post}
+        )
 
 
 @login_required
@@ -530,4 +549,8 @@ def post_delete(request, post_id):
         return redirect('user_posts_list')
 
     else:
-        return render(request, 'posts/user/user_post_delete.html', {'post': post})
+        return render(
+            request,
+            'posts/user/user_post_delete.html',
+            {'post': post}
+            )

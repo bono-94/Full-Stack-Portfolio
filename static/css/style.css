@@ -4,11 +4,11 @@
 
 body {
   background-color: #F9FAFC;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
-p {
-  font-family: 'Roboto', sans-serif;
+p, span {
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* CUSTOM CLASSES */
@@ -762,8 +762,8 @@ p {
   }
 
   .post-delete {
-    margin-top: 150px;
-    margin-bottom: 150px;
+    margin-top: 200px;
+    margin-bottom: 200px;
   }
 
   .public-privacy-message {

@@ -143,7 +143,9 @@ class ProfileForm(forms.ModelForm):
             if not all(focus_values[i:i+2]):
                 continue
             if sum(focus_values[i:i+2]) != 100:
-                msg = f"The sum of {focus_fields[i].split('_', 1)[1]} and {focus_fields[i+1].split('_', 1)[1]} must be equal to 100."
+                msg = f"The sum of {focus_fields[i].split('_', 1)[1]} and " \
+                    f"{focus_fields[i+1].split('_', 1)[1]} must be equal " \
+                    f"to 100."
                 self.add_error(focus_fields[i], msg)
                 self.add_error(focus_fields[i+1], msg)
 
@@ -621,12 +623,18 @@ class PostForm(forms.ModelForm):
             if not all(focus_values[i:i+2]):
                 continue
             if sum(focus_values[i:i+2]) != 100:
-                msg = f"The sum of {focus_fields[i].split('_', 1)[1]} and {focus_fields[i+1].split('_', 1)[1]} must be equal to 100."
+                msg = f"The sum of {focus_fields[i].split('_', 1)[1]} and " \
+                    f"{focus_fields[i+1].split('_', 1)[1]} must be equal " \
+                    f"to 100."
                 self.add_error(focus_fields[i], msg)
                 self.add_error(focus_fields[i+1], msg)
 
-        if total_supply is not None and proposal is not None and proposal > total_supply:
-            self.add_error('stocks_quantity_proposal', "Stocks proposed cannot be higher than stocks total supply.")
+        if total_supply is not None and proposal is not None:
+            if proposal > total_supply:
+                self.add_error(
+                    'stocks_quantity_proposal',
+                    "Stocks proposed can't be higher than stocks total supply."
+                    )
 
         return cleaned_data
 
@@ -634,7 +642,9 @@ class PostForm(forms.ModelForm):
 class NoteForm(forms.ModelForm):
     content_note = forms.CharField(
         label=False,
-        widget=forms.Textarea(attrs={'placeholder': 'Share your opinion or place a public offer'})
+        widget=forms.Textarea(
+            attrs={'placeholder': 'Share your opinion or place a public offer'}
+            )
     )
 
     class Meta:

@@ -24,5 +24,8 @@
    "workbench.colorTheme": "Visual Studio Dark",
    "terminal.integrated.gpuAcceleration": "canvas",
    "editor.defaultFormatter": "HookyQR.beautify",
-   "html.validate.styles": false
+   "html.validate.styles": false,
+   "[python]": {
+      "editor.defaultFormatter": "ms-python.python"
+   }
 }

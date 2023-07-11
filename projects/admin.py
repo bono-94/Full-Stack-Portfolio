@@ -22,11 +22,35 @@ admin.site.register(User, CustomUserAdmin)
 @admin.register(Profile)
 class ProfileAdmin(SummernoteModelAdmin):
 
-    list_display = ('first_name', 'last_name', 'username', 'public_email', 'location', 'organization', 'occupation')
-    search_fields = ['first_name', 'last_name', 'username', 'public_email', 'location', 'organization', 'occupation']
+    list_display = (
+        'first_name',
+        'last_name',
+        'username',
+        'public_email',
+        'location',
+        'organization',
+        'occupation',
+    )
+    search_fields = [
+        'first_name',
+        'last_name',
+        'username',
+        'public_email',
+        'location',
+        'organization',
+        'occupation',
+    ]
     prepopulated_fields = {'slug': ('username',)}
-    list_filter = ('first_name', 'last_name', 'username', 'public_email', 'location', 'organization', 'occupation')
-    summernote_fields = ('bio')
+    list_filter = (
+        'first_name',
+        'last_name',
+        'username',
+        'public_email',
+        'location',
+        'organization',
+        'occupation',
+    )
+    summernote_fields = ('bio',)
 
 
 @admin.register(Post)
@@ -83,6 +107,7 @@ class PostAdmin(SummernoteModelAdmin):
     def frozen_post(self, request, queryset):
         queryset.update(status=0)
 
+
 @admin.register(Note)
 class NotesAdmin(admin.ModelAdmin):
 
@@ -93,6 +118,3 @@ class NotesAdmin(admin.ModelAdmin):
 
     def approved_note(self, request, queryset):
         queryset.update(approved=True)
-
-
-

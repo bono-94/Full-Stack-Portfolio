@@ -1,5 +1,5 @@
 // DROPDOWN
-// DROPDOWN NAVIGATION
+// DROPDOWN NAVIGATION - Toggle the main navbar collapse
 function toggleNavbar() {
   let navbarCollapse = document.getElementById("navbar-collapse");
   const navMarginMob = document.getElementById('nav-margin-mobile');
@@ -22,7 +22,7 @@ function toggleNavbar() {
   }
 }
 
-// DROPDOWN NAVIGATION
+// DROPDOWN NAVIGATION - Toggle the profile navbar collapse
 function toggleNavbarProfile() {
   let navbarSticky = document.getElementById("sticky-profile");
   let navbarCollapse = document.getElementById("navbar-collapse-profile");
@@ -61,7 +61,7 @@ function toggleNavbarProfile() {
 }
 
 // POST & PROFILE AUDIO
-// PLAYING PROFILE AUDIO
+// PLAYING PROFILE AUDIO - Play the user's profile audio
 function playAudio() {
   const audioElement = document.getElementById('user-profile-audio');
   audioElement.play();
@@ -74,7 +74,7 @@ function playAudio() {
   stopVideo()
 }
 
-// STOPPING PROFILE AUDIO
+// STOPPING PROFILE AUDIO - Stop the user's profile audio
 function stopAudio() {
   const audioElement = document.getElementById('user-profile-audio');
   audioElement.pause();
@@ -86,7 +86,7 @@ function stopAudio() {
   playButton.style.display = 'inline';
 }
 
-// DEFINING PRODFILE AUDIO BUTTONS ON LOAD
+// PRODFILE AUDIO BUTTONS LOAD - Define profile audio buttons and attach event listeners on page load
 window.addEventListener('load', function () {
   const playButton = document.getElementById('play-user-profile');
   const stopButton = document.getElementById('stop-user-profile');
@@ -95,7 +95,7 @@ window.addEventListener('load', function () {
   stopButton.addEventListener('click', stopAudio);
 });
 
-// POST AUDIO PLAY
+// POST AUDIO PLAY - Play the post background audio
 function playPostAudio() {
   const audioElement = document.getElementById('post-audio');
   audioElement.play();
@@ -107,7 +107,7 @@ function playPostAudio() {
   audioElement.style.display = 'none';
 }
 
-// STOPPING POST AUDIO
+// STOPPING POST AUDIO - Stop the post background audio
 function stopPostAudio() {
   const audioElement = document.getElementById('post-audio');
   audioElement.pause();
@@ -119,6 +119,7 @@ function stopPostAudio() {
   playButton.style.display = 'inline';
 }
 
+// POST AUDIO BUTTONS LOAD - Define post audio buttons and attach event listeners on page load
 window.addEventListener('load', function () {
   const playPostButton = document.getElementById('play-post-background');
   const stopPostButton = document.getElementById('stop-post-background');
@@ -128,8 +129,7 @@ window.addEventListener('load', function () {
 });
 
 // NAVBARS
-// CLOSING PROFILE NAVIGATION
-
+// CLOSING PROFILE NAVIGATION - Close the profile navigation on top
 function closeNavbarProfileTop() {
   let navbarSticky = document.getElementById("sticky-profile");
   var navbarCollapse = document.getElementById('navbar-collapse-profile');
@@ -149,6 +149,7 @@ function closeNavbarProfileTop() {
     targetElement.style.marginTop = '';
 }
 
+// CLOSING PROFILE NAVIGATION - Close the profile navigation
 function closeNavbarProfile() {
   let navbarSticky = document.getElementById("sticky-profile");
   var navbarCollapse = document.getElementById('navbar-collapse-profile');
@@ -166,26 +167,28 @@ function closeNavbarProfile() {
 }
 
 // SAVING MODAL
-// EDIT PROFILE SAVE MODAL
+// EDIT PROFILE SAVE MODAL - Activate the edit profile save modal
 function modalEditProfileActivate() {
   $('#edit-profile-save').modal('toggle');
 }
 
+// EDIT PROFILE SAVE MODAL - Close the edit profile save modal
 function modalEditProfileClose() {
   $('#edit-profile-save').modal('hide');
 }
 
-// CREATE & EDIT POST SAVE MODAL
+// CREATE & EDIT POST SAVE MODAL - Activate the create/edit post save modal
 function modalEditPostActivate() {
   $('#edit-post-save').modal('toggle');
 }
 
+// CREATE & EDIT POST SAVE MODAL - Close the create/edit post save modal
 function modalEditPostClose() {
   $('#edit-post-save').modal('hide');
 }
 
 // PUBLIC PROFILE COLLAPSES
-// FULL PAGE COLLAPSE
+// FULL PAGE COLLAPSE - Expand all profile collapses
 function expandAllProfileColapses() {
   personalCollapse();
   occupationCollapse();
@@ -233,7 +236,7 @@ function expandAllProfileColapses() {
   }
 }
 
-// IF COLLAPSED CHECKER
+// IF COLLAPSED CHECKER - Checks if an element is collapsed
 function isCollapsed(elementId) {
   let element = document.getElementById(elementId);
   return element.classList.contains('collapse');
@@ -241,7 +244,7 @@ function isCollapsed(elementId) {
 
 
 // PROFILE NAVIGATION COLLAPSE
-// PERSONAL INFO COLLAPSE
+// PERSONAL INFO COLLAPSE - Toggle the personal info collapse
 function personalCollapse() {
   let profilePopover = document.getElementById('profile-information-collapse');
   let profilePopoverIcon = document.getElementById('profile-personal-icon');
@@ -257,7 +260,7 @@ function personalCollapse() {
   }
 }
 
-// OCCUPATION COLLAPSE
+// OCCUPATION COLLAPSE - Toggle the occupation collapse
 function occupationCollapse() {
   let profilePopover = document.getElementById('profile-occupation-collapse');
   let profilePopoverIcon = document.getElementById('profile-occupation-icon');
@@ -273,7 +276,7 @@ function occupationCollapse() {
   }
 }
 
-// EMPLOYMENT HISTORY COLLAPSE
+// EMPLOYMENT HISTORY COLLAPSE - Toggle the employment history collapse
 function pastEmploymentCollapse() {
   let profilePopover = document.getElementById('profile-career-collapse');
   let profilePopoverIcon = document.getElementById('profile-career-icon');
@@ -289,7 +292,7 @@ function pastEmploymentCollapse() {
   }
 }
 
-// ACHIEVEMENTS COLLAPSE
+// ACHIEVEMENTS COLLAPSE - Toggle the achievements collapse
 function achievementsCollapse() {
   let profilePopover = document.getElementById('profile-achievements-collapse');
   let profilePopoverIcon = document.getElementById('profile-achievements-icon');
@@ -305,7 +308,7 @@ function achievementsCollapse() {
   }
 }
 
-// ATTRIBUTES COLLAPSE
+// ATTRIBUTES COLLAPSE - Toggle the attributes collapse
 function attributesCollapse() {
   let profilePopover = document.getElementById('profile-attributes-collapse');
   let profilePopoverIcon = document.getElementById('profile-attributes-icon');
@@ -321,7 +324,7 @@ function attributesCollapse() {
   }
 }
 
-// BUSINESS FOCUS COLLAPSE
+// BUSINESS FOCUS COLLAPSE - Toggle the business focus collapse
 function focusCollapse() {
   let profilePopover = document.getElementById('profile-focus-collapse');
   let profilePopoverIcon = document.getElementById('profile-focus-icon');
@@ -337,7 +340,7 @@ function focusCollapse() {
   }
 }
 
-// SPECIALIZATIONS COLLAPSE
+// SPECIALIZATIONS COLLAPSE - Toggle the specializations collapse
 function specializationsCollapse() {
   let profilePopover = document.getElementById('profile-specializations-collapse');
   let profilePopoverIcon = document.getElementById('profile-specializations-icon');
@@ -353,7 +356,7 @@ function specializationsCollapse() {
   }
 }
 
-// RESULTS COLLAPSE
+// RESULTS COLLAPSE - Toggle the results collapse
 function resultsCollapse() {
   let profilePopover = document.getElementById('profile-results-collapse');
   let profilePopoverIcon = document.getElementById('profile-results-icon');
@@ -369,7 +372,7 @@ function resultsCollapse() {
   }
 }
 
-// REWARDS COLLAPSE
+// REWARDS COLLAPSE - Toggle the rewards collapse
 function rewardsCollapse() {
   let profilePopover = document.getElementById('profile-rewards-collapse');
   let profilePopoverIcon = document.getElementById('profile-rewards-icon');
@@ -385,7 +388,7 @@ function rewardsCollapse() {
   }
 }
 
-// PERSONAL WALL COLLAPSE
+// PERSONAL WALL COLLAPSE - Toggle the personal wall collapse
 function personalWallCollapse() {
   let profilePopover = document.getElementById('profile-profile-wall-collapse');
   let profilePopoverIcon = document.getElementById('profile-wall-icon');
@@ -402,7 +405,7 @@ function personalWallCollapse() {
 }
 
 // EDIT PROFILE COLLAPSES
-// EDIT PRIVACY COLLAPSE
+// EDIT PRIVACY COLLAPSE - Toggle the edit privacy collapse
 function editProfilePrivacy() {
   let editPopover = document.getElementById('edit-privacy');
   let editPopoverButton = document.getElementById('edit-privacy-bttn');
@@ -417,7 +420,7 @@ function editProfilePrivacy() {
   }
 }
 
-// EDIT CARD COLLAPSE
+// EDIT CARD COLLAPSE - Toggle the edit card collapse
 function editProfileCard() {
   let editPopover = document.getElementById('edit-card');
   let editPopoverButton = document.getElementById('edit-card-bttn');
@@ -431,7 +434,7 @@ function editProfileCard() {
   }
 }
 
-// EDIT VIDEO COLLAPSE
+// EDIT VIDEO COLLAPSE - Toggle the edit video collapse
 function editProfileVideo() {
   let editPopover = document.getElementById('edit-video');
   let editPopoverButton = document.getElementById('edit-video-bttn');
@@ -445,7 +448,7 @@ function editProfileVideo() {
   }
 }
 
-// EDIT GENERAL COLLAPSE
+// EDIT GENERAL COLLAPSE - Toggle the edit general collapse
 function editProfileGeneral() {
   let editPopover = document.getElementById('edit-general');
   let editPopoverButton = document.getElementById('edit-general-bttn');
@@ -459,7 +462,7 @@ function editProfileGeneral() {
   }
 }
 
-// EDIT OCCUPATION COLLAPSE
+// EDIT OCCUPATION COLLAPSE - Toggle the edit occupation collapse
 function editProfileOccupation() {
   let editPopover = document.getElementById('edit-occupation');
   let editPopoverButton = document.getElementById('edit-occupation-bttn');
@@ -473,7 +476,7 @@ function editProfileOccupation() {
   }
 }
 
-// EDIT CAREER COLLAPSE
+// EDIT CAREER COLLAPSE - Toggle the edit career collapse
 function editProfileCareer() {
   let editPopover = document.getElementById('edit-career');
   let editPopoverButton = document.getElementById('edit-career-bttn');
@@ -487,7 +490,7 @@ function editProfileCareer() {
   }
 }
 
-// EDIT ACHIEVEMENTS COLLAPSE
+// EDIT ACHIEVEMENTS COLLAPSE - Toggle the edit achievements collapse
 function editProfileAchievements() {
   let editPopover = document.getElementById('edit-achievements');
   let editPopoverButton = document.getElementById('edit-achievements-bttn');
@@ -501,7 +504,7 @@ function editProfileAchievements() {
   }
 }
 
-// EDIT ATTRIBUTES COLLAPSE
+// EDIT ATTRIBUTES COLLAPSE - Toggle the edit attributes collapse
 function editProfileAttributes() {
   let editPopover = document.getElementById('edit-attributes');
   let editPopoverButton = document.getElementById('edit-attributes-bttn');
@@ -515,7 +518,7 @@ function editProfileAttributes() {
   }
 }
 
-// EDIT BUSINESS FOCUS COLLAPSE
+// EDIT BUSINESS FOCUS COLLAPSE - Toggle the edit business focus collapse
 function editProfileFocus() {
   let editPopover = document.getElementById('edit-focus');
   let editPopoverButton = document.getElementById('edit-focus-bttn');
@@ -529,7 +532,7 @@ function editProfileFocus() {
   }
 }
 
-// EDIT BUSINESS SPECIALIZATIONS COLLAPSE
+// EDIT BUSINESS SPECIALIZATIONS COLLAPSE - Toggle the edit business specializations collapse
 function editProfileSpecialization() {
   let editPopover = document.getElementById('edit-specializations');
   let editPopoverButton = document.getElementById('edit-specializations-bttn');
@@ -543,7 +546,7 @@ function editProfileSpecialization() {
   }
 }
 
-// EDIT ACCOMPLISHMENTS COLLAPSE
+// EDIT ACCOMPLISHMENTS COLLAPSE - Toggle the edit accomplishments collapse
 function editProfileAccomplishments() {
   let editPopover = document.getElementById('edit-accomplishments');
   let editPopoverButton = document.getElementById('edit-accomplishments-bttn');
@@ -557,7 +560,7 @@ function editProfileAccomplishments() {
   }
 }
 
-// EDIT REWARDS COLLAPSE
+// EDIT REWARDS COLLAPSE - Toggle the edit rewards collapse
 function editProfileRewards() {
   let editPopover = document.getElementById('edit-rewards');
   let editPopoverButton = document.getElementById('edit-rewards-bttn');
@@ -572,7 +575,7 @@ function editProfileRewards() {
   }
 }
 
-// EDIT PERSONAL WALL COLLAPSE
+// EDIT PERSONAL WALL COLLAPSE - Toggle the edit personal wall collapse
 function editProfileWall() {
   let editPopover = document.getElementById('edit-wall');
   let editPopoverButton = document.getElementById('edit-wall-bttn');
@@ -587,8 +590,7 @@ function editProfileWall() {
 }
 
 // CREATE & EDIT POST COLLAPSES
-
-// POST POSTLIST VIEW COLLAPSE
+// POST POSTLIST VIEW COLLAPSE - Toggle the post list view collapse
 function editPostListView() {
   let editPopover = document.getElementById('post-list-view');
   let editPopoverButton = document.getElementById('post-list-view-bttn');
@@ -603,7 +605,7 @@ function editPostListView() {
   }
 }
 
-// POST STRUCTURE COLLAPSE
+// POST STRUCTURE COLLAPSE - Toggle the post structure collapse
 function editPostStructure() {
   let editPopover = document.getElementById('post-structure');
   let editPopoverButton = document.getElementById('post-structure-bttn');
@@ -618,7 +620,7 @@ function editPostStructure() {
   }
 }
 
-// POST KEY INFO COLLAPSE
+// POST KEY INFO COLLAPSE - Toggle the post key info collapse
 function editPostKeyInfo() {
   let editPopover = document.getElementById('post-key-info');
   let editPopoverButton = document.getElementById('post-key-info-bttn');
@@ -632,7 +634,7 @@ function editPostKeyInfo() {
   }
 }
 
-// POST GENERAL INFO COLLAPSE
+// POST GENERAL INFO COLLAPSE - Toggle the post general info collapse
 function editPostGeneral() {
   let editPopover = document.getElementById('post-general');
   let editPopoverButton = document.getElementById('post-general-bttn');
@@ -646,7 +648,7 @@ function editPostGeneral() {
   }
 }
 
-// POST INTRODUCTION COLLAPSE
+// POST INTRODUCTION COLLAPSE - Toggle the post introduction collapse
 function editPostIntroduction() {
   let editPopover = document.getElementById('post-intro');
   let editPopoverButton = document.getElementById('post-intro-bttn');
@@ -660,7 +662,7 @@ function editPostIntroduction() {
   }
 }
 
-// POST VIDEO COLLAPSE
+// POST VIDEO COLLAPSE - Toggle the post video collapse
 function editPostVideo() {
   let editPopover = document.getElementById('post-video');
   let editPopoverButton = document.getElementById('post-video-bttn');
@@ -674,7 +676,7 @@ function editPostVideo() {
   }
 }
 
-// POST LAUNCH COLLAPSE
+// POST LAUNCH COLLAPSE - Toggle the post launch collapse
 function editPostLaunch() {
   let editPopover = document.getElementById('post-launch');
   let editPopoverButton = document.getElementById('post-launch-bttn');
@@ -688,7 +690,7 @@ function editPostLaunch() {
   }
 }
 
-// POST DETAILS COLLAPSE
+// POST DETAILS COLLAPSE - Toggle the post details collapse
 function editPostDetails() {
   let editPopover = document.getElementById('post-details');
   let editPopoverButton = document.getElementById('post-details-bttn');
@@ -702,7 +704,7 @@ function editPostDetails() {
   }
 }
 
-// POST ABOUT CREATORS COLLAPSE
+// POST ABOUT CREATORS COLLAPSE - Toggle the post about creators collapse
 function editPostAboutCreators() {
   let editPopover = document.getElementById('post-about-creators');
   let editPopoverButton = document.getElementById('post-about-creators-bttn');
@@ -716,7 +718,7 @@ function editPostAboutCreators() {
   }
 }
 
-// POST MAIN CONTENT COLLAPSE
+// POST MAIN CONTENT COLLAPSE - Toggle the post main content collapse
 function editPostBody() {
   let editPopover = document.getElementById('post-body');
   let editPopoverButton = document.getElementById('post-body-bttn');
@@ -730,7 +732,7 @@ function editPostBody() {
   }
 }
 
-// POST LIBRARY COLLAPSE
+// POST LIBRARY COLLAPSE - Toggle the post library collapse
 function editPostLibrary() {
   let editPopover = document.getElementById('post-library');
   let editPopoverButton = document.getElementById('post-library-bttn');
@@ -744,7 +746,7 @@ function editPostLibrary() {
   }
 }
 
-// POST DOCUMENTS COLLAPSE
+// POST DOCUMENTS COLLAPSE - Toggle the post documents collapse
 function editPostDocuments() {
   let editPopover = document.getElementById('post-documents');
   let editPopoverButton = document.getElementById('post-documents-bttn');
@@ -758,7 +760,7 @@ function editPostDocuments() {
   }
 }
 
-// POST PROPOSAL COLLAPSE
+// POST PROPOSAL COLLAPSE - Toggle the post proposal collapse
 function editPostProposal() {
   let editPopover = document.getElementById('post-proposal');
   let editPopoverButton = document.getElementById('post-proposal-bttn');
@@ -773,7 +775,7 @@ function editPostProposal() {
   }
 }
 
-// POST CONTACT COLLAPSE
+// POST CONTACT COLLAPSE - Toggle the post contact collapse
 function editPostContact() {
   let editPopover = document.getElementById('post-contact');
   let editPopoverButton = document.getElementById('post-contact-bttn');
@@ -786,7 +788,7 @@ function editPostContact() {
 }
 
 // FONT AWESOME ANIMATIONS
-// BOUNCE
+// BOUNCE - Add bounce animation to an element
 function addBounceClass(elementId) {
   const element = document.getElementById(elementId);
   if (element) {
@@ -797,7 +799,7 @@ function addBounceClass(elementId) {
   }
 }
 
-// SHAKE
+// SHAKE - Add shake animation to an element
 function addShakeClass(elementId) {
   const element = document.getElementById(elementId);
   if (element) {
@@ -808,7 +810,7 @@ function addShakeClass(elementId) {
   }
 }
 
-// BEAT
+// BEAT - Add beat animation to an element
 function addBeatClass(elementId) {
   const element = document.getElementById(elementId);
   if (element) {
@@ -819,7 +821,7 @@ function addBeatClass(elementId) {
   }
 }
 
-// BASE DOCUMENT STYLING
+// BASE DOCUMENT STYLING - Update base document styling for post navigation button
 var postNavButton = document.getElementById("post-nav-button");
   if (postNavButton.classList.contains("bg-dark")) {
     postNavButton.classList.add("text-warning");

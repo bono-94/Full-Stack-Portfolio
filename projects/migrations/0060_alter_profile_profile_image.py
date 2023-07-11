@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='profile',
             name='profile_image',
-            field=models.ImageField(blank=True, default='static/images/21104.png', null=True, upload_to='profile_images/', validators=[projects.models.Profile.validate_file_name_length, projects.models.Profile.max_file_size_ten]),
+            field=models.ImageField(blank=True, default='static/images/avatar.png', null=True, upload_to='profile_images/', validators=[projects.models.Profile.validate_file_name_length, projects.models.Profile.max_file_size_ten]),
         ),
     ]

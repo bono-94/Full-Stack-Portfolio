@@ -112,7 +112,7 @@
       {% if profile.profile_image %}
       <img src="{{ profile.profile_image.url }}" alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2">
       {% else %}
-      <img src="{% static 'images/21104.jpg' %}" alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2">
+      <img src="{% static 'images/avatar.jpg' %}" alt="Profile Picture" class="card-img-top rounded-circle border border-1 border-secondary shadow-lg ms-md-4 me-2">
       {% endif %}
       <p class="card-text ms-4 me-4 me-md-0 mt-4 text-break ms-md-5 mt-5 mb-4 p-2 border border-1 border-dark shadow-sm rounded bg-light"><strong></strong>{% if profile.profile_quote %}<em>"{{ profile.profile_quote }}"</em>{% else %}(blank){% endif %}</p>
       {% if profile.profile_audio %}
@@ -199,7 +199,6 @@
         </div>
       </div>
     </div>
-  </div>
   <hr class="border border-2 border-dark">
 
   <!-- USER VIDEO -->

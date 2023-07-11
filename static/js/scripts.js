@@ -830,4 +830,3 @@ var postNavButton = document.getElementById("post-nav-button");
     postNavButton.classList.add("text-muted");
     postNavButton.classList.remove("text-warning");
   }
-

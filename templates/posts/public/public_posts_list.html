@@ -74,7 +74,7 @@
             </div>
             {% endif %} 
             {% else %}
-            <img src="{% static 'images/21105.jpg' %}" alt="Post Placeholder" class="bd-placeholder-img card-img-top image" width="100%" height="225">
+            <img src="{% static 'images/project.jpg' %}" alt="Post Placeholder" class="bd-placeholder-img card-img-top image" width="100%" height="225">
             {% if post.author == request.user %}
             <div class="overlay-posts">
               <a href="{% url 'public_post_details_1_landing' post.slug %}">

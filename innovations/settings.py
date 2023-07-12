@@ -15,11 +15,15 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['innovation-land.herokuapp.com', 'localhost', '8000-bono94-fullstackportfol-kdnutfdtdp2.ws-eu101.gitpod.io']
+ALLOWED_HOSTS = [
+    'innovation-land.herokuapp.com',
+    'localhost',
+    '8000-bono94-fullstackportfol-kdnutfdtdp2.ws-eu101.gitpod.io'
+    ]
 
 # APPLICATION DEFINITION
 

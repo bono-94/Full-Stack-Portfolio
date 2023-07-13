@@ -384,10 +384,9 @@ class PostForm(forms.ModelForm):
         required=False
     )
 
-    ownership_percentage_opps_quantity_proposal = forms.IntegerField(
+    ownership_percentage_opps_quantity_proposal = forms.FloatField(
         label='Ownership percentage proposal',
         required=False,
-        validators=[MaxLengthValidator(210)]
     )
 
     ownership_percentage_opps_proposal_return = forms.CharField(
@@ -632,8 +631,8 @@ class PostForm(forms.ModelForm):
         If the sum of paired focus fields is equal to 100 is correct.
         Returns cleaned form data.
         If sum is not integer 100, it raises an error to inform user.
-        In addition it validates that stock proposal is withing limitations.
-        If stocks quantity offer is larger than supply, it raises error.
+        In addition it validates that 2 proposals are withing limitations.
+        If quantity offer is larger than supply, it raises error.
         """
 
         cleaned_data = super().clean()
@@ -647,8 +646,13 @@ class PostForm(forms.ModelForm):
             'focus_collaboration',
             'focus_leadership',
         ]
+
         total_supply = cleaned_data.get('stocks_quantity_total_supply')
         proposal = cleaned_data.get('stocks_quantity_proposal')
+        pos_supply = cleaned_data.get('end_product_or_service_total_supply')
+        pos_proposal = cleaned_data.get(
+            'end_product_or_service_quantity_proposal'
+            )
 
         focus_values = [cleaned_data.get(field) for field in focus_fields]
         for i in range(0, 8, 2):
@@ -661,12 +665,17 @@ class PostForm(forms.ModelForm):
                 self.add_error(focus_fields[i], msg)
                 self.add_error(focus_fields[i+1], msg)
 
-        if total_supply is not None and proposal is not None:
-            if proposal > total_supply:
-                self.add_error(
-                    'stocks_quantity_proposal',
-                    "Stocks proposed can't be higher than stocks total supply."
-                    )
+        if total_supply and proposal and proposal > total_supply:
+            self.add_error(
+                'stocks_quantity_proposal',
+                "Quantity proposed can't be higher than the total supply."
+                )
+
+        if pos_supply and pos_proposal and pos_proposal > pos_supply:
+            self.add_error(
+                'end_product_or_service_quantity_proposal',
+                "Quantity proposed can't be higher than the total supply."
+                )
 
         return cleaned_data
 

@@ -17,10 +17,10 @@
 </div>
 
 <!-- EDIT POST -->
-<div class="container-fluid pt-2 mb-5" id="edit-post-form-div">
+<div class="container-fluid pt-2 mb-5 pt-md-4" id="edit-post-form-div">
   <div class="row">
-    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 text-break" id="edit-post-form">
-      <form method="post" enctype="multipart/form-data" id="edit-post-form-form" class="rounded p-3 shadow-lg bg-light bg-gradient border border-1 border-info">
+    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-break" id="edit-post-form">
+      <form method="post" enctype="multipart/form-data" id="edit-post-form-form" class="rounded p-3 p-sm-4 p-md-5 shadow-lg bg-light bg-gradient border border-1 border-info">
         {% csrf_token %}
         <div class="list-group border border-1 border-dark rounded-0 mt-0">
           <button type="button" id="post-list-view-bttn" onclick="editPostListView()" class="list-group-item text-start bg-as-nav text-dark pt-2 pb-2"><strong>1. List View Content</strong></button>

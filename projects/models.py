@@ -1540,7 +1540,7 @@ class Post(models.Model):
         )
 
     # GUARANTEEED TEAM POSITION PROPOSAL
-    team_guaranteed_position_title_proposal = models.TextField(
+    team_guaranteed_position_title_proposal = models.CharField(
         max_length=42,
         blank=True,
         null=True

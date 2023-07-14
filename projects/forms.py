@@ -396,13 +396,15 @@ class PostForm(forms.ModelForm):
     ownership_percentage_opps_proposal_return = forms.CharField(
         label='Ownership percentage return',
         required=False,
-        validators=[MaxLengthValidator(210)]
+        validators=[MaxLengthValidator(210)],
+        widget=forms.Textarea(attrs={'class': 'form-control'})
     )
 
     ownership_percentage_opps_proposal_costs = forms.CharField(
         label='Ownership percentage costs',
         required=False,
-        validators=[MaxLengthValidator(210)]
+        validators=[MaxLengthValidator(210)],
+        widget=forms.Textarea(attrs={'class': 'form-control'})
     )
 
     class Meta:

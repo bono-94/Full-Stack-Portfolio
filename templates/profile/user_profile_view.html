@@ -162,32 +162,32 @@
           <div class="container-fluid m-0 p-0">
             <div class="row-fluid d-flex justify-content-center" id="profile-links">
               <div class="me-sm-2 ms-sm-2 ms-md-3 me-md-3 me-lg-4 ms-lg-4 me-xxl-5 ms-xxl-1">
-                <a href="{% if profile.website_link %}{{ profile.website_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="Website navigational button">
+                <a href="{% if profile.website_link %}{{ profile.website_link }}{% else %}{% endif %}" class="text-dark" target="_blank" aria-label="Website navigational button">
                   <i class="fa-solid fa-globe bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
-                <a href="{% if profile.facebook_link %}{{ profile.facebook_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="Facebook navigational button">
+                <a href="{% if profile.facebook_link %}{{ profile.facebook_link }}{% else %}{% endif %}" class="text-dark" target="_blank" aria-label="Facebook navigational button">
                   <i class="fa-brands fa-facebook bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
-                <a href="{% if profile.twitter_link %}{{ profile.twitter_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="Twitter navigational button">
+                <a href="{% if profile.twitter_link %}{{ profile.twitter_link }}{% else %}{% endif %}" class="text-dark" target="_blank" aria-label="Twitter navigational button">
                   <i class="fa-brands fa-twitter bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
-                <a href="{% if profile.instagram_link %}{{ profile.instagram_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="Instagram navigational button">
+                <a href="{% if profile.instagram_link %}{{ profile.instagram_link }}{% else %}{% endif %}" class="text-dark" target="_blank" aria-label="Instagram navigational button">
                   <i class="fa-brands fa-instagram bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-5">
-                <a href="{% if profile.linkedin_link %}{{ profile.linkedin_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="LinkedIn navigational button">
+                <a href="{% if profile.linkedin_link %}{{ profile.linkedin_link }}{% else %}{% endif %}" class="text-dark" target="_blank" aria-label="LinkedIn navigational button">
                   <i class="fa-brands fa-linkedin bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>
               <div class="me-sm-2 me-md-3 me-lg-4 ms-lg-4 me-xxl-1">
-                <a href="{% if profile.youtube_link %}{{ profile.youtube_link }}{% else %}#profile-general{% endif %}" class="text-dark" target="_blank" aria-label="YouTube navigational button">
+                <a href="{% if profile.youtube_link %}{{ profile.youtube_link }}{% else %}{% endif %}" class="text-dark" target="_blank" aria-label="YouTube navigational button">
                   <i class="fa-brands fa-youtube bg-dark text-warning rounded p-2"></i>
                 </a>
               </div>

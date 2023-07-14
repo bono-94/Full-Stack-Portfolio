@@ -1621,8 +1621,8 @@ class Post(models.Model):
 
     public_email = models.EmailField(max_length=42, blank=True, null=True)
     public_phone = models.CharField(max_length=21, blank=True, null=True)
-    contact_days = models.TextField(max_length=63, blank=True, null=True)
-    contact_hours = models.TextField(max_length=42, blank=True, null=True)
+    contact_days = models.CharField(max_length=63, blank=True, null=True)
+    contact_hours = models.CharField(max_length=42, blank=True, null=True)
 
     website_link = models.URLField(
         max_length=210,

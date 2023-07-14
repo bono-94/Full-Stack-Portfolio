@@ -635,7 +635,7 @@ class Post(models.Model):
             raise ValidationError("Please upload a file under 100 MB.")
 
     # POST LIST CARD CONTENT
-    post_list_description = models.CharField(
+    post_list_description = models.TextField(
         max_length=84,
         blank=False,
         null=True
@@ -700,7 +700,7 @@ class Post(models.Model):
         ]
     )
 
-    title = models.TextField(max_length=42, blank=False, unique=True)
+    title = models.CharField(max_length=42, blank=False, unique=True)
     caption = models.TextField(max_length=84, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     author_type = models.CharField(

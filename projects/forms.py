@@ -180,25 +180,29 @@ class PostForm(forms.ModelForm):
     pps_vision = forms.CharField(
         label='Post vision',
         required=False,
-        validators=[MaxLengthValidator(168)]
+        validators=[MaxLengthValidator(168)],
+        widget=forms.Textarea(attrs={'class': 'form-control'})
     )
 
     pps_missions = forms.CharField(
         label='Post missions',
         required=False,
-        validators=[MaxLengthValidator(168)]
+        validators=[MaxLengthValidator(168)],
+        widget=forms.Textarea(attrs={'class': 'form-control'})
     )
 
     pps_goals = forms.CharField(
         label='Post goals',
         required=False,
-        validators=[MaxLengthValidator(168)]
+        validators=[MaxLengthValidator(168)],
+        widget=forms.Textarea(attrs={'class': 'form-control'})
     )
 
     pps_planner = forms.CharField(
         label='Post planner',
         required=False,
-        validators=[MaxLengthValidator(168)]
+        validators=[MaxLengthValidator(168)],
+        widget=forms.Textarea(attrs={'class': 'form-control'})
     )
 
     sdg_goals = forms.CharField(

@@ -38,10 +38,7 @@ def about_page(request):
 
         total_users = User.objects.count()
         total_posts = Post.objects.count()
-        industry_values = Profile.objects.values_list(
-            'industry',
-            flat=True).distinct()
-        total_industries = len(industry_values)
+        total_industries = Post.objects.values('industry').distinct().count()
         context = {
             'total_users': total_users,
             'total_posts': total_posts,

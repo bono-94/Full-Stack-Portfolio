@@ -1,6 +1,6 @@
 # [Innovation Land](https://innovation-land.herokuapp.com/) 
 
-## Inroduction
+## Introduction
 Innovation Land is an online marketplace and community where users can create, view, edit, interact and delete public posts. It is created for the purpose of public exposure of various organizations, projects, products and services placed online by innovators and post owners. The purpose of creation any post is to allow user to choose which information is important and relevant to be presented online from large quantity of options. Besides creating posts, users and authors can create visually appealing user profiles with deep customization possibilities like posts. Innovation Land is a website that is part of 7 other websites creating one master solution for the business world to cover needs of other relevant parties such as ideas generators, investors, end-users and more. Each page of this ecosystem is independent with foundations structured to be able to cross-interact with all other 7 websites in the upcoming releases.
 
 ## How it works?
@@ -30,6 +30,13 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Admin Backpage
 
+  - Feature of Django web framework
+  - User-friendly interface
+  - Manages all the content with full rights designated to selected trusted users (appointed admins)
+  - Content can be created, edited or deleted from there without use of front-end forms
+  - Interface can be customized allowing control over layout, display options, filtering options and shortcuts for functionalities such as as approving content
+  - External packages such as summernotes have been installed for back-end content processing and tracking comments, highlights and changes
+
 ![Admin](./assets/media/images/features/1-admin.jpg)
 
 ![Admin](./assets/media/images/features/1-admin-2.jpg)
@@ -38,13 +45,22 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Alerts
 
+  - Alerts informing user of all changes within their data if there was an error
+  - Alerts are lighter shade of fully extended navigation background light blue for visual categorization and separation of content
+  - Displays interactive and closeable message to users triggered by custom conditions such as if form is saved or if user inputs letters in integer fields
+
 ![Alerts](./assets/media/images/features/0-alerts.jpg)
 
 ![Alerts](./assets/media/images/features/0-alerts-3.jpg)
 
 ---
 
-### Tab
+### Tab Icon & Name
+
+  - Tab icon and name are essential expected elements that contribute to overall user experience by providing branding of the website
+  - Tab icon appears next to text title so the user can differentiate where is the tab if a lot of them are open at the same time
+  - Since navigation bar logo is not a right fit, second professional logo has been designed to fit this purpose
+  - Tab title provides description of the icons by adding a website name for all the users that might not be familiar with the brand yet
 
 ![Tab](./assets/media/images/features/1-tab.jpg)
 
@@ -57,7 +73,9 @@ In the first demonstrative version, minimum features and their elements have bee
   - The navigation bar is intuitive and all types of users can navigate to the desired section without needing any further explanation
   - The main title is page logo that takes the user back to the home page
   - The menu bar to the right of the logo is directing users to the main categories of the page: Home, About, Posts, Profiles, Login/Logout
+  - If user is not authenticated, they can only see Home, About, Register and Login pages
   - On the larger screens, the menu is shown as full-width, while for tablet and phone sizes of screen, it is collapsed with toggle button  
+  - Each page has "active feature" reversing color of belonging destination button informing user at all times where they are located
 
 ![Navigation](./assets/media/images/features/2-navbar.jpg)
 
@@ -90,6 +108,12 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Login
 
+  - Login page is one of the critical components for website authorization and security
+  - Guards non-authenticated users from accessing post or profile information
+  - Users can enter their credentials through previously selected email and password
+  - There is also a "Remember Me" button for constant loging
+  - If user does not have an account yet, a link can take user to that page
+
 ![Login](./assets/media/images/features/3-login.jpg)
 
 ![Login](./assets/media/images/features/3-login-2.jpg)
@@ -98,16 +122,21 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Register
 
+  - Registration page is second critical component for website authorization and security
+  - It allows users to open an account in order to browse and engange with the main content
+  - User can select their username and provide email address if both are not in the database already
+  - In addition, user can choose any password to protect their account
+  - If user already has an account this page, suggested link takes user to the login page
 ![Register](./assets/media/images/features/3-register.jpg)
 
 ![Register](./assets/media/images/features/3-register-2.jpg)
 
 ---
 
-### Landing Media
+### Landing Media - Index
 
   - The landing cover media includes a professional custom-made image
-  - This section introduces the user to the Innovation Lamd page with an eye-catching sharp and creative 3D logo
+  - This section introduces the user to the Innovation Land page with an eye-catching sharp and creative 3D logo
   - This will grab users' attention and increase the chances of a great first impression
   - Without an extensive text introduction requiring serious participation, the image relaxes the user with smooth colors with good contrast bringing users over to the next section that introduces the page.
   - Instead of first reading, then relaxing, we wanted the user to build up the energy instead of dropping it before exploring the rest of the page due to too many textual distractions
@@ -122,6 +151,13 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Introduction
 
+- First point of actual content interaction with users visiting application
+- Provides brief overview and sets expectations
+- It captures immediately attention of the user with the design
+- It allows them to navigate further and read more about the website and concept before proceeding to main content
+- Text had to be concise with only useful information taking into consideration global audience with different characteristics
+- It helps building brand and relate to users better
+
 ![Intro](./assets/media/images/features/4-home-2-intro-3.jpg)
 
 ![Intro](./assets/media/images/features/4-home-2-intro-4.jpg)
@@ -129,6 +165,12 @@ In the first demonstrative version, minimum features and their elements have bee
 ---
 
 ### First Direction
+
+ - Second point of user interaction
+ - Divides visually content into 2 directions
+ - Provides specifics on the each direction and what users can expect there
+ - Allows engaging buttons to lead user to whichever direction was chosen
+ - It was designed as contrasting opposites of main colors of the page, black and orange
 
 ![Direction](./assets/media/images/features/4-home-3-direction.jpg)
 
@@ -142,6 +184,13 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Ecosystem
 
+  - Visual collection of cards introducing user to the bigger picture of the website
+  - Since website is part of master solution featuring 7 other interconnected websites, it was important to inform user about this
+  - User is already getting to know partly what they can expect in the near future in terms of functionality and upgrades
+  - Each card has a title in coloring of content and belonging icon to summarize the content in one image
+  - Each card also has a short content about each of 8 sibling websites
+  - On the phones, user can see one card at the time, on tablets 2 cards at the time, and on larger devices up to 4 cards in the same row
+
 ![Ecosystem](./assets/media/images/features/4-home-4-ecosystem.jpg)
 
 ![Ecosystem](./assets/media/images/features/4-home-4-ecosystem-2.jpg)
@@ -152,9 +201,16 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ---
 
-### About Landing Media
+### Landing Media - About
 
-![About Landing Media](./assets/media/images/features/5-about-1-landing-1.jpg)
+  - The landing cover media includes a stock professional image
+  - The image features black and white orca resurfacing to get some air
+  - The metaphor here represents personas from user stories such as big fish investor resurfacing to get essential elements for their life, or an innovator that after long years of development can finally take a break when post is publisher
+  - This section also features quotation that expands the vision of the picture
+  - This will grab user's attention again if lost in the short time span from index page depending on user's browsing capacity and well-being
+  - 3D gray dividers separate this section from the rest of the page
+
+![About Landing Media](./assets/media/images/features/5-about-1-landing.jpg)
 
 ![About Landing Media](./assets/media/images/features/5-about-1-landing-2.jpg)
 
@@ -167,6 +223,13 @@ In the first demonstrative version, minimum features and their elements have bee
 ---
 
 ### About Us
+
+  - Informative section of the page where users can learn more about Innovation Land
+  - Users can read about story, mission, vision, stats, how it works and rules
+  - Content has been raised above the surface of the page with shadow effects for as an visual attribute to the plain content text
+  - Light blue border and light background which are secondary content-dedicated colors have been used to visually categorize this section as well
+  - Title has a clear division from the content also featuring icon summarizing the content
+  - This design complements the ecosystem cards content on the home page
 
 ![About](./assets/media/images/features/5-about-2-about.jpg)
 
@@ -184,6 +247,11 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Pricing
 
+  - Pricing sections starts with basic description of the membership concept
+  - In a non-pushing way it consults users on why is it in their benefit and what they can expect from it
+  - In addition, there are 3 membership cards with different coloration and features for clear separation but within websites color scheme
+  - If user is not loged in yet, they can see a sign up button under list of features in each card
+
 ![Pricing](./assets/media/images/features/5-about-2-pricing.jpg)
 
 ![Pricing](./assets/media/images/features/5-about-2-pricing-2.jpg)
@@ -196,7 +264,16 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Posts Create
 
-![Posts Create](./assets/media/images/features/6-posts-1-create-1.jpg)
+  - This page allows users to create their own custom posts
+  - Main categories of each post have been separated with collapsible titles
+  - Once clicked on light blue title, it opens section of the form and only relevant fields to it
+  - When opened, each title turns into orange color informing users on open status
+  - User can expand or collapse each section without limitation
+  - There are variety of input fields such as color, date, text short, text long, numbers, selection, sliders, file uploads, etc...
+  - At the bottom user can find "back" button that takes user back to historically previous page
+  - In addition there is submission button that first calls up warning modal for warning user they are about to proceed and submit post for assessment
+
+![Posts Create](./assets/media/images/features/6-posts-1-create.jpg)
 
 ![Posts Create](./assets/media/images/features/6-posts-1-create-2.jpg)
 
@@ -211,6 +288,20 @@ In the first demonstrative version, minimum features and their elements have bee
 ---
 
 ### Posts List
+
+  - Post list has a public and private view
+  - On both views, users can see general information about posts, including pill shaped button that takes user to the other view, and a button to take user to create a new post
+  - All posts on both views are under treatment of pagination limiting 8 posts per pagination page
+  - In mobile view user can see one card at the time, where in tablet 2 and on larger devices up to 4 cards in the same row
+  - Each card is separated on image and content
+  - Each image has either placeholder photo or one uploaded by user
+  - Each photo also features animated symbol in top right corner informing public is post has been fully verified and recommended by Innovation Land
+  - In addition, private view also has a symbol in top left corner informing user if post is currently public or private with a lock icon
+  - Each image also has an overlay
+  - On public view, authors can see there edit, view and delete button, while public can only see view button
+  - On private view, on published posts, authors can see there edit, view and delete button, while on in-processing posts users can only delete request not to inervene with assessment process by allowing editing before decision is made
+  - Each body of card and middle belly if are allowed for post list custom coloration are colored in users primary and secondary background colors, next to text color
+  - On each card itself, all users can see the most important requiered information of every post, next to number of votes and views, and date of creation
 
 
 ![Posts List](./assets/media/images/features/6-posts-1-list.jpg)
@@ -229,7 +320,24 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ---
 
-### Posts Details
+### Posts Details - Page 1
+
+  - If author is same as user, they can see icons in the bottom right corner to edit or delete post. If not, user sees one icon that leads them at all times to proposals & offers page
+  - Every published post details page contains page card that can be seen on all 6 sub-pages, including post contact and commenting section
+  - Every page also contains breadcrumb line under the navigation informing user on current page location, allows opening offcanvas, closing of post and returning to list or even playing background music uploaded by user 
+  - At the bottom of every page there is constant element of sub-pages navigation that tracks current page location, allows opening of offcanvas and is designed in navigational colors, indicating purpose of the section for user visually
+  - Post card features authors profile image or even organization logo
+  - There is always a title and short description
+  - Tracking of votes, views, number of comments and if post is recommended and fully verified
+  - Every user can see author and owner next to when post was created and updated
+  - Under post card, user can see post image being either media uploaded by user or a placeholder
+  - Title on welcoming page is constant and in color of content-related design
+  - Authors can next display their introduction to the post and fill up key information for floating light blue list card
+  - If authors upload a video, it can be displayed under the list card with general information. Video is not on autoplay and displays all controls for user of the page to interact with
+  - If authors choose official launch date, user can see the date and launch countdown to know how many years, months or days are left until launch
+  - Post contact page allows further connection between user, authors and owners of the post
+  - There is where user can find correct contact person, number, email and availability. In addition, authors can display social media links
+  - Commenting section is designed with 3d shadow effects that displays approved comments with username, date and time and content. Users can also leave a comment or offer under or next to list of comments where after posting it, it will be sent for approval
 
 
 ![Posts Details](./assets/media/images/features/6-posts-2-details.jpg)
@@ -258,6 +366,11 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Posts Details - Page 2
 
+  - In addition to previously mentioned constant elements of post card, contact, comments, breadcrumb and page navigation, page 2 features more details about the post itself
+  - Authors can fill up the content to be displayed to users that cover categories of strategy, co-operation, key business elements and dynamics of the situation
+  - Focus of this page is to give a break to users from advanced visualization and colorization and give smooth reading experience of important content without distractions. 
+  - Intention for users is to feel as if they are reading newspapers page to easily digest the content
+
 ![Posts Details - Page 2](./assets/media/images/features/6-posts-2-details-p2.jpg)
 
 ![Posts Details - Page 2](./assets/media/images/features/6-posts-2-details-p2-2.jpg)
@@ -269,6 +382,15 @@ In the first demonstrative version, minimum features and their elements have bee
 ---
 
 ### Posts Details - Page 3
+
+ - In addition to previously mentioned constant elements of post card, contact, comments, breadcrumb and page navigation, page 2 features more details about the creators of the post, author or organization responsible
+  - Authors can fill up the content to be displayed to users that cover categories of who creators are, what are they doing, their s.w.o.t. analysis, business focus and states of business departments
+  - Focus of this page in the first part is to continue to give a break to users from advanced visualization and colorization and give smooth reading experience of important content without distractions. 
+  - Intention for users is to feel as if they are reading newspapers page to easily digest the content
+  - In the second part, user is displayed sharp and animated purposeful visualisation chart of their focuses. Keeping in mind sum of each 2 grouped aspects has to be 100, authors can clearly indicate for users what is their current priority in various disciplines
+  - After the general business focus, user is presented with departmental cards
+  - Each 2 card with related colors represent one department. First card is always reflecting current state next to current percentage of importance. Second card is always mentioning optimal or desired state of the department in the future, next to desired future percentage of importance
+  - There are 8 departments, each given logical colorization per activities types
 
 ![Posts Details - Page 3](./assets/media/images/features/6-posts-2-details-p3.jpg)
 
@@ -284,6 +406,11 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Posts Details - Page 4
 
+  - Page 4 continues to provide newspapers-like experience for user completely removing any visualizations and distractions from the main content which is post story
+  - In addition to constant elements previously indicated, authors can now enter large amount of textual content to bring serious articles to the end users
+  - Users can read all about knowledge used in post, journey how it was created and current state, the direction of future and ultimate legacy outcome
+  - 4 main sections part of numerology strategy have been divided by a line
+
 ![Posts Details - Page 4](./assets/media/images/features/6-posts-2-details-p4.jpg)
 
 ![Posts Details - Page 4](./assets/media/images/features/6-posts-2-details-p4-2.jpg)
@@ -294,6 +421,11 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Posts Details - Page 5
 
+  - In addition to constant elements that appear on all post detail pages, authors can set up documentation download portal for all their users
+  - Due to 24 possible documents uploaded, content has been separated logically on business library and business cabinet
+  - In each download area design by list card with downloadeable custom icons, users can choose what documents they would like to store and open on their own devices
+  - Page allows through simple naming for educated and uneducated audience to correctly choose which documents they would like to read about
+
 ![Posts Details - Page 5](./assets/media/images/features/6-posts-2-details-p5.jpg)
 
 ![Posts Details - Page 5](./assets/media/images/features/6-posts-2-details-p5-2.jpg)
@@ -303,6 +435,16 @@ In the first demonstrative version, minimum features and their elements have bee
 ---
 
 ### Posts Details - Page 6
+
+  - In addition to constant elements that appear on each post details page, users can read more on this page about funding and proposals
+  - With same structure as project launch on first page, authors can set up for the users start and end date for funding campaign with belonging countdown until start of campaing. Also, users can be informed on payout date and belonging countdown until this date
+  - Authors can choose from 9 funding proposal options to be placed in any combination to this page
+  - Authors can post proposal for stocks, ownership percentage, end product or service, lifetime discount, guranteed team position, partnerships, collaborations, sponsorships or even open proposal
+  - All of these sections have at least indication of what does investor get in return for what price
+  - Additional information can be provided as descriptions, quantity offered, total supply quantity and additional benefits
+  - When and if author chose type of compensation model, it will only be displayed choice on the title of the page, so only authors can see this information
+  - Under the proposals, authors can leave longer text with terms and conditions for their users to read up on further
+
 
 ![Posts Details - Page 6](./assets/media/images/features/6-posts-2-details-p6.jpg)
 
@@ -330,6 +472,16 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Posts Edit
 
+ - This page allows users to edit their own posts with previously filled in information displayed for control purposes
+  - Main categories of each post have been separated with collapsible titles
+  - Once clicked on light blue title, it opens section of the form and only relevant fields to it
+  - When opened, each title turns into orange color informing users on open status
+  - User can expand or collapse each section without limitation
+  - There are variety of input fields such as color, date, text short, text long, numbers, selection, sliders, file uploads, etc...
+  - At the bottom user can find "back" button that takes user back to historically previous page
+  - In addition there is submission button that first calls up warning modal for warning user they are about to proceed and submit post for re-assessment
+  - Every edited post automatically changes status from published to draft until approved again to prevent user add additionally information that violates terms or use
+
 ![Posts Edit](./assets/media/images/features/6-posts-2-details-p7.jpg)
 
 ![Posts Edit](./assets/media/images/features/6-posts-2-details-p7-2.jpg)
@@ -340,11 +492,30 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Posts Delete
 
+  - Page styled identically as login, logout, private post and delete profile page
+  - 3d effect of raising above background for advanced visualization purpose
+  - Only author can see this page and choose if they want to return to previous page or delete post completely with all its comments
+  - If author presses button to proceed, at first there is pop-up modal that warns author of their action and that their progress might be lost and action irreversible
+
 ![Posts Delete](./assets/media/images/features/6-posts-2-details-p8.jpg)
 
 ---
 
 ### Profiles
+
+  - View of profiles can be public or private
+  - Public view is shown to public users when they click on authors name on each post that takes them to their public page
+  - Private view is shown as classic follow-up on My Profile button
+  - Biggest and only difference is that public profile does not have buttons: "new", "edit" or "delete" above the profile image
+  - Entire profile has been designed as a long card with default colors of main colors of the page: orange and black
+  - If user does not upload profile image, there is a placeholder in place
+  - Under the image usually comes wisdom quotation and button to play background music
+  - Depending on if user is using phone or larger device, there is a main profile card on every profile either under or next to the image. It contains user's online status, user type, active times, if user is verified by Innovation Land, their membership level and crypto balance. Users can also here pin their links to social media page and their own website. Card also features information when user joined and when profile was last updated
+  - User can under this upload their own introductory video of any relevant content to their profile
+  - The rest of the profile are categorized list cards that cover topics of personal information, occupation, career, achievements, attributes, focus, specializations, results, rewards and personal walls
+  - These list cards appear when user clicks on the mentioned title categories which automatically shows the relevant card under the title
+  - There is also navigational tool if all cards are open for smooth navigation of large information. This button is fixed in the bottom left corner and expands like a bottom offcanvas indicating same categories that can be chosen from
+  - And finally, there is reverse button fixed in the bottom right corner that expands all unexpanded titles of cards with their list card content, and for the ones that are open they get closed as direct reverse card on showing content
 
 ![Profiles](./assets/media/images/features/6-posts-2-details-p9.jpg)
 
@@ -364,6 +535,16 @@ In the first demonstrative version, minimum features and their elements have bee
 
 ### Profiles Edit
 
+  - This page allows users to edit their own profiles with previously filled in information displayed for control purposes
+  - Main categories of each profile have been separated with collapsible titles
+  - Once clicked on light blue title, it opens section of the form and only relevant fields to it
+  - When opened, each title turns into orange color informing users on open status
+  - User can expand or collapse each section without limitation
+  - There are variety of input fields such as color, date, text short, text long, numbers, selection, sliders, file uploads, etc...
+  - At the bottom user can find "back" button that takes user back to historically previous page
+  - In addition there is submission button that first calls up warning modal for warning user they are about to proceed and submit profile changes
+  - Every edited profile automatically changes information on both public and private profiles
+
 ![Profiles Edit](./assets/media/images/features/6-posts-2-details-p9-8.jpg)
 
 ![Profiles Edit](./assets/media/images/features/6-posts-2-details-p9-9.jpg)
@@ -373,6 +554,11 @@ In the first demonstrative version, minimum features and their elements have bee
 ---
 
 ### Profiles Delete
+
+ - Page styled identically as login, logout, private post and delete posts page
+  - 3d effect of raising above background for advanced visualization purpose
+  - Only profile owner can see this page and choose if they want to return to previous page or delete profile completely with all its comments
+  - If user presses button to proceed, at first there is pop-up modal that warns user of their attempt of deletion action and that their progress might be lost and action irreversible
 
 ![Profiles Delete](./assets/media/images/features/6-posts-2-details-p9-999.jpg)
 
@@ -490,24 +676,24 @@ In our Agile Development approach, we embraced the principles of Scrum, kanban, 
 - Problem Solving:
   - How to solve users problem of not getting enough exposure for their organizations, projects, products and services?
   - How to solve users problem of lack of business knowledge to capture and deliver their ideas to the public marketplace?
-  ---
+---
 
 - Empathy and Understanding:
   - Direct connection to the user and their actual real life circumstances
   - Developing a database of potential user personas and if current product would make them happy
-  ---
+---
 
 - Definition:
   - Final problem statement, user as center point
   - What is the root or the problem and what is the cure?
   - What needs to be achieved, not how
-  ---
+---
 
 - Ideation:
   - Generating key ideas based on well-defined problem
   - Creative solutions to the problem and how it can be achieved
   - Voting and decision and most suitable solution
-  ---
+---
 
 - Prototyping:
   - Developed rough draft of the solution
@@ -515,13 +701,13 @@ In our Agile Development approach, we embraced the principles of Scrum, kanban, 
   - Wireframes
   - Flowchart
   - Data Architecture
-  ---
+---
 
 - Testing:
   - Test if final solutions have solved all the problems
   - Testing on real user and real life environment
   - Development of hypothesis and final vision
-  ---
+---
 
 - Storytelling:
   - Presenting the findings
@@ -530,7 +716,7 @@ In our Agile Development approach, we embraced the principles of Scrum, kanban, 
   - Presenting the solution
   - Story of users who's challenge was solved
   - Story of Design Thinker, and his next steps
-  ---
+---
 
 - User Expectations:
   - Fast service
@@ -582,19 +768,19 @@ In our Agile Development approach, we embraced the principles of Scrum, kanban, 
   - Private Profile View
   - Profile Edit
   - Profile Delete
-  ---
+---
  
 - Media
   - Custom Media - Professional custom work for the most important visual aspect of navigation logo, tab logo and index landing page  
   - Imported Media - Stock images for about page image, profile and post placeholders
-  ---
+---
 
 - Design Strategy
   - Focus of this version was deep design and architecture of the back-end
   - There is where the most design has been implemented to ensure strong foundation for the next step
   - In the second version, upon learning React and Rest, focus of design will shift towards the front-end
   - Please note due to hundreds of input fields in Post and Profile models, detailed visualization is not available at the moment
-  ---
+---
 
 - Data Design
 
@@ -769,17 +955,18 @@ This project was manually tested with following procedures:
 
 - Code was passed through a PEP8 linter inside gitpod without any errors returned
 - Entire website, every input field, every element and button were tested with correct and incorrect inputs in the both gitpod pre-deployment and Heroku post-deployment environments
-- Focus on functionality, usability, responsiveness and data management
 - CONCLUSION: Production version matched development version without any errors
+
+- Focus on functionality, usability, responsiveness and data management
+- mention manual adjustment rounds and now final in all screens few times and even on few devices
 
 ---
 
-#### Test 1
+#### Test 1 - Responsivness
 
 - Expected:
-  - Nav menu bar is expected to take user to different sections of the page when user presses one of the 4 options
-  - Title "Bigger Fish" is expected to take user again to the same page
-- Testing: 
+  - All template page to 
+- Testing:
   - Tested both features by clicking on them and around them
 - Result
   - Both features responded as intended by only directly clicking on them, not around them or empty gray space

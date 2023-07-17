@@ -898,7 +898,7 @@ This project was deployed using Heroku website and ElephantSQL + Cloudinary as a
 I have conducted infinite hours of testing across all screen sizes, devices and different browsers to conclude that now the site works well and all discussed features are included as intended. Internet Explorer, Google Chrome, Safari, and Firefox on large PC monitors, average laptops, tablets, and various mobile devices all in different screen sizes with minimum width of 320px for older devices. The website was given to friends and family to test out the website representing different types of users and their browsing styles next to personal backgrounds. All content is readable and understandable styled with good contrasting colors that also visually create a good combination. There is no visual bugs or errors after extensive testing
 
 - Automatic testing has been left until version 2.0 when it will be of use for specific new features that will benefit of it
-- For current project structure and endless hours of manual testing it does not make significant contribution
+- For current project structure and endless hours of manual testing it does not make significant contribution since everything has been already validated
 
 ### Validator Testing 
 
@@ -926,9 +926,9 @@ I have conducted infinite hours of testing across all screen sizes, devices and 
 
 ---
 
-PEP8
-- No errors found when validating all 7 python files and all of their lines of code individually at:
-- [Code Institute CI Python Linter](https://pep8ci.herokuapp.com)
+- PEP8
+  - No errors found when validating all 7 python files and all of their lines of code individually at:
+  - [Code Institute CI Python Linter](https://pep8ci.herokuapp.com)
 
 ![Python Results](./assets/media/images/testing/validators/python-test-2.jpg)
 
@@ -955,33 +955,503 @@ This project was manually tested with following procedures:
 
 - Code was passed through a PEP8 linter inside gitpod without any errors returned
 - Entire website, every input field, every element and button were tested with correct and incorrect inputs in the both gitpod pre-deployment and Heroku post-deployment environments
-- CONCLUSION: Production version matched development version without any errors
 
-- Focus on functionality, usability, responsiveness and data management
-- mention manual adjustment rounds and now final in all screens few times and even on few devices
+##### CONCLUSION: Production version matched development version without any errors
 
 ---
 
 #### Test 1 - Responsivness
 
 - Expected:
-  - All template page to 
+  - All 22 template pages to be rendering all building blocks beautifully and without errors across all devices and screen sizes
 - Testing:
-  - Tested both features by clicking on them and around them
-- Result
-  - Both features responded as intended by only directly clicking on them, not around them or empty gray space
+  - Tested every template page visually in 8 rounds
+    - Round 1: Mobile devices 320px width gradually increasing to 768px width
+    - Round 2: Tablet devices 768px width gradually increasing to 1024px width
+    - Round 3: Laptop devices 1024px width gradually increasing to 1920px width
+    - Round 4: PC monitor devices 1920px width gradually increasing to 3840px width
+    - Rounds 5-8: Repetition of rounds 1-4 for double verification
+  - Tested on 4+ phones, 2 tablets, 4+ laptops and 2 large PC monitors
+  - Tested by developer and friends and family as secondary opinion
+- Result:
+  - Every element, every section, every building block of the website has been styled and rendered correctly in all responsivness testing scenarios in deployed version
+
 ---
 
-#### Test 2
+#### Test 2 - Navigation
 
 - Expected:
-  - Nav menu bar is expected to take user to different sections of the page when user presses one of the 4 options
-  - Title "Bigger Fish" is expected to take user again to the same page
+  - Navigation bar logo takes user to home page
+  - Home button takes user to home page
+  - About button takes user to about page
+  - Public Posts button takes user to public posts list page
+  - My Posts button takes user to private posts lists page
+  - Create Post button takes user to the create post page
+  - My profile button takes user to its' private profile page
+  - Logout button takes user to logout page
+  - Login button takes user to login page
+  - Register button takes user to registration page
+  - Posts button is a dropdown for Public Posts, My Posts and Create Post
+  - All buttons while on their active pages replace background orange with background black color and text color from black to orange
+  - Toggle button appears on screens under tablet size
+  - Toggle button shows navigational buttons as under each other
+  - All colorization of navigation bar renders correctly
 - Testing: 
-  - Tested both features by clicking on them and around them
-- Result
-  - Both features responded as intended by only directly clicking on them, not around them or empty gray space
-----
+  - Tested all buttons by clicking on them and around them
+  - Tested all buttons navigation by validating destination url with url file
+  - Tested dropdown on all devices if it would show categories of Posts button
+  - Tested all active buttons by manually inputting url link from urls file and seeing visually if the active button changes apply
+  - Tested if toggle button appears with inspector mode in Google Chrome
+  - Tested if toggle button activates navigation buttons structure on click
+  - Tested if navigation bar colors appear correctly while comparing to source code
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 3 - Footer
+
+- Expected:
+  - Footer renders correctly in structure
+  - Footer renders correclty in colorization
+  - Footer provides valid links to social media pages in new tab
+- Testing:
+  - Tested footer rendering correctly on all devices and screen sizes specifically
+  - Tested visually if footer satisfies criteria of black background, orange text and white icons
+  - Tested all 4 social media links for correct destinations in a new tab
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 4 - Index
+
+- Expected:
+  - Landing image renders correctly
+  - Introduction section button leads user to about page
+  - Posts square takes user to public posts
+  - Profiles square takes user to its' profile
+  - Business ecosystem cards proper division per screen width
+- Testing:
+  - Tested landing image by draging width in google chrome inspector for all sizes and screens
+  - Tested by clicking on Read more button and validating url destination
+  - Tested by clicking on Explore opportunities button and validating url destination
+  - Tested by clicking on Prepare yourself button and validating url destination
+  - Tested by seeing arrangement of ecosystem cards across phone, tablet, laptop and PC monitor
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 5 - About
+
+- Expected:
+  - Landing image renders correctly with quotation under
+  - All About Us cards show correctly with icon, large title and thin light blue border with 3d shadow effect
+  - All 3d separators show correctly and with intended style
+  - Pricing and membership model shows description and types of memberships
+  - If user is not signed in, they can see additional buttons on each membership block to sign up to get more information
+- Testing:
+  - Tested landing image by draging width in google chrome inspector for all sizes and screens
+  - Tested all About Us cards across various devices and screens to see if they keep their structure
+  - Tested all 3d separators individually across various devices and screens
+  - Tested in pricing and membership model shows all belonging information
+  - Tested by logging out and logging in if only non-authenticated user can see signup buttons on membership blocks
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 6 - Logout
+
+- Expected:
+  - Addition of extra top and bottom margin on logout 3d box for all large PC monitors
+  - Shadow creating floating block
+  - Close button takes user to previous page
+  - Submit button logs user out of their account and convert to non-authenticated user
+- Testing:
+  - Tested creation of extra margin for logout block with actual PC monitor to see if footer would still remain fully to the bottom
+  - Tested in google inspector and visually if shadow renders correctly
+  - Tested close button by clicking on it and around it while verifiying url destination path with url file
+  - Tested close button by clicking on it and around it while verifiying url destination path with url file, also by checking if visibility of navigation matched non-authenticated user
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 7 - Login
+
+- Expected:
+  - Addition of extra top and bottom margin on login 3d box for all large PC monitors
+  - Shadow creating floating block
+  - Remember Me button keep user loged in on the same device
+  - Login button allows user to enter full-features environment of the website and interact with own post and profile contents
+  - Register button link takes user to registration page
+- Testing:
+  - Tested creation of extra margin for login block with actual PC monitor to see if footer would still remain fully to the bottom
+  - Tested in google inspector and visually if shadow renders correctly
+  - Tested if remember me button works by turning off my device for few hours and trying to open it again without logging out
+  - Tested login button by clicking on it and around it while validating destination matches url path and if navigation bar options match authenticated user
+  - Tested if registration link works by clicking on it and around it while validating if destination matches url path in url file
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 8 - Register
+
+- Expected:
+  - Addition of extra top and bottom margin on login 3d box for all large PC monitors
+  - Shadow creating floating block
+  - Email address field does not accept inputs that are not an email format
+  - Username field does not support already existing values
+  - Password fields validate each other if confirmed password matches selected one
+  - Register button creates a profile and user account for a user while automatically logging user in
+- Testing:
+  - Tested creation of extra margin for login block with actual PC monitor to see if footer would still remain fully to the bottom
+  - Tested in google inspector and visually if shadow renders correctly
+  - Tested if email address field validates correctly by entering only username without @ symbol
+  - Tested if username field works with uniqueness by providing already existing username
+  - Tested if password fields confirmation works by first entering non-matching, then matching password
+  - Tested register button if it logs user in upon form completion and if proper user account and profile has been generated in the back-end admin page
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 9 - Posts Lists
+
+- Expected:
+  - Private and public views have their own versions of introduction content and navigation buttons from public to go to private and from public to private
+  - Pagination of 8 posts per page works correctly
+  - Post list images uploaded by user render correctly
+  - Post list images show placeholder if not uploaded by user
+  - Every post card also shows verification icon in the top right corner
+  - Only on private view, user can see fixed privacy icon in top left corner
+  - Only on private view, user can see post status label in the bottom left corner of the card image
+  - All key information and counters render correctly on the card
+  - All custom colorization of card renders correctly
+  - On public view, only author can view, edit and delete while non-authors can only view post
+  - On private view, only published posts can be edited, viewed and deleted, while unpublished posts can be only deleted
+- Testing:
+  - Tested differences in introduction and its buttons on both private and public pages by rendering them both as multiple users
+  - Tested if pagination of page with 8 posts per each works by creating minimum 17 posts to get to the third page
+  - Tested post list images with edit and create post forms by uploading an image file
+  - Tested post list placeholder by excluding image from edit and create post forms
+  - Tested post verification button by manually adjusting post verification as admin in admin portal
+  - Tested privacy icons by checking private posts and changing public visibility slider on edit form page
+  - Tested post status label by checking private posts page after changing post status back and forth in the admin portal
+  - Tested post card important information by filling it up in edit and create post forms and checking both public and private views
+  - Tested post card colorization by manually editing post primary and secondary colors while swithching post list colorization slider to the right
+  - Tested image overlay buttons by first cheking public, then private views both as author and non-author
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 10 - Posts Details (Constant)
+
+- Expected:
+  - Breadcrumb stays constant under navigation featuring music button, offcanvas called button and close post button
+  - Post card is fluid with constant black background
+  - Post card shows author image or organization logo
+  - Post card renders title, description, author and owner
+  - Post card counts number of votes, views and comments next to verification status icon
+  - Post cards allows user to add or remove vote on each post
+  - Post card shows creation and last updated dates while counting the age
+  - Offcanvas shows current page
+  - Author link takes user to their public profile
+  - Owner link takes user to contact section below
+  - If user is author, show edit and delete buttons fixed to the bottom right taking them to correct pages
+  - If user is not author, show only money bag icon taking user to proposal and offers page
+  - Every post details page has page navigator from 1-6 and buttons such as last to view previous page and next to view next page, indicating active page and offering Read more button to open offcanvas for user
+  - Every post details page has below page navigation post contact section
+  - Every post contact section allows authors to render the correct contact person, phone number, email, contact availability and social media links
+  - Every post details page has commenting section under contact section that renders all comments on the entire post while allowing users to place their own comments
+  - Every page should be custom colored if user indicates
+- Testing:
+  - Testing breadcrumb especially on all screens and devices since it is most sensitive block of the website on top margins
+  - Testing if breadcrumb play and stop buttons play and pause uploaded audio file
+  - Testing if breadcrumb expansion button correctly calls upon offcanvas
+  - Testing if breadcrumb close button closes the post and brings user back to post list page
+  - Testing if breadcrumb page path matches url file rules and offcanvas active page
+  - Testing if post card is fluid and takes entire width of screen on all devices and screens
+  - Testing if uploaded post logo image renders on the card as author image or organization logo in constant round circle structure
+  - Testing if post card renders title, description, author and owner by inputting this information on edit and/or create post forms
+  - Testing if post card counts number of votes by manual interaction as user next to admin back-page custom input
+  - Testing if post cards counts views by manually opening and closing posts many times
+  - Testing if post cards counts number of comments by adding comments and manually counting them on the page and back-end
+  - Testing if post cards correctly display verification status by manually changing it in the admin back-page and refreshing the page
+  - Testing voting animations and colorization by manual vote add and manual vote remove icon on the page
+  - Testing if post card creation and last updated dates are correct by creting new posts and editing already created posts. Waiting time minimum 24 hours so duration tracker can be validated too
+  - Testing if offcanvans shows current page by matching it with url file rules, breadcrumb and page navigational tool at the bottom
+  - Testing if author link takes user to their public account by pressing on link and around it and verifying it in the url path
+  - Testing if owner link takes user to contact section by clicking on it and around it and verifying it visually and with url path
+  - Testing if user is author to show edit and delete icons as logging out and loggin in with author credenditals
+  - Testing is user is not author to show money bag icon by opening public posts with different author
+  - Testing all buttons on navigational tool for all 6 pages by clicking on all of them and seeing if destination matches breadcrumb, offcanvas and url path about
+  - Testing if every page has contact section under each navigational tool is visually and by opening every of 6 pages
+  - Testing if contact page is rendering information correctly by manually inputing information in edit and create forms
+  - Testing if contact page social media links open in a new tab by clickling directly on them and around them and verifiying end url path in new tab
+  - Testing if commenting section renders comments by manually adding them in admin back-end but also as a user on the leave a comment form
+  - Testing if post details colorization works for every post by selecting post detail custom colorization options and trying different colors
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 11 - Posts Details (Page 1)
+
+- Expected:
+  - Post image should render in full width if uploaded, if not show post placeholder image
+  - Title renders
+  - Introduction content renders
+  - General information card renders
+  - Post video renders 
+  - Launch date renders
+  - Launch countdown renders
+- Testing:
+  - Testing if post image renders by uploading it as user in edit and create post form
+  - Testing if post image placeholder image renders by removing post image and refreshing the page
+  - Testing if welcome title renders in correct color by visual testing
+  - Testing if introduction content renders correctly by checking it on various screens and devices and validating if matches submitted input
+  - Testing if general information card renders by inputting values in edit and create post form and verifying if it matches rendered version
+  - Testing if post video renders by uploading video file within limits in post edit and post create forms
+  - Testing if launch date renders by inputting date value in post edit and post create forms
+  - Testing if launch date countdown renders by inputting date value in post edit and post create forms and allowing calculation to capture days, months and years
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 12 - Posts Details (Page 2)
+
+- Expected:
+  - Title renders
+  - Strategy renders
+  - Co-operation renders
+  - Key elements render
+  - Dynamics render
+- Testing:
+  - Testing if about post title renders in correct color by visual testing
+  - Testing if all building blocks render by checking privacy field, input fields and adding all correct values in edit and create post form, then verifying if it matches rendered version
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 13 - Posts Details (Page 3)
+
+- Expected:
+  - Title renders
+  - Who are we? renders
+  - What are we doing? renders
+  - SWOT renders
+  - Business focus renders
+  - Business departments renders
+- Testing:
+  - Testing if about post creators title renders in correct color by visual testing
+  - Testing if all textual building blocks render by checking privacy field, input fields and adding all correct values in edit and create post form, then verifying if it matches rendered version
+  - Testing if business focus values are always in pairs total sum of 100
+  - Testing if business focus chart values match inputted values
+  - Testing if business departments content renders correctly and matches colorization
+  - Testing if business departments percentage is under 100 on each input field
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 14 - Posts Details (Page 4)
+
+- Expected:
+  - Title renders
+  - Knowledge renders
+  - Journey renders
+  - Future renders
+  - Legacy renders
+- Testing:
+  - Testing if about post story title renders in correct color by visual testing
+  - Testing if all textual building blocks render by checking privacy field, input fields and adding all correct values in edit and create post form, then verifying if it matches rendered version
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 15 - Posts Details (Page 5)
+
+- Expected:
+  - Title renders
+  - Library renders
+  - Cabinet renders
+  - Downloadeable content on each custom icon
+- Testing:
+  - Testing if about post documentation title renders and subtitles in correct color by visual verification
+  - Testing if all textual building blocks render by checking privacy field, input fields and adding all correct values in edit and create post form, then verifying if it matches rendered version
+  - Testing if all custom icons show up for each row containing a document
+  - Testing if clickling on an icon would automatically download documentation locally
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 16 - Posts Details (Page 6)
+
+- Expected:
+  - Title renders
+  - Stocks proposal renders
+  - Ownership percentage renders
+  - Product or service renders
+  - Lifetime discount renders
+  - Guaranteed team position renders
+  - Partnerships renders
+  - Collaborations renders
+  - Sponsorships renders
+  - Open proposal renders
+  - T&C renders
+  - Funding campaign section has start date, end date and countdown
+  - Funding payout section has start date and a countdown
+- Testing:
+  - Testing if about post proposals & offers title renders in correct color by visual verification
+  - Testing if all textual building blocks render by checking privacy field, input fields and adding all correct values in edit and create post form, then verifying if it matches rendered version
+  - Testing if stock supply matches or is greater than stock proposal
+  - Testing if product or service supply matches or is greater than stock proposal
+  - Testing if campaign start date and end date render by selecting dates in edit and create post form
+  - Testing if campaign start date generates correct countdown values
+  - Testing if funding payout date renders by selecting date in edit and create post form
+  - Testing if campaign payout date generates correct countdown values
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 17 - Posts Delete
+
+- Expected:
+  - Addition of extra top and bottom margin on post delete 3d box for all large PC monitors
+  - Shadow creating floating block
+  - Back button takes user to previous page
+  - Delete button calls up on verification modal before deleting post and all of its associated content and comments and takes user to their own posts
+- Testing:
+  - Tested creation of extra margin for post delete block with actual PC monitor to see if footer would still remain fully to the bottom
+  - Tested in google inspector and visually if shadow renders correctly
+  - Tested back button by clicking on it and around it while verifiying url destination path with url file
+  - Tested delete button by clicking on it and around it while verifiying url destination path with url file, also by checking if post has been deleted from post list and admin page, including all of its' relevant content and comments
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 18 - Posts Edit
+
+- Expected:
+  - User can see name of post being edited
+  - User can see categorization list of all building blocks of posts
+  - User can expand any list title which changes color to orange and shows all relevant fields
+  - Text input fields should allow long multi-line text
+  - Char input fields should allow short one-line text
+  - File uploads should show currently uploaded file name, clear button and/or button to choose a new file
+  - Slider inputs should indicate Boolean values
+  - Color input fields should allow user to interract with color pickers
+  - Selector input should allow user to chose one out of list of possible values
+  - Date input fields should allow user to chose date featuring month, year and date
+  - Integer fields should allow user to only input numbers
+  - Float fields should allow user to only input numbers with decimals
+- Testing:
+  - Testing if user can see name of post being edited by visually verifiying
+  - Testing if user can see post categorization list of major building blocks by visually verifying
+  - Testing if user can expand all of the titles by clicking on all of them, noticing color change only for opened and showing all belonging input fields from models and forms files
+  - Testing if text input fields render correctly by visual verification
+  - Testing if char input fields render correctly by visual verification
+  - Testing if file input fields render correctly by visual verification and interaction
+  - Testing if slider input fields render correctly by visual verification and interaction
+  - Testing if color input fields render correctly by visual verification and interaction
+  - Testing if selector input fields render correctly by visual verification and interaction
+  - Testing if date input fields render correctly by visual verification and interaction
+  - Testing if integer input fields render correctly by visual verification and interaction
+  - Testing if float input fields render correctly by visual verification and interaction
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 19 - Profile Delete
+
+- Expected:
+  - Addition of extra top and bottom margin on profile delete 3d box for all large PC monitors
+  - Shadow creating floating block
+  - Back button takes user to previous page
+  - Delete button calls up on verification modal before deleting profile and all of its associated content such as posts and comments and takes user back as non-authenticated to home page
+- Testing:
+  - Tested creation of extra margin for profile delete block with actual PC monitor to see if footer would still remain fully to the bottom
+  - Tested in google inspector and visually if shadow renders correctly
+  - Tested back button by clicking on it and around it while verifiying url destination path with url file
+  - Tested delete button by clicking on it and around it while verifiying url destination path with url file, also by checking if profile has been deleted from admin page, including all of its' relevant content and comments
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 20 - Profile Edit
+
+- Expected:
+  - User can see username of profile being edited
+  - User can see categorization list of all building blocks of profiles
+  - User can expand any list title which changes color to orange and shows all relevant fields
+  - Text input fields should allow long multi-line text
+  - Char input fields should allow short one-line text
+  - File uploads should show currently uploaded file name, clear button and/or button to choose a new file
+  - Slider inputs should indicate Boolean values
+  - Color input fields should allow user to interract with color pickers
+  - Selector input should allow user to chose one out of list of possible values
+  - Date input fields should allow user to chose date featuring month, year and date
+  - Integer fields should allow user to only input numbers
+  - Float fields should allow user to only input numbers with decimals
+- Testing:
+  - Testing if user can see username of profile being edited by visually verifiying
+  - Testing if user can see profile categorization list of major building blocks by visually verifying
+  - Testing if user can expand all of the titles by clicking on all of them, noticing color change only for opened and showing all belonging input fields from models and forms files
+  - Testing if text input fields render correctly by visual verification
+  - Testing if char input fields render correctly by visual verification
+  - Testing if file input fields render correctly by visual verification and interaction
+  - Testing if slider input fields render correctly by visual verification and interaction
+  - Testing if color input fields render correctly by visual verification and interaction
+  - Testing if selector input fields render correctly by visual verification and interaction
+  - Testing if date input fields render correctly by visual verification and interaction
+  - Testing if integer input fields render correctly by visual verification and interaction
+  - Testing if float input fields render correctly by visual verification and interaction
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
+
+#### Test 21 - Profiles (Public + private)
+
+- Expected:
+  - Public profile and private profile should render identical besides url and in private version, user has 3 additional buttons to create new account, edit existing profile or delete current profile
+  - Both views have title indicating if it is public or prive profile
+  - Both views have profile image if user uploaded one, if not there is a placeholder
+  - Both views should have quotation and music buttons appear below profile image
+  - Both views should allow user to upload profile cover video
+  - Both views have profile card with general structural information
+  - Both views have expandeable titles of profile sections that when clicked they show card with content underneath them, and on second click it hides the card and reduces spacing
+  - Both profiles have navigational offcanvas that appears by clicking button in the lower left corner of the screen from which user can navigate all sections
+  - Both views have reverse expansion button in lower right corner of the screen that closes all open profile categories that are open and open ones that are closed 
+- Testing:
+  - Testing if public and profile views have identical structure besides 3 buttons and different url paths
+  - Testing if title of the profile matches url and view
+  - Testing if profile image renders once uploaded in edit form
+  - Testing if profile image placeholder renders after removing image from edit form
+  - Testing if quotation and music control button appears under profile image / profile placeholder on all screens and devices
+  - Testing if user is able to upload the cover video in edit form and rendering it back on their both private and public profile views
+  - Testing if all profile categorization title are appearing from code repository
+  - Testing if all profile titles are expandeable on click that show belonging content in a form of card
+  - Testing if second click on titles always collapses relevant content
+  - Testing if navigational offcanvas takes user to correct profile category title
+  - Testing if reverse collapse button closes all open profile categories and opens the closed ones
+- Result:
+  - All tests have been successfully passed in multiple testing rounds of deployed version
+
+---
 
 ### Bugs
 

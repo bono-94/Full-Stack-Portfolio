@@ -1462,6 +1462,7 @@ __Unsolved Bugs__
 - Mostly it was learning curve of new framework so every step of the code there was an error that was solved with learning, persistance and effort
 - Sources of knowledge are included below.
 - Once fully understood, everything made sense and it was easy to create entire website without distractions and bugs
+- What could be qualified as bug are console errors that have no impact on the code and scripts that too complex to solve at the moment
 
 
 ## Credits 
